@@ -1,0 +1,993 @@
+/** New fonts **/
+@font-face {
+    font-family: LeagueGothic;
+    src: url("/files/resources/leaguegothic.ttf");
+}
+@font-face {
+    font-family: OpenSans;
+    src: url('/files/resources/OpenSans-Semibold.ttf');
+}
+@font-face {
+    font-family: PermanentMarker;
+    src: url('/files/resources/Permanentmarker-Regular.ttf');
+}
+@font-face {
+    font-family: RubikGlitch;
+    src: url('/files/resources/rubikglitch-regular.ttf');
+}
+@font-face {
+    font-family: RubikMarkerHatch;
+    src: url('/files/resources/rubikmarkerhatch-regular.ttf');
+}
+
+
+.tape_wobble
+{
+	/* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
+	clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%, 41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%, 73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%, 100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%, 100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%, 100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%, 0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
+}
+
+/** Global Defaults **/
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background: #FAFAFA;
+    font-family: "OpenSans", sans-serif;
+    font-size: 1.0em;
+    color: #AAA;
+    text-align: center;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+    
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    background-attachment:fixed;
+    background-image: url("/files/images/bg2.gif");
+}
+img {
+    border: 0px;
+}
+
+a:link, a:visited {
+    color: #DDD;
+    text-decoration: none;
+    text_shadow: none;
+    transition:
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
+}
+a:hover {
+    color: #FFF /*#FFA824*/;
+    text-decoration: none;
+    /*text-shadow:*/
+        /* White spots */
+        /*+5px 0px 1px rgba(255, 255, 255, 0.3),
+        -5px 0px 1px rgba(255, 255, 255, 0.3),
+        +4px 0px 2px rgba(255, 255, 255, 0.1),
+        -4px 0px 2px rgba(255, 255, 255, 0.1),
+        +6px 0px 2px rgba(255, 255, 255, 0.1),
+        -6px 0px 2px rgba(255, 255, 255, 0.1),*/
+        /* Prism fringes */
+        /*+11px 0px 1px rgba(0, 212, 255, 0.25),
+        -11px 0px 1px rgba(255, 64, 0, 0.50),
+        +13px 0px 2px rgba(0, 212, 255, 0.125),
+        -13px 0px 2px rgba(255, 64, 0, 0.25),*/
+        /* Prism fringes 2 */
+        /*+17px 0px 2px rgba(0, 212, 255, 0.05),
+        -17px 0px 2px rgba(255, 64, 0, 0.10),
+        +19px 0px 3px rgba(0, 212, 255, 0.025),
+        -19px 0px 3px rgba(255, 64, 0, 0.05)
+        ;*/
+    text-shadow:
+        /* White spots */
+        +0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+        -0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+        +0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+        -0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+        +0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+        -0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+        /* Prism fringes */
+        +0.30em 0px 0.08em rgba(0, 212, 255, 0.25),
+        -0.30em 0px 0.08em rgba(255, 64, 0, 0.50),
+        +0.33em 0px 0.12em rgba(0, 212, 255, 0.125),
+        -0.33em 0px 0.12em rgba(255, 64, 0, 0.25),
+        /* Prism fringes 2 */
+        +0.45em 0px 0.10em rgba(0, 212, 255, 0.10),
+        -0.45em 0px 0.10em rgba(255, 64, 0, 0.20),
+        +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
+        -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
+    transition:
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s;
+}
+
+.box a:link, .box a:visited {
+    color: #636363;
+    font-size: 1.618em;
+    font-family: "LeagueGothic", sans-serif;
+}
+.box a:hover {
+    color: #333;
+    text-shadow:
+        -3px 0px 0px rgba(0, 212, 255, 0.5),
+        +2px 0px 0px rgba(255, 64, 0, 0.6);
+}
+
+.heading {
+    font-family: RubikGlitch;
+    font-weight: normal;
+    font-variant: small-caps;
+}
+.heading-notop {
+    margin-top: 0;
+}
+
+.no-margins {
+    margin: 0;
+}
+
+h3 {
+    margin:2px;
+    font-family: "LeagueGothic", sans-serif;
+}
+
+input {
+    border:3px solid black;
+    margin:4px;
+    background-color:#FFFFFF;
+}
+
+select {
+    width: 350px; /*IE only*/
+    max-width: 350px; /*for some reason, this doesn't work in IE7*/
+    vertical-align: middle;
+}
+*>/**/select {
+    width:auto !important; /*real browsers*/
+}
+
+form {
+    margin:0px;
+}
+.clear {
+    clear:both;
+}
+.comicnavlink {
+    margin-left: 0.618em;
+    margine-right: 0.618em;
+}
+.comicnavlink img {
+    vertical-align:middle;
+}
+.comicnav select {
+    font-family: "LeagueGothic", sans-serif;
+    font-size: 1.2em;
+    position: relative;
+    top: -0.2em;
+    appearance: none;
+    border: 1px solid white;
+    text-align: center;
+}
+
+#sitetitle {
+    color: #FFF;
+    text-align: center;
+    
+    font-family: "LeagueGothic", sans-serif;
+    font-size: 5.0em;
+    font-variant: small-caps;
+    font-weight: bold;
+    line-height: 50%;
+    
+    margin-top: 0.1em;
+    margin-bottom: 0px;
+    
+    text-shadow:
+    10px 0px 0px rgba(0, 212, 256, 0.5),
+    -8px 0px 0px rgba(255, 64, 0, 0.5);
+    animation: glitch-anim-0 10.6s infinite linear;
+}
+#sitetitle img {
+    max-width: 80vw;
+}
+@keyframes glitch-anim-0 {
+    0% {
+        text-shadow:
+        10px 0px 0px rgba(0, 212, 256, 0.5),
+        -8px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+    49% {
+        text-shadow:
+        8px 0px 0px rgba(0, 212, 256, 0.5),
+        -5px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+    49.5% {
+        text-shadow:
+        8px 2px 0px rgba(0, 212, 256, 0.5),
+        -5px 1px 0px rgba(255, 64, 0, 0.5);
+    }
+    50% {
+        text-shadow:
+        -8px 0px 0px rgba(0, 212, 256, 0.5),
+        10px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+    98% {
+        text-shadow:
+        -8px 0px 0px rgba(0, 212, 256, 0.5),
+        10px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+    99% {
+        text-shadow:
+        7px -3px 0px rgba(0, 212, 256, 0.5),
+        -7px 2px 0px rgba(255, 64, 0, 0.5);
+    }
+    99.5% {
+        text-shadow:
+        -8px 0px 0px rgba(0, 212, 256, 0.5),
+        10px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+    100% {
+        text-shadow:
+        10px 0px 0px rgba(0, 212, 256, 0.5),
+        -8px 0px 0px rgba(255, 64, 0, 0.5);
+    }
+}
+
+#titleupdate {
+    padding: 0px;
+    margin: 0px;
+    font-variant: small-caps;
+    font-size: 1.31em;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    color: white;
+}
+
+#navigation {
+    list-style:none;
+    font-family: "LeagueGothic", sans-serif;
+    font-size: 2.0em;
+}
+#navigation ul {
+    padding:0px;
+    margin: 0.3em;
+}
+#navigation li {
+    list-style:none;
+    display:inline;
+}
+#navigation li span {
+    margin:4px;
+    display:table-cell; /*ff2, ff1*/
+    display:inline-block;
+}
+#navigation a:link, #navigation a:visited, #navigation a:hover {
+    text-decoration:none;
+}
+
+#comicrating {
+    font-family: "OpenSans", sans-serif;
+    font-size: 12px;
+}
+#comicrating a {
+    font-family: "OpenSans", sans-serif;
+    font-size: 12px;
+}
+
+#cf_ads {
+    display:table;
+    margin:auto;
+    text-align:center;
+}
+
+#latestcomictitle {
+    font-size: 150%;
+}
+
+#latestcomiclink img {
+    border:3px solid black;
+}
+.box {
+    border: 3px solid black;
+    background-color: #FFFFFF;
+    padding: 10px;
+    padding-left: min(10px, 1vw);
+    padding-right: min(10px, 1vw);
+    /* Limit box to width of the page based on padding & border */
+    max-width: calc(max(calc(100vw - 20px), 98vw) - 6px);
+}
+html>/**/body .wrap { /*hidden from old IEs*/
+    display: table;
+    margin: auto;
+    width: 70%;
+    min-width: min(100vw, 650px);
+    max-width: 100vw;
+}
+.wrapie {
+    margin: auto;
+    width: 70%;
+    min-width: min(100vw, 650px);
+    max-width: 100vw;
+}
+#footer {
+    font-size: 70%;
+    color: #A9A9A9;
+    margin-top:20px;
+}
+
+.blinking {
+    text-decoration: blink;
+}
+
+.seperator {
+    border-top:1px solid #777777;
+}
+/*comicpage*/
+#authornotes{
+    margin: auto;
+    width: 70%;
+    min-width: min(100%, 650px);
+    max-width: 100%;
+}
+.commenttext {
+    color: #777;
+}
+
+.box .commenttext a {
+    font-family: "OpenSans", sans-serif;
+    font-size: 1.0em;
+}
+.box .commenttext a:link, .box .commenttext a:visited {
+    color: #222;
+}
+.box-widener {
+    min-width: min(940px, calc(95vw - 26px));
+    max-width: 95vw;
+}
+
+.comment {
+    text-align:left;
+}
+#permalinkbox {
+    text-align:left;
+}
+.permalinkcode {
+    font-size:12px;
+    color:#AAAAAA;
+}
+
+.postcomment {
+    font-size: 24px;
+    margin: 10px;
+    font-family: "LeagueGothic", sans-serif;
+}
+
+.comment img {
+    max-width: 100%;
+}
+
+.saveplace {
+    
+}
+.saveplace_image {
+    max-height: 4.0em;
+}
+.saveplace_text {
+    position: relative;
+    display: inline-block;
+    pointer-events: none;
+    width: 0px;
+    overflow: visible;
+    left: calc(-100px + -2.0em);
+    top: -4.3em;
+    font-family: RubikGlitch;
+}
+.saveplace_text > div {
+    width: 200px;
+}
+
+a > .saveplace_image {
+    filter: none;
+    transition:
+        filter ease-in-out 0.3s;
+}
+a:hover > .saveplace_image {
+    /*filter: sepia(1) saturate(40) hue-rotate(-50deg);*/
+    filter:
+        drop-shadow(+0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+        drop-shadow(-0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.20))
+        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.40))
+        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+        saturate(3)
+        ;
+}
+
+a > .saveplace_text {
+    opacity: 0.0;
+    transition:
+        opacity ease-in-out 0.3s;
+}
+a:hover > .saveplace_text {
+    opacity: 1.0;
+}
+
+/*comicpage/blog*/
+.avatar {
+    float: left;
+    margin-right: 1.0em;
+}
+.commentcontrol {
+    text-align:right;
+}
+.authordata {
+    text-align:left;
+}
+.author {
+    font-size: 22px;
+    font-family: RubikGlitch !important;
+}
+.posttime {
+    color:#AAAAAA;
+    /*float:right;*/
+    font-weight: normal;
+    font-family: "LeagueGothic", sans-serif;
+    font-variant: small-caps;
+    font-size: 1.5em;
+    padding: 0 0.3em 0;
+}
+
+/*archive*/
+#archive {
+    width: 100%;
+    text-align: justify;
+}
+#archive tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 1%;
+}
+#archive h3 {
+    font-size: 1.8em;
+    color: #000;
+    line-height: 1.0em;
+}
+.archivecomic td {
+    text-align:left;
+}
+.archivecomic {
+    border-bottom: 1px solid #777777;
+    flex-grow: 0;
+    flex-basis: 30%;
+}
+.comicposttime {
+    text-align:right !important;
+    color: #999999;
+    font-size: 0.7em;
+}
+.comicnumber {
+    width: 40px;
+}
+.comicpostlink {
+    display: block;
+    letter-spacing: 0.0616em;
+}
+.chaptertitle {
+    background-color: #EEEEEE;
+    flex-grow: 0;
+    width: 100%;
+}
+.chaptertitle td {
+    border-bottom: 2px solid black;
+    padding: 0.4em;
+    color: #444;
+    line-height: 1.616em;
+}
+.comictopper {
+    letter-spacing: 0.1em;
+    font-variant: small-caps;
+}
+.comictopper h2.heading {
+    display: inline-block;
+    margin-top: 0px;
+}
+
+/*blog*/
+#blogbox {
+    display: flex;
+}
+#blogarchive {
+    /*border: 2px solid black;*/
+    background-color: #EEEEEE;
+    padding: 10px;
+    text-align: left;
+    list-style: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1em;
+    max-width: min(200px, 18vw);
+}
+#blogarchive li {
+    padding: 0.4em;
+    border-bottom: 1px solid #777;
+}
+#blogs {
+    margin: 0px;
+    padding: 10px;
+}
+.reply {
+    margin-left: 40px;
+}
+
+.blogcontent {
+    text-align: left;
+    color: #777;
+    padding-top: 1.0em;
+    padding-bottom: 0.6em;
+}
+.blogtitle {
+    font-size: 2.0em;
+    font-weight: bold;
+    font-family: "PermanentMarker", cursive;
+    font-variant: small-caps;
+    color: #636363;
+    
+    display: block;
+    padding: 12px;
+    margin-top: -10px;
+    
+    line-height: 1.0em;
+    
+    background-color: black;
+    transform: rotate(-2deg);
+}
+.blogtitle a:link, .blogtitle a:visited {
+    font-family: "PermanentMarker", cursive;
+    color: white;
+}
+.blogtitle a:hover {
+    color: #FFA824;
+}
+
+.blogarchive-time {
+    display: block;
+    white-space: wrap;
+    color: #999999;
+    font-size: 0.7em;
+}
+.blogarchive-title {
+    display: block;
+    position: relative;
+    top: 0.1em;
+}
+.blogarchive-name {
+    display: block;
+    white-space: nowrap;
+}
+.blogarchive-name a:link {
+    font-size: 1.0em;
+    font-family: "OpenSans", sans-serif;
+}
+
+.blogpost-container {
+    border-bottom: 1px solid #777;
+    padding-bottom: 0.4em;
+    margin-bottom: 1.0em;
+}
+.blogpost-time {
+    display: block;
+    text-align: left;
+    line-height: 1.0em;
+}
+.blog-actionlink {
+    
+}
+.blog-actionlink a:link {
+    font-size: 1.3em;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+}
+
+/* overview */
+.overview-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.0em;
+    background-color: #EEE;
+}
+.overview-box .box {
+    display: inline-block;
+    flex-grow: 1;
+    background-color: #CCC;
+    border: none;
+    border-bottom: 1px solid #777777;
+    /*box-shadow: 0px 0px 0.2em 3px #d2d2d2;*/
+    
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    /*background-attachment:fixed;*/
+    background-image: url("https://synexncity.thecomicseries.com/files/images/bg3.png");
+    background-blend-mode: screen;
+}
+.overview-box .box h3, .overview-box .box.blogarchive .overview-blogarchive-block {
+    text-align: left;
+    color: #888;
+}
+.overview-box > .box > h3 {
+    color: #777;
+    font-size: 1.5em;
+}
+.overview-blogarchive-block:not(:last-child) {
+    margin-bottom: 0.3em;
+    border-bottom: 1px #AAA dashed;
+    padding-bottom: 0.3em;
+}
+
+.overview-imagewrap > a > img {
+    width: 100%;
+    height: auto;
+}
+.overview-basis90 {
+    flex-basis: 88%;
+    min-width: 300px;
+}
+.overview-basis45 {
+    flex-basis: 45%;
+    min-width: 300px;
+}
+.overview-basis22 {
+    flex-basis: 22%;
+    min-width: 150px;
+}
+
+.overview-content-warning p, .overview-content-warning ul, .overview-content-warning l {
+    text-align: left;
+    color: #555;
+    font-size: 0.8em;
+}
+.overview-content-warning a, .overview-content-warning a:link, .overview-content-warning a:visited {
+    font-size: 1.0em;
+    font-family: "OpenSans", sans-serif;
+    border-bottom: #AAA 1.5px dotted;
+}
+.overview-archive > table {
+    font-size: 0.91em;
+}
+.overview-archive > #archive h3 {
+    font-size: 1.0em;
+    font-weight: 400;
+}
+.overview-archive tr.chaptertitle {
+    background: none;
+}
+
+.overview-bsides > div {
+    text-align: left;
+    margin-bottom: 0.8em;
+}
+.overview-bsides > div:not(:nth-child(2)) {
+    border-right: 1px solid #777777;
+    border-top: 1px solid #777777;
+    padding-top: 0.4em;
+}
+.overview-bsides > div > a {
+    display: block-inline;
+}
+.overview-bsides > div > a::before {
+    content: "> ";
+}
+.overview-bsides > div > .overview-miniinfo {
+    display: block;
+    border-left: #AAA 2px dotted;
+    padding-left: 0.7em;
+    margin-left: 1.3em;
+    position: relative;
+    font-variant: small-caps;
+}
+.overview-bsides > div > span:nth-child(3) {
+    color: #888;
+    line-height: 1.5em;
+    font-size: 0.9em;
+}
+.overview-bsides > div > a > img {
+    border: 0px;
+    max-width: calc(100% - 1.0em);
+    vertical-align: middle;
+}
+.overview-bsides > div > a > img,
+.overview-bsides > div > a:visited > img,
+.overview-bsides > div > a:link > img {
+    --c_accent_l: rgb(255, 70, 0);
+    filter:
+		drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+		drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+		;
+	transition:
+	    color 0.25s ease-in-out,
+		filter 0.25s ease-in-out
+		;
+}
+.overview-bsides > div > a:hover > img {
+    filter:
+		drop-shadow(var(--c_accent_l) 0 0 0.03em)
+		drop-shadow(var(--c_accent_l) 0 0 0.14em)
+		;
+	transition:
+	    color 0.25s ease-in-out,
+		filter 0.25s ease-in-out
+		;
+}
+
+.overview-miniinfo strong {
+    color: #000;
+}
+
+.overview-begin-block {
+    transform: rotate(3deg);
+    display: inline-block;
+}
+.overview-begin {
+    display: inline-block;
+}
+.overview-begin-sidestyle {
+    display: inline-block;
+    width: 2.6em;
+    vertical-align: top;
+    text-align: left;
+    line-height: 0.8em;
+    font-size: 1.0em;
+}
+
+
+.overview-authors {
+  display: flex !important;
+  justify-content: center;
+  gap: 1.0em;
+}
+.overview-authorbox {
+  display: inline-block;
+  flex-basis: 30%;
+  min-width: min(40vw, max(30vw, 350px));
+  text-align: justify;
+  font-size: 0.9em;
+  color: #444;
+}
+.overview-authorbox > h3 {
+  color: #777;
+  font-size: 1.8em;
+  font-weight: 500;
+}
+.overview-authorbox > h3 > strong {
+  color: #444;
+}
+
+.overview-authorbox-icon {
+  max-height: 1.0em;
+  vertical-align: baseline;
+}
+.overview-authorbox h4 {
+  margin: 0;
+  font-family: "LeagueGothic", sans-serif;
+  font-size: 2.0em;
+  font-weight: 500;
+}
+.overview-authorbox-linkbox {
+  display: block;
+}
+.overview-authorbox-topinfo {
+  display: block;
+  overflow: auto;
+}
+.overview-authorbox-topinfo > img {
+  float: left;
+  margin-right: 1.0em;
+  width: 10em;
+  height: auto;
+}
+
+
+/* comic image */
+[c:custom.wideformat]
+    #content-start
+    {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-left: none;
+        border-right: none;
+        max-width: 100%;
+    }
+    #comicimagewrap
+    {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+[/]
+#comicimage
+{
+    [c:!custom.wideformat]
+        max-width: calc(100vw - 26px);
+        height: auto;
+    [/]
+    [c:custom.wideformat]
+        width: 100vw;
+        height: auto;
+    [/]
+    [c:custom.comic_scale]
+        width: [v:custom.comic_scale];
+    [/]
+}
+
+[c:custom.specials]
+/* "specials" styling */
+#content-start
+{
+    [c:custom.sp_content_black]
+        border: 8px solid #202020;
+        background: #000;
+        [c:!custom.wideformat]
+            max-width: calc(100vw - 32px);
+        [/]
+        [c:custom.wideformat]
+            border-left: none;
+            border-right: none;
+        [/]
+    [/]
+}
+a.comicnavlink:link, a.comicnavlink:visited
+{
+    [c:custom.sp_content_black]
+        color: #DDD;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+    [/]
+}
+a.comicnavlink:hover
+{
+    [c:custom.sp_content_black]
+        color: #FFA824;
+    [/]
+}
+html, body
+{
+    [c:custom.sp_content_black]
+        background-color: #999;
+        background-blend-mode: multiply;
+    [/]
+}
+.comicnav select
+{
+    [c:custom.sp_content_black]
+        border: 1px solid black;
+        background: #222;
+        color: white;
+    [/]
+}
+
+/* spoilers styles */
+[c:custom.sp_warning_spoiler]
+    #comicimagewrap
+    {
+        position: relative;
+    }
+    /*#comicimage
+    {
+        filter: blur(2vw);
+        clip-path: rect(0 0 100% 100%);
+    }*/
+    #comicimagewrap > #comicimagelink
+    {
+        filter: blur(2vw);
+    }
+    #comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
+    {
+        filter: none;
+    }
+    
+    #comicimagewrap > #comicimage
+    {
+        filter: blur(2vw);
+    }
+    #comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
+    {
+        filter: none;
+    }
+
+    #comicimage-spoiler-label
+    {
+        position: absolute;
+        top: 1.0em;
+        /* Center */
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+
+        /* Stylings */
+        background: white;
+        padding: 4.0em;
+        outline: 2px black solid;
+
+        text-align: center;
+    }
+    #comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
+    {
+        display: none;
+    }
+    #comicimage-spoiler-label > div {
+        text-align: left;
+        width: 100%;
+    }
+    .spoiler-hidden-checkbox
+    {
+        display: block;
+        position: absolute;
+        opacity: 0.0;
+    }
+
+    #comicimage-spoiler-content
+    {
+        display: none;
+        padding: 1.0em;
+        color: red;
+        font-weight: 400;
+    }
+    
+    #comicimage-spoiler-label > div > label {
+        /*text-align: center;*/
+        cursor: pointer;
+        color: #636363;
+        transition:
+            color ease-in-out 0.3s,
+            text-shadow ease-in-out 0.3s;
+    }
+    #comicimage-spoiler-label > div > label:hover {
+        color: #333;
+        text-decoration: none;
+        text-shadow:
+            -3px 0px 0px rgba(0, 212, 255, 0.5),
+            +2px 0px 0px rgba(255, 64, 0, 0.6);
+        transition:
+            color ease-in-out 0.3s,
+            text-shadow ease-in-out 0.3s;
+    }
+    
+    #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
+    {
+        display: inline-block;
+    }
+    #spoiler-toggle-content + div > label {
+        font-weight: 800;
+    }
+    #spoiler-toggle-content:checked + div > label {
+        font-weight: 400;
+    }
+    #spoiler-toggle-content + div > label:before {
+        content: "▶ ";
+    }
+    #spoiler-toggle-content:checked + div > label:before {
+        content: "▽ ";
+    }
+
+    #spoiler-toggle-show-page + div > label:before {
+        content: "◿ "
+    }
+    #spoiler-toggle-show-page + div > label:after {
+        content: " ◺"
+    }
+    #spoiler-toggle-show-page + div {
+        font-weight: 400;
+        text-align: center;
+    }
+[/]
+
+[/]
