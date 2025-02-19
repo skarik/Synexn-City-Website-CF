@@ -807,6 +807,15 @@ a.author:hover {
 }
 
 
+/* gallery */
+.gallery > div {
+    max-width: 20vw;
+}
+.gallery > div > a > img {
+    max-width: 100%;
+}
+
+
 /* comic image */
 [c:custom.wideformat]
     #content-start

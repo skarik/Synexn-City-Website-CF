@@ -1,0 +1,30 @@
+<!--<div class="box">-->
+
+    <div class="gallery" id="gallery_1">
+    </div>
+    box 1
+</div>
+
+<div class="box">
+    box 2
+
+    <script defer>
+        "use strict";
+        // TODO
+        //function addGalleryImage(image_url, author="", type="Art", description="")
+        HTMLElement.prototype.addGalleryImage = function(image_url, author="", type="Art", title="", description="")
+        {
+            let div = document.createElement("div");
+            div.innerHTML = `<a href=${image_url}><img src="${image_url}"></a><div class="title">${title}</div>`
+
+            this.appendChild(div);
+        }
+
+        let gallery_1 = document.getElementById("gallery_1");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/350/33395a1724532825b95754f79005648.jpg", undefined, undefined, "Hicks");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727823235b95754f1603336870.jpg", undefined, undefined, "Halloween 2024 Art 1 - Hicks");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727892217b95754f1234334355.jpg", undefined, undefined, "Halloween 2024 Art 2 - Ram");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/357/33395a1728807261b95754f2007016529.jpg", undefined, undefined, "Halloween 2024 Art 3 - Anders");
+    </script>
+
+<!--</div>-->
