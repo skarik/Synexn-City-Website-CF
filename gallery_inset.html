@@ -1,30 +1,54 @@
 <!--<div class="box">-->
 
-    <div class="gallery" id="gallery_1">
-    </div>
-    box 1
+    <h3 id="gallery_heading">Shots & Pinups</h3>
+    <div class="gallery" id="gallery_1"></div>
 </div>
 
 <div class="box">
-    box 2
+    <h3 id="gallery_heading">Sequential Filler</h3>
+    <div class="gallery" id="gallery_1"></div>
 
     <script defer>
         "use strict";
-        // TODO
-        //function addGalleryImage(image_url, author="", type="Art", description="")
-        HTMLElement.prototype.addGalleryImage = function(image_url, author="", type="Art", title="", description="")
+        HTMLElement.prototype.addGalleryImage = function(image_url, author="", type="Art", title="", description="", date="")
         {
-            let div = document.createElement("div");
-            div.innerHTML = `<a href=${image_url}><img src="${image_url}"></a><div class="title">${title}</div>`
-
-            this.appendChild(div);
+            // Profiling shows it's faster to just append innerHTML instead of fuck with DOM so we'll just do that.
+            this.innerHTML += `
+                <div>
+                    <a href=${image_url} target="_blank">
+                        <img src="${image_url}">
+                    </a>
+                    <div class="title">${title}</div>
+                    <div class="author">by ${author}</div>
+                    <div class="date">${date}</div>
+                </div>`;
         }
 
         let gallery_1 = document.getElementById("gallery_1");
-        gallery_1.addGalleryImage("https://img.comicfury.com/comics/350/33395a1724532825b95754f79005648.jpg", undefined, undefined, "Hicks");
-        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727823235b95754f1603336870.jpg", undefined, undefined, "Halloween 2024 Art 1 - Hicks");
-        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727892217b95754f1234334355.jpg", undefined, undefined, "Halloween 2024 Art 2 - Ram");
-        gallery_1.addGalleryImage("https://img.comicfury.com/comics/357/33395a1728807261b95754f2007016529.jpg", undefined, undefined, "Halloween 2024 Art 3 - Anders");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/images/scan001-color.jpg",
+            "us (skarik)", undefined, "Key Art v1", undefined, "29 July 2016");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/348/33395a1723321991b30430f1688961717.jpg",
+            "us (nohua)", undefined, "Key Art v2", undefined, "10 Aug 2024");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/350/33395a1724532825b95754f79005648.jpg",
+            "us (nohua)", undefined, "Hicks", undefined, "24 Aug 2024");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727823235b95754f1603336870.jpg",
+            "us (nohua)", undefined, "Halloween 2024 Art 1 - Hicks", undefined, "1 Oct 2024");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/356/33395a1727892217b95754f1234334355.jpg",
+            "us (nohua)", undefined, "Halloween 2024 Art 2 - Ram", undefined, "2 Oct 2024");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/357/33395a1728807261b95754f2007016529.jpg",
+            "us (nohua)", undefined, "Halloween 2024 Art 3 - Anders", undefined, "13 Oct 2024");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/images/junk/bookshelf_anim_0.gif",
+            "us (skarik)", undefined, "Shelf Crew", undefined, "27 Nov 2024");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/images/junk/169_rammy_ram.jpg",
+            "us (skarik)", undefined, "1, 2, 3, and (Blog Post)", undefined, "15 Dec 2024");
+        gallery_1.addGalleryImage("https://img.comicfury.com/comics/370/33395a1736372752b30430f695656931.png",
+            "us (skarik)", undefined, "2024 Cast Roundup", undefined, "8 Jan 2025");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/feb_post.png",
+            "us (nohua)", undefined, "Relax! Have Some Coffee!", undefined, "2 Feb 2025");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/nohua1.png",
+            `<a href="http://gowstlie.bsky.social/">gowstlie</a>`, undefined, "Be Mine (Anders)", undefined, "14 Feb 2025");
+        gallery_1.addGalleryImage("https://synexncity.thecomicseries.com/files/nohua2.png",
+            `<a href="http://gowstlie.bsky.social/">gowstlie</a>`, undefined, "Be Mine (Hicks)", undefined, "14 Feb 2025");
     </script>
 
 <!--</div>-->
