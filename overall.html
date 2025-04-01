@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Last Update: [v:lastupdatedmy] -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/files/favicon1-16x16.png" sizes="16x16">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/" />
+    <meta property="og:type"  content="website" />
+    <meta property="og:site_name" content="[v:webcomicname]" />
+    <meta property="og:description" content="[v:webcomicdescription]" />
+    <meta name="theme-color" content="#5218FA" />
+    [c:comicimageurl]
+        <meta property="og:title" content="[v:pagetitle]" />
+        <meta property="og:image" content="[v:comicimageurl]" />
+        <meta property="og:image:width" content="[v:comicwidth]" />
+        <meta property="og:image:height" content="[v:comicheight]" />
+        <meta name="twitter:image" content="[v:comicimageurl]" />
+        <meta name="twitter:card" content="summary_large_image" />
+    [/]
+    [c:!comicimageurl]
+        <meta property="og:title" content="[v:webcomicname]" />
+        <meta property="og:image" content="files/resources/opengraphcover-2p.jpg" />
+        <meta property="og:image:height" content="480" />
+        <meta property="og:image:width"  content="1280" />
+        <meta name="twitter:image" content="files/resources/opengraphcover-2p.jpg" />
+    [/]
+    <title>[v:webcomicname] - [v:pagetitle]</title>
+    <style type="text/css">
+        <!--layout:[css]-->
+    </style>
+    [v:cfscriptcode]
+    <script type="text/javascript">
+        "use strict";
+        
+        /// @brief Replaces all the CF URLs with the synexn.city URLs.
+        window.onload = function()
+        {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; ++i)
+            {
+                anchors[i].href = anchors[i].href.replace("synexncity.thecomicseries.com", "synexn.city");
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="head">
+        <h1 id="sitetitle">
+            <!--
+                [c:!banner]
+                [v:webcomicname]
+                [/]
+                [c:banner]
+                <img src="[v:banner]" alt="[v:webcomicname]" title="[v:webcomicname]" id="banner" />
+                [/]
+            -->
+            <img src="/files/images/title_scaled.png" alt="[v:webcomicname]" />
+        </h1>
+        <div id="titleupdate">Updates Tuesdays & Fridays</div>
+    </div>
+    
+    
+    <div id="navigation">
+        <ul>
+            <li><span><a href="/comics/">>comics</a></span></li>
+            [c:hasblogs]
+                <li><span><a href="/blog/">>blog</a></span></li>
+            [/]
+            <li><span><a href="/archive/">>chapters</a></span></li>
+            <li><span><a href="/overview/">>readme</a></span></li>
+            [l:extrapages]
+                <li><span style="text-transform: lowercase;"><a href="[v:l.link]">>[v:l.title]</a></span></li>
+            [/]
+            [c:!hidefromhost]
+                <li><span><a href="[v:addsubscriptionlink]" target="window2">>subscribe</a></span></li>
+            [/]
+        </ul>
+    </div>
+    
+    [c:iscomicpage]
+        <script type="text/javascript">
+            activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+        </script>
+    [/]
+    
+    [c:bannerads]
+        <!-- voluntary CF support ads, you can turn these off in your webcomic settings -->
+        <div id="cf_ads">[v:banneradcode]</div>
+    [/]
+    
+    <div id="contentcontainer">
+        [c:isextrapage]
+            <h2 class="heading">[v:pagetitle]</h2>
+        [/]
+        <div class="wrap">
+            [c:isextrapage]
+                <div class="box">
+            [/]
+                
+            <!--layout:[content]-->
+            
+            [c:isextrapage]
+                </div>
+            [/]
+        </div>
+    </div>
+        
+    <div>
+        See more of the universe at
+        <br>
+        <a href="https://gravitywell.thecomicseries.com/">Gravity Well</a> | 
+        <a href="https://dumb-hiver.thecomicseries.com/">WATCHER</a> | 
+        <a href="https://jackyweaver.thecomicseries.com/">Jacky Weaver</a> | 
+        <a href="https://ibecamequeen.thecomicseries.com/">Unionizing Sex Work (18+)</a>
+    </div>
+        
+    <div id="footer">
+        <div>
+            <a href="/rss/">RSS</a> | 
+            [c:!hidefromhost]
+            <a href="[v:comicprofile]">Comic Profile</a> | 
+            [/]
+            <a href="http://www.topwebcomics.com/vote/28266"><b>Vote on TWC</b></a> | 
+            <a href="#">Top</a>
+            <br />
+        </div>
+        <div>Hosted on <a href="http://comicfury.com">ComicFury</a>, &copy; [v:copyrights]</div>
+    </div>
+        
+    [c:searchon]
+    <form method="post" action="/search/">
+        <div id="searchbar"><input type="text" name="search" value="Search for comics" onclick="this.value = '';" /><input type="submit" value="Search" class="submit" /></div>
+    </form>
+    [/]
+    
+</body>
+</html>

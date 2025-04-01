@@ -1,0 +1,41 @@
+[c:!hasblogs]
+    <h2 class="heading heading-notop">Error:</h2>
+    <div class="afterheading">
+        <div id="errormessage">There are currently no blogs.</div>
+    </div>
+[/]
+
+[c:hasblogs]
+    <h2 class="heading">Blogs</h2>
+
+    <div class="box box-widener" id="blogbox">
+        
+        <ul id="blogarchive">
+            <h3>Posts</h3>
+            [l:blogarchive]
+                <li>
+                    <span class="blogarchive-time">[v:l.posttime]</span>
+                    <span class="blogarchive-title"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
+                    <span class="blogarchive-name">by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a></span>
+                </li>
+            [/]
+        </ul>
+        
+        <div id="blogs">
+            [l:blogs]
+                <div class="blogpost-container">
+                    <span class="posttime blogpost-time">[v:l.posttime]</span>
+                    <span class="blogtitle tape_wobble"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
+                    <span class="authordata">
+                        by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a>
+                    </span>
+                    <div class="blogcontent">[v:l.blog]</div>
+                    <div class="blog-actionlink"><a href="[v:l.bloglink]">◁ Comment on Post ▷</a></div>
+                </div>
+            [/]
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+[/]
+

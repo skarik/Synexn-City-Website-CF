@@ -1,0 +1,43 @@
+<h2 class="heading heading-notop">
+    Archive
+    [c:ischapterarchive]
+        - [v:chaptername]
+    [/]
+</h2>
+<div class="box box-widener">
+    [c:ischapterarchive]
+        <div class="headingsub">[v:chapterdescription]</div>
+    [/]
+
+    <!-- This is the box that thumbnails previews will be shown inside of, on mouseover of archive comics. -->
+    <!--<div id="thumbnail-preview-box" style="[v:thumbnail_box_styles]"></div>-->
+    <!-- Only for paginated archive. Since Sin of Sorcery's archive is using the old, shitty, server-destroying archive, we do not get thumbs -->
+    <!-- Skarik: this is a cry for help from yourself. Stop trying to implement it. Do something else productive, please. -->
+    <!-- Draw Ram giving Dorian more buckets. Something. Anything. Stop fucking with this page unless it's a dire circumstance. -->
+
+    <table id="archive">
+        <!--cond:[n:usechapters]-->
+        <!--  <tr class="chaptertitle"><td colspan="3"><h3>Comics</h3></td></tr>-->
+        <!--cond:[n:usechapters]-->
+        [l:chapteredarchive]
+        
+            [c:l.newchapter]
+                <tr class="chaptertitle"><td colspan="3"><h3>[v:l.chaptername]</h3>
+                [c:l.chapterdescription]
+                    [v:l.chapterdescription]
+                [/]
+                </td></tr>
+            [/]
+            
+            <tr class="archivecomic">
+                <td class="comicnumber">[[v:l.number]]</td>
+                <td class="comicposttime">[v:l.posttime]</td>
+                <td class="comicpostlink">
+                    <a href="[v:l.comicurl]">
+                        [v:l.comictitle]
+                    </a>
+                </td>
+            </tr>
+        [/]
+    </table>
+</div>

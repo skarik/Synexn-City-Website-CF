@@ -1,0 +1,197 @@
+<div class="box overview-box box-widener">
+    [c:!hascomics]
+        [c:!hasblogs]
+            <div class="box">
+                <div id="errormessage">
+                    This webcomic is empty right now. Why don't you check back later?
+                </div>
+            </div>
+        [/]
+    [/]
+
+    [c:hascomics]
+        <div class="box overview-basis90">
+            <a href="[v:firstcomicpermalink]" class="overview-begin-block">
+                <h2 class="overview-begin no-margins">> new reader?</h2>
+                <div class="overview-begin-sidestyle">FROM THE TOP</div>
+            </a>
+        </div>
+    [/]
+
+    [c:hascomics]
+        <div class="box overview-basis45">
+            <h3>Latest Page</h3>
+            <span class="headingsub comictopper"letter-spacing: 0.1em; font-variant: small-caps;>
+                [v:posttime]:
+                [c:usechapters] <!--comment:[this one checks if the webcomic uses chapters]-->
+                    [c:haschapter] <!--comment:[this one checks if the comic strip is in a chapter]-->
+                        in <a href="[v:chapterlink]">[v:chaptername]</a>
+                        
+                    [/]
+                [/]
+                <h2 class="heading" style="color: #666;">./[v:comicnumber]/[v:comictitle]</h2>
+            </span>
+            <div id="comicimagewrap" class="overview-imagewrap"><a href="[v:latestcomicpermalink]">[v:latestcomicimage]</a></div>
+        </div>
+    [/]
+
+    [c:hasblogs]
+        <div class="box blogarchive overview-basis45">
+            <h3>Blog Posts</h3>
+            [l:latestblogs]
+                [c:l.is_first]
+                    <div class="blogpost-container">
+                        <span class="posttime blogpost-time">[v:l.posttime]</span>
+                        <span class="blogtitle tape_wobble"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
+                        <span class="authordata">
+                            by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a>
+                        </span>
+                        <div class="blogcontent">[v:l.blog]</div>
+                        <div class="blog-actionlink"><a href="[v:l.bloglink]">◁ Comment on Post ▷</a></div>
+                    </div>
+                [/]
+                [c:!l.is_first]
+                    <div class="overview-blogarchive-block">
+                        <span class="blogarchive-time">[v:l.posttime]</span>
+                        <span class="blogarchive-title"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
+                        <span class="blogarchive-name">by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a></span>
+                    </div>
+                [/]
+            [/]
+        </div>
+    [/]
+
+    <div class="box overview-basis22 overview-archive">
+        <h3>Chapters</h3>
+        <table id="archive">
+            [l:chapteredarchive]
+            
+                [c:l.newchapter]
+                    <tr class="chaptertitle"><td colspan="3"><a href="[v:l.comicurl]"><h3>▷[v:l.chaptername]</h3></a>
+                    [c:l.chapterdescription]
+                        [v:l.chapterdescription]
+                    [/]
+                    </td></tr>
+                [/]
+            [/]
+        </table>
+    </div>
+
+    <div class="box overview-basis22 overview-content-warning">
+        <h3>Content Warning</h3>
+        <p>
+            This is not a fetish comic. It is aimed to be readily accessible for many readers. However, it has a character-driven narrative that pushes the content within into non-traditional areas.
+        </p>
+        <p>
+            This comic contains gore, used both comedically and seriously.
+        </p>
+        <p>
+            This comic contains sporadic sexual content, flagged with warnings that hide the content. In addition, it covers sexual topics such as:
+            <ul>
+                <li>Vore (<a href="https://en.wikipedia.org/wiki/Vorarephilia">Wikipedia</a>)</li>
+                <li>Monster & Alien Relations</li>
+                <li>Knifeplay & Bloodplay</li>
+                <li>Autassassinophilia (<a href="https://en.wikipedia.org/wiki/Autassassinophilia">Wikipedia</a>)</li>
+            </ul>
+        </p>
+        <p>
+            This comic lightly covers the following topics:
+            <ul>
+                <li>Sexual Assualt</li>
+                <li>Alcoholism</li>
+                <li>Police Brutality</li>
+                <li>Homophobia</li>
+                <li>Misogyny</li>
+                <li>Existential Dread</li>
+            </ul>
+        </p>
+        <p>
+            This comic has some repeated references to the following topics:
+            <ul>
+                <li>Racism</li>
+                <li>Transphobia</li>
+                <li>Religious Trauma</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="box overview-basis22 overview-bsides">
+        <h3>B-Sides</h3>
+        <div>
+            Additional comics and works in the universe.
+        </div>
+        <div>
+            <a href="https://gravitywell.thecomicseries.com/">
+                <img src="/files/images/bsides_gravitywell_padding.png" alt="Gravity Well" style="--c_accent_l: rgb(187, 253, 104);">
+            </a>
+            <span class="overview-miniinfo">Comic, <strong>18+</strong>, Inactive-ish, Scifi</span>
+            <span>Misadventures of Dr. Perdix Gate & D.S.O.A. Agent Emyr Slusarski. Their families get dragged in too.</span>
+        </div>
+        <div>
+            <a href="https://dumb-hiver.thecomicseries.com/">
+                <img src="https://dumb-hiver.thecomicseries.com/files/assets/title.png" alt="WATCHER" style="--c_accent_l: rgb(255, 228, 0);">
+                <!--<img src="https://synexn.city/assets/bsides/label_watcher.png" alt="WATCHER" style="--c_accent_l: rgb(255, 228, 0);">-->
+            </a> 
+            <span class="overview-miniinfo">Webcomic, 16+, Active-ish, Scifi</span>
+            <span>A bug learns self-respect.</span>
+        </div>
+        <div>
+            <a href="https://jackyweaver.thecomicseries.com/">
+                <img src="/files/images/bsides_label_weaverknight.png" alt="Jacky Weaver" style="--c_accent_l: rgb(255, 203, 0);">
+            </a> 
+            <span class="overview-miniinfo">Webcomic, 14+, Inactive, Fairytale</span>
+            <span>Jacky is a mess and have no idea what they're doing with their life.</span>
+        </div>
+        <div>
+            <a href="https://ibecamequeen.thecomicseries.com/">
+                <img src="/files/images/bsides_label_usw.png" alt="Unionizing Sex Work (18+)" style="--c_accent_l: rgb(179, 43, 255);">
+            </a>
+            <span class="overview-miniinfo">Webcomic, <strong>Deeply 18+</strong>, Inactive, Fantasy</span>
+            <span>Cindri Whytman gets isekai'd to one of their terrible 18+ otome games.</span>
+        </div>
+    </div>
+    
+    <div class="box overview-basis45 overview-authors">
+    	<div class="overview-authorbox">
+    		<h3>Created by <strong>Skarik</strong></h3>
+    		<div class="overview-authorbox-topinfo">
+    			<img src="/files/resources/avatars/avatar_skar1.png">
+    			Tried to create a comic about a sad alien, it didn't go well. The sad alien is now the mayor of Synexn.
+    			<br><br>
+    			Does a lot of the page art and lines! Draws 90% of the shitposts!
+    		</div>
+    		<div class="overview-authorbox-linkbox">
+    			<h4>Links</h4>
+    			<div>
+    			    <a href="https://bsky.app/profile/skarik.bsky.social">
+    			        <img class="overview-authorbox-icon" src="/files/resources/temp/bluesky-brands-solid.svg"> Bluesky
+    			    </a>
+    			</div>
+    			<div>
+    			    <a href="https://www.tumblr.com/velciatem/">
+    			        <img class="overview-authorbox-icon" src="/files/resources/temp/tumblr-brands-solid.svg"> Tumblr
+    			    </a>
+    			</div>
+    		</div>
+    	</div>
+    	
+    	<div class="overview-authorbox">
+    		<h3>Written &amp; Concepted by <strong>Nohua</strong></h3>
+    		<div class="overview-authorbox-topinfo">
+    			<img src="https://comicfury.com/avatars/95754_1482307974.png">
+    			Tired. Has revised the scripts for this comic one thousand times, and will only be freed from their torment when Skarik inks the last page.
+    			<br><br>
+    			Writes 90% of the plot, draws 90% of the spicy art, and tells Skarik to stay focused!
+    		</div>
+    		<div class="overview-authorbox-linkbox">
+    			<h4>Links</h4>
+    			<div>
+    			    <a href="https://bsky.app/profile/nohumanza.bsky.social">
+    			        <img class="overview-authorbox-icon" src="/files/resources/temp/bluesky-brands-solid.svg"> Bluesky
+    			    </a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+</div>
