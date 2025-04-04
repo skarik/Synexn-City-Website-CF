@@ -52,6 +52,37 @@ img {
     border: 0px;
 }
 
+@property --color-bg-bottomline {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(255, 64, 0, 0.5);
+}
+
+@keyframes anim-link-light-shot {
+    0% {
+        background-position: 0% 100%;
+        background-size: 0.0em 100%;
+        --color-bg-bottomline: rgba(255, 64, 0, 0.5);
+    }
+    20% {
+        background-size: 0.2em 100%;
+        --color-bg-bottomline: rgba(255, 64, 0, 0.8);
+    }
+    50% {
+        background-size: 0.5em 100%;
+        --color-bg-bottomline: rgba(255, 255, 255, 0.5);
+    }
+    80% {
+        background-size: 0.2em 100%;
+        --color-bg-bottomline: rgba(0, 212, 255, 0.4);
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 0.0em 100%;
+        --color-bg-bottomline: rgba(0, 212, 255, 0.25);
+    }
+}
+
 a:link, a:visited {
     color: #DDD;
     text-decoration: none;
@@ -169,54 +200,11 @@ form {
     margin-bottom: 0px;
     
     text-shadow:
-    10px 0px 0px rgba(0, 212, 256, 0.5),
-    -8px 0px 0px rgba(255, 64, 0, 0.5);
-    animation: glitch-anim-0 10.6s infinite linear;
+        10px 0px 0px rgba(0, 212, 256, 0.5),
+        -8px 0px 0px rgba(255, 64, 0, 0.5);
 }
 #sitetitle img {
     max-width: 80vw;
-}
-@keyframes glitch-anim-0 {
-    0% {
-        text-shadow:
-        10px 0px 0px rgba(0, 212, 256, 0.5),
-        -8px 0px 0px rgba(255, 64, 0, 0.5);
-    }
-    49% {
-        text-shadow:
-        8px 0px 0px rgba(0, 212, 256, 0.5),
-        -5px 0px 0px rgba(255, 64, 0, 0.5);
-    }
-    49.5% {
-        text-shadow:
-        8px 2px 0px rgba(0, 212, 256, 0.5),
-        -5px 1px 0px rgba(255, 64, 0, 0.5);
-    }
-    50% {
-        text-shadow:
-        -8px 0px 0px rgba(0, 212, 256, 0.5),
-        10px 0px 0px rgba(255, 64, 0, 0.5);
-    }
-    98% {
-        text-shadow:
-        -8px 0px 0px rgba(0, 212, 256, 0.5),
-        10px 0px 0px rgba(255, 64, 0, 0.5);
-    }
-    99% {
-        text-shadow:
-        7px -3px 0px rgba(0, 212, 256, 0.5),
-        -7px 2px 0px rgba(255, 64, 0, 0.5);
-    }
-    99.5% {
-        text-shadow:
-        -8px 0px 0px rgba(0, 212, 256, 0.5),
-        10px 0px 0px rgba(255, 64, 0, 0.5);
-    }
-    100% {
-        text-shadow:
-        10px 0px 0px rgba(0, 212, 256, 0.5),
-        -8px 0px 0px rgba(255, 64, 0, 0.5);
-    }
 }
 
 #titleupdate {
@@ -250,6 +238,21 @@ form {
 #navigation a:link, #navigation a:visited, #navigation a:hover {
     text-decoration:none;
 }
+/* Special little effect */
+#navigation a {
+    --color-bg-bottomline: rgba(255, 255, 255, 0.0);
+    background-image: conic-gradient(
+        from -90deg at left 0px bottom 2px,
+        #0000 50%,
+        var(--color-bg-bottomline) 0);
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+}
+#navigation a:hover {
+    animation: anim-link-light-shot ease-in-out 0.2s forwards;
+}
+
 
 #comicrating {
     font-family: "OpenSans", sans-serif;
