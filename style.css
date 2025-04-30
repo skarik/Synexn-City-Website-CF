@@ -27,8 +27,8 @@
 
 /** Global Effects **/
 .tape_wobble {
-	/* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
-	clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%, 41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%, 73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%, 100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%, 100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%, 100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%, 0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
+    /* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
+    clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%, 41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%, 73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%, 100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%, 100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%, 100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%, 0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
 }
 
 /** Global Defaults **/
@@ -95,27 +95,27 @@ a:hover {
     color: #FFF;
     text-decoration: none;
     text-shadow:
-        /* Want to sort of approximate the slitscope from the later arcs */
-        /* White spots */
-        +0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
-        -0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
-        +0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
-        -0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
-        +0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
-        -0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
-        /* Prism fringes */
-        +0.30em 0px 0.08em rgba(0, 212, 255, 0.25),
-        -0.30em 0px 0.08em rgba(255, 64, 0, 0.50),
-        +0.33em 0px 0.12em rgba(0, 212, 255, 0.125),
-        -0.33em 0px 0.12em rgba(255, 64, 0, 0.25),
-        /* Prism fringes 2 */
-        +0.45em 0px 0.10em rgba(0, 212, 255, 0.10),
-        -0.45em 0px 0.10em rgba(255, 64, 0, 0.20),
-        +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
-        -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
+    /* Want to sort of approximate the slitscope from the later arcs */
+    /* White spots */
+    +0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+    -0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+    +0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+    -0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+    +0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+    -0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+    /* Prism fringes */
+    +0.30em 0px 0.08em rgba(0, 212, 255, 0.25),
+    -0.30em 0px 0.08em rgba(255, 64, 0, 0.50),
+    +0.33em 0px 0.12em rgba(0, 212, 255, 0.125),
+    -0.33em 0px 0.12em rgba(255, 64, 0, 0.25),
+    /* Prism fringes 2 */
+    +0.45em 0px 0.10em rgba(0, 212, 255, 0.10),
+    -0.45em 0px 0.10em rgba(255, 64, 0, 0.20),
+    +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
+    -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
     transition:
-        color ease-in-out 0.3s,
-        text-shadow ease-in-out 0.3s;
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
 }
 
 .box a:link, .box a:visited {
@@ -126,8 +126,8 @@ a:hover {
 .box a:hover {
     color: #333;
     text-shadow:
-        -3px 0px 0px rgba(0, 212, 255, 0.5),
-        +2px 0px 0px rgba(255, 64, 0, 0.6);
+    -3px 0px 0px rgba(0, 212, 255, 0.5),
+    +2px 0px 0px rgba(255, 64, 0, 0.6);
 }
 
 .heading {
@@ -169,6 +169,13 @@ form {
 .clear {
     clear:both;
 }
+
+.comicnav {
+    background: #FFFD;
+    border: 2px solid #FFF;
+    margin: 0.5em 0;
+    padding: 0.5em;
+}
 .comicnavlink {
     margin-left: 0.618em;
     margine-right: 0.618em;
@@ -200,8 +207,8 @@ form {
     margin-bottom: 0px;
     
     text-shadow:
-        10px 0px 0px rgba(0, 212, 256, 0.5),
-        -8px 0px 0px rgba(255, 64, 0, 0.5);
+    10px 0px 0px rgba(0, 212, 256, 0.5),
+    -8px 0px 0px rgba(255, 64, 0, 0.5);
 }
 #sitetitle img {
     max-width: 80vw;
@@ -242,9 +249,9 @@ form {
 #navigation a {
     --color-bg-bottomline: rgba(255, 255, 255, 0.0);
     background-image: conic-gradient(
-        from -90deg at left 0px bottom 2px,
-        #0000 50%,
-        var(--color-bg-bottomline) 0);
+    from -90deg at left 0px bottom 2px,
+    #0000 50%,
+    var(--color-bg-bottomline) 0);
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: 0% 100%;
@@ -282,20 +289,30 @@ form {
     padding: 10px min(10px, 1vw);
     /* Limit box to width of the page based on padding & border */
     max-width: calc(max(calc(100vw - 20px), 98vw) - 6px);
-
+    
     @media (max-width:800px) {
         padding: 10px 0px;
         border-width: 3px 0px !important;
         max-width: 100vw;
     }
 }
-html>/**/body .wrap { /*hidden from old IEs*/
+.box.comic-reader {
+    background: none;
+    border: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+html>body .wrap {
     display: table;
     margin: auto;
     width: 70%;
     min-width: min(100vw, 650px);
     max-width: 100vw;
 }
+.wrap:has(.comic-reader) {
+    width: auto;
+}
+
 .wrapie {
     margin: auto;
     width: 70%;
@@ -318,8 +335,8 @@ html>/**/body .wrap { /*hidden from old IEs*/
 
 /*comicpage*/
 #saveplace {
-	overflow-x: clip;
-	overflow-y: visible;
+    overflow-x: clip;
+    overflow-y: visible;
 }
 .saveplace_image {
     max-height: min(4.0em, 20vw);
@@ -341,27 +358,27 @@ html>/**/body .wrap { /*hidden from old IEs*/
 a > .saveplace_image {
     filter: none;
     transition:
-        filter ease-in-out 0.3s;
+    filter ease-in-out 0.3s;
 }
 a:hover > .saveplace_image {
     /*filter: sepia(1) saturate(40) hue-rotate(-50deg);*/
     filter:
-        drop-shadow(+0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
-        drop-shadow(-0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
-        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.20))
-        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.40))
-        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
-        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
-        drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
-        drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
-        saturate(3)
-        ;
+    drop-shadow(+0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+    drop-shadow(-0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.20))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.40))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+    saturate(3)
+    ;
 }
 
 a > .saveplace_text {
     opacity: 0.0;
     transition:
-        opacity ease-in-out 0.3s;
+    opacity ease-in-out 0.3s;
 }
 a:hover > .saveplace_text {
     opacity: 1.0;
@@ -516,7 +533,7 @@ a.author:hover {
 }
 .comictopper h2.heading {
     display: inline-block;
-    margin-top: 0px;
+    margin: 0px;
 }
 
 /*blog*/
@@ -641,7 +658,7 @@ a.author:hover {
 .overview-box .box h3, .overview-box .box.blogarchive .overview-blogarchive-block {
     text-align: left;
     color: #888;
-
+    
     @media (max-width:800px) {
         margin-left: 0.4em;
         margin-right: 0.4em;
@@ -678,7 +695,7 @@ a.author:hover {
     text-align: left;
     color: #555;
     font-size: 0.8em;
-
+    
     @media (max-width:800px) {
         margin-left: 0.4em;
         margin-right: 0.4em;
@@ -703,7 +720,7 @@ a.author:hover {
 .overview-bsides > div {
     text-align: left;
     margin-bottom: 0.8em;
-
+    
     @media (max-width:800px) {
         margin-left: 0.4em;
         margin-right: 0.4em;
@@ -743,23 +760,23 @@ a.author:hover {
 .overview-bsides > div > a:link > img {
     --c_accent_l: rgb(255, 70, 0);
     filter:
-		drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
-		drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
-		;
-	transition:
-	    color 0.25s ease-in-out,
-		filter 0.25s ease-in-out
-		;
+    drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+    drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+    ;
+    transition:
+    color 0.25s ease-in-out,
+    filter 0.25s ease-in-out
+    ;
 }
 .overview-bsides > div > a:hover > img {
     filter:
-		drop-shadow(var(--c_accent_l) 0 0 0.03em)
-		drop-shadow(var(--c_accent_l) 0 0 0.14em)
-		;
-	transition:
-	    color 0.25s ease-in-out,
-		filter 0.25s ease-in-out
-		;
+    drop-shadow(var(--c_accent_l) 0 0 0.03em)
+    drop-shadow(var(--c_accent_l) 0 0 0.14em)
+    ;
+    transition:
+    color 0.25s ease-in-out,
+    filter 0.25s ease-in-out
+    ;
 }
 
 .overview-miniinfo strong {
@@ -784,49 +801,49 @@ a.author:hover {
 
 
 .overview-authors {
-  display: flex !important;
-  justify-content: center;
-  gap: 1.0em;
+    display: flex !important;
+    justify-content: center;
+    gap: 1.0em;
 }
 .overview-authorbox {
-  display: inline-block;
-  flex-basis: 30%;
-  min-width: min(40vw, max(30vw, 350px));
-  text-align: justify;
-  font-size: 0.9em;
-  color: #444;
+    display: inline-block;
+    flex-basis: 30%;
+    min-width: min(40vw, max(30vw, 350px));
+    text-align: justify;
+    font-size: 0.9em;
+    color: #444;
 }
 .overview-authorbox > h3 {
-  color: #777;
-  font-size: 1.8em;
-  font-weight: 500;
+    color: #777;
+    font-size: 1.8em;
+    font-weight: 500;
 }
 .overview-authorbox > h3 > strong {
-  color: #444;
+    color: #444;
 }
 
 .overview-authorbox-icon {
-  max-height: 1.0em;
-  vertical-align: baseline;
+    max-height: 1.0em;
+    vertical-align: baseline;
 }
 .overview-authorbox h4 {
-  margin: 0;
-  font-family: "LeagueGothic", sans-serif;
-  font-size: 2.0em;
-  font-weight: 500;
+    margin: 0;
+    font-family: "LeagueGothic", sans-serif;
+    font-size: 2.0em;
+    font-weight: 500;
 }
 .overview-authorbox-linkbox {
-  display: block;
+    display: block;
 }
 .overview-authorbox-topinfo {
-  display: block;
-  overflow: auto;
+    display: block;
+    overflow: auto;
 }
 .overview-authorbox-topinfo > img {
-  float: left;
-  margin-right: 1.0em;
-  width: 10em;
-  height: auto;
+    float: left;
+    margin-right: 1.0em;
+    width: 10em;
+    height: auto;
 }
 
 
@@ -876,40 +893,40 @@ a.author:hover {
 
 /* comic image */
 [c:custom.wideformat]
-    #content-start
-    {
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        border-left: none;
-        border-right: none;
-        max-width: 100%;
-    }
-    #comicimagewrap
-    {
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
-    }
+#content-start
+{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-left: none;
+    border-right: none;
+    max-width: 100%;
+}
+#comicimagewrap
+{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
 [/]
 #comicimage, .comicsegmentimage
 {
     [c:!custom.wideformat]
-        max-width: calc(100vw - 26px);
-        height: auto;
-
-        @media (max-width:800px) {
-            max-width: 100vw;
-        }
+    max-width: calc(100vw - 26px);
+    height: auto;
+    
+    @media (max-width:800px) {
+        max-width: 100vw;
+    }
     [/]
     [c:custom.wideformat]
-        width: 100vw;
-        height: auto;
+    width: 100vw;
+    height: auto;
     [/]
     [c:custom.comic_scale]
-        width: [v:custom.comic_scale];
+    width: [v:custom.comic_scale];
     [/]
 }
 
@@ -918,15 +935,21 @@ a.author:hover {
 #content-start
 {
     [c:custom.sp_content_black]
-        border: 8px solid #202020;
-        background: #000;
+        /*border: 8px solid #202020;
+        background: #000;*/
         [c:!custom.wideformat]
-            max-width: calc(100vw - 32px);
+            /*max-width: calc(100vw - 32px);*/
         [/]
         [c:custom.wideformat]
             border-left: none;
             border-right: none;
         [/]
+    [/]
+}
+.comicnav {
+    [c:custom.sp_content_black]
+        background: #000D;
+        border: 2px solid #202020;
     [/]
 }
 a.comicnavlink:link, a.comicnavlink:visited
@@ -961,119 +984,119 @@ html, body
 
 /* spoilers styles */
 [c:custom.sp_warning_spoiler]
-    #comicimagewrap
-    {
-        position: relative;
-    }
-    /*#comicimage
-    {
-        filter: blur(2vw);
-        clip-path: rect(0 0 100% 100%);
-    }*/
-    #comicimagewrap > #comicimagelink
-    {
-        filter: blur(2vw);
-    }
-    #comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
-    {
-        filter: none;
-    }
+#comicimagewrap
+{
+    position: relative;
+}
+/*#comicimage
+{
+    filter: blur(2vw);
+    clip-path: rect(0 0 100% 100%);
+}*/
+#comicimagewrap > #comicimagelink
+{
+    filter: blur(2vw);
+}
+#comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
+{
+    filter: none;
+}
+
+#comicimagewrap > #comicimage
+{
+    filter: blur(2vw);
+}
+#comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
+{
+    filter: none;
+}
+
+#comicimage-spoiler-label
+{
+    position: absolute;
+    top: 1.0em;
+    /* Center */
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: fit-content;
     
-    #comicimagewrap > #comicimage
-    {
-        filter: blur(2vw);
-    }
-    #comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
-    {
-        filter: none;
-    }
-
-    #comicimage-spoiler-label
-    {
-        position: absolute;
-        top: 1.0em;
-        /* Center */
-        left: 0;
-        right: 0;
-        margin-inline: auto;
-        width: fit-content;
-
-        /* Stylings */
-        background: white;
-        padding: 4.0em;
-        outline: 2px black solid;
-
-        text-align: center;
-    }
-    #comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
-    {
-        display: none;
-    }
-    #comicimage-spoiler-label > div {
-        text-align: left;
-        width: 100%;
-    }
-    .spoiler-hidden-checkbox
-    {
-        display: block;
-        position: absolute;
-        opacity: 0.0;
-    }
-
-    #comicimage-spoiler-content
-    {
-        display: none;
-        padding: 1.0em;
-        color: red;
-        font-weight: 400;
-    }
+    /* Stylings */
+    background: white;
+    padding: 4.0em;
+    outline: 2px black solid;
     
-    #comicimage-spoiler-label > div > label {
-        /*text-align: center;*/
-        cursor: pointer;
-        color: #636363;
-        transition:
-            color ease-in-out 0.3s,
-            text-shadow ease-in-out 0.3s;
-    }
-    #comicimage-spoiler-label > div > label:hover {
-        color: #333;
-        text-decoration: none;
-        text-shadow:
-            -3px 0px 0px rgba(0, 212, 255, 0.5),
-            +2px 0px 0px rgba(255, 64, 0, 0.6);
-        transition:
-            color ease-in-out 0.3s,
-            text-shadow ease-in-out 0.3s;
-    }
-    
-    #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
-    {
-        display: inline-block;
-    }
-    #spoiler-toggle-content + div > label {
-        font-weight: 800;
-    }
-    #spoiler-toggle-content:checked + div > label {
-        font-weight: 400;
-    }
-    #spoiler-toggle-content + div > label:before {
-        content: "▶ ";
-    }
-    #spoiler-toggle-content:checked + div > label:before {
-        content: "▽ ";
-    }
+    text-align: center;
+}
+#comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
+{
+    display: none;
+}
+#comicimage-spoiler-label > div {
+    text-align: left;
+    width: 100%;
+}
+.spoiler-hidden-checkbox
+{
+    display: block;
+    position: absolute;
+    opacity: 0.0;
+}
 
-    #spoiler-toggle-show-page + div > label:before {
-        content: "◿ "
-    }
-    #spoiler-toggle-show-page + div > label:after {
-        content: " ◺"
-    }
-    #spoiler-toggle-show-page + div {
-        font-weight: 400;
-        text-align: center;
-    }
+#comicimage-spoiler-content
+{
+    display: none;
+    padding: 1.0em;
+    color: red;
+    font-weight: 400;
+}
+
+#comicimage-spoiler-label > div > label {
+    /*text-align: center;*/
+    cursor: pointer;
+    color: #636363;
+    transition:
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
+}
+#comicimage-spoiler-label > div > label:hover {
+    color: #333;
+    text-decoration: none;
+    text-shadow:
+    -3px 0px 0px rgba(0, 212, 255, 0.5),
+    +2px 0px 0px rgba(255, 64, 0, 0.6);
+    transition:
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
+}
+
+#spoiler-toggle-content:checked ~ #comicimage-spoiler-content
+{
+    display: inline-block;
+}
+#spoiler-toggle-content + div > label {
+    font-weight: 800;
+}
+#spoiler-toggle-content:checked + div > label {
+    font-weight: 400;
+}
+#spoiler-toggle-content + div > label:before {
+    content: "▶ ";
+}
+#spoiler-toggle-content:checked + div > label:before {
+    content: "▽ ";
+}
+
+#spoiler-toggle-show-page + div > label:before {
+    content: "◿ "
+}
+#spoiler-toggle-show-page + div > label:after {
+    content: " ◺"
+}
+#spoiler-toggle-show-page + div {
+    font-weight: 400;
+    text-align: center;
+}
 [/]
 
 [/]

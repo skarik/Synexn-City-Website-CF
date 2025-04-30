@@ -9,7 +9,7 @@
     <h2 class="heading">./[v:comicnumber]/[v:comictitle]</h2>
 </span>
 
-<div class="box" id="content-start">
+<div class="box comic-reader" id="content-start">
     
     <div class="comicnav">
         <a href="/comics/first/" rel="start" class="comicnavlink">First Page</a>
@@ -70,6 +70,8 @@
     [/]
     
 </div>
+
+[c:showpermalinks]
 <br />
 <div id="saveplace">
     <!--<a href="#" onclick="savePlace(this,[v:comicid]);return false;">Save My Place</a> | <a href="#" onclick="loadPlace();return false;">Load My Place</a>-->
@@ -90,6 +92,7 @@
         <div class="saveplace_text"><div>Image Permalink</div></div>
     </a>
 </div>
+[/]
 
 [c:authornotes]
     <h2 class="heading">Author Notes:</h2>
@@ -127,28 +130,6 @@
         </div>
     </div>
 [/]
-
-
-[c:showpermalinks]
-    <h2 class="heading">Permalinks:</h2>
-    <div class="box">
-        <div id="permalinkbox">
-            
-            <b>Copy this comic strip into LiveJournal, your blog or Myspace with this code:</b><br />
-            <div class="permalinkcode">
-                &lt;a href=&quot;[v:permalink]&quot;>&lt;img src=&quot;[v:comicimageurl]&quot; alt=&quot;[v:webcomicname] - [v:comictitle]&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;
-                &lt;br /&gt;<br />&lt;a href=&quot;[v:permalink]&quot;&gt;[v:comictitle]&lt;/a&gt;
-            </div><br />
-            
-            <b>Or into forums with this code:</b><br />
-            <div class="permalinkcode">
-                [URL=[v:permalink]]	[IMG][v:comicimageurl][/IMG]	[/URL]<br />
-                [URL=[v:permalink]][v:comictitle][/URL]
-            </div><br />
-        </div>
-    </div>
-[/]
-
 
 [c:showcomments]
     [c:comments]
