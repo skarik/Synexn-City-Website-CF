@@ -317,8 +317,9 @@ html>/**/body .wrap { /*hidden from old IEs*/
 }
 
 /*comicpage*/
-.saveplace {
-    
+#saveplace {
+	overflow-x: clip;
+	overflow-y: visible;
 }
 .saveplace_image {
     max-height: min(4.0em, 20vw);
@@ -893,7 +894,7 @@ a.author:hover {
         margin-right: 0px;
     }
 [/]
-#comicimage
+#comicimage, .comicsegmentimage
 {
     [c:!custom.wideformat]
         max-width: calc(100vw - 26px);
