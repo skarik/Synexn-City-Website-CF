@@ -23,6 +23,9 @@
 /** Global Vars **/
 :root {
     --c_base: #AAA;
+
+    /* Shadow box used for shadowing main elements. */
+    --g_shadowBoxDefault: 0 0 1.618rem #000B;
 }
 
 /** Global Effects **/
@@ -170,29 +173,6 @@ form {
     clear:both;
 }
 
-.comicnav {
-    background: #FFFD;
-    border: 2px solid #FFF;
-    margin: 0.5em 0;
-    padding: 0.5em;
-}
-.comicnavlink {
-    margin-left: 0.618em;
-    margine-right: 0.618em;
-}
-.comicnavlink img {
-    vertical-align:middle;
-}
-.comicnav select {
-    font-family: "LeagueGothic", sans-serif;
-    font-size: 1.2em;
-    position: relative;
-    top: -0.2em;
-    appearance: none;
-    border: 1px solid white;
-    text-align: center;
-}
-
 #sitetitle {
     color: #FFF;
     text-align: center;
@@ -313,6 +293,12 @@ html>body .wrap {
     width: auto;
 }
 
+#contentcontainer > .wrap > .box:not(.comic-reader),
+#contentcontainer > .box
+{
+    box-shadow: var(--g_shadowBoxDefault);
+}
+
 .wrapie {
     margin: auto;
     width: 70%;
@@ -333,7 +319,40 @@ html>body .wrap {
     border-top:1px solid #777777;
 }
 
-/*comicpage*/
+/** Comic Page **/
+.comicnav {
+    background: #FFFD;
+    border: 2px solid #FFF;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    box-shadow: var(--g_shadowBoxDefault);
+}
+.comicnavlink {
+    margin-left: 0.618em;
+    margin-right: 0.618em;
+}
+.comicnavlink img {
+    vertical-align:middle;
+}
+.comicnav select {
+    font-family: "LeagueGothic", sans-serif;
+    font-size: 1.2em;
+    position: relative;
+    top: -0.2em;
+    appearance: none;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.comicreader > #comicimagewrap {
+    box-shadow: var(--g_shadowBoxDefault);
+}
+#comicimagelink {
+    /* This gets rid of the newline that appears on the inside of the image block when the page has a link. */
+    display: block;
+    line-height: 0;
+}
+
 #saveplace {
     overflow-x: clip;
     overflow-y: visible;
