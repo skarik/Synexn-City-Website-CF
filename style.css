@@ -25,7 +25,7 @@
     --c_base: #AAA;
 
     /* Shadow box used for shadowing main elements. */
-    --g_shadowBoxDefault: 0 0 1.618rem #000B;
+    --g_shadowBoxDefault: 0 0 0.618rem #000B;
 }
 
 /** Global Effects **/
@@ -334,6 +334,10 @@ html>body .wrap {
 .comicnavlink img {
     vertical-align:middle;
 }
+.comicnavlink-inactive {
+    pointer-events: none;
+    opacity: 0.2;
+}
 .comicnav select {
     font-family: "LeagueGothic", sans-serif;
     font-size: 1.2em;
@@ -344,7 +348,7 @@ html>body .wrap {
     text-align: center;
 }
 
-.comicreader > #comicimagewrap {
+.comic-reader > #comicimagewrap {
     box-shadow: var(--g_shadowBoxDefault);
 }
 #comicimagelink {
@@ -377,7 +381,7 @@ html>body .wrap {
 a > .saveplace_image {
     filter: none;
     transition:
-    filter ease-in-out 0.3s;
+        filter ease-in-out 0.3s;
 }
 a:hover > .saveplace_image {
     /*filter: sepia(1) saturate(40) hue-rotate(-50deg);*/
@@ -911,7 +915,7 @@ a.author:hover {
 }
 
 /* comic image */
-[c:custom.wideformat]
+[c:custom.comic_wideformat]
 #content-start
 {
     width: 100%;
@@ -932,7 +936,7 @@ a.author:hover {
 [/]
 #comicimage, .comicsegmentimage
 {
-    [c:!custom.wideformat]
+    [c:!custom.comic_wideformat]
     max-width: calc(100vw - 26px);
     height: auto;
     
@@ -940,7 +944,7 @@ a.author:hover {
         max-width: 100vw;
     }
     [/]
-    [c:custom.wideformat]
+    [c:custom.comic_wideformat]
     width: 100vw;
     height: auto;
     [/]
@@ -949,17 +953,17 @@ a.author:hover {
     [/]
 }
 
-[c:custom.specials]
+[c:custom.sp__specials]
 /* "specials" styling */
 #content-start
 {
     [c:custom.sp_content_black]
         /*border: 8px solid #202020;
         background: #000;*/
-        [c:!custom.wideformat]
+        [c:!custom.comic_wideformat]
             /*max-width: calc(100vw - 32px);*/
         [/]
-        [c:custom.wideformat]
+        [c:custom.comic_wideformat]
             border-left: none;
             border-right: none;
         [/]
@@ -1012,22 +1016,19 @@ html, body
     filter: blur(2vw);
     clip-path: rect(0 0 100% 100%);
 }*/
-#comicimagewrap > #comicimagelink
+#comicimagewrap > #comicimagelink,
+#comicimagewrap > #comicimage /* No-link variation */
 {
-    filter: blur(2vw);
+    filter: blur(1vh);
+    transition:
+        filter ease-in-out 0.1s;
 }
-#comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
+#comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked),
+#comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked) /* No-link variation */
 {
     filter: none;
-}
-
-#comicimagewrap > #comicimage
-{
-    filter: blur(2vw);
-}
-#comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked)
-{
-    filter: none;
+    transition:
+        filter ease-in-out 0.1s;
 }
 
 #comicimage-spoiler-label
@@ -1064,10 +1065,13 @@ html, body
 
 #comicimage-spoiler-content
 {
-    display: none;
+    /*display: none;*/
     padding: 1.0em;
-    color: red;
+    color: #F24;
     font-weight: 400;
+    max-height: 0;
+    transition:
+        max-height ease-in-out 0.3s;
 }
 
 #comicimage-spoiler-label > div > label {
@@ -1075,8 +1079,8 @@ html, body
     cursor: pointer;
     color: #636363;
     transition:
-    color ease-in-out 0.3s,
-    text-shadow ease-in-out 0.3s;
+        color ease-in-out 0.1s,
+        text-shadow ease-in-out 0.1s;
 }
 #comicimage-spoiler-label > div > label:hover {
     color: #333;
@@ -1085,19 +1089,32 @@ html, body
     -3px 0px 0px rgba(0, 212, 255, 0.5),
     +2px 0px 0px rgba(255, 64, 0, 0.6);
     transition:
-    color ease-in-out 0.3s,
-    text-shadow ease-in-out 0.3s;
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s,
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
 }
 
 #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
 {
     display: inline-block;
+    max-height: none;
+    transition:
+        max-height ease-in-out 0.1s;
 }
 #spoiler-toggle-content + div > label {
     font-weight: 800;
+    opacity: 1.0;
+    transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
 }
 #spoiler-toggle-content:checked + div > label {
-    font-weight: 400;
+    font-weight: 800;
+    opacity: 0.5;
+    transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
 }
 #spoiler-toggle-content + div > label:before {
     content: "▶ ";
@@ -1116,6 +1133,23 @@ html, body
     font-weight: 400;
     text-align: center;
 }
+
+#spoiler-toggle-hide-forever + div > label:before {
+    content: "◉ "
+}
+#spoiler-toggle-hide-forever + div > label:after {
+    content: " ◉"
+}
+#spoiler-toggle-hide-forever + div {
+    font-weight: 400;
+    text-align: center;
+}
+
+.spoiler-warning-type {
+    text-transform: capitalize;
+    color: #F24;
+}
+
 [/]
 
 [/]

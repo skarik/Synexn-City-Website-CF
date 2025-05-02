@@ -12,52 +12,73 @@
 <div class="box comic-reader" id="content-start">
     
     <div class="comicnav">
-        <a href="/comics/first/" rel="start" class="comicnavlink">First Page</a>
-        <a href="[v:prevcomic]" rel="prev" class="comicnavlink">Back</a> 
-        <a href="[v:nextcomic]" rel="next" class="comicnavlink">Next</a>
-        <a href="/comics/" rel="index" class="comicnavlink">Latest Page</a>
+        <a href="[v:firstcomic]#content-start" rel="start" [c:!isfirstcomic] class="comicnavlink" [/] [c:isfirstcomic] class="comicnavlink comicnavlink-inactive" [/]>First Page</a>
+        <a href="[v:prevcomic]#content-start"  rel="prev"  [c:!isfirstcomic] class="comicnavlink" [/] [c:isfirstcomic] class="comicnavlink comicnavlink-inactive" [/]>Back</a> 
+        <a href="[v:nextcomic]#content-start"  rel="next"  [c:!islastcomic] class="comicnavlink" [/] [c:islastcomic] class="comicnavlink comicnavlink-inactive" [/]>Next</a>
+        <a href="[v:lastcomic]#content-start"  rel="index" [c:!islastcomic] class="comicnavlink" [/] [c:islastcomic] class="comicnavlink comicnavlink-inactive" [/]>Latest Page</a>
     </div>
     
     <div id="comicimagewrap">
         [v:comicimage]
-        [c:custom.specials]
+        [c:custom.sp__specials]
             [c:custom.sp_warning_spoiler]
+            <script type="text/javascript">
+                /// @brief KV of the matching spoiler item with this page
+                const cookieSpoilerValue = document.cookie
+                    .split("; ")
+                    .find((row) => row.startsWith("spoiler_[v:custom.sp_warning_type]="))
+                    ?.split("=")[1];
+
+                /// @brief Sets the spoiler cookie for this to true, so this message never comes up again.
+                function setSpoilerCookie()
+                {
+                    document.cookie = "spoiler_[v:custom.sp_warning_type]=true; Path=/; Secure";
+                }
+            </script>
             <div id="comicimage-spoiler-label">
-                <div>The following page has NSFW content.</div>
-                <br>
+                <div>The following page has NSFW content:</div>
+                <!--<br>-->
                 <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-content" autocomplete="off" value="false">
-                <div><label for="spoiler-toggle-content">Content Warning (click to view)</label></div>
+                <!--<div><label for="spoiler-toggle-content">Content Warning (click to view)</label></div>-->
                 <div id="comicimage-spoiler-content">
-                    [v:custom.sp_warning_details]
+                    [v:custom.sp_warning_spoiler_details]
                 </div>
                 <br>
                 <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-show-page" autocomplete="off" value="false">
                 <div>
                     <label for="spoiler-toggle-show-page">Show page</label>
                 </div>   
-                <!--<br>
+                <br>
                 <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-hide-forever" autocomplete="off" value="false">
                 <div>
-                    <label for="spoiler-toggle-hide-forever">Disable this warning for all pages forever.</label>
-                </div>-->
+                    <label for="spoiler-toggle-hide-forever" onclick='setSpoilerCookie(); document.getElementById("spoiler-toggle-show-page").checked = true; return true;'>
+                        Disable this warning <span class="spoiler-warning-type">([v:custom.sp_warning_type])</span> for all pages forever
+                    </label>
+                </div>
             </div>
+            <script type="text/javascript">
+                if (cookieSpoilerValue)
+                {
+                    document.getElementById("spoiler-toggle-show-page").checked = true;
+                }
+            </script>
             [/]
         [/]
     </div>
     
     <div class="comicnav">
-        <a href="/comics/first/" rel="start" class="comicnavlink">First Page</a>
-        <a href="[v:prevcomic]" rel="prev" class="comicnavlink">Back</a> 
-        
+        <a href="[v:firstcomic]#content-start" rel="start" [c:!isfirstcomic] class="comicnavlink" [/] [c:isfirstcomic] class="comicnavlink comicnavlink-inactive" [/]>First Page</a>
+        <a href="[v:prevcomic]#content-start"  rel="prev"  [c:!isfirstcomic] class="comicnavlink" [/] [c:isfirstcomic] class="comicnavlink comicnavlink-inactive" [/]>Back</a> 
+
         <!--comment:[comic dropdown:]-->
         <select onchange="jumpTo(this.options[selectedIndex].value);" class="comicnavlink">
             [l:archive]
                 <option value="[v:l.comicurl]" [c:l.currentcomic]selected="selected"[/]>[v:l.comictitle]</option>
             [/]
         </select> 
-        
-        <a href="[v:nextcomic]" rel="next" class="comicnavlink">Next</a>
-        <a href="/comics/" rel="index" class="comicnavlink">Latest Page</a>
+
+        <a href="[v:nextcomic]#content-start"  rel="next"  [c:!islastcomic] class="comicnavlink" [/] [c:islastcomic] class="comicnavlink comicnavlink-inactive" [/]>Next</a>
+        <a href="[v:lastcomic]#content-start"  rel="index" [c:!islastcomic] class="comicnavlink" [/] [c:islastcomic] class="comicnavlink comicnavlink-inactive" [/]>Latest Page</a>
     </div>
     
     [c:allowratings]
