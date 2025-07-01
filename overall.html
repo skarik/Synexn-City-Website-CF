@@ -30,19 +30,7 @@
         <!--layout:[css]-->
     </style>
     [v:cfscriptcode]
-    <script type="text/javascript">
-        "use strict";
-        
-        /// @brief Replaces all the CF URLs with the synexn.city URLs.
-        window.onload = function()
-        {
-            var anchors = document.getElementsByTagName("a");
-            for (var i = 0; i < anchors.length; ++i)
-            {
-                anchors[i].href = anchors[i].href.replace("synexncity.thecomicseries.com", "synexn.city");
-            }
-        }
-    </script>
+    <script type="text/javascript" src="/files/js/sinofsorcerylayout.js"></script>
 </head>
 <body>
     
@@ -90,10 +78,13 @@
         <div id="cf_ads">[v:banneradcode]</div>
     [/]
     
+    [c:pagetitle~overview]
     <div id="contentcontainercontainer">
-        <div id="contentcontainer-border">
-            <img src="/files/resources/sides/nohua2-1.png">
+        <div id="contentcontainer-border" class="left">
+            <img id="contentcontainer-border-left">
+            <script>sinofsorcery.getGutterImage(document.getElementById("contentcontainer-border-left"), false);</script>
         </div>
+    [/]
         <div id="contentcontainer">
             [c:isextrapage]
                 <h2 class="heading">[v:pagetitle]</h2>
@@ -110,10 +101,13 @@
                 [/]
             </div>
         </div>
-        <div id="contentcontainer-border">
-            <img src="/files/resources/sides/nohua1-1.png">
+    [c:pagetitle~overview]
+        <div id="contentcontainer-border" class="right">
+            <img id="contentcontainer-border-right">
+            <script>sinofsorcery.getGutterImage(document.getElementById("contentcontainer-border-right"), true);</script>
         </div>
     </div>
+    [/]
         
     <div>
         See more of the universe at
