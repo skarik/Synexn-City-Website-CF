@@ -299,6 +299,34 @@ html>body .wrap {
     box-shadow: var(--g_shadowBoxDefault);
 }
 
+/* */
+#contentcontainercontainer
+{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-width: 100vw;
+    width: 100%;
+    overflow: hidden;
+}
+#contentcontainer-border {
+    flex-basis: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+}
+#contentcontainer-border img {
+    max-height: 100vh;
+}
+#contentcontainercontainer > #contentcontainer {
+    flex-basis: 30%;
+}
+#contentcontainer {
+    flex-grow: 0;
+}
+
 .wrapie {
     margin: auto;
     width: 70%;
@@ -501,6 +529,13 @@ a.author:hover {
     text-align: right !important;
     font-weight: normal;
     font-size: 0.7em;
+}
+
+.comic-reader-blog {
+    text-align: center;
+}
+#comicimage.comicimage-sidestory {
+    width: min(100%, 940px);
 }
 
 /*archive*/
@@ -870,6 +905,43 @@ a.author:hover {
 }
 
 
+.overview-support-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.0em 1.0em;
+}
+.overview-support-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.0em 1.0em;
+}
+.overview-support h4 {
+    font-size: 1.1em;
+    color: #777;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #777;
+    margin: 0 0 0.2em 0;
+}
+.overview-support-kofi {
+    background: #6C40A1;
+    padding: 0.8em;
+    border-radius: 1.0em;
+    filter: drop-shadow(0 0.05em 0.05em #0005);
+    transform: rotate(-2deg);
+    border: 0.3em solid white;
+}
+.overview-support-kofi a,
+.overview-support-kofi a:link,
+.overview-support-kofi a:visited {
+    color: white;
+    font-family: 'PermanentMarker', cursive;
+    line-height: 1.0em;
+    font-size: 1.35em;
+}
+
 /* gallery */
 .gallery {
     display: flex;
@@ -1017,7 +1089,8 @@ html, body
     clip-path: rect(0 0 100% 100%);
 }*/
 #comicimagewrap > #comicimagelink,
-#comicimagewrap > #comicimage /* No-link variation */
+#comicimagewrap > #comicimage:not(.comicimage-sidestory), /* No-link variation */
+#comicimagewrap > a > #latestcomicimage /* Overview link variation */
 {
     filter: blur(1vh);
     transition:
