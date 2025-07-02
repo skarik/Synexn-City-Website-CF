@@ -313,6 +313,7 @@ html>body .wrap {
     width: 300px;
     flex-grow: 1;
     max-width: 300px;
+    min-width: 300px;
 }
 #contentcontainer-border img {
     max-height: 100vh;
