@@ -10,19 +10,24 @@
     [/]
 
     [c:hascomics]
-        <div class="box overview-basis90">
+        <div class="box overview-basis90" id="overview-hack"><div class="box corners--mindeco-cut1001" id="overview-hack-inner">
             <a href="[v:firstcomicpermalink]" class="overview-begin-block">
                 <h2 class="overview-begin no-margins">> new reader?</h2>
                 <div class="overview-begin-sidestyle">FROM THE TOP</div>
             </a>
-        </div>
+        </div></div>
     [/]
 
     [c:hascomics]
         <div class="box overview-basis45">
             <h3>Latest Page</h3>
             <span class="headingsub comictopper"letter-spacing: 0.1em; font-variant: small-caps;>
-                [v:posttime]:
+                [c:custom.comic_wr_date_override]
+                    [v:custom.comic_wr_date_override]:
+                [/]
+                [c:!custom.comic_wr_date_override]
+                    [v:posttime]:
+                [/]
                 [c:usechapters] <!--comment:[this one checks if the webcomic uses chapters]-->
                     [c:haschapter] <!--comment:[this one checks if the comic strip is in a chapter]-->
                         in <a href="[v:chapterlink]">[v:chaptername]</a>

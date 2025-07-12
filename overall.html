@@ -1,5 +1,39 @@
 <!DOCTYPE html>
-<html>
+[c:!iscomicpage]
+    <!-- Read from cookies -->
+    <html class="synexn">
+[/]
+[c:iscomicpage]
+    <!-- Set class from internals -->
+    <html class="
+        [c:!custom.sp_css_global_class]
+            [c:chapterid=0]    synexn[/]
+            [c:chapterid=92565]synexn[/]
+            [c:chapterid=92566]synexn[/]
+            [c:chapterid=92566]synexn[/]
+            [c:chapterid=95368]sinoso[/]
+
+            [c:chapterid=32990]synexn[/]
+            [c:chapterid=82051]synexn[/]
+            [c:chapterid=33049]synexn[/]
+            [c:chapterid=84978]synexn[/]
+            [c:chapterid=33050]synexn[/]
+            [c:chapterid=91784]synexn[/]
+            [c:chapterid=94357]synexn[/]
+            [c:chapterid=91785]synexn[/]
+
+            [c:chapterid=80085]slithy[/]
+            [c:chapterid=80086]sinoso[/]
+        [/]
+        [v:custom.sp_css_global_class]
+    ">
+    <!-- This then gets read by JS later, giving one of the following styles: 
+        synexn -> Initial Synexn City styling
+        slithy -> Mirror glitchcrash transfer styling
+        sinoso -> Sin of Sorcery main styling
+        This is stored in both localStorage.chapterstyle and sinofsorcery.chapterstyle.
+    -->
+[/]
 <head>
     <!-- Last Update: [v:lastupdatedmy] -->
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -31,9 +65,33 @@
     </style>
     [v:cfscriptcode]
     <script type="text/javascript" src="/files/js/sinofsorcerylayout.js"></script>
+    <script type="text/javascript">
+        [c:iscomicpage]
+            sinofsorcery.chapterid = [v:chapterid];
+            sinofsorcery.chapterstyle = "synexn";
+
+            saveMainStyle = function()
+            {
+                let rawClassname = document.documentElement.className;
+                sinofsorcery.chapterstyle = rawClassname.trim();
+                localStorage.setItem("chapterid", sinofsorcery.chapterid);
+                localStorage.setItem("chapterstyle", sinofsorcery.chapterstyle);
+            }
+            window.addEventListener('load', saveMainStyle);
+        [/]
+        [c:!iscomicpage]
+            sinofsorcery.chapterid = localStorage.getItem("chapterid") ?? 0;
+            sinofsorcery.chapterstyle = localStorage.getItem("chapterstyle") ?? "synexn";
+
+            updateMainStyle = function()
+            {
+                document.documentElement.className = sinofsorcery.chapterstyle;
+            }
+            window.addEventListener('load', updateMainStyle);
+        [/]
+    </script>
 </head>
 <body>
-    
     <div id="head">
         <h1 id="sitetitle">
             <!--

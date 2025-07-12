@@ -95,14 +95,12 @@
 </div>
 
 [c:showpermalinks]
-<br />
 <div id="saveplace">
-    <!--<a href="#" onclick="savePlace(this,[v:comicid]);return false;">Save My Place</a> | <a href="#" onclick="loadPlace();return false;">Load My Place</a>-->
-    <a href="#" onclick="savePlace(this,[v:comicid]);return false;">
+    <a href="#" onclick="savePlace(this, [v:comicid]); return false;">
         <img class="saveplace_image" src="/files/resources/icon_save.png" alt="Save My Place">
         <div class="saveplace_text"><div>Save My Place</div></div>
     </a>
-    <a href="#" onclick="loadPlace();return false;">
+    <a href="#" onclick="loadPlace(); return false;">
         <img class="saveplace_image" src="/files/resources/icon_open.png" alt="Load My Place">
         <div class="saveplace_text"><div>Load My Place</div></div>
     </a>
@@ -126,8 +124,8 @@
                 <div class="comment">
                     <div class="commentdata">
                         [c:l.avatar]
-                        <div class="avatar">
-                            <img src="[v:l.avatar]" alt="[v:l.authorname]" /><br />
+                        <div class="avatar corners--slanted11">
+                            <img src="[v:l.avatar]" alt="[v:l.authorname]" />
                         </div>
                         [/]
                         <span class="posttime">[v:l.posttime]</span>
@@ -173,7 +171,7 @@
                         <div class="commentdata">
                             [c:l.avatar]
                                 <div class="avatar">
-                                    <img src="[v:l.avatar]" alt="[v:l.authorname]" /><br />
+                                    <img src="[v:l.avatar]" alt="[v:l.authorname]" />
                                 </div>
                             [/]
                             <span class="posttime">[v:l.posttime]</span>

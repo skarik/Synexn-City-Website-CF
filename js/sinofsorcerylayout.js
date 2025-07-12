@@ -12,7 +12,6 @@ window.onload = function()
     }
 }
 
-//[c:pagetitle~overview]
 sinofsorcery.getGutterImage = function(element, rightSide)
 {
     const images_right = ["/files/resources/sides/polmc-sider-1.png", "/files/resources/sides/polmc-sider-3.png"];
@@ -44,4 +43,3 @@ sinofsorcery.getGutterImage = function(element, rightSide)
             element.style.width = "auto";
         });
 }
-//[/]
