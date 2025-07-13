@@ -989,6 +989,8 @@ a.author:hover {
 
 .overview-authorbox-icon {
     max-height: 1.0em;
+    width: 1.0em;
+    object-fit: contain;
     vertical-align: baseline;
 }
 .overview-authorbox h4 {
@@ -1023,6 +1025,17 @@ a.author:hover {
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.0em 1.0em;
+}
+.overview-support-item > a {
+    filter: drop-shadow(0 0 1px #0007);
+    transition: filter 0.25s ease-in-out;
+}
+.overview-support-item > a:hover {
+    filter: drop-shadow(1px 3px 4px #0005);
+    transition: filter 0.25s ease-in-out;
+}
+.overview-support-item > a > img {
+    max-height: 200px;
 }
 .overview-support h4 {
     font-size: 1.1em;
