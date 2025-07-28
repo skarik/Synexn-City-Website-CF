@@ -1,8 +1,12 @@
+// @ts-check
 "use strict";
 
-var sinofsorcery = {};
+var sinofsorcery = {
+    chapterid: 0,
+    chapterstyle: "synexn"
+};
 
-/// @brief Replaces all the CF URLs with the synexn.city URLs.
+/*** @brief Replaces all the CF URLs with the synexn.city URLs. */
 window.onload = function()
 {
     var anchors = document.getElementsByTagName("a");
@@ -12,6 +16,11 @@ window.onload = function()
     }
 }
 
+/*** 
+ * @brief Gets a random gutter image for the given element and side
+ * @param {HTMLImageElement} element
+ * @param {Boolean} rightSide
+ */
 sinofsorcery.getGutterImage = function(element, rightSide)
 {
     const images_right = ["/files/resources/sides/polmc-sider-1.png", "/files/resources/sides/polmc-sider-3.png"];
@@ -42,4 +51,41 @@ sinofsorcery.getGutterImage = function(element, rightSide)
             element.style.minWidth = "auto";
             element.style.width = "auto";
         });
+}
+
+/*** 
+ * @brief When starting up the title page, sets the chapter style or adds listener for it
+ * @param {Number} chapterId - Chapter ID from comicfury internals
+ * @param {String} chapterStyle - Chapter style we want to default to and initialize with
+**/
+sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
+{
+    this.chapterid = chapterId;
+    this.chapterstyle = chapterStyle;
+
+    let saveMainStyle = function()
+    {
+        let rawClassname = document.documentElement.className;
+        let newStyle = rawClassname.trim();
+        if (!newStyle.includes(sinofsorcery.chapterstyle))
+        {
+            sinofsorcery.chapterstyle = newStyle;
+        }
+        localStorage.setItem("chapterid", sinofsorcery.chapterid.toString());
+        localStorage.setItem("chapterstyle", sinofsorcery.chapterstyle);
+    };
+    window.addEventListener('load', saveMainStyle);
+}
+
+/*** @brief When starting up all other pages, loads the chapter style from cookies or adds listener for it **/
+sinofsorcery.onLoadOtherPage = function()
+{
+    this.chapterid = localStorage.getItem("chapterid") ?? 0;
+    this.chapterstyle = localStorage.getItem("chapterstyle") ?? "synexn";
+
+    let updateMainStyle = function()
+    {
+        document.documentElement.className = sinofsorcery.chapterstyle;
+    };
+    window.addEventListener('load', updateMainStyle);
 }

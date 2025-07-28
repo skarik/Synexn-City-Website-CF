@@ -7,23 +7,12 @@
     <!-- Set class from internals -->
     <html class="
         [c:!custom.sp_css_global_class]
-            [c:chapterid=0]    synexn[/]
-            [c:chapterid=92565]synexn[/]
-            [c:chapterid=92566]synexn[/]
-            [c:chapterid=92566]synexn[/]
-            [c:chapterid=95368]sinoso[/]
-
-            [c:chapterid=32990]synexn[/]
-            [c:chapterid=82051]synexn[/]
-            [c:chapterid=33049]synexn[/]
-            [c:chapterid=84978]synexn[/]
-            [c:chapterid=33050]synexn[/]
-            [c:chapterid=91784]synexn[/]
-            [c:chapterid=94357]synexn[/]
-            [c:chapterid=91785]synexn[/]
-
-            [c:chapterid=80085]slithy[/]
-            [c:chapterid=80086]sinoso[/]
+            [c:custom.ch_style]
+                [v:custom.ch_style]
+            [/]
+            [c:!custom.ch_style]
+                sinoso
+            [/]
         [/]
         [v:custom.sp_css_global_class]
     ">
@@ -67,41 +56,16 @@
     <script type="text/javascript" src="/files/js/sinofsorcerylayout.js"></script>
     <script type="text/javascript">
         [c:iscomicpage]
-            sinofsorcery.chapterid = [v:chapterid];
-            sinofsorcery.chapterstyle = "synexn";
-
-            saveMainStyle = function()
-            {
-                let rawClassname = document.documentElement.className;
-                sinofsorcery.chapterstyle = rawClassname.trim();
-                localStorage.setItem("chapterid", sinofsorcery.chapterid);
-                localStorage.setItem("chapterstyle", sinofsorcery.chapterstyle);
-            }
-            window.addEventListener('load', saveMainStyle);
+            sinofsorcery.onLoadComicPage([v:chapterid], [v:custom.ch_style]);
         [/]
         [c:!iscomicpage]
-            sinofsorcery.chapterid = localStorage.getItem("chapterid") ?? 0;
-            sinofsorcery.chapterstyle = localStorage.getItem("chapterstyle") ?? "synexn";
-
-            updateMainStyle = function()
-            {
-                document.documentElement.className = sinofsorcery.chapterstyle;
-            }
-            window.addEventListener('load', updateMainStyle);
+            sinofsorcery.onLoadOtherPage();
         [/]
     </script>
 </head>
 <body>
     <div id="head">
         <h1 id="sitetitle">
-            <!--
-                [c:!banner]
-                [v:webcomicname]
-                [/]
-                [c:banner]
-                <img src="[v:banner]" alt="[v:webcomicname]" title="[v:webcomicname]" id="banner" />
-                [/]
-            -->
             <img src="/files/images/title_scaled.png" alt="[v:webcomicname]" />
         </h1>
         <div id="titleupdate">Updates Tuesdays & Fridays</div>
@@ -119,6 +83,13 @@
             [l:extrapages]
                 <li><span style="text-transform: lowercase;"><a href="[v:l.link]">>[v:l.title]</a></span></li>
             [/]
+            <li><span><a href="">>media</a></span>
+                <ul>
+                    <li><span><a href="">>gallery</a></span></li>
+                    <li><span><a href="">>documents</a></span></li>
+                    <li><span><a href="">>characters</a></span></li>
+                </ul>
+            </li>
             [c:!hidefromhost]
                 <li><span><a href="[v:addsubscriptionlink]" target="window2">>subscribe</a></span></li>
             [/]
