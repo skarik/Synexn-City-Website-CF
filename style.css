@@ -19,11 +19,20 @@
     font-family: RubikMarkerHatch;
     src: url('/files/resources/rubikmarkerhatch-regular.ttf');
 }
+@font-face {
+    font-family: CourierPrime;
+    src: url('/files/resources/CourierPrime-Regular.ttf');
+}
+@font-face {
+    font-family: CourierPrime;
+    src: url('/files/resources/CourierPrime-Bold.ttf');
+    font-weight: bold;
+}
 
 /** Global Vars **/
 :root {
     --c_base: #AAA;
-
+    
     /* Shadow box used for shadowing main elements. */
     --g_shadowBoxDefault: 0 0 0.618rem #000B;
     
@@ -37,68 +46,68 @@
 /* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
 .tape_wobble {
     clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%,
-        41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%,
-        73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%,
-        100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%,
-        100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%,
-        100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 
-        77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 
-        40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 
-        13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%,
-        0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 
-        1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
+    41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%,
+    73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%,
+    100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%,
+    100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%,
+    100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 
+    77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 
+    40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 
+    13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%,
+    0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 
+    1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
 }
 
 .corners--slanted0 {
     mask-image: 
-        linear-gradient(135deg, #0000 1.0rem, red 0),
-        linear-gradient(-135deg, #0000 1.0rem, red 0),
-        linear-gradient(45deg, #0000 1.0rem, red 0),
-        linear-gradient(-45deg, #0000 1.0rem, red 0);
+    linear-gradient(135deg, #0000 1.0rem, red 0),
+    linear-gradient(-135deg, #0000 1.0rem, red 0),
+    linear-gradient(45deg, #0000 1.0rem, red 0),
+    linear-gradient(-45deg, #0000 1.0rem, red 0);
     mask-position:
-        0 0,
-        100% 0,
-        0 100%,
-        100% 100%;
+    0 0,
+    100% 0,
+    0 100%,
+    100% 100%;
     mask-repeat: no-repeat;
     mask-size: 51% 51%;
 }
 
 .corners--slanted11 {
     clip-path: polygon(
-        0 0, 0 100%,
-        calc(100% - 1.0em) 100%, 100% calc(100% - 1.0em),
-        100% 0);
+    0 0, 0 100%,
+    calc(100% - 1.0em) 100%, 100% calc(100% - 1.0em),
+    100% 0);
 }
 
 .corners--mindeco-cut1001 {
     clip-path: polygon(
-        0 0,
-        calc(100% - 15px) 0, calc(100% - 15px) 15px,
-        /* Corner box */
-        calc(100% - 10px) 10px, calc(100% - 10px) 0,
-        100% 0, 100% 10px, calc(100% - 10px) 10px,
-        /* Past Corner */
-        calc(100% - 15px) 15px, 100% 15px,
-        100% 100%,
-        15px 100%, 15px calc(100% - 15px),
-        /* Corner box */
-        10px calc(100% - 10px), 10px 100%,
-        0 100%, 0 calc(100% - 10px), 10px calc(100% - 10px),
-        /* Past Corner */
-        15px calc(100% - 15px), 0 calc(100% - 15px)
+    0 0,
+    calc(100% - 15px) 0, calc(100% - 15px) 15px,
+    /* Corner box */
+    calc(100% - 10px) 10px, calc(100% - 10px) 0,
+    100% 0, 100% 10px, calc(100% - 10px) 10px,
+    /* Past Corner */
+    calc(100% - 15px) 15px, 100% 15px,
+    100% 100%,
+    15px 100%, 15px calc(100% - 15px),
+    /* Corner box */
+    10px calc(100% - 10px), 10px 100%,
+    0 100%, 0 calc(100% - 10px), 10px calc(100% - 10px),
+    /* Past Corner */
+    15px calc(100% - 15px), 0 calc(100% - 15px)
     );
-   /* mask-image:
-        linear-gradient(#FFFF),
-        conic-gradient(
-            at 25% 75%,
-            #0000 0deg 90deg,
-            #FFFF 90deg 360deg),
-        conic-gradient(
-            at 75% 25%,
-            #FFFF 0deg 180deg,
-            #0000 180deg 270deg,
-            #FFFF 270deg 360deg);
+    /* mask-image:
+    linear-gradient(#FFFF),
+    conic-gradient(
+    at 25% 75%,
+    #0000 0deg 90deg,
+    #FFFF 90deg 360deg),
+    conic-gradient(
+    at 75% 25%,
+    #FFFF 0deg 180deg,
+    #0000 180deg 270deg,
+    #FFFF 270deg 360deg);
     mask-position: 0 0, top right, bottom left;
     mask-repeat: no-repeat;
     mask-size: 100% 100%, 15px 15px, 15px 15px;
@@ -171,8 +180,8 @@ a:link, a:visited, .linkglow {
     text-decoration: none;
     text_shadow: none;
     transition:
-        color ease-in-out 0.3s,
-        text-shadow ease-in-out 0.3s;
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
 }
 a:hover, .linkglow:hover {
     color: #FFF;
@@ -197,8 +206,8 @@ a:hover, .linkglow:hover {
     +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
     -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
     transition:
-        color ease-in-out 0.3s,
-        text-shadow ease-in-out 0.3s;
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s;
 }
 
 .box a:link, .box a:visited {
@@ -326,9 +335,9 @@ form {
     max-width: 0px;
     display: inline-block;
     transition:
-        max-width ease-in-out 0.5s,
-        height ease-in-out 0.5s,
-        opacity ease-in-out 0.5s;
+    max-width ease-in-out 0.5s,
+    height ease-in-out 0.5s,
+    opacity ease-in-out 0.5s;
 }
 #navigation li:hover > ul {
     pointer-events: auto;
@@ -336,8 +345,8 @@ form {
     opacity: 1;
     max-width: 100%;
     transition:
-        max-width ease-in-out 0.5s,
-        height ease-in-out 0.5s;
+    max-width ease-in-out 0.5s,
+    height ease-in-out 0.5s;
 }
 
 #navigation li span > input {
@@ -352,28 +361,28 @@ form {
     max-width: 0px;
     white-space: nowrap;
     overflow: clip;
-
+    
     transition:
-        max-width ease-out 0.2s,
-        height ease-out 0.5s,
-        opacity ease-out 0.5s;
+    max-width ease-out 0.2s,
+    height ease-out 0.5s,
+    opacity ease-out 0.5s;
 }
 #navigation li:not(#subitem):has(:checked) ~ #subitem {
     max-width: 100%;
-
+    
     transition:
-        max-width ease-in 0.5s,
-        height ease-in 0.5s,
-        opacity ease-in 0.5s;
+    max-width ease-in 0.5s,
+    height ease-in 0.5s,
+    opacity ease-in 0.5s;
 }
 
 /* Special little effect */
 #navigation a, #navigation label {
     --color-bg-bottomline: rgba(255, 255, 255, 0.0);
     background-image: conic-gradient(
-        from -90deg at left 0px bottom 2px,
-        #0000 50%,
-        var(--color-bg-bottomline) 0);
+    from -90deg at left 0px bottom 2px,
+    #0000 50%,
+    var(--color-bg-bottomline) 0);
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: 0% 100%;
@@ -558,7 +567,7 @@ html>body .wrap {
 a > .saveplace_image {
     filter: none;
     transition:
-        filter ease-in-out 0.3s;
+    filter ease-in-out 0.3s;
 }
 a:hover > .saveplace_image {
     /*filter: sepia(1) saturate(40) hue-rotate(-50deg);*/
@@ -1171,6 +1180,31 @@ a.author:hover {
     color: #333;
 }
 
+/* compendium */
+
+.compendium {
+    font-family: "OpenSans", sans-serif;
+}
+
+.compendium .filelisting {
+    font-family: "OpenSans", sans-serif;
+    text-align: left;
+    color: #777;
+}
+
+.compendium .filelisting ul {
+    list-style: symbols(cyclic "▷" "▻");
+}
+.compendium .filelisting ul a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+}
+
+.monospace {
+    font-family: "CourierPrime", monospace !important;
+}
+
 /* comic image */
 [c:custom.comic_wideformat]
 #content-start
@@ -1215,15 +1249,15 @@ a.author:hover {
 #content-start
 {
     [c:custom.sp_content_black]
-        /*border: 8px solid #202020;
-        background: #000;*/
-        [c:!custom.comic_wideformat]
-            /*max-width: calc(100vw - 32px);*/
-        [/]
-        [c:custom.comic_wideformat]
-            border-left: none;
-            border-right: none;
-        [/]
+    /*border: 8px solid #202020;
+    background: #000;*/
+    [c:!custom.comic_wideformat]
+    /*max-width: calc(100vw - 32px);*/
+    [/]
+    [c:custom.comic_wideformat]
+    border-left: none;
+    border-right: none;
+    [/]
     [/]
 }
 
@@ -1238,37 +1272,37 @@ a.author:hover {
 
 .comicnav {
     [c:custom.sp_content_black]
-        /*background: #000D;
-        border: 2px solid #202020;*/
+    /*background: #000D;
+    border: 2px solid #202020;*/
     [/]
 }
 a.comicnavlink:link, a.comicnavlink:visited
 {
     [c:custom.sp_content_black]
-        color: #DDD;
-        text-transform: lowercase;
-        letter-spacing: 0.05em;
+    color: #DDD;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
     [/]
 }
 a.comicnavlink:hover
 {
     [c:custom.sp_content_black]
-        color: #FFA824;
+    color: #FFA824;
     [/]
 }
 html, body
 {
     [c:custom.sp_content_black]
-        background-color: #999;
-        background-blend-mode: multiply;
+    background-color: #999;
+    background-blend-mode: multiply;
     [/]
 }
 .comicnav select
 {
     [c:custom.sp_content_black]
-        border: 1px solid black;
-        background: #222;
-        color: white;
+    border: 1px solid black;
+    background: #222;
+    color: white;
     [/]
 }
 
@@ -1280,8 +1314,8 @@ html, body
 }
 /*#comicimage
 {
-    filter: blur(2vw);
-    clip-path: rect(0 0 100% 100%);
+filter: blur(2vw);
+clip-path: rect(0 0 100% 100%);
 }*/
 #comicimagewrap > #comicimagelink,
 #comicimagewrap > #comicimage:not(.comicimage-sidestory), /* No-link variation */
@@ -1289,14 +1323,14 @@ html, body
 {
     filter: blur(1vh);
     transition:
-        filter ease-in-out 0.1s;
+    filter ease-in-out 0.1s;
 }
 #comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked),
 #comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked) /* No-link variation */
 {
     filter: none;
     transition:
-        filter ease-in-out 0.1s;
+    filter ease-in-out 0.1s;
 }
 
 #comicimage-spoiler-label
@@ -1339,7 +1373,7 @@ html, body
     font-weight: 400;
     max-height: 0;
     transition:
-        max-height ease-in-out 0.3s;
+    max-height ease-in-out 0.3s;
 }
 
 #comicimage-spoiler-label > div > label {
@@ -1347,8 +1381,8 @@ html, body
     cursor: pointer;
     color: #636363;
     transition:
-        color ease-in-out 0.1s,
-        text-shadow ease-in-out 0.1s;
+    color ease-in-out 0.1s,
+    text-shadow ease-in-out 0.1s;
 }
 #comicimage-spoiler-label > div > label:hover {
     color: #333;
@@ -1357,10 +1391,10 @@ html, body
     -3px 0px 0px rgba(0, 212, 255, 0.5),
     +2px 0px 0px rgba(255, 64, 0, 0.6);
     transition:
-        color ease-in-out 0.3s,
-        text-shadow ease-in-out 0.3s,
-        font-weight ease-in-out 0.1s,
-        opacity ease-in-out 0.1s;
+    color ease-in-out 0.3s,
+    text-shadow ease-in-out 0.3s,
+    font-weight ease-in-out 0.1s,
+    opacity ease-in-out 0.1s;
 }
 
 #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
@@ -1368,21 +1402,21 @@ html, body
     display: inline-block;
     max-height: none;
     transition:
-        max-height ease-in-out 0.1s;
+    max-height ease-in-out 0.1s;
 }
 #spoiler-toggle-content + div > label {
     font-weight: 800;
     opacity: 1.0;
     transition:
-        font-weight ease-in-out 0.1s,
-        opacity ease-in-out 0.1s;
+    font-weight ease-in-out 0.1s,
+    opacity ease-in-out 0.1s;
 }
 #spoiler-toggle-content:checked + div > label {
     font-weight: 800;
     opacity: 0.5;
     transition:
-        font-weight ease-in-out 0.1s,
-        opacity ease-in-out 0.1s;
+    font-weight ease-in-out 0.1s,
+    opacity ease-in-out 0.1s;
 }
 #spoiler-toggle-content + div > label:before {
     content: "▶ ";
