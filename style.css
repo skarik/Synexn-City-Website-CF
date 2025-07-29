@@ -131,6 +131,10 @@ html.sinoso, .sinoso body {
     background: none;
 }
 
+.sinoso body {
+    background: #222;
+}
+
 @property --color-bg-bottomline {
     syntax: '<color>';
     inherits: false;
@@ -162,15 +166,15 @@ html.sinoso, .sinoso body {
     }
 }
 
-a:link, a:visited {
+a:link, a:visited, .linkglow {
     color: #DDD;
     text-decoration: none;
     text_shadow: none;
     transition:
-    color ease-in-out 0.3s,
-    text-shadow ease-in-out 0.3s;
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s;
 }
-a:hover {
+a:hover, .linkglow:hover {
     color: #FFF;
     text-decoration: none;
     text-shadow:
@@ -193,8 +197,8 @@ a:hover {
     +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
     -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
     transition:
-    color ease-in-out 0.3s,
-    text-shadow ease-in-out 0.3s;
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s;
 }
 
 .box a:link, .box a:visited {
@@ -281,39 +285,100 @@ form {
     color: white;
 }
 
+/** Navigation **/
+
 #navigation {
-    list-style:none;
+    list-style: none;
     font-family: "LeagueGothic", sans-serif;
     font-size: 2.0em;
 }
 #navigation ul {
-    padding:0px;
+    padding: 0px;
     margin: 0.3em;
 }
 #navigation li {
-    list-style:none;
-    display:inline;
+    list-style: none;
+    display: inline-block;
+}
+#navigation li span:before {
+    content: ">";
+    display: inline-block;
 }
 #navigation li span {
-    margin:4px;
-    display:table-cell; /*ff2, ff1*/
-    display:inline-block;
+    margin: 4px;
+    display: table-cell; /*ff2, ff1*/
+    display: inline-block;
 }
 #navigation a:link, #navigation a:visited, #navigation a:hover {
-    text-decoration:none;
+    text-decoration: none;
 }
+
+/* Nav sublist */
+#navigation li > ul {
+    /* @todo: cleanup this is a mess lol */
+    position: relative;
+    pointer-events: none;
+    overflow: clip;
+    opacity: 0;
+    /*padding: 0px;*/
+    margin: 0px;
+    height: 0px;
+    max-width: 0px;
+    display: inline-block;
+    transition:
+        max-width ease-in-out 0.5s,
+        height ease-in-out 0.5s,
+        opacity ease-in-out 0.5s;
+}
+#navigation li:hover > ul {
+    pointer-events: auto;
+    height: 1.2em;
+    opacity: 1;
+    max-width: 100%;
+    transition:
+        max-width ease-in-out 0.5s,
+        height ease-in-out 0.5s;
+}
+
+#navigation li span > input {
+    display: none;
+}
+
+#navigation li:has(+ #subitem):not(#subitem):has(:checked) span:before {
+    transform: rotate(90deg);
+}
+
+#navigation li:not(#subitem) ~ #subitem {
+    max-width: 0px;
+    white-space: nowrap;
+    overflow: clip;
+
+    transition:
+        max-width ease-out 0.2s,
+        height ease-out 0.5s,
+        opacity ease-out 0.5s;
+}
+#navigation li:not(#subitem):has(:checked) ~ #subitem {
+    max-width: 100%;
+
+    transition:
+        max-width ease-in 0.5s,
+        height ease-in 0.5s,
+        opacity ease-in 0.5s;
+}
+
 /* Special little effect */
-#navigation a {
+#navigation a, #navigation label {
     --color-bg-bottomline: rgba(255, 255, 255, 0.0);
     background-image: conic-gradient(
-    from -90deg at left 0px bottom 2px,
-    #0000 50%,
-    var(--color-bg-bottomline) 0);
+        from -90deg at left 0px bottom 2px,
+        #0000 50%,
+        var(--color-bg-bottomline) 0);
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: 0% 100%;
 }
-#navigation a:hover {
+#navigation a:hover, #navigation label:hover {
     animation: anim-link-light-shot ease-in-out 0.2s forwards;
 }
 

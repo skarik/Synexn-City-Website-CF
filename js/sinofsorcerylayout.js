@@ -78,7 +78,7 @@ sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
 }
 
 /*** @brief When starting up all other pages, loads the chapter style from cookies or adds listener for it **/
-sinofsorcery.onLoadOtherPage = function()
+sinofsorcery.onStartOtherPage = function()
 {
     this.chapterid = localStorage.getItem("chapterid") ?? 0;
     this.chapterstyle = localStorage.getItem("chapterstyle") ?? "synexn";
@@ -87,5 +87,5 @@ sinofsorcery.onLoadOtherPage = function()
     {
         document.documentElement.className = sinofsorcery.chapterstyle;
     };
-    window.addEventListener('load', updateMainStyle);
+    updateMainStyle();
 }
