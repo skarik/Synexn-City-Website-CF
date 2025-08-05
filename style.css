@@ -1098,7 +1098,7 @@ a.author:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.0em 1.0em;
+    gap: 0.0em min(1.0em, 1.5vw);
 }
 .overview-support-item > a {
     filter: drop-shadow(0 0 1px #0007);
@@ -1110,6 +1110,7 @@ a.author:hover {
 }
 .overview-support-item > a > img {
     max-height: 200px;
+    max-width: 32vw;
 }
 .overview-support h4 {
     font-size: 1.1em;
