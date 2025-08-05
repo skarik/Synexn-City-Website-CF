@@ -32,26 +32,55 @@
     <meta property="og:type"  content="website" />
     <meta property="og:site_name" content="[v:webcomicname]" />
     <meta property="og:description" content="[v:webcomicdescription]" />
+    <meta property="og:url" content="[v:webcomicurl]" />
     <meta name="theme-color" content="#5218FA" />
-    [c:comicimageurl]
-        <meta property="og:title" content="[v:pagetitle]" />
-        <meta property="og:image" content="[v:comicimageurl]" />
-        <meta property="og:image:width" content="[v:comicwidth]" />
-        <meta property="og:image:height" content="[v:comicheight]" />
-        <meta name="twitter:image" content="[v:comicimageurl]" />
-        <meta name="twitter:card" content="summary_large_image" />
+    [c:iscomicpage]
+        [c:comicthumbnail_url]
+            <meta property="og:title" content="[v:pagetitle]" />
+            <meta property="og:image" content="[v:comicthumbnail_url]" />
+            <meta property="og:image:width" content="[v:comicthumbnail_width]" />
+            <meta property="og:image:height" content="[v:comicthumbnail_height]" />
+            <meta name="twitter:image" content="[v:comicthumbnail_url]" />
+            <meta name="twitter:card" content="summary_large_image" />
+        [/]
+        [c:!comicthumbnail_url]
+            [c:comicimageurl]
+                <meta property="og:title" content="[v:pagetitle]" />
+                <meta property="og:image" content="[v:comicimageurl]" />
+                <meta property="og:image:width" content="[v:comicwidth]" />
+                <meta property="og:image:height" content="[v:comicheight]" />
+                <meta name="twitter:image" content="[v:comicimageurl]" />
+                <meta name="twitter:card" content="summary_large_image" />
+            [/]
+            [c:!comicimageurl]
+                <meta property="og:title" content="[v:webcomicname]" />
+                <meta property="og:image" content="https://synexn.city/files/resources/opengraphcover-3.jpg" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:width"  content="1200" />
+                <meta name="twitter:image" content="https://synexn.city/files/resources/opengraphcover-3.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+            [/]
+        [/]
     [/]
-    [c:!comicimageurl]
+    [c:!iscomicpage]
         <meta property="og:title" content="[v:webcomicname]" />
-        <meta property="og:image" content="files/resources/opengraphcover-2p.jpg" />
-        <meta property="og:image:height" content="480" />
-        <meta property="og:image:width"  content="1280" />
-        <meta name="twitter:image" content="files/resources/opengraphcover-2p.jpg" />
+        <meta property="og:image" content="https://synexn.city/files/resources/opengraphcover-3.jpg" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width"  content="1200" />
+        <meta name="twitter:image" content="https://synexn.city/files/resources/opengraphcover-3.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
     [/]
     <title>[v:webcomicname] - [v:pagetitle]</title>
     <style type="text/css">
         <!--layout:[css]-->
     </style>
+    [c:custom.sp__specials]
+        [c:custom.sp_css_additional_inline]
+            <style type="text/css">
+                [v:custom.sp_css_additional_inline]
+            </style>
+        [/]
+    [/]
     [v:cfscriptcode]
     <script type="text/javascript" src="/files/js/sinofsorcerylayout.js"></script>
     <script type="text/javascript">
