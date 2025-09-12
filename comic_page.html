@@ -24,51 +24,57 @@
     </div>
     
     <div id="comicimagewrap">
+        [c:custom.sp__specials]
+            [c:custom.sp_content_builtin~shatter]
+                <!-- Shatter Effect for when Rev shoots Sugar's shoulder -->
+                <div id="comicimage-backshatter"><img src="/files/tests/page259_bg_export.svg"></div>
+            [/]
+        [/]
         [v:comicimage]
         [c:custom.sp_content_html]
             [v:custom.sp_content_html]
         [/]
         [c:custom.sp__specials]
             [c:custom.sp_warning_spoiler]
-            <script type="text/javascript">
-                /// @brief KV of the matching spoiler item with this page
-                const lSpoilerValue = localStorage.getItem("spoiler_[v:custom.sp_warning_type]");
+                <script type="text/javascript">
+                    /// @brief KV of the matching spoiler item with this page
+                    const lSpoilerValue = localStorage.getItem("spoiler_[v:custom.sp_warning_type]");
 
-                /// @brief Sets the spoiler KV for this to true, so this message never comes up again.
-                function setSpoilerState()
-                {
-                    localStorage.setItem("spoiler_[v:custom.sp_warning_type]", "true");
-                }
-            </script>
-            <div id="comicimage-spoiler-label">
-                <div>The following page has NSFW content:</div>
-                <!--<br>-->
-                <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-content" autocomplete="off" value="false">
-                <!--<div><label for="spoiler-toggle-content">Content Warning (click to view)</label></div>-->
-                <div id="comicimage-spoiler-content">
-                    [v:custom.sp_warning_spoiler_details]
+                    /// @brief Sets the spoiler KV for this to true, so this message never comes up again.
+                    function setSpoilerState()
+                    {
+                        localStorage.setItem("spoiler_[v:custom.sp_warning_type]", "true");
+                    }
+                </script>
+                <div id="comicimage-spoiler-label">
+                    <div>The following page has NSFW content:</div>
+                    <!--<br>-->
+                    <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-content" autocomplete="off" value="false">
+                    <!--<div><label for="spoiler-toggle-content">Content Warning (click to view)</label></div>-->
+                    <div id="comicimage-spoiler-content">
+                        [v:custom.sp_warning_spoiler_details]
+                    </div>
+                    <br>
+                    <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-show-page" autocomplete="off" value="false">
+                    <div>
+                        <label for="spoiler-toggle-show-page">Show page</label>
+                    </div>   
+                    <br>
+                    <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-hide-forever" autocomplete="off" value="false">
+                    <div>
+                        <label for="spoiler-toggle-hide-forever" onclick='setSpoilerState(); document.getElementById("spoiler-toggle-show-page").checked = true; return true;'>
+                            Disable this warning <span class="spoiler-warning-type">([v:custom.sp_warning_type])</span> for all pages forever
+                        </label>
+                    </div>
                 </div>
-                <br>
-                <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-show-page" autocomplete="off" value="false">
-                <div>
-                    <label for="spoiler-toggle-show-page">Show page</label>
-                </div>   
-                <br>
-                <input type="checkbox" class="spoiler-hidden-checkbox" id="spoiler-toggle-hide-forever" autocomplete="off" value="false">
-                <div>
-                    <label for="spoiler-toggle-hide-forever" onclick='setSpoilerState(); document.getElementById("spoiler-toggle-show-page").checked = true; return true;'>
-                        Disable this warning <span class="spoiler-warning-type">([v:custom.sp_warning_type])</span> for all pages forever
-                    </label>
-                </div>
-            </div>
-            <script type="text/javascript">
-                if (lSpoilerValue)
-                {
-                    document.getElementById("spoiler-toggle-show-page").checked = true;
-                }
-            </script>
+                <script type="text/javascript">
+                    if (lSpoilerValue)
+                    {
+                        document.getElementById("spoiler-toggle-show-page").checked = true;
+                    }
+                </script>
             [/]
-        [/]
+        [/] <!-- sp__specials -->
     </div>
     
     <div class="comicnav">
@@ -92,7 +98,6 @@
             <span id="crright"><a href="[v:ratelink]" id="ratelink" onclick='window.open("[v:ratelink]","edit","menubar=no,width=530,height=360,toolbar=no"); return false;' target="window">(Rate this)</a></span>
         </div>
         <div class="clear"></div> 
-        <br />
     [/]
     
 </div>
@@ -119,7 +124,7 @@
 [/]
 
 [c:authornotes]
-    <h2 class="heading">Author Notes:</h2>
+    <h2 class="heading" style="margin-top: 0.4em;">Author Notes:</h2>
     <div class="box">
         <div id="authornotes">
             <div class="seperator"></div>

@@ -282,6 +282,19 @@ form {
 }
 #sitetitle img {
     max-width: 80vw;
+    opacity: 0.0;
+}
+.synexn #sitetitle {
+    background-image: url("/files/resources/titles/synexn_grafitti.webp");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.shatter #sitetitle {
+    background-image: url("/files/resources/titles/synexn_shatter.webp");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #titleupdate {
@@ -537,6 +550,10 @@ html>body .wrap {
 .comic-reader > #comicimagewrap {
     box-shadow: var(--g_shadowBoxDefault);
 }
+#comicimagewrap {
+    /* This gets rid of the newline that appears on the inside of the image block when any extra HTML is added. */
+    line-height: 0px;
+}
 #comicimagelink {
     /* This gets rid of the newline that appears on the inside of the image block when the page has a link. */
     display: block;
@@ -671,6 +688,9 @@ a:hover > .saveplace_text {
     max-width: 25vw;
 }
 .synexn .avatar img {
+    filter: grayscale(100%) brightness(120%) contrast(130%);
+}
+.shatter .avatar img {
     filter: grayscale(100%) brightness(120%) contrast(130%);
 }
 .commentcontrol {
@@ -1309,150 +1329,177 @@ html, body
 
 /* spoilers styles */
 [c:custom.sp_warning_spoiler]
-#comicimagewrap
-{
-    position: relative;
-}
-/*#comicimage
-{
-filter: blur(2vw);
-clip-path: rect(0 0 100% 100%);
-}*/
-#comicimagewrap > #comicimagelink,
-#comicimagewrap > #comicimage:not(.comicimage-sidestory), /* No-link variation */
-#comicimagewrap > a > #latestcomicimage /* Overview link variation */
-{
-    filter: blur(1vh);
-    transition:
-    filter ease-in-out 0.1s;
-}
-#comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked),
-#comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked) /* No-link variation */
-{
-    filter: none;
-    transition:
-    filter ease-in-out 0.1s;
-}
+    #comicimagewrap
+    {
+        position: relative;
+    }
+    #comicimagewrap > #comicimagelink,
+    #comicimagewrap > #comicimage:not(.comicimage-sidestory), /* No-link variation */
+    #comicimagewrap > a > #latestcomicimage /* Overview link variation */
+    {
+        filter: blur(1vh);
+        transition:
+        filter ease-in-out 0.1s;
+    }
+    #comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked),
+    #comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked) /* No-link variation */
+    {
+        filter: none;
+        transition:
+        filter ease-in-out 0.1s;
+    }
 
-#comicimage-spoiler-label
-{
-    position: absolute;
-    top: 1.0em;
-    /* Center */
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    width: fit-content;
+    #comicimage-spoiler-label
+    {
+        position: absolute;
+        top: 1.0em;
+        /* Center */
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        
+        /* Stylings */
+        background: white;
+        padding: 4.0em;
+        outline: 2px black solid;
+        
+        text-align: center;
+    }
+    #comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
+    {
+        display: none;
+    }
+    #comicimage-spoiler-label > div {
+        text-align: left;
+        width: 100%;
+    }
+    .spoiler-hidden-checkbox
+    {
+        display: block;
+        position: absolute;
+        opacity: 0.0;
+    }
+
+    #comicimage-spoiler-content
+    {
+        /*display: none;*/
+        padding: 1.0em;
+        color: #F24;
+        font-weight: 400;
+        max-height: 0;
+        transition:
+        max-height ease-in-out 0.3s;
+    }
+
+    #comicimage-spoiler-label > div > label {
+        /*text-align: center;*/
+        cursor: pointer;
+        color: #636363;
+        transition:
+        color ease-in-out 0.1s,
+        text-shadow ease-in-out 0.1s;
+    }
+    #comicimage-spoiler-label > div > label:hover {
+        color: #333;
+        text-decoration: none;
+        text-shadow:
+        -3px 0px 0px rgba(0, 212, 255, 0.5),
+        +2px 0px 0px rgba(255, 64, 0, 0.6);
+        transition:
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s,
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+
+    #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
+    {
+        display: inline-block;
+        max-height: none;
+        transition:
+        max-height ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content + div > label {
+        font-weight: 800;
+        opacity: 1.0;
+        transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content:checked + div > label {
+        font-weight: 800;
+        opacity: 0.5;
+        transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content + div > label:before {
+        content: "▶ ";
+    }
+    #spoiler-toggle-content:checked + div > label:before {
+        content: "▽ ";
+    }
+
+    #spoiler-toggle-show-page + div > label:before {
+        content: "◿ "
+    }
+    #spoiler-toggle-show-page + div > label:after {
+        content: " ◺"
+    }
+    #spoiler-toggle-show-page + div {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    #spoiler-toggle-hide-forever + div > label:before {
+        content: "◉ "
+    }
+    #spoiler-toggle-hide-forever + div > label:after {
+        content: " ◉"
+    }
+    #spoiler-toggle-hide-forever + div {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .spoiler-warning-type {
+        text-transform: capitalize;
+        color: #F24;
+    }
+[/] /* Warning Spoiler */
+
+[c:custom.sp_content_builtin~shatter]
+    #comicimage-backshatter {
+        position: absolute;
+        height: 0px;
+        width: 100%;
+        overflow: visible;
+        pointer-events: none;
+        z-index: 0;
+    }
+    #comicimage-backshatter > img {
+        position: relative;
+        float: right;
+        max-width: calc(1349 * calc(calc(100vw - 26px) / 1024));
+        @media (max-width: 800px) {
+            max-width: calc(1349 * calc(100vw / 1024));
+        }
+    }
+
+    #comicimagewrap {
+        position: relative;
+    }
     
-    /* Stylings */
-    background: white;
-    padding: 4.0em;
-    outline: 2px black solid;
+    #comicimage {
+        position: relative;
+        z-index: 1;
+    }
     
-    text-align: center;
-}
-#comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
-{
-    display: none;
-}
-#comicimage-spoiler-label > div {
-    text-align: left;
-    width: 100%;
-}
-.spoiler-hidden-checkbox
-{
-    display: block;
-    position: absolute;
-    opacity: 0.0;
-}
-
-#comicimage-spoiler-content
-{
-    /*display: none;*/
-    padding: 1.0em;
-    color: #F24;
-    font-weight: 400;
-    max-height: 0;
-    transition:
-    max-height ease-in-out 0.3s;
-}
-
-#comicimage-spoiler-label > div > label {
-    /*text-align: center;*/
-    cursor: pointer;
-    color: #636363;
-    transition:
-    color ease-in-out 0.1s,
-    text-shadow ease-in-out 0.1s;
-}
-#comicimage-spoiler-label > div > label:hover {
-    color: #333;
-    text-decoration: none;
-    text-shadow:
-    -3px 0px 0px rgba(0, 212, 255, 0.5),
-    +2px 0px 0px rgba(255, 64, 0, 0.6);
-    transition:
-    color ease-in-out 0.3s,
-    text-shadow ease-in-out 0.3s,
-    font-weight ease-in-out 0.1s,
-    opacity ease-in-out 0.1s;
-}
-
-#spoiler-toggle-content:checked ~ #comicimage-spoiler-content
-{
-    display: inline-block;
-    max-height: none;
-    transition:
-    max-height ease-in-out 0.1s;
-}
-#spoiler-toggle-content + div > label {
-    font-weight: 800;
-    opacity: 1.0;
-    transition:
-    font-weight ease-in-out 0.1s,
-    opacity ease-in-out 0.1s;
-}
-#spoiler-toggle-content:checked + div > label {
-    font-weight: 800;
-    opacity: 0.5;
-    transition:
-    font-weight ease-in-out 0.1s,
-    opacity ease-in-out 0.1s;
-}
-#spoiler-toggle-content + div > label:before {
-    content: "▶ ";
-}
-#spoiler-toggle-content:checked + div > label:before {
-    content: "▽ ";
-}
-
-#spoiler-toggle-show-page + div > label:before {
-    content: "◿ "
-}
-#spoiler-toggle-show-page + div > label:after {
-    content: " ◺"
-}
-#spoiler-toggle-show-page + div {
-    font-weight: 400;
-    text-align: center;
-}
-
-#spoiler-toggle-hide-forever + div > label:before {
-    content: "◉ "
-}
-#spoiler-toggle-hide-forever + div > label:after {
-    content: " ◉"
-}
-#spoiler-toggle-hide-forever + div {
-    font-weight: 400;
-    text-align: center;
-}
-
-.spoiler-warning-type {
-    text-transform: capitalize;
-    color: #F24;
-}
-
+    html {
+        width: 100%;
+        overflow-x: hidden;
+    }
 [/]
 
 [/]
