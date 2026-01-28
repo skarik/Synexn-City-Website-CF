@@ -880,6 +880,16 @@ a.author:hover {
     letter-spacing: 0.1em;
 }
 
+.blog-imagelist {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.blog-imagelist img {
+    max-width: 31%;
+    height: auto;
+}
+
 /* overview */
 .box#overview-hack {
     padding: 0;
@@ -1365,6 +1375,7 @@ html, body
         outline: 2px black solid;
         
         text-align: center;
+		line-height: 1.0em;
     }
     #comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
     {
@@ -1476,7 +1487,7 @@ html, body
         width: 100%;
         overflow: visible;
         pointer-events: none;
-        z-index: 0;
+        z-index: 1;
     }
     #comicimage-backshatter > img {
         position: relative;
