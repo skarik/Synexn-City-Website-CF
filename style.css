@@ -884,6 +884,7 @@ a.author:hover {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-around;
 }
 .blog-imagelist img {
     max-width: 31%;
