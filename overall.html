@@ -17,12 +17,21 @@
         [v:custom.sp_css_global_class]
     ">
     <!-- This then gets read by JS later, giving one of the following styles: 
-        synexn -> Initial Synexn City styling
-        shatter -> Synexn City shatter styling
-        slithy -> Mirror glitchcrash transfer styling
-        sinoso -> Sin of Sorcery main styling
+            synexn -> Initial Synexn City styling
+            shatter -> Synexn City shatter styling
+            fallofsin -> Fall of Sin transfer styling
+            slithy -> Mirror glitchcrash transfer styling
+            slithy2 -> Even more minimal transfer styling as things break down more
+            sinoso -> Sin of Sorcery main styling
         This is stored in both localStorage.chapterstyle and sinofsorcery.chapterstyle.
     -->
+    [c:custom.sp_content_builtin]
+    <!-- There are a few other built-in HTML styles in the CF side. They are, per-page:
+            shatter -> Adds the shatter HTML to the page
+            fallofsin_console -> Adds the specific changes for the Noriel & Ponce one-shot.
+        These should ONLY be used with comic pages. They will not trigger effects on the greater website.
+    -->
+    [/]
 [/]
 <head>
     <!-- Last Update: [v:lastupdatedmy] -->

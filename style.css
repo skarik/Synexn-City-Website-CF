@@ -1,4 +1,14 @@
+/* See overall.html for documentation on the full classlist.
+    The current list is:
+        synexn, shatter
+        fallofsin, slithy, slithy2
+        sinoso
+    Builtin HTML effects:
+        shatter, fallofsin_console
+*/
+
 /** New fonts **/
+/* ============================= */
 @font-face {
     font-family: LeagueGothic;
     src: url("/files/resources/leaguegothic.ttf");
@@ -15,11 +25,11 @@
     font-family: RubikGlitch;
     src: url('/files/resources/rubikglitch-regular.ttf');
 }
-@font-face {
+/*@font-face {
     font-family: RubikMarkerHatch;
     src: url('/files/resources/rubikmarkerhatch-regular.ttf');
-}
-@font-face {
+}*/ /* unused */
+/*@font-face {
     font-family: CourierPrime;
     src: url('/files/resources/CourierPrime-Regular.ttf');
 }
@@ -27,9 +37,14 @@
     font-family: CourierPrime;
     src: url('/files/resources/CourierPrime-Bold.ttf');
     font-weight: bold;
+}*/ /* unused */
+@font-face {
+    font-family: "Fira Code";
+    src: url('/files/resources/FiraCode-VF.ttf');
 }
 
 /** Global Vars **/
+/* ============================= */
 :root {
     --c_base: #AAA;
     
@@ -39,9 +54,22 @@
     /* Colors used for the navbox for comics */
     --g_comicnavBgColor: #FFFD;
     --g_comicnavBorderColor: #FFF;
+
+    /* Default fonts */
+    --f_monospace: "Fira Code", monospace;
+    --f_header: "LeagueGothic", sans-serif;
+    --f_header_fx: "LeagueGothic", sans-serif;
+}
+
+.fallofsin {
+    --g_comicnavBgColor: #0001;
+    --g_comicnavBorderColor: #FFF9;
+
+    --f_header: "Fira Code", monospace;
 }
 
 /** Global Effects **/
+/* ============================= */
 
 /* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
 .tape_wobble {
@@ -114,32 +142,35 @@
     mask-composite: subtract, add;*/
 }
 
-
 /** Global Defaults **/
+/* ============================= */
 html, body {
     margin: 0px;
     padding: 0px;
-    background: #FAFAFA;
     font-family: "OpenSans", sans-serif;
     font-size: 1.0em;
     color: #AAA;
     text-align: center;
     text-shadow: 0px 2px 3px rgba(0,0,0,0.2);
-    
+}
+img {
+    border: 0px;
+}
+
+.synexn body, .shatter body {
     background-repeat:repeat;
     background-position:center;
     background-size: initial;
     background-attachment:fixed;
     background-image: url("/files/images/bg2.gif");
 }
-img {
-    border: 0px;
+.fallofsin body, .slithy body, .slithy2 body {
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    background-attachment:fixed;
+    background-color: black;
 }
-
-html.sinoso, .sinoso body {
-    background: none;
-}
-
 .sinoso body {
     background: #222;
 }
@@ -213,7 +244,7 @@ a:hover, .linkglow:hover {
 .box a:link, .box a:visited {
     color: #636363;
     font-size: 1.618em;
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
 }
 .box a:hover {
     color: #333;
@@ -236,10 +267,13 @@ a:hover, .linkglow:hover {
     margin: 0;
 }
 
-h3 {
-    margin:2px;
-    font-family: "LeagueGothic", sans-serif;
+h1, h2, h3, h4 {
+    margin: 2px;
+    font-family: var(--f_header);
 }
+/*.fallofsin h1, .fallofsin h2, .fallofsin h3, .fallofsin h4 {
+    font-family: var(--f_monospace);
+}*/
 
 input {
     border:3px solid black;
@@ -263,11 +297,14 @@ form {
     clear:both;
 }
 
+/** Header **/
+/* ============================= */
+
 #sitetitle {
     color: #FFF;
     text-align: center;
     
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
     font-size: 5.0em;
     font-variant: small-caps;
     font-weight: bold;
@@ -279,6 +316,10 @@ form {
     text-shadow:
     10px 0px 0px rgba(0, 212, 256, 0.5),
     -8px 0px 0px rgba(255, 64, 0, 0.5);
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #sitetitle img {
     max-width: 80vw;
@@ -286,15 +327,18 @@ form {
 }
 .synexn #sitetitle {
     background-image: url("/files/resources/titles/synexn_grafitti.webp");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 .shatter #sitetitle {
     background-image: url("/files/resources/titles/synexn_shatter.webp");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+}
+.fallofsin #sitetitle {
+    background-image: url("/files/resources/titles/slithy_fos.webp");
+}
+.fallofsin #sitetitle img {
+    max-height: 3em;
+}
+.slithy #sitetitle {
+    display: none;
 }
 
 #titleupdate {
@@ -311,8 +355,11 @@ form {
 
 #navigation {
     list-style: none;
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
     font-size: 2.0em;
+}
+.fallofsin #navigation, .slithy #navigation, .slithy2 #navigation {
+    font-size: 1.5em;
 }
 #navigation ul {
     padding: 0px;
@@ -404,6 +451,8 @@ form {
     animation: anim-link-light-shot ease-in-out 0.2s forwards;
 }
 
+/* Layout Common */
+/* ============================= */
 
 #comicrating {
     font-family: "OpenSans", sans-serif;
@@ -520,6 +569,7 @@ html>body .wrap {
 /** Comic Page **/
 /* ============================= */
 
+/* Top and Bottom Nav */
 .comicnav {
     background: var(--g_comicnavBgColor);
     border: 2px solid var(--g_comicnavBorderColor);
@@ -527,6 +577,9 @@ html>body .wrap {
     padding: 0.5em;
     box-shadow: var(--g_shadowBoxDefault);
     border-image: url("/files/resources/styles/border000a2.png") 230 / 15px;
+}
+.fallofsin .comicnav, .slithy .comicnav, .slithy2 .comicnav {
+    font-weight: 600;
 }
 .comicnavlink {
     margin-left: 0.618em;
@@ -540,7 +593,7 @@ html>body .wrap {
     opacity: 0.2;
 }
 .comicnav select {
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
     font-size: 1.2em;
     position: relative;
     top: -0.2em;
@@ -549,6 +602,26 @@ html>body .wrap {
     text-align: center;
 }
 
+.fallofsin {
+    a.comicnavlink:link, a.comicnavlink:visited
+    {
+        color: #DDD;
+        text-transform: lowercase;
+    }
+    a.comicnavlink:hover
+    {
+        color: #FFF; /* tbd make a variable for accent color */
+    }
+    .comicnav select
+    {
+        border: 1px solid black;
+        background: #222;
+        color: white;
+    }
+}
+
+
+/* Comic Reader */
 .comic-reader > #comicimagewrap {
     /*box-shadow: var(--g_shadowBoxDefault);*/ /* Switch back if have render issues */
     filter: drop-shadow(var(--g_shadowBoxDefault));
@@ -670,7 +743,7 @@ a:hover > .saveplace_text {
 .postcomment {
     font-size: 24px;
     margin: 10px;
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
 }
 
 .comment img {
@@ -794,7 +867,6 @@ a.author:hover {
     display: flex;
 }
 #blogarchive {
-    /*border: 2px solid black;*/
     background-color: #EEEEEE;
     padding: 10px;
     text-align: left;
@@ -803,6 +875,7 @@ a.author:hover {
     display: flex;
     flex-direction: column;
     row-gap: 0.1em;
+    min-width: 150px;
     max-width: min(200px, 18vw);
 }
 #blogarchive li {
@@ -1065,6 +1138,7 @@ a.author:hover {
 }
 .overview-begin {
     display: inline-block;
+    font-family: var(--f_header_fx) !important;
 }
 .overview-begin-sidestyle {
     display: inline-block;
@@ -1073,6 +1147,7 @@ a.author:hover {
     text-align: left;
     line-height: 0.8em;
     font-size: 1.0em;
+    font-family: var(--f_header_fx) !important;
 }
 
 
@@ -1106,7 +1181,6 @@ a.author:hover {
 }
 .overview-authorbox h4 {
     margin: 0;
-    font-family: "LeagueGothic", sans-serif;
     font-size: 2.0em;
     font-weight: 500;
 }
@@ -1205,7 +1279,7 @@ a.author:hover {
     padding: 0 5px;
 }
 .gallery > div .title {
-    font-family: "LeagueGothic", sans-serif;
+    font-family: var(--f_header);
     font-size: max(1.0em, min(1.618em, 5vw));
     color: #555;
     padding: 0 5px;
@@ -1240,7 +1314,7 @@ a.author:hover {
 }
 
 .monospace {
-    font-family: "CourierPrime", monospace !important;
+    font-family: var(--f_monospace) !important;
 }
 
 /* comic image */
@@ -1284,6 +1358,7 @@ a.author:hover {
 
 [c:custom.sp__specials]
 /** "Specials" Styling: Custom styling added with vis changes */
+/* ============================= */
 #content-start
 {
     [c:custom.sp_content_black]
@@ -1487,6 +1562,7 @@ html, body
     }
 [/] /* Warning Spoiler */
 
+/* Shatter Effect */
 [c:custom.sp_content_builtin~shatter]
     #comicimage-backshatter {
         position: absolute;
