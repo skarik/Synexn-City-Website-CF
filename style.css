@@ -206,6 +206,12 @@ img {
     }
 }
 
+/* The typewriter cursor effect */
+@keyframes anim-blink {
+  from, to { opacity: 0.0; }
+  50% { opacity: 1.0; }
+}
+
 a:link, a:visited, .linkglow {
     color: #DDD;
     text-decoration: none;
@@ -265,6 +271,10 @@ a:hover, .linkglow:hover {
 
 .no-margins {
     margin: 0;
+}
+
+.blinking {
+    animation: anim-blink 1.0s step-end infinite;
 }
 
 h1, h2, h3, h4 {
@@ -555,10 +565,6 @@ html>body .wrap {
     font-size: 70%;
     color: #A9A9A9;
     margin-top:20px;
-}
-
-.blinking {
-    text-decoration: blink;
 }
 
 .seperator {
@@ -1584,15 +1590,44 @@ html, body
     #comicimagewrap {
         position: relative;
     }
-    
     #comicimage {
         position: relative;
         z-index: 1;
     }
-    
     html {
         width: 100%;
         overflow-x: hidden;
+    }
+[/]
+
+/* Console Effect */
+[c:custom.sp_content_builtin~fallofsin_console]
+    #comicimage-console {
+        z-index: 2;
+        position: absolute;
+        overflow: visible;
+        height: 0px;
+        width: 100%;
+    }
+    #comicimage-console > div {
+        position: relative;
+        line-height: 1.1em;
+        text-align: left;
+        letter-spacing: 0;
+        font-family: var(--f_monospace);
+        left: 1.413em;
+        top: 1.413em;
+        color: #FF00A7;
+        text-shadow: none;
+        font-weight: 200;
+    }
+
+    #comicimagewrap {
+        position: relative;
+    }
+    #comicimage {
+        position: relative;
+        z-index: 1;
     }
 [/]
 
