@@ -25,19 +25,6 @@
     font-family: RubikGlitch;
     src: url('/files/resources/rubikglitch-regular.ttf');
 }
-/*@font-face {
-    font-family: RubikMarkerHatch;
-    src: url('/files/resources/rubikmarkerhatch-regular.ttf');
-}*/ /* unused */
-/*@font-face {
-    font-family: CourierPrime;
-    src: url('/files/resources/CourierPrime-Regular.ttf');
-}
-@font-face {
-    font-family: CourierPrime;
-    src: url('/files/resources/CourierPrime-Bold.ttf');
-    font-weight: bold;
-}*/ /* unused */
 @font-face {
     font-family: "Fira Code";
     src: url('/files/resources/FiraCode-VF.ttf');
@@ -47,13 +34,13 @@
 /* ============================= */
 :root {
     --c_base: #AAA;
-    
-    /* Shadow box used for shadowing main elements. */
-    --g_shadowBoxDefault: 0 0 0.618rem #000B;
-    
+    --c_accent: #FFA824;
     /* Colors used for the navbox for comics */
     --g_comicnavBgColor: #FFFD;
     --g_comicnavBorderColor: #FFF;
+    
+    /* Shadow box used for shadowing main elements. */
+    --g_shadowBoxDefault: 0 0 0.618rem #000B;
 
     /* Default fonts */
     --f_monospace: "Fira Code", monospace;
@@ -62,6 +49,7 @@
 }
 
 .fallofsin {
+    --c_accent: #D83167;
     --g_comicnavBgColor: #0001;
     --g_comicnavBorderColor: #FFF9;
 
@@ -923,7 +911,7 @@ a.author:hover {
     color: white;
 }
 .blogtitle a:hover {
-    color: #FFA824;
+    color: var(--c_accent);
 }
 
 .blogarchive-time {
@@ -1406,7 +1394,7 @@ a.comicnavlink:link, a.comicnavlink:visited
 a.comicnavlink:hover
 {
     [c:custom.sp_content_black]
-    color: #FFA824;
+    color: var(--c_accent);
     [/]
 }
 html, body
@@ -1617,9 +1605,32 @@ html, body
         font-family: var(--f_monospace);
         left: 1.413em;
         top: 1.413em;
-        color: #FF00A7;
+        color: var(--c_accent);
         text-shadow: none;
         font-weight: 200;
+    }
+
+    #comicimage-console2 {
+        position: relative;
+        overflow: visible;
+        height: auto;
+        width: 100%;
+        margin-top: 2.0em;
+        margin-bottom: 2.0em;
+    }
+    #comicimage-console2 > div {
+        position: relative;
+        line-height: 1.1em;
+        text-align: left;
+        letter-spacing: 0;
+        margin-left: 1.413em;
+        font-family: var(--f_monospace);
+        color: var(--c_accent);
+        text-shadow: none;
+        font-weight: 200;
+    }
+    #comicimage-console2 > img, #comicimage-console2 > div > img {
+        max-width: 100%;
     }
 
     #comicimagewrap {
