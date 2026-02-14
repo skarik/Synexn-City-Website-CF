@@ -518,6 +518,8 @@ html>body .wrap {
 }
 
 /** Comic Page **/
+/* ============================= */
+
 .comicnav {
     background: var(--g_comicnavBgColor);
     border: 2px solid var(--g_comicnavBorderColor);
@@ -548,7 +550,8 @@ html>body .wrap {
 }
 
 .comic-reader > #comicimagewrap {
-    box-shadow: var(--g_shadowBoxDefault);
+    /*box-shadow: var(--g_shadowBoxDefault);*/ /* Switch back if have render issues */
+    filter: drop-shadow(var(--g_shadowBoxDefault));
 }
 #comicimagewrap {
     /* This gets rid of the newline that appears on the inside of the image block when any extra HTML is added. */
@@ -560,6 +563,7 @@ html>body .wrap {
     line-height: 0;
 }
 
+/* Extra Navbar Stylings */
 #saveplace {
     overflow-x: clip;
     overflow-y: visible;
@@ -574,7 +578,7 @@ html>body .wrap {
     width: 0px;
     overflow: visible;
     left: calc(-100px + -2.0em);
-    top: -4.3em;
+    top: -4.0em;
     font-family: RubikGlitch;
 }
 .saveplace_text > div {
@@ -587,7 +591,6 @@ a > .saveplace_image {
     filter ease-in-out 0.3s;
 }
 a:hover > .saveplace_image {
-    /*filter: sepia(1) saturate(40) hue-rotate(-50deg);*/
     filter:
     drop-shadow(+0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
     drop-shadow(-0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
@@ -610,7 +613,7 @@ a:hover > .saveplace_text {
     opacity: 1.0;
 }
 
-/*comicpage/blog*/
+/* comment stylings */
 
 .box:has(#authornotes) {
     /* Make author notes smaller so they're set aside from the rest of the comments */
@@ -719,6 +722,9 @@ a.author:hover {
     font-weight: normal;
     font-size: 0.7em;
 }
+
+/*comicpage/blog*/
+/* ============================= */
 
 .comic-reader-blog {
     text-align: center;
