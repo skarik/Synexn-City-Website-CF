@@ -46,6 +46,7 @@
     --f_monospace: "Fira Code", monospace;
     --f_header: "LeagueGothic", sans-serif;
     --f_header_fx: "LeagueGothic", sans-serif;
+    --f_normal: "OpenSans", sans-serif;
 }
 
 .fallofsin {
@@ -54,6 +55,17 @@
     --g_comicnavBorderColor: #FFF9;
 
     --f_header: "Fira Code", monospace;
+}
+
+.slithy {
+    --c_accent: #FDD64E;
+    --g_comicnavBgColor: #0001;
+    --g_comicnavBorderColor: #FDD64E;
+
+    --g_shadowBoxDefault: 0 0 0.0 transparent;
+
+    --f_header: "Fira Code", monospace;
+    --f_normal: "Fira Code", monospace;
 }
 
 /** Global Effects **/
@@ -135,7 +147,7 @@
 html, body {
     margin: 0px;
     padding: 0px;
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     font-size: 1.0em;
     color: #AAA;
     text-align: center;
@@ -161,6 +173,12 @@ img {
 }
 .sinoso body {
     background: #222;
+}
+.slithy body {
+    background:
+        linear-gradient(#000A, #000A),
+        repeat fixed center/50% url("/files/images/bg4.webp"),
+        black;
 }
 
 @property --color-bg-bottomline {
@@ -348,6 +366,9 @@ form {
     display: inline-block;
     color: white;
 }
+.slithy #titleupdate {
+    display: none;
+}
 
 /** Navigation **/
 
@@ -453,11 +474,11 @@ form {
 /* ============================= */
 
 #comicrating {
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     font-size: 12px;
 }
 #comicrating a {
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     font-size: 12px;
 }
 
@@ -572,9 +593,6 @@ html>body .wrap {
     box-shadow: var(--g_shadowBoxDefault);
     border-image: url("/files/resources/styles/border000a2.png") 230 / 15px;
 }
-.fallofsin .comicnav, .slithy .comicnav, .slithy2 .comicnav {
-    font-weight: 600;
-}
 .comicnavlink {
     margin-left: 0.618em;
     margin-right: 0.618em;
@@ -596,6 +614,9 @@ html>body .wrap {
     text-align: center;
 }
 
+.fallofsin .comicnav, .slithy .comicnav, .slithy2 .comicnav {
+    font-weight: 600;
+}
 .fallofsin {
     a.comicnavlink:link, a.comicnavlink:visited
     {
@@ -611,6 +632,17 @@ html>body .wrap {
         border: 1px solid black;
         background: #222;
         color: white;
+    }
+}
+.slithy, .slithy2  {
+    a.comicnavlink:link, a.comicnavlink:visited
+    {
+        color: #DDD;
+        text-transform: lowercase;
+    }
+    .comicnav {
+        border: none;
+        border-image: none;
     }
 }
 
@@ -629,6 +661,21 @@ html>body .wrap {
     display: block;
     line-height: 0;
 }
+
+[c:comicimageurl]
+    .slithy .comic-reader > #comicimagewrap:before {
+        content: "";
+        position: absolute;
+        background-image: url("[v:comicimageurl]");
+        filter: blur(1.0rem) saturate(1.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        z-index: -1;
+    }
+[/]
 
 /* Extra Navbar Stylings */
 #saveplace {
@@ -705,7 +752,7 @@ a:hover > .saveplace_text {
 }
 
 .box .commenttext a {
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     font-size: 1.0em;
 }
 .box .commenttext a:link, .box .commenttext a:visited {
@@ -931,7 +978,7 @@ a.author:hover {
 }
 .blogarchive-name a:link {
     font-size: 1.0em;
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
 }
 
 .blogpost-container {
@@ -995,7 +1042,7 @@ a.author:hover {
     background-position:center;
     background-size: initial;
     /*background-attachment:fixed;*/
-    background-image: url("https://synexncity.thecomicseries.com/files/images/bg3.png");
+    background-image: url("/files/images/bg3.png");
     background-blend-mode: screen;
 }
 .overview-box .box h3, .overview-box .box.blogarchive .overview-blogarchive-block {
@@ -1046,7 +1093,7 @@ a.author:hover {
 }
 .overview-content-warning a, .overview-content-warning a:link, .overview-content-warning a:visited {
     font-size: 1.0em;
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     border-bottom: #AAA 1.5px dotted;
 }
 .overview-archive > table {
@@ -1282,18 +1329,18 @@ a.author:hover {
     font-size: 0.8em;
     float: left;
     padding: 0 5px;
-    font-family: "OpenSans", sans-serif !important;
+    font-family: var(--f_normal) !important;
     color: #333;
 }
 
 /* compendium */
 
 .compendium {
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
 }
 
 .compendium .filelisting {
-    font-family: "OpenSans", sans-serif;
+    font-family: var(--f_normal);
     text-align: left;
     color: #777;
 }
