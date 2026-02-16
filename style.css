@@ -729,6 +729,19 @@ a:hover > .saveplace_text {
 
 /* comment stylings */
 
+.box:has(#authornotes), .box:has(.comments) {
+    border-image: url("/files/resources/styles/border000b2.png") 230 / 14px;
+}
+.slithy .box:has(#authornotes), .slithy .box:has(.comments) {
+    border-image: none;
+    background: #000C;
+    color: #FFF;
+
+    a:hover {
+        color: white;
+    }
+}
+
 .box:has(#authornotes) {
     /* Make author notes smaller so they're set aside from the rest of the comments */
     width: 70%;
@@ -737,10 +750,6 @@ a:hover > .saveplace_text {
     @media (max-width:800px) {
         min-width: 100vw;
     }
-    border-image: url("/files/resources/styles/border000b2.png") 230 / 14px;
-}
-.box:has(.comments) {
-    border-image: url("/files/resources/styles/border000b2.png") 230 / 14px;
 }
 
 #authornotes {
@@ -794,6 +803,9 @@ a:hover > .saveplace_text {
 .commentdata {
     background: linear-gradient(to right, #EEE, #EEE, #FFF0);
 }
+.slithy .commentdata {
+    background: linear-gradient(to right, #000, #000, #FFF0);
+}
 .avatar {
     float: left;
     font-size: 2.0em;
@@ -804,10 +816,7 @@ a:hover > .saveplace_text {
 .avatar img {
     max-width: 25vw;
 }
-.synexn .avatar img {
-    filter: grayscale(100%) brightness(120%) contrast(130%);
-}
-.shatter .avatar img {
+.synexn .avatar img, .shatter .avatar img, .fallofsin .avatar img {
     filter: grayscale(100%) brightness(120%) contrast(130%);
 }
 .commentcontrol {
@@ -829,6 +838,13 @@ a.author:link, a.author:visited {
 }
 a.author:hover {
     color: #444 !important;
+}
+.slithy a.author:link, .slithy a.author:visited {
+    color: #FFFA !important;
+    filter: drop-shadow(0 -1px 0 #0006) drop-shadow(0 1px 0 #0006);
+}
+.slithy a.author:hover {
+    color: #FFF !important;
 }
 .posttime {
     color: #999999;
