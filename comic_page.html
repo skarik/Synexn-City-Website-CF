@@ -86,8 +86,16 @@
 
         <!--comment:[comic dropdown:]-->
         <select onchange="jumpTo(this.options[selectedIndex].value);" class="comicnavlink">
-            [l:archive]
-                <option value="[v:l.comicurl]" [c:l.currentcomic]selected="selected"[/]>[v:l.comictitle]</option>
+            [l:dropdown]
+                [c:l.newgroup]
+                    <optgroup label="[v:l.grouplabel]">
+                [/]
+
+                <option value="[v:l.url]#content-start" [c:l.is_selected]selected="selected"[/] [c:l.is_disabled]disabled="disabled"[/]>[v:l.title]</option>
+
+                [c:l.endgroup]
+                    </optgroup>
+                [/]
             [/]
         </select> 
 
