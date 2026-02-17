@@ -47,12 +47,16 @@
     --g_shadowBoxDefault: 0 0 0.618rem #000B;
 
     /* Default fonts */
+    --f_normal: "FunnelDisplay", sans-serif;
+    --fi_normal_weight: 500;
     --f_monospace: "Fira Code", monospace;
     --f_header: "LeagueGothic", sans-serif;
     --f_header_fx: "LeagueGothic", sans-serif;
-    --f_normal: "FunnelDisplay", sans-serif;
     --fi_header_stretch: 100%;
     --fi_header_weight: 500;
+    --f_author: "RubikGlitch", sans-serif;
+    --fi_author_stretch: 100%;
+    --fi_author_weight: 500;
 }
 
 .fallofsin {
@@ -70,16 +74,20 @@
 
     --g_shadowBoxDefault: 0 0 0.0 transparent;
 
-    --f_header: "Fira Code", monospace;
     --f_normal: "Fira Code", monospace;
+    --f_header: "Fira Code", monospace;
 }
 
 .sinoso {
     --f_normal: "BricolageGrotesque", sans-serif;
+    --fi_normal_weight: 400;
     --f_header: "BricolageGrotesque", sans-serif;
     --f_header_fx: "BricolageGrotesque", sans-serif;
     --fi_header_stretch: 60%;
-    --fi_header_weight: 700;
+    --fi_header_weight: 650;
+    --f_author: "BricolageGrotesque", sans-serif;
+    --fi_author_stretch: 110%;
+    --fi_author_weight: 1000;
 }
 
 /** Global Effects **/
@@ -162,6 +170,7 @@ html, body {
     margin: 0px;
     padding: 0px;
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     font-size: 1.0em;
     color: #AAA;
     text-align: center;
@@ -185,15 +194,23 @@ img {
     background-attachment:fixed;
     background-color: black;
 }
-.sinoso body {
-    background: #222;
-}
 .slithy body {
     background:
         linear-gradient(#000A, #000A),
         repeat fixed center/50% url("/files/images/bg4.webp"),
         black;
 }
+.sinoso body {
+    /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
+    background:
+        /* Polaris/Pharus on top */
+        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/image/bg_sos/pharus.webp"),
+        /* At the top, have the horizontally repeating dither */
+        repeat-x scroll top left / 2.0em auto url("/files/image/bg_sos/top-dither.webp"),
+        /* Background comes last */
+        #2379A3;
+}
+
 
 @property --color-bg-bottomline {
     syntax: '<color>';
@@ -282,8 +299,9 @@ a:hover, .linkglow:hover {
 }
 
 .heading {
-    font-family: RubikGlitch;
-    font-weight: normal;
+    font-family: var(--f_author);
+    font-stretch: var(--fi_author_stretch);
+    font-weight: var(--fi_author_weight);
     font-variant: small-caps;
     margin-bottom: 0.4em;
 }
@@ -499,10 +517,12 @@ form {
 
 #comicrating {
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     font-size: 12px;
 }
 #comicrating a {
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     font-size: 12px;
 }
 
@@ -719,7 +739,9 @@ html>body .wrap {
     overflow: visible;
     left: calc(-100px + -2.0em);
     top: -4.0em;
-    font-family: RubikGlitch;
+    font-family: var(--f_author);
+    font-stretch: var(--fi_author_stretch);
+    font-weight: var(--fi_author_weight);
 }
 .saveplace_text > div {
     width: 200px;
@@ -788,6 +810,7 @@ a:hover > .saveplace_text {
 
 .box .commenttext a {
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     font-size: 1.0em;
 }
 .box .commenttext a:link, .box .commenttext a:visited {
@@ -859,7 +882,9 @@ a:hover > .saveplace_text {
 }
 .author {
     font-size: 22px;
-    font-family: RubikGlitch !important;
+    font-family: var(--f_author) !important;
+    font-stretch: var(--fi_author_stretch) !important;
+    font-weight: var(--fi_author_weight) !important;
 }
 a.author:link, a.author:visited {
     color: #000 !important;
@@ -1023,6 +1048,7 @@ a.author:hover {
 .blogarchive-name a:link {
     font-size: 1.0em;
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
 }
 
 .blogpost-container {
@@ -1138,6 +1164,7 @@ a.author:hover {
 .overview-content-warning a, .overview-content-warning a:link, .overview-content-warning a:visited {
     font-size: 1.0em;
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     border-bottom: #AAA 1.5px dotted;
 }
 .overview-archive > table {
@@ -1380,6 +1407,7 @@ a.author:hover {
     float: left;
     padding: 0 5px;
     font-family: var(--f_normal) !important;
+    font-weight: var(--fi_normal_weight) !important;
     color: #333;
 }
 
@@ -1387,10 +1415,12 @@ a.author:hover {
 
 .compendium {
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
 }
 
 .compendium .filelisting {
     font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
     text-align: left;
     color: #777;
 }
