@@ -180,6 +180,7 @@ img {
     border: 0px;
 }
 
+/* Background */
 .synexn body, .shatter body {
     background-repeat:repeat;
     background-position:center;
@@ -211,13 +212,12 @@ img {
         #2379A3;
 }
 
-
+/* Links */
 @property --color-bg-bottomline {
     syntax: '<color>';
     inherits: false;
     initial-value: rgba(255, 64, 0, 0.5);
 }
-
 @keyframes anim-link-light-shot {
     0% {
         background-position: 0% 100%;
@@ -242,13 +242,6 @@ img {
         --color-bg-bottomline: rgba(0, 212, 255, 0.25);
     }
 }
-
-/* The typewriter cursor effect */
-@keyframes anim-blink {
-  from, to { opacity: 0.0; }
-  50% { opacity: 1.0; }
-}
-
 a:link, a:visited, .linkglow {
     color: #DDD;
     text-decoration: none;
@@ -298,6 +291,21 @@ a:hover, .linkglow:hover {
     +2px 0px 0px rgba(255, 64, 0, 0.6);
 }
 
+/* General */
+.no-margins {
+    margin: 0;
+}
+
+/* The typewriter cursor effect */
+@keyframes anim-blink {
+  from, to { opacity: 0.0; }
+  50% { opacity: 1.0; }
+}
+.blinking {
+    animation: anim-blink 1.0s step-end infinite;
+}
+
+/* Headings */
 .heading {
     font-family: var(--f_author);
     font-stretch: var(--fi_author_stretch);
@@ -309,23 +317,12 @@ a:hover, .linkglow:hover {
     margin-top: 0;
 }
 
-.no-margins {
-    margin: 0;
-}
-
-.blinking {
-    animation: anim-blink 1.0s step-end infinite;
-}
-
 h1, h2, h3, h4 {
     margin: 2px;
     font-family: var(--f_header);
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
 }
-/*.fallofsin h1, .fallofsin h2, .fallofsin h3, .fallofsin h4 {
-    font-family: var(--f_monospace);
-}*/
 
 input {
     border:3px solid black;
