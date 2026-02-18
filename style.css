@@ -201,16 +201,37 @@ img {
         repeat fixed center/50% url("/files/images/bg4.webp"),
         black;
 }
+
+@property --i_bg_hills_x {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+}
+@keyframes anim-sinoso-bg-hill-scroll {
+    0% {
+        --i_bg_hills_x: 0px;
+    }
+    100% {
+        --i_bg_hills_x: 1000px
+    }
+}
 .sinoso body {
+    --i_bg_hills_x: 0px;
+
     /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
     background:
         /* Polaris/Pharus on top */
         no-repeat scroll 85vw 2vh / 5.0em auto url("/files/image/bg_sos/pharus.webp"),
         /* At the top, have the horizontally repeating dither */
         repeat-x scroll top left / 2.0em auto url("/files/image/bg_sos/top-dither.webp"),
+        /* Foreground Hills */
+        repeat-x fixed var(--i_bg_hills_x) bottom / 1000px auto url("/files/image/bg_sos/front-hills.gif"),
         /* Background comes last */
         #2379A3;
+    animation:
+        30s linear anim-sinoso-bg-hill-scroll infinite;
 }
+
 
 /* Links */
 @property --color-bg-bottomline {
@@ -498,9 +519,9 @@ form {
 #navigation a, #navigation label {
     --color-bg-bottomline: rgba(255, 255, 255, 0.0);
     background-image: conic-gradient(
-    from -90deg at left 0px bottom 2px,
-    #0000 50%,
-    var(--color-bg-bottomline) 0);
+        from -90deg at left 0px bottom 2px,
+        #0000 50%,
+        var(--color-bg-bottomline) 0);
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: 0% 100%;
