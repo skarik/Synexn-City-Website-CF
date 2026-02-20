@@ -403,6 +403,15 @@ img {
     0% { background-position-x: var(--i_egpos_4e); }
     100% { background-position-x: var(--i_egpos_2); }
 }
+@keyframes anim-egensblock-04 { /* 25 step */
+    0% { background-position-x: var(--i_egpos_0); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-40 { /* 25 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_0); }
+}
+
 @keyframes anim-egensshadow-01 {
     0% {
         box-shadow: 
@@ -489,31 +498,20 @@ img {
             font-stretch: var(--fi_header_stretch);
             font-weight: var(--fi_header_weight);
 
-            /*background-image: url("/files/resources/egens_block_whiteline.png");
+            background-image: url("/files/resources/egens_block_blackblock.png");
             background-position-x: var(--i_egpos_0);
-            background-size: calc(100% * 32) 100%;*/
+            background-size: calc(100% * 32) 100%;
+            animation:
+                0.5s steps(30) anim-egensblock-50 both;
 
-            /*border: 1px solid white;*/
-            /*box-shadow: 
-                0 1px 0px #FFF0,
-                0 -1px 0px #FFF0,
-                1px 0 0px #FFF0,
-                -1px 0 0px #FFF0;
-            border-radius: 0.2em;
-            backdrop-filter: blur(0px);*/
-
-            /*animation:
-                0.5s steps(30) anim-egensblock-50 both;*/
-            /*transition:
-                backdrop-filter 0.5s ease-in-out,
-                box-shadow 0.5s ease-in-out;*/
+            z-index: 3;
         }
 
         &::before, &::after {
             content: " ";
             display: inline-block;
             position: absolute;
-            background-image: url("/files/resources/egens_block_whiteline.png");
+            background-image: url("/files/resources/egens_block_blackblock.png");
             background-position-x: var(--i_egpos_2);
             background-size: auto 1.0em;
             width: 1.0em;
@@ -523,13 +521,14 @@ img {
             transform: var(--i_eg_transform) rotate(-90deg);
             left: 40%;
             top: 0%;
+            z-index: -1;
 
-            animation:
-                0.5s steps(13) anim-egensblock-42 both;
+            zoom: 0.0001;
             transition:
-                transform 0.5s ease-in-out,
-                     left 0.5s ease-in-out,
-                      top 0.5s ease-in;
+                transform 0.3s ease-in-out,
+                     left 0.3s ease-in-out,
+                      top 0.3s ease-in,
+                     zoom 0.1s ease-out;
         }
         &::after {
             transform: var(--i_eg_transform) rotate(90deg);
@@ -537,35 +536,34 @@ img {
             top: 100%;
         }
 
-        &:hover {
+        &:hover, &.nav-selection {
             color: #FFF;
 
-            /*animation:
-                0.5s steps(30) anim-egensblock-05 both;*/
-            /*animation:
-                0.5s linear anim-egensshadow-01 both;
-            backdrop-filter: blur(3px);*/
+            animation:
+                0.5s steps(30) anim-egensblock-05 both;
 
             &::before, &::after {
                 background-position-x: var(--i_egpos_4e);
+                zoom: 1.0;
                 animation:
-                    0.5s steps(13) anim-egensblock-24 both;
+                    0.5s steps(25) anim-egensblock-04 both;
             }
             &::before {
                 transform: var(--i_eg_transform) rotate(-90deg);
-                left: 0%;
-                top: 10%;
+                left: 8%;
+                top: 12%;
             }
             &::after {
                 transform: var(--i_eg_transform) rotate(90deg);
-                left: 100%;
-                top: 90%;
+                left: 89%;
+                top: 83%;
             }
         }
 
         /* Navigation gets a different style */
         #navigation & {
             padding: 0 0.14em;
+            margin: 0 0.1em;
             background: none;
             
             box-shadow: 
@@ -578,27 +576,43 @@ img {
 
             transition:
                 backdrop-filter 0.5s ease-in-out,
-                box-shadow 0.5s ease-in-out;
+                box-shadow 0.5s ease-in-out,
+                background-color 0.2s ease-in-out;
             animation: 0.25s linear anim-egensshadow-10 both;
 
+            &::before, &::after {
+                background-image: url("/files/resources/egens_block_whiteline.png");
+                zoom: 1.0;
+                animation:
+                    0.5s steps(13) anim-egensblock-42 both;
+            }
             &::before {
                 top: -25%;
             }
             &::after {
                 top: 125%;
             }
-            &:hover {
+            &:hover, &.nav-selection {
                 backdrop-filter: blur(3px);
-
                 animation:
                     0.25s linear anim-egensshadow-01 both;
 
+                &::before, &::after {
+                    animation:
+                        0.5s steps(13) anim-egensblock-24 both;
+                }
                 &::before {
+                    left: 0%;
                     top: 0%;
                 }
                 &::after {
+                    left: 100%;
                     top: 100%;
                 }
+            }
+
+            &:hover {
+                background-color: #FFF2;
             }
         }
 
@@ -738,6 +752,7 @@ form {
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
     font-size: 2.0em;
+    line-height: 1.5em;
 }
 #navigation ul {
     padding: 0px;

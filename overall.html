@@ -113,14 +113,14 @@
     
     <div id="navigation">
         <ul>
-            <li><span><a href="/comics/">comics</a></span></li>
+            <li><span><a href="/comics/" [c:iscomicpage]class="nav-selection"[/]>comics</a></span></li>
             [c:hasblogs]
-                <li><span><a href="/blog/">blog</a></span></li>
+                <li><span><a href="/blog/" [c:pagetitle~blog]class="nav-selection"[/]>blog</a></span></li>
             [/]
-            <li><span><a href="/archive/">chapters</a></span></li>
-            <li><span><a href="/overview/">readme</a></span></li>
+            <li><span><a href="/archive/" [c:pagetitle~archive]class="nav-selection"[/]>chapters</a></span></li>
+            <li><span><a href="/overview/" [c:pagetitle~overview]class="nav-selection"[/]>readme</a></span></li>
             [l:extrapages]
-                <li><span style="text-transform: lowercase;"><a href="[v:l.link]">[v:l.title]</a></span></li>
+                <li><span><a href="[v:l.link]">[v:l.title]</a></span></li>
             [/]
             <!-- <li><span><a href="">media</a></span></li> -->
             <li>
@@ -129,9 +129,9 @@
                     <label class="linkglow" for="nav-toggle-media">media</label>
                 </span>
             </li>
-            <li id="subitem"><span><a href="/gallery/">gallery</a></span></li>
-            <li id="subitem"><span><a href="/compendium/">compendium</a></span></li>
-            <!--<li id="subitem"><span><a href="/characters/">characters</a></span></li>-->
+            <li id="subitem"><span><a href="/gallery/" [c:pagetitle~gallery]class="nav-selection"[/]>gallery</a></span></li>
+            <li id="subitem"><span><a href="/compendium/" [c:pagetitle~compendium]class="nav-selection"[/]>compendium</a></span></li>
+            <!--<li id="subitem"><span><a href="/characters/" [c:pagetitle~characters]class="nav-selection"[/]>characters</a></span></li>-->
             [c:!hidefromhost]
                 <li><span><a href="[v:addsubscriptionlink]" target="window2">subscribe</a></span></li>
             [/]
