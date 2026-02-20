@@ -88,6 +88,11 @@
     --f_author: "BricolageGrotesque", sans-serif;
     --fi_author_stretch: 110%;
     --fi_author_weight: 1000;
+
+    --c_accent: #EB9B0E;
+    /* Icaro Alt: */
+    /* --c_accent: #D83167; */
+    --g_comicnavBgColor: #FFF9;
 }
 
 /** Global Effects **/
@@ -498,7 +503,7 @@ img {
             font-stretch: var(--fi_header_stretch);
             font-weight: var(--fi_header_weight);
 
-            background-image: url("/files/resources/egens_block_blackblock.png");
+            background-image: url("/files/resources/egens_block_goldblock.png");
             background-position-x: var(--i_egpos_0);
             background-size: calc(100% * 32) 100%;
             animation:
@@ -511,7 +516,7 @@ img {
             content: " ";
             display: inline-block;
             position: absolute;
-            background-image: url("/files/resources/egens_block_blackblock.png");
+            background-image: url("/files/resources/egens_block_goldblock.png");
             background-position-x: var(--i_egpos_2);
             background-size: auto 1.0em;
             width: 1.0em;
@@ -582,7 +587,7 @@ img {
 
             &::before, &::after {
                 background-image: url("/files/resources/egens_block_whiteline.png");
-                zoom: 1.0;
+                /*zoom: 1.0;*/ /* Randomization doesnt work and I can't be assed to get it to work in CSS - so no floating bobbles. */
                 animation:
                     0.5s steps(13) anim-egensblock-42 both;
             }
@@ -622,7 +627,12 @@ img {
             font-size: 1.618em;
 
             &:hover {
-                color: #333;
+                color: #FFF;
+                text-shadow:
+                    0  1px 0 var(--c_accent),
+                    0 -1px 0 var(--c_accent),
+                     1px 0 0 var(--c_accent),
+                    -1px 0 0 var(--c_accent);
             }
         }
     }
@@ -1052,6 +1062,11 @@ html>body .wrap {
         border-image: none;
     }
 }
+.sinoso {
+    .comicnav {
+        backdrop-filter: blur(5px);
+    }
+}
 
 
 /* Comic Reader */
@@ -1382,13 +1397,23 @@ a.author:hover {
     
     background-color: black;
     transform: rotate(-2deg);
-}
-.blogtitle a:link, .blogtitle a:visited {
-    font-family: "PermanentMarker", cursive;
-    color: white;
-}
-.blogtitle a:hover {
-    color: var(--c_accent);
+
+    & a {
+        font-family: "PermanentMarker", cursive !important;
+        display: inline-block;
+
+        &, &:link, &:visited {
+            color: white !important;
+        }
+        &:hover {
+            .synexn &, .slithy &, .slithy2 &, .fallofsin & {
+                color: var(--c_accent) !important;
+            }
+            .sinoso & {
+                color: white !important;
+            }
+        }
+    }
 }
 
 .blogarchive-time {
@@ -1582,23 +1607,23 @@ a.author:hover {
 .overview-bsides > div > a:link > img {
     --c_accent_l: rgb(255, 70, 0);
     filter:
-    drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
-    drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
-    ;
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        ;
     transition:
-    color 0.25s ease-in-out,
-    filter 0.25s ease-in-out
-    ;
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
 }
 .overview-bsides > div > a:hover > img {
     filter:
-    drop-shadow(var(--c_accent_l) 0 0 0.03em)
-    drop-shadow(var(--c_accent_l) 0 0 0.14em)
-    ;
+        drop-shadow(var(--c_accent_l) 0 0 0.03em)
+        drop-shadow(var(--c_accent_l) 0 0 0.14em)
+        ;
     transition:
-    color 0.25s ease-in-out,
-    filter 0.25s ease-in-out
-    ;
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
 }
 
 .overview-miniinfo strong {
@@ -1691,6 +1716,10 @@ a.author:hover {
 .overview-support-item > a {
     filter: drop-shadow(0 0 1px #0007);
     transition: filter 0.25s ease-in-out;
+    background: none !important;
+}
+.overview-support-item > a::before, .overview-support-item > a::after {
+    display: none !important;
 }
 .overview-support-item > a:hover {
     filter: drop-shadow(1px 3px 4px #0005);
