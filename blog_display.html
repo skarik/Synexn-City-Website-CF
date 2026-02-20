@@ -51,11 +51,11 @@
                 [/]
                 <div class="seperator"></div> 
                 [l:comments]   
-                    <div class="comment [c:l.is_reply]reply[/]">
+                    <div class="comment [c:l.is_reply]reply[/] reply-depth[v:l.depth] [c:l.depth>5]reply-depth-above5[/]">
                         <div class="commentdata">
                             [c:l.avatar]
                                 <div class="avatar">
-                                    <img src="[v:l.avatar]" alt="[v:l.authorname]" /><br />
+                                    <img src="[v:l.pfp]" width="[v:l.pfp_width]" height="[v:l.pfp_height]" alt="[v:l.authorname]" /><br />
                                 </div>
                             [/]
                             <span class="posttime">[v:l.posttime]</span>

@@ -1372,8 +1372,31 @@ a.author:hover {
     margin: 0px;
     padding: 10px;
 }
-.reply {
-    margin-left: 40px;
+.reply::before {
+    float: left;
+    content: " ";
+    width: 1.0em;
+    height: 2.0em;
+    border: 1px solid gray;
+    border-top: none;
+    border-right: none;
+    margin-left: 0.5em;
+}
+.reply-depth1::before {
+    margin-left: 0.5em;
+}
+.reply-depth2::before {
+    margin-left: 1.5em;
+}
+.reply-depth3::before {
+    margin-left: 2.5em;
+}
+.reply-depth4::before {
+    margin-left: 3.5em;
+}
+.reply-depth5::before,
+.reply-depth-above5::before {
+    margin-left: 4.5em;
 }
 
 .blogcontent {
