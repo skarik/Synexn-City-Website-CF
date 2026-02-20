@@ -373,11 +373,15 @@ img {
     --i_egpos_4: calc(calc(100% / 31) * 24); /* l piece */
     --i_egpos_4e: calc(calc(100% / 31) * 25);
     --i_egpos_5e: calc(calc(100% / 31) * 30); /* full block */
-    --i_eg_transform: translate(-64px, -64px) scale(0.25);
+    --i_eg_transform: translate(-0.5em, -0.5em) scale(1.0);
 }
-@keyframes anim-egensblock-full { /* 30 step */
+@keyframes anim-egensblock-05 { /* 30 step */
     0% { background-position-x: var(--i_egpos_0); }
     100% { background-position-x: var(--i_egpos_5e); }
+}
+@keyframes anim-egensblock-50 { /* 30 step */
+    0% { background-position-x: var(--i_egpos_5e); }
+    100% { background-position-x: var(--i_egpos_0); }
 }
 @keyframes anim-egensblock-23 { /* 7 step */
     0% { background-position-x: var(--i_egpos_2); }
@@ -399,6 +403,81 @@ img {
     0% { background-position-x: var(--i_egpos_4e); }
     100% { background-position-x: var(--i_egpos_2); }
 }
+@keyframes anim-egensshadow-01 {
+    0% {
+        box-shadow: 
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    25% {
+        box-shadow: 
+            0 1px 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    50% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    75% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            0 0 0px white;
+    }
+    100% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            -1px 0 0px white;
+    }
+}
+@keyframes anim-egensshadow-10 {
+    0% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            -1px 0 0px white;
+    }
+    25% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            0 0 0px white;
+    }
+    50% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    75% {
+        box-shadow: 
+            0 1px 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    100% {
+        box-shadow: 
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+}
+
 .sinoso {
     a, label, .linkglow {
         position: relative;
@@ -409,6 +488,25 @@ img {
             font-family: var(--f_header);
             font-stretch: var(--fi_header_stretch);
             font-weight: var(--fi_header_weight);
+
+            /*background-image: url("/files/resources/egens_block_whiteline.png");
+            background-position-x: var(--i_egpos_0);
+            background-size: calc(100% * 32) 100%;*/
+
+            /*border: 1px solid white;*/
+            /*box-shadow: 
+                0 1px 0px #FFF0,
+                0 -1px 0px #FFF0,
+                1px 0 0px #FFF0,
+                -1px 0 0px #FFF0;
+            border-radius: 0.2em;
+            backdrop-filter: blur(0px);*/
+
+            /*animation:
+                0.5s steps(30) anim-egensblock-50 both;*/
+            /*transition:
+                backdrop-filter 0.5s ease-in-out,
+                box-shadow 0.5s ease-in-out;*/
         }
 
         &::before, &::after {
@@ -417,25 +515,36 @@ img {
             position: absolute;
             background-image: url("/files/resources/egens_block_whiteline.png");
             background-position-x: var(--i_egpos_2);
-            width: 128px;
-            height: 128px;
-            left: 0%;
-            transform: translate(10%, -8px) var(--i_eg_transform) rotate(-90deg);
+            background-size: auto 1.0em;
+            width: 1.0em;
+            height: 1.0em;
             pointer-events: none;
+
+            transform: var(--i_eg_transform) rotate(-90deg);
+            left: 40%;
+            top: 0%;
 
             animation:
                 0.5s steps(13) anim-egensblock-42 both;
             transition:
-                transform 0.5s ease-in-out;
+                transform 0.5s ease-in-out,
+                     left 0.5s ease-in-out,
+                      top 0.5s ease-in;
         }
         &::after {
-            left: 100%;
+            transform: var(--i_eg_transform) rotate(90deg);
+            left: 80%;
             top: 100%;
-            transform: translate(-10%, 8px) var(--i_eg_transform) rotate(90deg);
         }
 
         &:hover {
             color: #FFF;
+
+            /*animation:
+                0.5s steps(30) anim-egensblock-05 both;*/
+            /*animation:
+                0.5s linear anim-egensshadow-01 both;
+            backdrop-filter: blur(3px);*/
 
             &::before, &::after {
                 background-position-x: var(--i_egpos_4e);
@@ -443,22 +552,64 @@ img {
                     0.5s steps(13) anim-egensblock-24 both;
             }
             &::before {
-                transform: translate(0, 0) var(--i_eg_transform) rotate(-90deg);
+                transform: var(--i_eg_transform) rotate(-90deg);
+                left: 0%;
+                top: 10%;
             }
             &::after {
-                transform: translate(0, 0) var(--i_eg_transform) rotate(90deg);
+                transform: var(--i_eg_transform) rotate(90deg);
+                left: 100%;
+                top: 90%;
             }
         }
-    }
 
+        /* Navigation gets a different style */
+        #navigation & {
+            padding: 0 0.14em;
+            background: none;
+            
+            box-shadow: 
+                0 1px 0px #FFF0,
+                0 -1px 0px #FFF0,
+                1px 0 0px #FFF0,
+                -1px 0 0px #FFF0;
+            border-radius: 0.14em;
+            backdrop-filter: blur(0px);
 
-    .box {
-        a:link, a:visited, label, .linkglow {
+            transition:
+                backdrop-filter 0.5s ease-in-out,
+                box-shadow 0.5s ease-in-out;
+            animation: 0.25s linear anim-egensshadow-10 both;
+
+            &::before {
+                top: -25%;
+            }
+            &::after {
+                top: 125%;
+            }
+            &:hover {
+                backdrop-filter: blur(3px);
+
+                animation:
+                    0.25s linear anim-egensshadow-01 both;
+
+                &::before {
+                    top: 0%;
+                }
+                &::after {
+                    top: 100%;
+                }
+            }
+        }
+
+        /* Box get a different color */
+        .box & {
             color: #636363;
             font-size: 1.618em;
-        }
-        a:hover, label:hover, .linkglow:hover {
-            color: #333;
+
+            &:hover {
+                color: #333;
+            }
         }
     }
 }
