@@ -363,48 +363,94 @@ img {
     }
 }
 
-@keyframes anim-egensblock-full {
-    0% {
-        background-position-x: 0%;
-    }
-    100% {
-        background-position-x: 100%;
-    }
+.sinoso {
+    --i_egpos_0: 0%;
+    --i_egpos_1: calc(calc(100% / 31) * 6); /* line */
+    --i_egpos_2: calc(calc(100% / 31) * 12); /* dot */
+    --i_egpos_2e: calc(calc(100% / 31) * 13); 
+    --i_egpos_3: calc(calc(100% / 31) * 18); /* i piece */
+    --i_egpos_3e: calc(calc(100% / 31) * 19);
+    --i_egpos_4: calc(calc(100% / 31) * 24); /* l piece */
+    --i_egpos_4e: calc(calc(100% / 31) * 25);
+    --i_egpos_5e: calc(calc(100% / 31) * 30); /* full block */
+    --i_eg_transform: translate(-64px, -64px) scale(0.25);
+}
+@keyframes anim-egensblock-full { /* 30 step */
+    0% { background-position-x: var(--i_egpos_0); }
+    100% { background-position-x: var(--i_egpos_5e); }
+}
+@keyframes anim-egensblock-23 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_2); }
+    100% { background-position-x: var(--i_egpos_3e); }
+}
+@keyframes anim-egensblock-34 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_3); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-43 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_3); }
+}
+@keyframes anim-egensblock-24 { /* 13 step */
+    0% { background-position-x: var(--i_egpos_2); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-42 { /* 13 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_2); }
 }
 .sinoso {
-    /* a:link, a:visited, label, .linkglow { */
-    a::before, a::after, label::before, label::after, .linkglow::before, .linkglow::after {
-        content: " ";
-        display: inline-block;
-        position: absolute;
-        background-image: url("/files/resources/egens_block_whiteline.png");
-        background-position-x: calc(128px * 6);
-        width: 128px;
-        height: 128px;
-        left: 0%;
-        transform: translate(-64px, -64px) scale(0.25);
-        pointer-events: none;
-
-        animation:
-            2s steps(31) anim-egensblock-full infinite;
-    }
-    a::after, label::after, .linkglow::after {
-        left: 100%;
-    }
     a, label, .linkglow {
         position: relative;
+        &:link, &:visited, & {
+            color: #DDD;
+            text-decoration: none;
+            text_shadow: none;
+            font-family: var(--f_header);
+            font-stretch: var(--fi_header_stretch);
+            font-weight: var(--fi_header_weight);
+        }
+
+        &::before, &::after {
+            content: " ";
+            display: inline-block;
+            position: absolute;
+            background-image: url("/files/resources/egens_block_whiteline.png");
+            background-position-x: var(--i_egpos_2);
+            width: 128px;
+            height: 128px;
+            left: 0%;
+            transform: translate(10%, -8px) var(--i_eg_transform) rotate(-90deg);
+            pointer-events: none;
+
+            animation:
+                0.5s steps(13) anim-egensblock-42 both;
+            transition:
+                transform 0.5s ease-in-out;
+        }
+        &::after {
+            left: 100%;
+            top: 100%;
+            transform: translate(-10%, 8px) var(--i_eg_transform) rotate(90deg);
+        }
+
+        &:hover {
+            color: #FFF;
+
+            &::before, &::after {
+                background-position-x: var(--i_egpos_4e);
+                animation:
+                    0.5s steps(13) anim-egensblock-24 both;
+            }
+            &::before {
+                transform: translate(0, 0) var(--i_eg_transform) rotate(-90deg);
+            }
+            &::after {
+                transform: translate(0, 0) var(--i_eg_transform) rotate(90deg);
+            }
+        }
     }
-    a:link, a:visited, label, .linkglow {
-        color: #DDD;
-        text-decoration: none;
-        text_shadow: none;
-        font-family: var(--f_header);
-        font-stretch: var(--fi_header_stretch);
-        font-weight: var(--fi_header_weight);
-    }
-    a:hover, label:hover, .linkglow:hover {
-        color: #FFF;
-    }
+
 
     .box {
         a:link, a:visited, label, .linkglow {
