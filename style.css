@@ -318,7 +318,7 @@ img {
     }
 }
 
-.synexn, .fallofsin, .slithy, .slithy2 {
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
     a:link, a:visited, label, .linkglow {
         color: #DDD;
         text-decoration: none;
@@ -783,7 +783,7 @@ form {
 }
 
 
-.synexn, .fallofsin, .slithy, .slithy2 {
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
     #navigation li span:before {
         content: ">";
         display: inline-block;
@@ -867,7 +867,7 @@ form {
 }
 
 /* Special little effect */
-.synexn, .fallofsin, .slithy, .slithy2 {
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
     #navigation a, #navigation label {
         --color-bg-bottomline: rgba(255, 255, 255, 0.0);
         background-image: conic-gradient(
@@ -1098,6 +1098,10 @@ html>body .wrap {
         z-index: -1;
     }
 [/]
+
+.shatter #comicimage {
+    background: #444;
+}
 
 /* Extra Navbar Stylings */
 #saveplace {
@@ -1429,7 +1433,7 @@ a.author:hover {
             color: white !important;
         }
         &:hover {
-            .synexn &, .slithy &, .slithy2 &, .fallofsin & {
+            .synexn &, .shatter &, .slithy &, .slithy2 &, .fallofsin & {
                 color: var(--c_accent) !important;
             }
             .sinoso & {
