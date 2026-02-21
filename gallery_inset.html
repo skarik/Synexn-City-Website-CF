@@ -18,18 +18,60 @@
 
     <script defer>
         "use strict";
+
+        let image_count = 0;
+        let image_listing = [];
+        let image_loadcount = 0;
         HTMLElement.prototype.addGalleryImage = function(image_url, author="", type="Art", title="", description="", date="")
         {
+            let image_id = `galleryimage_${image_count}`;
+
             // Profiling shows it's faster to just append innerHTML instead of fuck with DOM so we'll just do that.
             this.innerHTML += `
                 <div>
                     <a href=${image_url} target="_blank">
                         <img loading="lazy" src="${image_url}">
+                        <!--<img src="/files/resources/placeholder-loading.webp" id="${image_id}">-->
                     </a>
                     <div class="title">${title}</div>
                     <div class="author">by ${author}</div>
                     <div class="date">${date}</div>
                 </div>`;
+
+            // Create image and load it after the fact
+            image_listing[image_count] = image_url;
+            /*let img = new Image();
+            img.onload = function() {
+                let image_id_load = image_id;
+                var image_element = document.getElementById("${image_id_load}");
+                image_element.src = img.src;
+            }
+            img.onerror = function() {
+                console.error('Dynamic image failed to load');
+            };
+            img.src = image_url;*/
+            
+            // We have another image
+            ++image_count;
+        }
+        HTMLElement.prototype.loadGalleryImages = function()
+        {
+            /*for (image_loadcount = 0; image_loadcount < image_count; ++image_loadcount)
+            {
+                let image_id = `galleryimage_${image_loadcount}`;
+
+                // Create image and load it after the fact
+                let img = new Image();
+                img.onload = function() {
+                    let image_id_load = image_id;
+                    var image_element = document.getElementById("${image_id_load}");
+                    image_element.src = img.src;
+                }
+                img.onerror = function() {
+                    console.error('Dynamic image failed to load');
+                };
+                img.src = image_listing[image_loadcount];
+            }*/
         }
 
         let gallery_1 = document.getElementById("gallery_1");
@@ -124,6 +166,7 @@
         // spoilers for ch3 still
         //gallery_1.addGalleryImage("https://synexn.city/files/images/junk/212_zach_gen.webp",
         //    "us (skarik)", undefined, "Fashion: General Zach", undefined, "12 January 2025");
+        gallery_1.loadGalleryImages();
             
         let gallery_2 = document.getElementById("gallery_2");
         gallery_2.addGalleryImage("https://img.comicfury.com/comics/331/33395a1712884310b30430f2159727.jpg",
@@ -132,6 +175,7 @@
             "us (skarik)", undefined, "Werewolf Appreciation Day", undefined, "6 Feb 2025");
         gallery_2.addGalleryImage("https://synexn.city/files/extras/book1/pages/i3.webp",
             "us (skarik)", undefined, "Bird Nosies", undefined, "6 April 2025");
+        gallery_2.loadGalleryImages();
     </script>
 
 <!--</div>-->

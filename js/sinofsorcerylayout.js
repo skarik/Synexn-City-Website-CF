@@ -3,18 +3,25 @@
 
 var sinofsorcery = {
     chapterid: 0,
-    chapterstyle: "synexn"
+    chapterstyle: "synexn",
+    faviconfx: {
+        ctx: undefined,
+        canvas: undefined,
+        favicon: undefined,
+        m_iconBg: new Image(),
+        m_iconGear: new Image()
+    }
 };
 
 /*** @brief Replaces all the CF URLs with the synexn.city URLs. */
-window.onload = function()
-{
-    var anchors = document.getElementsByTagName("a");
-    for (var i = 0; i < anchors.length; ++i)
+window.addEventListener('load', () =>
     {
-        anchors[i].href = anchors[i].href.replace("synexncity.thecomicseries.com", "synexn.city");
-    }
-}
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; ++i)
+        {
+            anchors[i].href = anchors[i].href.replace("synexncity.thecomicseries.com", "synexn.city");
+        }
+    });
 
 /*** 
  * @brief Gets a random gutter image for the given element and side
@@ -75,6 +82,9 @@ sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
         localStorage.setItem("chapterstyle", sinofsorcery.chapterstyle);
     };
     window.addEventListener('load', saveMainStyle);
+
+    // Run common
+    this.faviconfx.init();
 }
 
 /*** @brief When starting up all other pages, loads the chapter style from cookies or adds listener for it **/
@@ -88,4 +98,44 @@ sinofsorcery.onStartOtherPage = function()
         document.documentElement.className = sinofsorcery.chapterstyle;
     };
     updateMainStyle();
+
+    // Run common
+    this.faviconfx.init();
+}
+
+/*** @brief Sets up the callback & elements for the animated favicon */
+sinofsorcery.faviconfx.init = function()
+{
+    // set up images
+    this.m_iconBg.src = "/files/resources/favicon2-bg.png";
+    this.m_iconGear.src = "/files/resources/favicon2-gear.png";
+
+    window.addEventListener('load', ()=> {
+        this.canvas = document.querySelector('canvas'),
+        this.ctx = this.canvas.getContext('2d');
+        if (!!this.ctx) {
+            this.favicon = document.querySelector('link[rel*="icon"]');
+            setInterval(this.drawFavicon.bind(this), 100); 
+        }
+    });
+}
+/*** @brief Redraws the favicon, converts it to data string, then applies it to favicon. */
+sinofsorcery.faviconfx.drawFavicon = function()
+{
+    var l_date = new Date();
+    var l_timeNowMilli = l_date.getTime(); 
+    var l_timeNow = (l_timeNowMilli / 1000.0) % 1000.0;
+
+    var ctx = this.ctx;
+    ctx.clearRect(0, 0, 32, 32);
+
+    ctx.save();
+    ctx.drawImage(this.m_iconBg, 0, 0);
+    ctx.translate(16, 16);
+    ctx.rotate(-l_timeNow * (Math.PI / 24.0));
+    ctx.translate(-16, -16);
+    ctx.drawImage(this.m_iconGear, 0, 0);
+    ctx.restore();
+
+    this.favicon.href = this.canvas.toDataURL('image/png');
 }
