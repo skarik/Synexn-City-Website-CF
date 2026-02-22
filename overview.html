@@ -93,13 +93,14 @@
         <h3>Chapters</h3>
         <table id="archive">
             [l:chapteredarchive]
-            
-                [c:l.newchapter]
-                    <tr class="chaptertitle"><td colspan="3"><a href="[v:l.comicurl]"><h3>▷[v:l.chaptername]</h3></a>
-                    [c:l.chapterdescription]
-                        [v:l.chapterdescription]
+                [c:!l.is_first]
+                    [c:l.newchapter]
+                        <tr class="chaptertitle"><td colspan="3"><a href="[v:l.comicurl]"><h3>▷[v:l.chaptername]</h3></a>
+                        [c:l.chapterdescription]
+                            <div>[v:l.chapterdescription]</div>
+                        [/]
+                        </td></tr>
                     [/]
-                    </td></tr>
                 [/]
             [/]
         </table>
