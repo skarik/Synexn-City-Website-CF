@@ -977,6 +977,7 @@ html>body .wrap {
 #contentcontainer {
     flex-grow: 0;
     z-index: 2;
+    overflow: clip; /* TODO: Test this */
 }
 
 .wrapie {
@@ -1065,6 +1066,8 @@ html>body .wrap {
 .sinoso {
     .comicnav {
         backdrop-filter: blur(5px);
+        z-index: 5;
+        position: relative;
     }
 }
 
@@ -1085,7 +1088,8 @@ html>body .wrap {
 }
 
 [c:comicimageurl]
-    .slithy .comic-reader > #comicimagewrap:before {
+    /* Color leak glow */
+    .slithy .comic-reader > #comicimagewrap::before {
         content: "";
         position: absolute;
         background-image: url("[v:comicimageurl]");
@@ -1097,10 +1101,30 @@ html>body .wrap {
         border-radius: 10px;
         z-index: -1;
     }
+    /* Paper backgrounds */
+    .sinoso .comic-reader > #comicimagewrap::before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-image: url("/files/image/bg_sos/paperbg.webp");
+        width: 144%;
+        height: 133%;
+        left: -22%;
+        top: -17%;
+        z-index: -1;
+        background-size: contain;
+        pointer-events: none;
+    }
+    .sinoso .comic-reader > #comicimagewrap {
+        filter: drop-shadow(0 0 0 #0000);
+    }
 [/]
 
 .shatter #comicimage {
     background: #444;
+}
+.sinoso #comicimage {
+    box-shadow: 0px 0px 0.7em #000A;
 }
 
 /* Extra Navbar Stylings */
