@@ -37,8 +37,13 @@
     <!-- Last Update: [v:lastupdatedmy] -->
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/files/resources/favicon2-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="/files/resources/favicon2-32x32.png" sizes="32x32">
+    [c:custom.ch_style~synexn]
+        <link rel="icon" type="image/png" href="/files/resources/favicon1-16x16.png" sizes="16x16">
+    [/]
+    [c:custom.ch_style!~synexn]
+        <link rel="icon" type="image/png" href="/files/resources/favicon2-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/files/resources/favicon2-32x32.png" sizes="32x32">
+    [/]
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/" />
     <meta property="og:type"  content="website" />
     <meta property="og:site_name" content="[v:webcomicname]" />
@@ -93,7 +98,7 @@
         [/]
     [/]
     [v:cfscriptcode]
-    <script type="text/javascript" src="/files/js/sinofsorcerylayout.js?version=2"></script>
+    <script type="text/javascript" src="/files/js/sinofsorcerylayout.js?version=2.11"></script>
     <script type="text/javascript">
         [c:iscomicpage]
             sinofsorcery.onStartComicPage([v:chapterid], "[v:custom.ch_style]");

@@ -210,17 +210,19 @@ img {
     /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
     background:
         /* Polaris/Pharus on top */
-        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/image/bg_sos/pharus.webp"),
+        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
+        /* Front Dust */
+        repeat-x fixed center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
         /* Foreground Hills */
-        repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/image/bg_sos/front-hills.gif"),
+        repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
         /* Train */
-        no-repeat fixed var(--i_bg2_train_x) calc(100% - 136px) / 1050px auto url("/files/image/bg_sos/train.webp"),
+        no-repeat fixed var(--i_bg2_train_x) calc(100% - 136px) / 1050px auto url("/files/images/bg_sos/train.webp"),
         /* Background Hills */
-        repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/image/bg_sos/bg-hills.gif"),
+        repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
          /* Background Hills */
-        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/image/bg_sos/bg-clouds.webp"),
+        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.webp"),
         /* At the top, have the horizontally repeating dither */
-        repeat-x scroll top left / 2.0em auto url("/files/image/bg_sos/top-dither.webp"),
+        repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
         /* Background comes last */
         #2379A3;
     animation:
@@ -1106,7 +1108,7 @@ html>body .wrap {
         content: "";
         display: block;
         position: absolute;
-        background-image: url("/files/image/bg_sos/paperbg.webp");
+        background-image: url("/files/images/bg_sos/paperbg.webp");
         width: 144%;
         height: 133%;
         left: -22%;

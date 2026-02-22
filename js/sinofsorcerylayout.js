@@ -84,7 +84,9 @@ sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
     window.addEventListener('load', saveMainStyle);
 
     // Run common
-    this.faviconfx.init();
+    if (this.chapterstyle != "synexn") {
+        this.faviconfx.init();
+    }
 }
 
 /*** @brief When starting up all other pages, loads the chapter style from cookies or adds listener for it **/
@@ -100,7 +102,9 @@ sinofsorcery.onStartOtherPage = function()
     updateMainStyle();
 
     // Run common
-    this.faviconfx.init();
+    if (this.chapterstyle != "synexn") {
+        this.faviconfx.init();
+    }
 }
 
 /*** @brief Sets up the callback & elements for the animated favicon */
