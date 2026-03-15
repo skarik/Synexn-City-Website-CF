@@ -1323,6 +1323,9 @@ a.author:hover {
 }
 
 /*archive*/
+.archive-box {
+    background-color: #EEE;
+}
 #archive {
     width: 100%;
     text-align: justify;
@@ -1331,7 +1334,8 @@ a.author:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    column-gap: 1%;
+    column-gap: 5px;
+    row-gap: 2px;
 }
 #archive h3 {
     font-size: 1.8em;
@@ -1342,6 +1346,7 @@ a.author:hover {
     text-align:left;
 }
 .archivecomic {
+    background: #FFF;
     border-bottom: 1px solid #777777;
     flex-grow: 1;
     max-width: 30%;
@@ -1381,25 +1386,74 @@ a.author:hover {
 #archive.archive-chapter-overview {
     display: flex;
     flex-flow: row wrap;
+    gap: 1.0em;
+
+    filter: drop-shadow(0px 1px #777);
 }
 #archive.archive-chapter-overview > table > tbody {
     display: table-row-group;
 }
 .archive-chapter-overview > table {
     flex: 1 45%;
+
+    background: #CCC
+        repeat center url("/files/images/bg3.png");
+    background-blend-mode: screen;
 }
 .archive-chapter-overview #cell-cover {
     padding: 0;
     margin: 0;
+    line-height: 0;
 }
 .archive-chapter-overview #cell-info {
     min-width: 190px;
     vertical-align: top;
+    padding: 10px min(10px, 1vw);
 }
 .archive-chapter-overview #cell-info h3 {
     text-align: left; /* Do not justify chapter titles */
 }
+.archive-chapter-overview #cell-links {
+    padding: 10px min(10px, 1vw);
+    overflow: hidden;
+    text-overflow: clip;
+    height: 1.0em;
+}
+.archive-chapter-overview #cell-links > a {
+    display: inline-block;
+    font-size: 1.2em;
+}
 
+.archive-chapter-nav a {
+    display: none;
+    margin: 0px 1.0em;
+}
+.archive-chapter-nav a:has(+#current-chapter) {
+    display: inline-block;
+    &>span::before {
+        content: "◁ ";
+    }
+}
+.archive-chapter-nav a#current-chapter + * {
+    display: inline-block;
+    &>span::after {
+        content: " ▷";
+    }
+}
+
+.archive-chapter-pages .comicpostlink a {
+    font-size: 1.0em !important;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.archive-chapter-pages .comicpostlink a > span {
+    display: block;
+}
+.archive-chapter-pages .comicpostlink a > span > img {
+    height: 5.5em;
+    max-height: 30vw;
+    width: auto;
+}
 
 /*.archive-chapter-overview > tbody > tr > td {
     display: table-cell;
