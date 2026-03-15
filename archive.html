@@ -1,24 +1,20 @@
 <h2 class="heading heading-notop">
     Archive
-    [c:ischapterarchive]
+    <!--[c:ischapterarchive]
         - [v:chaptername]
-    [/]
+    [/]-->
 </h2>
 <div class="box box-widener">
-    [c:ischapterarchive]
+    <!--[c:ischapterarchive]
         <div class="headingsub">[v:chapterdescription]</div>
-    [/]
+    [/]-->
 
     <!-- This is the box that thumbnails previews will be shown inside of, on mouseover of archive comics. -->
     <!--<div id="thumbnail-preview-box" style="[v:thumbnail_box_styles]"></div>-->
     <!-- Only for paginated archive. Since Sin of Sorcery's archive is using the old, shitty, server-destroying archive, we do not get thumbs -->
-    <!-- Skarik: this is a cry for help from yourself. Stop trying to implement it. Do something else productive, please. -->
-    <!-- Draw Ram giving Dorian more buckets. Something. Anything. Stop fucking with this page unless it's a dire circumstance. -->
 
+    <!--
     <table id="archive">
-        <!--cond:[n:usechapters]-->
-        <!--  <tr class="chaptertitle"><td colspan="3"><h3>Comics</h3></td></tr>-->
-        <!--cond:[n:usechapters]-->
         [l:chapteredarchive]
         
             [c:l.newchapter]
@@ -40,4 +36,128 @@
             </tr>
         [/]
     </table>
+    -->
+
+    [c:show_chapter_overview]
+    <!-- Chapter Listing -->
+        <div class="archive-back-link">
+            <a href="/archive/comics">All Pages</a>
+        </div>
+        <div id="archive" class="archive-chapter-overview">
+            [l:chapters]
+                <!--<tr class="chaptertitle">
+                    <td id="cell-cover">
+                        <img src="[v:l.cover]" width="[v:l.cover_width_small]" height="[v:l.cover_height_small]">
+                    </td>
+                    <td id="cell-infolink">
+                        <div id="cell-flex">
+                            <div id="cell-info">
+                                <h3>[v:l.chaptername]</h3>
+                                [v:l.chapterdescription]
+                            </div>
+                            <div id="cell-links">
+                                <a href="[v:l.firstcomicinchapter]">Start Reading</a>
+                                <a href="[v:l.chapterarchiveurl]">See Pages</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>-->
+                <tr class="chaptertitle">
+                    <table>
+                        <tr>
+                            <td id="cell-cover" rowspan="2" width="[v:l.cover_width_small]">
+                                <img src="[v:l.cover]" width="[v:l.cover_width_small]" height="[v:l.cover_height_small]">
+                            </td>
+                            <td id="cell-info">
+                                <h3>[v:l.chaptername]</h3>
+                                <p>[v:l.chapterdescription]</p>
+                                <p class="comicposttime">last updated: [v:l.posttime]</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="cell-links">
+                                <a href="[v:l.firstcomicinchapter]">Start Reading</a>
+                                <a href="[v:l.chapterarchiveurl]">See Pages</a>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+            [/]
+        </div>
+    <!-- End Chapter Listing -->
+    [/]
+
+    [c:show_comic_list]
+        [c:ischapterarchive]
+            <!-- Single Chapter Page Listing -->
+            <div class="archive-back-link">
+                <a href="/archive/">Back to All Chapters</a>
+            </div>
+            <table id="archive" class="archive-chapter-pages">
+                [l:comics_paginated]
+                    [c:l.newchapter]
+                        <tr class="chaptertitle"><td><h3>[v:l.chaptername]</h3>
+                        [c:l.chapterdescription]
+                            [v:l.chapterdescription]
+                        [/]
+                        </td></tr>
+                    [/]
+
+                    <tr class="archivecomic">
+                        <td class="comicnumber">[[v:l.number]]</td>
+                        <td class="comicposttime">[v:l.posttime]</td>
+                        <td class="comicpostlink">
+                            <a href="[v:l.comicurl]">
+                                [v:l.comictitle]
+                            </a>
+                            [c:l.thumbnail_url]
+                                <img src="[v:l.thumbnail_url]" width="[v:l.thumbnail_width_small]" height="[v:l.thumbnail_height_small]">
+                            [/]
+                        </td>
+                    </tr>
+                [/]
+            </table>
+
+            [l:chapters]
+                <h3>[v:l.chaptername] vs [v:chaptername]</h3>
+            [/]
+            <!-- End single chapter page listing -->
+        [/]
+
+        [c:!ischapterarchive]
+            <!-- All Pages -->
+            <div class="archive-back-link">
+                <a href="/archive/">All Chapters</a>
+            </div>
+            <table id="archive" class="archive-all-pages">
+                [l:comics_paginated]
+                    [c:l.newchapter]
+                        <tr class="chaptertitle"><td><h3>[v:l.chaptername]</h3>
+                            [c:l.chapterdescription]
+                                [v:l.chapterdescription]
+                            [/]
+                        </td></tr>
+                    [/]
+
+                    <tr class="archivecomic">
+                        <td class="comicnumber">[[v:l.number]]</td>
+                        <td class="comicposttime">[v:l.posttime]</td>
+                        <td class="comicpostlink">
+                            <a href="[v:l.comicurl]"
+                                onpointerover="comicfury.thumbnailMouseOver(event, 'thumbnail-preview-box', [v:l.thumbnail_jsdata])"
+                                onpointerout="comicfury.thumbnailMouseOut(event)">
+                                [v:l.comictitle]
+                            </a>
+                            <!--[c:l.thumbnail_url]
+                                <img src="[v:l.thumbnail_url]" width="[v:l.thumbnail_width_small]" height="[v:l.thumbnail_height_small]">
+                            [/]-->
+                        </td>
+                    </tr>
+                [/]
+            </table>
+            <!-- End All Pages -->
+        [/]
+    [/]
+
+
 </div>

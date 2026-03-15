@@ -1343,8 +1343,8 @@ a.author:hover {
 }
 .archivecomic {
     border-bottom: 1px solid #777777;
-    flex-grow: 0;
-    flex-basis: 30%;
+    flex-grow: 1;
+    max-width: 30%;
 }
 .comicposttime {
     text-align:right !important;
@@ -1377,6 +1377,49 @@ a.author:hover {
     display: inline-block;
     margin: 0px;
 }
+
+#archive.archive-chapter-overview {
+    display: flex;
+    flex-flow: row wrap;
+}
+#archive.archive-chapter-overview > table > tbody {
+    display: table-row-group;
+}
+.archive-chapter-overview > table {
+    flex: 1 45%;
+}
+.archive-chapter-overview #cell-cover {
+    padding: 0;
+    margin: 0;
+}
+.archive-chapter-overview #cell-info {
+    min-width: 190px;
+    vertical-align: top;
+}
+.archive-chapter-overview #cell-info h3 {
+    text-align: left; /* Do not justify chapter titles */
+}
+
+
+/*.archive-chapter-overview > tbody > tr > td {
+    display: table-cell;
+}*/
+/*.archive-chapter-overview #cell-cover {
+    flex: 0;
+}
+.archive-chapter-overview #cell-infolink {
+    flex: 2;
+}
+.archive-chapter-overview #cell-info {
+    flex: 2;
+}
+.archive-chapter-overview #cell-links {
+    flex: 0;
+}
+.archive-chapter-overview #cell-flex {
+    display: flex;
+    flex-flow: column;
+}*/
 
 /*blog*/
 #blogbox {
