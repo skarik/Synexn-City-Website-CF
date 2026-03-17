@@ -22,15 +22,75 @@
         </ul>
         
         <div id="blogs">
-            [l:blogs]
+            [c:lastpagenumber>1]
+                <div class="archive-page-nav">
+                    [l:pages]
+                        [c:l.is_current]
+                            <a href="/blogarchive/page/[f:subtract|v:l.page|1]" class="[c:l.is_first]comicnavlink-inactive[/]">Previous Blogs</a>
+                        [/]
+                    [/]
+                    <div></div>
+                    [l:pages]
+                        [c:l.skipped_ahead]
+                            <span>...</span>
+                        [/]
+                        [c:l.is_current]
+                            <span>[v:l.page]</span>
+                        [/]
+                        [c:!l.is_current]
+                            <a href="[v:l.pagelink]">[v:l.page]</a>
+                        [/]
+                    [/]
+                    <div></div>
+                    [l:pages]
+                        [c:l.is_current]
+                            <a href="/blogarchive/page/[f:add|v:l.page|1]" class="[c:l.is_last]comicnavlink-inactive[/]">Next Blogs</a>
+                        [/]
+                    [/]
+                </div>
+            [/]
+
+            [l:blogs_paginated]
                 <div class="blogpost-container">
                     <span class="posttime blogpost-time">[v:l.posttime]</span>
+                    <br>
                     <span class="blogtitle tape_wobble"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
                     <span class="authordata">
                         by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a>
                     </span>
                     <div class="blogcontent">[v:l.blog]</div>
                     <div class="blog-actionlink"><a href="[v:l.bloglink]">◁ Comment on Post ▷</a></div>
+                </div>
+                [c:!l.is_last]
+                    <br>
+                [/]
+            [/]
+
+            [c:lastpagenumber>1]
+                <div class="archive-page-nav">
+                    [l:pages]
+                        [c:l.is_current]
+                            <a href="/blogarchive/page/[f:subtract|v:l.page|1]" class="[c:l.is_first]comicnavlink-inactive[/]">Previous Blogs</a>
+                        [/]
+                    [/]
+                    <div></div>
+                    [l:pages]
+                        [c:l.skipped_ahead]
+                            <span>...</span>
+                        [/]
+                        [c:l.is_current]
+                            <span>[v:l.page]</span>
+                        [/]
+                        [c:!l.is_current]
+                            <a href="[v:l.pagelink]">[v:l.page]</a>
+                        [/]
+                    [/]
+                    <div></div>
+                    [l:pages]
+                        [c:l.is_current]
+                            <a href="/blogarchive/page/[f:add|v:l.page|1]" class="[c:l.is_last]comicnavlink-inactive[/]">Next Blogs</a>
+                        [/]
+                    [/]
                 </div>
             [/]
         </div>

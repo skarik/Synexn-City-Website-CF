@@ -11,28 +11,30 @@
 
 <div class="box">
     
-    <div class="blognav">
-        <div class="prevblog">
-            [c:prevbloglink]
-                <a href="[v:prevbloglink]">Previous Blog</a>
-            [/]
-        </div>
-        <div class="nextblog">
-            [c:nextbloglink]
-                <a href="[v:nextbloglink]">Next Blog</a>
-            [/]
-        </div>
+    <div class="blognav archive-page-nav">
+        <a href="[v:blogarchivelink]" class="archiveblogs">◁ Back to All Blogs</a>
+        <div></div>
+        <a href="[v:prevbloglink]" class="prevblog [c:!prevbloglink]comicnavlink-inactive[/]">Back</a>
+        <div></div>
+        <a href="[v:nextbloglink]" class="nextblog [c:!nextbloglink]comicnavlink-inactive[/]">Next</a>
     </div>
     
     <div id="blogs">
         <div class="blogpost-container">
             <span class="posttime blogpost-time">[v:posttime]</span>
+            <br>
             <span class="blogtitle tape_wobble"><a href="[v:bloglink]">[v:blogtitle]</a></span>
             <span class="authordata">
                 by <a href="[v:profilelink]" class="author">[v:authorname]</a>
             </span>
             <div class="blogcontent">[v:blog]</div>
         </div>
+    </div>
+
+    <div class="blognav archive-page-nav">
+        <a href="[v:prevbloglink]" class="prevblog [c:!prevbloglink]comicnavlink-inactive[/]">Back</a>
+        <div></div>
+        <a href="[v:nextbloglink]" class="nextblog [c:!nextbloglink]comicnavlink-inactive[/]">Next</a>
     </div>
 </div>
 

@@ -899,6 +899,10 @@ form {
     font-size: 12px;
 }
 
+#transcript { /* TODO */
+    display: none;
+}
+
 #cf_ads {
     display:table;
     margin:auto;
@@ -1287,7 +1291,7 @@ a:hover > .saveplace_text {
     line-height: 2.0em;
 }
 .author {
-    font-size: 22px;
+    font-size: 22px !important;
     font-family: var(--f_author) !important;
     font-stretch: var(--fi_author_stretch) !important;
     font-weight: var(--fi_author_weight) !important;
@@ -1488,8 +1492,9 @@ a.author:hover {
     display: flex;
     flex-direction: column;
     row-gap: 0.1em;
-    min-width: 150px;
-    max-width: min(200px, 18vw);
+    flex: 0 auto;
+    min-width: min-content;
+    width: min(200px, 18vw);
 }
 #blogarchive li {
     padding: 0.4em;
@@ -1498,6 +1503,7 @@ a.author:hover {
 #blogs {
     margin: 0px;
     padding: 10px;
+    flex: 1;
 }
 .reply::before {
     float: left;
@@ -1579,7 +1585,7 @@ a.author:hover {
 }
 .blogarchive-name {
     display: block;
-    white-space: nowrap;
+    white-space: pre;
 }
 .blogarchive-name a:link {
     font-size: 1.0em;
@@ -1615,6 +1621,16 @@ a.author:hover {
 .blog-imagelist img {
     max-width: 31%;
     height: auto;
+}
+
+.archive-page-nav {
+    a, span {
+        margin: 0px 0.05em;
+    }
+    div {
+        display: inline-block;
+        margin: 0px 0.25em;
+    }
 }
 
 /* overview */
