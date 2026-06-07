@@ -2,7 +2,7 @@
     The current list is:
         synexn, shatter
         fallofsin, slithy, slithy2
-        sinoso
+        sinoso, empira
     Builtin HTML effects:
         shatter, fallofsin_console
 */
@@ -78,7 +78,7 @@
     --f_header: "Fira Code", monospace;
 }
 
-.sinoso {
+.sinoso, .empira {
     --f_normal: "BricolageGrotesque", sans-serif;
     --fi_normal_weight: 400;
     --f_header: "BricolageGrotesque", sans-serif;
@@ -93,6 +93,18 @@
     /* Icaro Alt: */
     /* --c_accent: #D83167; */
     --g_comicnavBgColor: #FFF9;
+
+    --c_bg_color: #2379A3;
+    --c_bg_overlay_color: #88888800;
+}
+
+.sinoso.time-sundown, .empira.time-sundown {
+    --c_bg_color: #F76558;
+    --c_bg_overlay_color: #F1820F44;
+}
+.sinoso.time-night, .empira.time-night {
+    --c_bg_color: #002336;
+    --c_bg_overlay_color: #1b00b463;
 }
 
 /** Global Effects **/
@@ -206,13 +218,15 @@ img {
         repeat fixed center/50% url("/files/images/bg4.webp"),
         black;
 }
-.sinoso body {
+.sinoso body, .empira body {
     /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
     background:
         /* Polaris/Pharus on top */
         no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
         /* Front Dust */
         repeat-x fixed center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
+        /* Color overlay */
+        repeat fixed linear-gradient(var(--c_bg_overlay_color)),
         /* Foreground Hills */
         repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
         /* Train */
@@ -220,67 +234,20 @@ img {
         /* Background Hills */
         repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
          /* Background Hills */
-        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.webp"),
+        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.gif"),
         /* At the top, have the horizontally repeating dither */
         repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
         /* Background comes last */
-        #2379A3;
+        var(--c_bg_color);
+    /* Apply light blender on the layers below */
+    background-blend-mode: normal, normal, hard-light, normal, normal, normal, normal, normal, normal;
+    /* Animate */
     animation:
         213s linear anim-sinoso-bg1-hill-scroll infinite reverse,
         352s linear anim-sinoso-bg3-hill-scroll infinite reverse,
         112s linear anim-sinoso-bg4-cloud-scroll infinite,
         30s linear anim-sinoso-bg2-train-travel infinite
         ;
-}
-
-.sinoso.time-sundown body {
-    /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
-    background:
-        /* Polaris/Pharus on top */
-        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
-        /* Front Dust */
-        repeat-x fixed center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
-        /* Color overlay */
-        repeat fixed linear-gradient(#F1820F44),
-        /* Foreground Hills */
-        repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
-        /* Train */
-        no-repeat fixed var(--i_bg2_train_x) calc(100% - 136px) / 1050px auto url("/files/images/bg_sos/train.webp"),
-        /* Background Hills */
-        repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
-         /* Background Hills */
-        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.webp"),
-        /* At the top, have the horizontally repeating dither */
-        repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
-        /* Background comes last */
-        #F76558;
-    /* Apply light blender on the layers below */
-    background-blend-mode: normal, normal, hard-light, normal;
-}
-
-.sinoso.time-night body {
-    /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
-    background:
-        /* Polaris/Pharus on top */
-        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
-        /* Front Dust */
-        repeat-x fixed center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
-        /* Color overlay */
-        repeat fixed linear-gradient(#1b00b463),
-        /* Foreground Hills */
-        repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
-        /* Train */
-        no-repeat fixed var(--i_bg2_train_x) calc(100% - 136px) / 1050px auto url("/files/images/bg_sos/train.webp"),
-        /* Background Hills */
-        repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
-         /* Background Hills */
-        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.webp"),
-        /* At the top, have the horizontally repeating dither */
-        repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
-        /* Background comes last */
-        #002336;
-    /* Apply light blender on the layers below */
-    background-blend-mode: normal, normal, hard-light, normal;
 }
 
 /* Sinoso Animation Styling */
@@ -420,7 +387,7 @@ img {
     }
 }
 
-.sinoso {
+.sinoso, .empira {
     --i_egpos_0: 0%;
     --i_egpos_1: calc(calc(100% / 31) * 6); /* line */
     --i_egpos_2: calc(calc(100% / 31) * 12); /* dot */
@@ -544,7 +511,7 @@ img {
     }
 }
 
-.sinoso {
+.sinoso, .empira {
     a, label, .linkglow {
         position: relative;
         &:link, &:visited, & {
@@ -791,6 +758,12 @@ form {
 }
 .sinoso #sitetitle {
     background-image: url("/files/resources/titles/sinoso_basic.webp");
+}
+.empira #sitetitle {
+    background-image: url("/files/resources/titles/sinoso_plain_w.webp");
+    img {
+        max-height: 4.0em;
+    }
 }
 
 #titleupdate {
@@ -1119,7 +1092,7 @@ html>body .wrap {
         border-image: none;
     }
 }
-.sinoso {
+.sinoso, .empira {
     .comicnav {
         backdrop-filter: blur(5px);
         z-index: 5;
@@ -1158,7 +1131,8 @@ html>body .wrap {
         z-index: -1;
     }
     /* Paper backgrounds */
-    .sinoso .comic-reader > #comicimagewrap::before {
+    .sinoso .comic-reader > #comicimagewrap::before,
+    .empira .comic-reader > #comicimagewrap::before {
         content: "";
         display: block;
         position: absolute;
@@ -1171,7 +1145,11 @@ html>body .wrap {
         background-size: contain;
         pointer-events: none;
     }
-    .sinoso .comic-reader > #comicimagewrap {
+    .empira .comic-reader > #comicimagewrap::before {
+        background-image: url("/files/images/bg_sos/decobg01.gif") !important;
+    }
+    .sinoso .comic-reader > #comicimagewrap, 
+    .empira .comic-reader > #comicimagewrap {
         filter: drop-shadow(0 0 0 #0000);
     }
 [/]
@@ -1181,6 +1159,9 @@ html>body .wrap {
 }
 .sinoso #comicimage {
     box-shadow: 0px 0px 0.7em #000A;
+}
+.empira #comicimage {
+    box-shadow: 0px 0px 0.5em #000A;
 }
 
 /* Extra Navbar Stylings */
@@ -1615,7 +1596,7 @@ a.author:hover {
             .synexn &, .shatter &, .slithy &, .slithy2 &, .fallofsin & {
                 color: var(--c_accent) !important;
             }
-            .sinoso & {
+            .sinoso &, .empira & {
                 color: white !important;
             }
         }
