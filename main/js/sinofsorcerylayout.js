@@ -3,7 +3,7 @@
 
 var sinofsorcery = {
     chapterid: 0,
-    chapterstyle: "synexn",
+    chapterstyle: "NOCHAPTER",
     faviconfx: {
         ctx: undefined,
         canvas: undefined,
@@ -83,7 +83,7 @@ sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
     };
     window.addEventListener('load', saveMainStyle);
 
-    // Run common
+    // Run common favicon effect
     if (this.chapterstyle != "synexn") {
         this.faviconfx.init();
     }
@@ -93,13 +93,18 @@ sinofsorcery.onStartComicPage = function(chapterId, chapterStyle)
 sinofsorcery.onStartOtherPage = function()
 {
     this.chapterid = localStorage.getItem("chapterid") ?? 0;
-    this.chapterstyle = localStorage.getItem("chapterstyle") ?? "synexn";
+    this.chapterstyle = localStorage.getItem("chapterstyle") ?? "NOCHAPTER";
 
-    let updateMainStyle = function()
+    // If there's actually something in the backend to load, then update the classname.
+    if (this.chapterstyle != "NOCHAPTER")
     {
-        document.documentElement.className = sinofsorcery.chapterstyle;
-    };
-    updateMainStyle();
+        let updateMainStyle = function()
+        {
+            document.documentElement.className = sinofsorcery.chapterstyle;
+        };
+        updateMainStyle();
+    }
+    // Otherwise, do nothing.
 
     // Run common
     if (this.chapterstyle != "synexn") {
