@@ -2153,6 +2153,7 @@ html, body
     {
         position: absolute;
         top: 1.0em;
+        z-index: 4;
         /* Center */
         left: 0;
         right: 0;
