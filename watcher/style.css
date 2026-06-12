@@ -1,0 +1,805 @@
+@font-face {
+    font-family: Saira;
+    src: url("https://dumb-hiver.thecomicseries.com/files/assets/saira-vff.ttf");
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+html {
+    background-color: white;
+    font-family: Saira, sans-serif;
+    color: #444;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+img {
+    border: 0px;
+}
+
+a, a:link, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(255,228,0);
+}
+
+.box a:link, .box a:visited {
+    color: #000;
+}
+.box a:hover {
+    color: rgb(255,228,0);
+}
+
+/* Animate the hover glow for all links */
+a, a:visited, a:link {
+	transition:
+	    color 0.25s ease-in-out,
+		filter 0.25s ease-in-out,
+		font-weight 0.25s ease-in-out
+		;
+	filter:
+		drop-shadow(rgba(255,228,0,0.0) 0 0 0.0em)
+		drop-shadow(rgba(255,228,0,0.0) 0 0 0.0em)
+		;
+}
+a:hover {
+	transition:
+        color 0.25s ease-in-out,
+		filter 0.25s ease-in-out,
+		font-weight 0.25s ease-in-out
+		;
+	filter:
+		drop-shadow(rgb(255,228,0) 0 0 0.02em)
+		drop-shadow(rgb(255,228,0) 0 0 0.1em)
+		;
+}
+
+/* Disable glow for the comic pages themselves */
+#comicimagewrap a, #comicimagewrap a:visited, #comicimagewrap a:link, #comicimagewrap a:hover
+{
+    filter: none;
+}
+
+h3 {
+    margin:2px;
+}
+
+.heading {
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding:0;
+    text-align:center;
+}
+
+.heading:last-child {
+    margin-bottom:0;
+}
+
+.headingsub {
+    margin-top:-5px;
+    margin-bottom:20px;
+    font-size:12px;
+}
+
+
+select {
+    max-width:35vw;
+    max-width:min(35vw, 300px);
+}
+
+form {
+    margin:0px;
+}
+
+.clear {
+    clear:both;
+}
+
+.volad {
+    margin-bottom:5px;
+}
+
+.volad img {
+    max-width:100%;
+    height:auto;
+}
+
+.comicnav {
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.comicnav .quicknav {
+    width:100%;
+    order:-10; /*the default order is 0, so this will make it the first*/
+    margin-bottom:15px;
+}
+
+.comicnavlink {
+    display:inline-block;
+    min-width:45px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+
+.comicnavlink-grayedout {
+    opacity:0.1;
+}
+
+.comicnavlink img {
+    max-height:40px;
+    width:auto;
+}
+
+#saveplace {
+    min-width:100px;
+    text-align:right;
+}
+#saveplace a {
+    margin-left:15px;
+}
+#saveplace img {
+    max-width:35px;
+    max-height:35px;
+}
+.loadplace-inactive {
+    opacity:0.1;
+}
+.saveplace-saved {
+    filter:opacity(0.5) drop-shadow(0 0 0 #ff6e00);
+}
+
+#comicimagewrap {
+    margin-bottom: 15px;
+}
+
+#comicimage, #latestcomicimage {
+    max-width:100%;
+    height:auto;
+}
+
+.comicsegments {
+    line-height:0; /*this is to prevent there from being space between the images on multi-image pages*/
+}
+.comicsegmentimage {
+    height:auto;
+    max-width:100%;
+}
+.comicsegments .textcontent {
+    line-height:normal;
+}
+
+.comic-options {
+    display:flex;
+    align-items:flex-end;
+    justify-content:stretch;
+}
+
+.comic-options div {
+    flex:1 1 auto;
+}
+
+#comicrating {
+    text-align:left;
+}
+
+#sitetitle {
+    font-size: 250%;
+    margin: 2px;
+    
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-image: linear-gradient(rgb(255, 128, 0), rgb(255, 228, 0));
+    width: auto;
+}
+
+#head {
+    max-height: 5.0em;
+}
+
+img#banner {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.0;
+    max-height: 4.0em;
+}
+
+#navigation {
+    list-style:none;
+    
+    text-shadow:
+        white 0px 0px 2px,
+        white 1px 0px 0px,
+        white -1px 0px 0px,
+        white 0px 1px 0px,
+        white 0px -1px 0px
+        ;
+    z-index: 1;
+    position: relative;
+    
+    font-variant: all-small-caps;
+    font-weight: 100;
+    font-size: 2.0em;
+}
+
+#navigation ul {
+    padding: 0;
+    margin: 0;
+}
+
+#navigation li {
+    list-style: none;
+    display: inline;
+}
+
+#navigation li span {
+    margin: 0;
+    display: inline-block;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.nav-icon-container {
+    min-width:35px;
+    min-height:35px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+    margin-bottom:4px;
+    background-color:#ffffff;
+}
+
+.nav-icon-container img {
+    max-width:35px;
+    max-height:35px;
+}
+
+#navigation a:link, #navigation a:visited, #navigation a:hover {
+    text-decoration:none;
+}
+#navigation a:link, #navigation a:visited {
+    font-weight: 100;
+}
+#navigation a:hover {
+    font-weight: 600;
+}
+
+#latestcomictitle {
+    font-size: 150%;
+}
+
+#latestcomiclink img {
+    border:3px solid black;
+}
+
+.box {
+    background-color:#FFFFFF;
+    padding:10px;
+    margin-bottom:15px;
+
+}
+.box img {
+    max-width:100%;
+    height:auto;
+}
+
+.extra-page-content {
+    text-align:left;
+}
+
+.wrap {
+    margin:auto;
+    width:98%;
+}
+
+footer {
+    font-size: 16px;
+    color: #A9A9A9;
+    margin-bottom:15px;
+}
+
+footer div:not(:last-of-type) {
+    margin-bottom:12px;
+}
+
+footer ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:inline-flex;
+    flex-wrap: wrap;
+}
+
+footer li {
+    list-style:none;
+    margin-left:7px;
+    margin-right:7px;
+}
+
+
+.hostedby {
+    display:inline-flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content: center;
+}
+
+.hostedby a {
+    display:inline-flex;
+    align-items:center;
+    word-wrap:normal;
+    word-break:keep-all;
+}
+
+.hostedby a img {
+    width:auto;
+    margin-left:0.5em;
+    margin-right:5px;
+}
+
+.cflink {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#searchbar {
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width:100%;
+}
+#searchbar input {
+    border:0;
+    margin:4px;
+    margin-top:0;
+    margin-bottom:0;
+    background-color:#FFFFFF;
+    padding:0.7em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    max-width:40vw;
+}
+
+/*comicpage*/
+#authornotes .comment:not(:last-of-type) {
+    margin-bottom:40px;
+}
+
+.comment {
+    text-align:left;
+}
+
+.comment img {
+    height:auto;
+    max-width:100%;
+}
+
+.replyform-placeholder iframe {
+    margin-top:10px;
+}
+
+#permalinkbox {
+    text-align:center;
+}
+
+.permalinkcode {
+    margin-top:5px;
+    font-size:12px;
+    color:#9A9A9A;
+}
+
+/*comicpage/blog*/
+
+.avatar {
+    float:left;
+    margin-right:5px;
+}
+
+.commentcontrol {
+    text-align:right;
+}
+
+.commentcontrol a {
+    margin-left:10px;
+}
+
+.authordata {
+    text-align:left;
+    margin-bottom:6px;
+}
+
+.author {
+    font-size:18px;
+}
+
+.posttime {
+    color:#AAAAAA;
+    font-size:12px;
+    float:right;
+    font-weight:bold;
+}
+
+.reply {
+    margin-left:20px;
+}
+
+.postcomment {
+    font-size:1.3em;
+    margin:5px;
+    margin-top:0;
+}
+
+.postcomment:last-child {
+    margin-bottom:0;
+}
+
+.overviewcommentlink {
+    text-align:center;
+    margin-top:15px;
+}
+
+.topcommentlink {
+    margin-top:0;
+}
+
+/*blog*/
+.blogcontent {
+    text-align:left;
+}
+
+.blogtitle {
+    font-size:20px;
+    font-weight:bold;
+}
+
+.blog:not(:last-of-type)::after {
+    content:'';
+    display:block;
+    margin-top:20px;
+    border-bottom:2px solid #f2eee7;
+    margin-bottom:20px;
+
+}
+
+/*archive*/
+
+#thumbnail-preview-box {
+    border:1px solid #aaa;
+    background-color:#ffffff;
+    transition:opacity 200ms linear;
+}
+
+#thumbnail-preview-box img {
+    display:block;
+}
+
+.archivecomic {
+    display:flex;
+    flex-wrap:wrap;
+    text-align:left;
+    align-items:flex-start;
+    margin-bottom:10px;
+}
+
+.archivecomictitle {
+    flex:1 1 90%;
+}
+
+.comicposttime {
+    text-align:left;
+    color:#999999;
+    width:100%;
+    margin-top:4px;
+    font-size:12px;
+}
+
+.comicnumber,
+.comicposttime,
+.archivecomictitle {
+    box-sizing:border-box;
+}
+
+.comicnumber {
+    padding-right:5px;
+}
+
+.archive .chapter-title {
+    padding:10px;
+}
+
+.archive h3 {
+    margin-bottom:8px;
+}
+
+.archive .chapterdescription {
+    font-size:12px;
+}
+
+.archive-chapters {
+    text-align:left;
+}
+
+.archive-chapters .chapter {
+    display:flex;
+    margin-bottom:35px;
+}
+
+.archive-chapters .chapter-cover {
+    margin-right:15px;
+}
+
+.chapter-cover img {
+    max-width:80px;
+    height:auto;
+}
+
+.archive-chapters .chapter-data {
+    flex:1 1 0%;
+}
+
+.archive-chapters h3 {
+    margin:0;
+    margin-bottom:6px;
+}
+
+.archive-chapters .chapterdescription {
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.archive-chapters .chapter-more {
+    font-size:14px;
+}
+
+.archive-back-link {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/*blog*/
+
+.blogmeta {
+    text-align:right;
+    margin-top:10px;
+}
+
+#bloglist img,
+#blogdisplay img,
+.extra-page-content img {
+    max-width:100%;
+    /*using !important because the WYSIWYG-editor sometimes applies widths and heights as an inline style, which could cause squishy images otherwise*/
+    height:auto !important;
+}
+
+
+#bloglist table,
+#blogdisplay table,
+.extra-page-content table {
+    max-width:100%;
+}
+
+#bloglist table img,
+#blogdisplay table img,
+.extra-page-content table img {
+    /* we cannot use the 100% rule in tables, since it causes columns with text to take up all the space and make images tiny.
+       this rule will only work with tables that have up to 3 image columns next to one another (or two images and text),
+       wider tables will end up stretching the page*/
+    max-width:27vw;
+}
+
+#pages {
+    font-size:1.2em;
+    display:inline;
+}
+
+#pageslabel {
+    margin-top:10px;
+    font-weight:bold;
+    display:inline;
+}
+
+.pagelink, .pageskip {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:35px;
+    min-height:35px;
+    background-color:#f2eee7;
+    margin-left:10px;
+}
+
+.currentpage {
+    font-weight:bold;
+    color:#000000;
+}
+
+.blognav {
+    margin-bottom:15px;
+    display:table;
+    width:100%;
+}
+
+.prevblog, .nextblog {
+    display:table-cell;
+    width:50%;
+}
+
+.prevblog {
+    text-align:left;
+}
+
+.nextblog {
+    text-align:right;
+}
+
+#blogdisplay {
+    margin-bottom:30px;
+}
+
+
+
+.avatar img {
+    max-width:75px;
+    max-height:75px;
+}
+
+@media (min-width:400px) {
+    .wrap {
+        width:95%;
+    }
+    #navigation li span {
+        margin-left:8px;
+        margin-right:8px;
+    }
+    .comicnavlink {
+        margin-left:15px;
+        margin-right:15px;
+    }
+
+
+    .author {
+        font-size:20px;
+    }
+
+    .chapter-cover img {
+        max-width:100px;
+    }
+}
+
+@media (min-width:630px) {
+    .box {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .avatar img {
+        max-width:100px;
+        max-height:100px;
+    }
+    footer {
+        font-size: 14px;
+    }
+
+
+
+    .nav-icon-container {
+        min-width:45px;
+        min-height:45px;
+    }
+
+    .nav-icon-container img {
+        max-width:45px;
+        max-height:45px;
+    }
+
+    #navigation li span {
+        margin-left:15px;
+        margin-right:15px;
+    }
+
+    .comicnumber {
+        min-width:40px;
+        word-wrap:normal;
+        word-break:keep-all;
+    }
+
+    .comicposttime {
+        text-align:right;
+        width:calc(30% - 40px);
+    }
+
+    .archivecomictitle {
+        flex-basis:70%;
+        /*to make the hover thumbnail previews less finnicky. this also spaces the individual archive comics apart a bit*/
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+
+    .archivecomic {
+        flex-wrap:nowrap;
+        align-items:center;
+        margin-bottom:0;
+    }
+
+
+    .reply {
+        margin-left:40px;
+    }
+
+
+    .author {
+        font-size:22px;
+    }
+
+    .chapter-cover img {
+        max-width:100%;
+    }
+}
+
+@media (min-width:800px) {
+    .box {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+
+    .comment-box {
+        padding-left:20px;
+        padding-right:20px;
+        padding-bottom:20px;
+        padding-top:20px;
+    }
+
+    .avatar img {
+        max-width:none;
+        max-height:none;
+    }
+
+    .comicnav {
+        margin-bottom:15px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-wrap:nowrap;
+    }
+
+    .comicnavlink img {
+        max-height:40px;
+        width:auto;
+    }
+
+    .comicnav .quicknav {
+        width:auto;
+        order:0;
+        margin-bottom:0;
+    }
+
+    #saveplace img {
+        max-width:30px;
+        max-height:30px;
+    }
+}
+
+@media (min-width:1130px) {
+    .wrap {
+        width:70%;
+        min-width:1100px;
+    }
+
+}

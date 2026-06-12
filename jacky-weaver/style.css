@@ -1,0 +1,974 @@
+/** New fonts **/
+@font-face {
+    font-family: JosefinSans;
+    src: url("/files/resources/josefinsans-variablefont_wght.ttf");
+}
+
+body {
+    margin:  0;
+    padding: 0;
+    [c:!custom.bg_color]
+        [c:!custom.bg_light]
+            background: #000000;
+        [/]
+        [c:custom.bg_light]
+            background: #FFFFFF;
+        [/]
+    [/]
+    [c:custom.bg_color]
+        background: [v:custom.bg_color];
+    [/]
+    font-size: 62.5%;
+    font-family: JosefinSans, lucida sans unicode, lucida grande, verdana, sans-serif;
+    color: #000000;
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    justify-content:stretch;
+    min-height:100vh;
+    box-sizing:border-box;
+}
+
+main {
+    flex:1 1 auto;
+}
+
+img {
+    border: 0px;
+}
+
+a {
+    color: #c8af44;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:background ease-in 200ms, color ease-in 200ms, opacity ease-in 200ms, font-weight ease-in 200ms;
+}
+
+a:hover,
+a:focus {
+    color: #a0c844;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: JosefinSans, lucida grande, lucida sans unicode, verdana, sans-serif;
+    line-height: 1em;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    padding-top: 25px;
+    padding-bottom: 5px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+header h1 {
+    font: 4em JosefinSans, century gothic, lucida sans unicode, lucida grande, sans-serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: auto;
+    text-align: center;
+}
+
+header h1 a,
+header h1 a:hover {
+    color: #ffffff;
+}
+
+header img {
+    max-width:100%;
+    height:auto;
+}
+
+.vo_a {
+    margin:7px auto;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.vo_a img {
+    max-width:100%;
+    height:auto;
+}
+
+#slogan {
+    color:#BBB;
+}
+
+#navigation {
+    margin: 0;
+    margin-bottom:30px;
+}
+
+#nav {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+#nav li {
+    display: inline;
+    margin:0;
+    padding:0;
+}
+
+#nav li a {
+    display: inline-block;
+    opacity: 0.8;
+    padding: 15px;
+    margin: 1px;
+    font: 1.8em JosefinSans, century gothic, lucida grande, verdana, sans-serif;
+    font-weight: 300;
+    [c:!custom.bg_light]
+        color: #ffffff;
+        background:#1B1B1B;
+    [/]
+    [c:custom.bg_light]
+        color: #000000;
+        background:#e3e3e3;
+    [/]
+    border-radius: 20px;
+}
+
+#nav li a:hover,
+#nav li a:focus  {
+    opacity: 1;
+    font-weight: 990;
+    /*border: 1px solid #A1A1A1;*/
+}
+
+#content-start {
+    margin: auto;
+    min-width: 720px;
+    max-width:1300px;
+    display:inline-block;
+}
+
+.noncomicpage {
+    width:720px;
+    margin:auto;
+}
+
+
+.noncomicpage img {
+    max-width:100%;
+    /*using !important because the WYSIWYG-editor sometimes applies widths and heights as an inline style, which could cause squishy images otherwise*/
+    height:auto !important;
+}
+
+
+#contentwrap {
+    margin: auto;
+    max-width: 750px;
+    text-align: center;
+}
+
+#comicimage, #latestcomicimage, .comicsegmentimage {
+    max-width:100%;
+    height:auto;
+}
+
+.comicsegments {
+    line-height:0; /*this is to prevent there from being space between the images on multi-image pages*/
+}
+.comicsegments .textcontent {
+    line-height:normal;
+}
+
+.comicnav {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.comicnav li {
+    display:inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-family: JosefinSans, century gothic, ms sans serif, geneva, lucida sans unicode, lucida grande, sans-serif;
+    font-size: 3.5em;
+    font-weight: 200;
+}
+
+.comicnav li a {
+    [c:!custom.bg_light]
+        color: #A1A1A1;
+    [/]
+    [c:custom.bg_light]
+        color: #5e5e5e;
+    [/]
+    display:flex;
+    align-items:center;
+}
+
+.comicarrow {
+    height:25px;
+    width:auto;
+    margin-left:5px;
+    margin-right:5px;
+    top: -4px;
+    position: relative;
+}
+
+.comicarrowlabel {
+    line-height:1;
+}
+
+.comicnav li a .comicarrow g path {
+    transition:fill ease-in 200ms;
+    [c:!custom.bg_light]
+        fill: #A1A1A1 !important;
+    [/]
+    [c:custom.bg_light]
+        fill: #5e5e5e !important;
+    [/]
+}
+
+.comicnav li a:hover,
+.comicnav li a:focus {
+    [c:!custom.bg_light]
+        color: #ffffff;
+    [/]
+    [c:custom.bg_light]
+        color: #000000;
+    [/]
+    font-weight: 800;
+}
+.comicnav li a:hover .comicarrow g path,
+.comicnav li a:focus .comicarrow g path {
+    [c:!custom.bg_light]
+        fill: #ffffff !important;
+    [/]
+    [c:custom.bg_light]
+        fill: #000000 !important;
+    [/]
+}
+
+.comicnav li .comicnavlink-inactive,
+.comicnav li .comicnavlink-inactive:hover,
+.comicnav li .comicnavlink-inactive:focus {
+    opacity:0.25;
+    [c:!custom.bg_light]
+        color: #A1A1A1;
+    [/]
+    [c:custom.bg_light]
+        color: #5e5e5e;
+    [/]
+}
+
+.comicnav li .comicnavlink-inactive:hover .comicarrow g path,
+.comicnav li .comicnavlink-inactive:focus .comicarrow g path {
+    [c:!custom.bg_light]
+        fill: #A1A1A1 !important;
+    [/]
+    [c:custom.bg_light]
+        fill: #5e5e5e !important;
+    [/]
+}
+
+.postcomment {
+    display:block;
+    padding:10px;
+}
+
+
+.replyform-placeholder iframe {
+    margin-top:10px;
+}
+
+.replyform-placeholder {
+    filter: invert(1);
+}
+
+.guestnote {
+    color:#484848;
+}
+
+.comment,
+.rating,
+.post {
+    margin-top: 10px;
+    background: #ffffff;
+    opacity: 0.95;
+    font: 1.4em JosefinSans, lucida grande, lucida sans unicode, verdana, sans-serif;
+    transition:opacity ease-in 200ms;
+}
+
+.comment:hover,
+.rating:hover,
+.post:hover,
+.comment:focus,
+.rating:focus,
+.post:focus  {
+    opacity: 1.0;
+}
+
+.rating {
+    color: #888888;
+    [c:!custom.bg_light]
+        background: #111111 !important;
+    [/]
+    [c:custom.bg_light]
+        background: #F8F8F8 !important;
+    [/]
+}
+
+#commentform {
+    color: #888888;
+    background: #1B1B1B !important;
+    [c:custom.bg_light]
+        /* Filter should apply to the child iframe */
+        filter: invert(1);
+    [/]
+}
+
+.comment {
+    min-height: 100px;
+}
+.reply {
+    margin-left:20px;
+}
+
+#comicnavigation, .rating, .post {
+    padding: 10px;
+}
+
+.permalinkurl {
+    display:inline-block;
+    word-break:break-word;
+    word-wrap:break-word;
+}
+
+.commentheader {
+    background: #1B1B1B;
+    padding: 5px 5px 2px 5px;
+    color: #3d3d3d;
+    text-align: right;
+}
+.commentheader h2 {
+    font-weight: 200;
+}
+.commentheader h4 {
+    font-weight: 350;
+}
+
+.avatar {
+    float: left;
+    margin: 10px 10px 5px 10px;
+    padding: 1px;
+    border: none;
+    border-radius: 20px;
+    transition:opacity ease-in 200ms, border-radius ease-in 200ms;
+}
+
+.avatar:hover,
+.avatar:focus  {
+    opacity: 1.0;
+    border-radius: 0px;
+}
+
+h4 {
+    font-size: 0.9em;
+    color: #A3A3A3;
+    text-align: left;
+}
+
+h2, h3 {
+    font-size: 2em;
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+h2 a {
+    color: #ffffff;
+}
+
+.commentcontent {
+    padding: 2px 20px 5px 20px;
+    text-align: left;
+    min-height: 100px;
+    font-size: 1.17em;
+    font-weight: 350;
+}
+.commentcontent .commentcontrol {
+    padding-top: 5px;
+    font-size: 0.9em;
+    font-weight: 200;
+}
+.commentcontent .commentcontrol a:hover,
+.commentcontent .commentcontrol a:focus {
+    font-weight: 500;
+}
+
+.commentcontent img {
+    max-width:100%;
+    height:auto;
+}
+
+h3 {
+    color: #1B1B1B;
+}
+
+.editdelete {
+    font-size: 1.3em;
+    display:inline-block;
+}
+
+footer {
+    background: #2b2b2b;
+    font: 0.9em JosefinSans, lucida grande, lucida sans unicode, verdana, sans-serif;
+    color: #dfdfdf;
+    padding: 20px;
+    margin-top:10px;
+    transition:color ease-in 200ms, background ease-in 200ms;
+    box-sizing:border-box;
+}
+
+footer:hover {
+    background: #1B1B1B;
+    color: #ffffff;
+}
+
+footer div:not(:last-of-type) {
+    margin-bottom:12px;
+}
+
+footer ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:inline-flex;
+    flex-wrap: wrap;
+}
+
+footer li {
+    list-style:none;
+    margin-left:7px;
+    margin-right:7px;
+}
+
+.hostedby {
+    display:inline-flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content: center;
+}
+
+.hostedby a {
+    display:inline-flex;
+    align-items:center;
+    word-wrap:normal;
+    word-break:keep-all;
+}
+
+.hostedby a img {
+    width:auto;
+    margin-left:0.5em;
+    margin-right:5px;
+}
+
+.cflink {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+#title {
+    /*background: #1B1B1B;*/
+    background: none;
+    opacity: 0.8;
+    padding: 0;
+    margin: 0;
+    word-break:break-word;
+    word-wrap:break-word;
+}
+#title h2 {
+    font-weight: 200;
+    [c:custom.bg_light]
+        color: #000000;
+    [/]
+    [c:!custom.bg_light]
+        color: #FFFFFF;
+    [/]
+}
+
+.commentheadings {
+    padding: 15px;
+    margin: 10px auto;
+}
+
+h5 {
+    color: #ffffff;
+    font-size: 2.4em;
+    text-transform: uppercase;
+}
+
+.textcontainer {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 10px;
+    font-size: 1.3em;
+    text-align: left;
+    box-sizing:border-box;
+}
+
+#archive {
+    font: 1.15em JosefinSans, lucida sans unicode, verdana, sans-serif;
+    width:100%;
+    margin-bottom:10px;
+    box-sizing:border-box;
+}
+
+#archive h3 {
+    margin-bottom:0;
+    margin-top:0;
+}
+
+#archive .chapter-title {
+    background-color:#F0F0F0;
+    text-align:center;
+    color:#888;
+    padding:8px;
+}
+
+#archive .chapter-title h3 {
+    color:#555;
+}
+
+#archive .chapter-title {
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+#archive .archivelabels + .chapter-title {
+    margin-top:0;
+}
+
+#archive .archivechapter {
+    margin:0;
+    padding:3px;
+    font-size:1.1em;
+}
+
+#archive .chapterdescription {
+    padding:4px;
+    padding-left:9px;
+    padding-top:8px;
+    font-size:0.85em;
+}
+
+#archive .archivecomic,
+#archive .archivelabels {
+    display:flex;
+    align-items:center;
+    flex-wrap:nowrap;
+    text-align:left;
+}
+#archive .archivelabels {
+    margin-bottom:10px;
+}
+
+#archive .archivecomicnumber,
+#archive .archivecomicposttime,
+#archive .archivecomictitle,
+#archive .archivecomiccomments,
+#archive .archivelabelnumber,
+#archive .archivelabelposttime,
+#archive .archivelabeltitle,
+#archive .archivelabelcomments {
+    box-sizing:border-box;
+}
+
+
+#archive .archivecomicnumber,
+#archive .archivelabelnumber {
+    padding-right:5px;
+    min-width:40px;
+    word-wrap:normal;
+    word-break:keep-all;
+}
+
+#archive .archivecomicposttime,
+#archive .archivelabelposttime {
+    text-align:right;
+    width:calc(30% - 40px);
+    margin-top:4px;
+}
+
+#archive .archivecomicposttime {
+    font-size:0.8em;
+}
+
+#archive .archivecomictitle,
+#archive .archivelabeltitle {
+    flex:1 1 45%;
+}
+
+
+#archive .archivecomiccomments,
+#archive .archivelabelcomments {
+    padding-right:10px;
+    width:25%;
+}
+
+#archive .archivelabel {
+    padding:4px;
+    text-align:left;
+    font-weight:bold;
+}
+
+#archive .archivecomicposttime,
+#archive .archivelabelposttime,
+#archive .archivecomiccomments,
+#archive .archivelabelcomments {
+    text-align:right;
+
+}
+
+#archive .archivelabelnumber {
+    min-width:40px;
+    box-sizing:border-box;
+}
+
+
+#archive .archivecomicnumber,
+#archive .archivecomicposttime,
+#archive .archivecomictitle,
+#archive .archivelabelcomments {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+#archive-chapters {
+    text-align:left;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#archive-chapters .chapter {
+    display:flex;
+    margin-bottom:35px;
+}
+
+#archive-chapters .chapter-cover {
+    margin-right:15px;
+}
+
+.chapter-cover img {
+    max-width:100%;
+    height:auto;
+}
+
+#archive-chapters .chapter-data {
+    flex:1 1 0%;
+}
+
+#archive-chapters h3 {
+    margin:0;
+    margin-bottom:6px;
+    text-align:left;
+}
+
+#archive-chapters .chapterdescription {
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+#archive-chapters .chapter-more {
+    font-size:14px;
+}
+
+
+.archive-back-link {
+    margin-top:15px;
+    font-size:0.9rem;
+    text-align:center;
+}
+
+#thumbnail-preview-box,
+.chapter-cover a {
+    border:1px solid #888888;
+    background-color:#ffffff;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.05);
+    transition:opacity 200ms linear;
+    padding:5px;
+    display:block;
+}
+
+#thumbnail-preview-box img,
+.chapter-cover a img {
+    display:block;
+}
+
+#months {
+    padding: 0px;
+    margin: 20px 0px 0px 0px;
+    list-style-type: none;
+}
+
+.textcontainer h3 {
+    text-align: center;
+}
+
+#searchbar {
+    text-align:center;
+}
+
+#searchbar input {
+    border:1px solid black;
+    color:black;
+    background-color:white;
+}
+
+#searchbar input.submit {
+    background-color:#EFEFEF;
+}
+
+.center {
+    text-align:center;
+}
+
+.pages {
+    font-size:1.2em;
+}
+
+
+.pages a {
+    display:inline-block;
+    text-align:center;
+    width:35px;
+    height:35px;
+    line-height:35px;
+    margin-left:2px;
+}
+
+.currentpage a {
+    color:#444;
+}
+
+.currentpage {
+    font-weight:bold;
+}
+
+.clear {
+    clear:both;
+}
+
+.spacer {
+    height:10px;
+}
+
+
+/* Extra Pages / user-content */
+
+.commentcontent,
+.extra-page-content {
+    word-break:break-word;
+    word-wrap:break-word;
+}
+
+.blogcontent img {
+    max-width:100%;
+    height:auto;
+}
+
+.blogcontent table,
+.extra-page-content table {
+    max-width:100%;
+}
+
+.blogcontent table img,
+.extra-page-content table img {
+    /* we cannot use the 100% rule in tables, since it causes columns with text to take up all the space and make images tiny.
+       this rule will only work with tables that have up to 3 image columns next to one another (or two images and text),
+       wider tables will end up stretching the page*/
+    max-width:27vw;
+}
+
+
+
+/*rules only for screens below 800 pixels (tablets, phones)*/
+@media (max-width:800px) {
+    #content-start {
+        min-width:0;
+        width:100%;
+    }
+
+
+    .noncomicpage {
+        width:auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+    }
+
+    .editdelete {
+        font-size: 1.2em;
+    }
+
+    h2, h3 {
+        font-size:1.8em;
+    }
+
+    h4 {
+        font-size: 0.8em;
+    }
+
+
+    .avatar {
+        max-width:100px;
+        max-height:100px;
+        width:auto;
+        height:auto;
+    }
+
+    #archive {
+        padding-left:0;
+    }
+
+    #archive .chapter-title {
+        margin-top:25px;
+    }
+
+    #archive .archivecomic {
+        flex-wrap:wrap;
+        align-items:flex-start;
+    }
+
+    #archive .archivecomicnumber {
+        min-width:initial;
+        word-wrap:break-word;
+        word-break:break-word;
+    }
+
+    #archive .archivecomicposttime {
+        margin-top:4px;
+        text-align:left;
+        width:60%;
+    }
+
+    #archive .archivecomictitle {
+        width:auto;
+        flex-basis:83%;
+    }
+
+    #archive .archivecomiccomments {
+        margin-top:4px;
+        font-size:0.7em;
+        width:40%;
+    }
+
+
+    #archive .archivecomicnumber,
+    #archive .archivecomictitle {
+        padding-top:20px;
+        padding-bottom:0;
+    }
+
+    #archive .archivecomic:first-of-type .archivecomicnumber,
+    #archive .archivecomic:first-of-type .archivecomictitle {
+        padding-top:0;
+    }
+
+    #archive .archivecomicposttime,
+    #archive .archivelabelcomments {
+        padding-top:0;
+        padding-bottom:0;
+    }
+
+    #archive .archivelabelposttime,
+    #archive .archivelabelcomments {
+        display:none;
+    }
+
+    #archive .archivelabels {
+        display:none;
+    }
+
+    .chapter-cover img {
+        max-width:160px;
+        height:auto;
+    }
+
+}
+
+/*rules only for screens below 600 pixels (landscape mode phones, small tablets)*/
+
+@media (max-width:600px) {
+
+    body {
+        padding:0;
+    }
+
+    .comicarrow {
+        height:40px;
+        width:auto;
+        margin-left:12px;
+        margin-right:12px;
+    }
+
+    .comicarrowlabel {
+        display:none;
+    }
+
+    .chapter-cover img {
+        max-width:100px;
+        height:auto;
+    }
+
+    .textcontainer {
+        padding-left:10px;
+        padding-right:10px;
+    }
+}
+
+/*rules only for screens below 400 pixels (phones)*/
+@media (max-width:400px) {
+
+    header {
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #navigation {
+        margin-bottom: 15px;
+    }
+
+    #nav li a {
+        padding:12px;
+        font-size:14px;
+    }
+
+    h2, h3 {
+        text-align: left;
+        font-size:1.6em;
+    }
+
+    h4 {
+        font-size: 0.75em;
+    }
+
+    .avatar {
+        max-width:75px;
+        max-height:75px;
+    }
+
+    .chapter-cover img {
+        max-width:80px;
+        height:auto;
+    }
+}

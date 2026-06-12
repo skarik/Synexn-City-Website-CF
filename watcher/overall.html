@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Last Update: [v:lastupdatedmy] -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta name="robots" content="noai, noimageai">
+
+        [c:iscomicpage]
+            [c:!isfirstcomic]
+                <link rel="prev" href="[v:prevcomic]" />
+            [/]
+
+            [c:!islastcomic]
+                <link rel="next" href="[v:nextcomic]" />
+            [/]
+
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="[v:webcomicname]" />
+            <meta property="og:description" content="[v:pagetitle]" />
+            <meta property="og:url" content="[v:permalink]" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="[v:webcomicname]" />
+            <meta name="twitter:description" content="[v:pagetitle]" />
+
+            [c:comicimageurl]
+                <meta property="og:image" content="[v:comicimageurl]" />
+                <meta property="og:image:width" content="[v:comicwidth]" />
+                <meta property="og:image:height" content="[v:comicheight]" />
+                <meta name="twitter:image" content="[v:comicimageurl]" />
+            [/]
+        [/]
+
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/" />
+
+        <title>[v:webcomicname] - [v:pagetitle]</title>
+
+        [v:layoutcss]
+
+        [v:cfscriptcode]
+
+        [c:iscomicpage]
+            <script type="text/javascript">
+                activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            </script>
+        [/]
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(e) {
+                //this checks if the current visitor has a place saved already, and if not, add the "loadplace-inactive" class
+                //to the "load my place" link, to gray it out
+                var loadPlaceLink = document.getElementById('loadplace-link');
+                if(loadPlaceLink !== null && !comicfury.bookmark)
+                {
+                    loadPlaceLink.classList.add('loadplace-inactive');
+                }
+            });
+
+            var customOnSave = function(saveLink) {
+                //this adds the class "saveplace-saved" class to the "save my place" link, when the bookmark has been saved
+                //you can also overwrite saveLink.innerHTML instead with new HTML code to e.g. change the image
+                saveLink.classList.add('saveplace-saved');
+            };
+
+            var selectElementText = function(element) {
+                if (window.getSelection && document.createRange)
+                {
+                    var selection = window.getSelection();
+                    var range = document.createRange();
+                    range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            };
+        </script>
+    </head>
+
+    <body>
+
+        <!-- Header image -->
+        <div id="head">
+            <h1 id="sitetitle" style="mask-image: url('/files/assets/title.png');">
+                <img src="/files/assets/title.png" alt="[v:webcomicname]" title="[v:webcomicname]" id="banner"/>
+            </h1>
+        </div>
+
+        <nav id="navigation">
+            <ul>
+                [c:!isfirstcomic]
+                    <li><span>
+                        <a href="/comics/1">
+                            First
+                        </a>
+                    </span></li>
+                [/]
+            
+                [c:!islastcomic]
+                    <li><span>
+                        <a href="/comics/">
+                            Latest
+                        </a>
+                    </span></li>
+                [/]
+
+                <li><span>
+                    <a href="/archive/">
+                        Archive
+                    </a>
+                </span></li>
+
+                [c:infinitescrollenabled]
+                    <li><span>
+                        <a href="[v:infinitescrolllink]" target="window2">
+                            Scroll View
+                        </a>
+                    </span></li>
+                [/]
+
+                [c:hasblogs]
+                    <li><span>
+                        <a href="/blog/">
+                            Blog
+                        </a>
+                    </span></li>
+                [/]
+
+                [l:extrapages]
+                    <li><span>
+                        <a href="[v:l.link]">
+                            <div class="nav-icon-container">
+                                <img src="https://comicfury.com/images/layouts/schroedinger/extrapage.svg" alt="[v:l.title]" title="[v:l.title]" />
+                            </div><br />
+                            [v:l.title]
+                        </a>
+                    </span></li>
+                [/]
+                [c:!hidefromhost]
+                    <li><span>
+                        <a href="[v:addsubscriptionlink]" target="window2">
+                            Subscribe
+                        </a>
+                    </span></li>
+                [/]
+            </ul>
+        </nav>
+
+        [c:bannerads]
+            <!-- voluntary CF support ads, you can turn these off in your webcomic settings -->
+            <div class="volad">
+                [v:banneradcode]
+            </div>
+        [/]
+
+        <div id="contentcontainer">
+
+
+            <div class="wrap" id="content-start">
+                [c:isextrapage]
+                    <div class="box extra-page-content">
+                        <h2 class="heading">[v:pagetitle]</h2>
+                        <div>
+                [/]
+
+
+                <!--layout:[content]-->
+
+
+                [c:isextrapage]
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                [/]
+
+
+                <footer class="box">
+
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="/rss/">RSS</a>
+                            </li>
+                            [c:!hidefromhost]
+                                <li>
+                                    <a href="[v:comicprofile]">Comic Profile</a>
+                                </li>
+                            [/]
+                            <li>
+                                <a href="#">Top</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="hostedby">
+                        <span>Hosted by </span>
+                        <a href="https://comicfury.com">
+                            <img src="https://comicfury.com/images/gator-icon-black.png" height="22" style="height:22px; width:auto;" />
+                            ComicFury
+                        </a>
+                    </div>
+
+                    <div>
+                        &copy; [v:copyrights]
+                    </div>
+
+                </footer>
+            </div>
+            [c:searchon]
+                <div id="searchbar">
+                    <form method="post" action="/search/">
+                        <div id="searchbar">
+                            <input type="text" name="search" placeholder="Search for comics" />
+                            <input type="submit" value="Search" class="submit" />
+                        </div>
+                    </form>
+                </div>
+            [/]
+        </div>
+    </body>
+</html>

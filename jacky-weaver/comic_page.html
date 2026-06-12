@@ -1,0 +1,224 @@
+[v:comicimage]
+<div id="title">
+    [c:comictitle]
+        <h2>[v:comictitle]</h2>
+    [/]
+    <h4>posted [v:posttime]</h4>
+</div>
+
+<div id="contentwrap">
+    <div id="comicnavigation">
+        <ul class="comicnav">
+            <li>
+                <a [c:isfirstcomic] class="comicnavlink-inactive" [/]  href="/comics/1/#content-start" rel="start" title="first page">
+
+                    <svg class="comicarrow" width="56" height="57" viewBox="0 0 111.69424 113.32227">
+                      <g transform="translate(-10.676688,-10.529343)">
+                        <path style="fill:#a1a1a1;" d="m 67.337898,10.529343 -56.66121,56.66114 56.66121,56.661127 10.0536,-10.05417 -46.60701,-46.606957 46.60701,-46.60698 z" />
+                        <path style="fill:#a1a1a1;" d="M 112.31733,10.529343 55.656128,67.190483 112.31733,123.85161 122.37093,113.79744 75.763928,67.190483 122.37093,20.583503 Z" />
+                      </g>
+                    </svg>
+
+                    <span class="comicarrowlabel">
+                        first
+                    </span>
+                </a>
+            </li>
+
+            <li>
+                <a [c:isfirstcomic] class="comicnavlink-inactive" [/] href="[v:prevcomic]#content-start" rel="prev" title="previous page">
+
+                    <svg class="comicarrow" width="34" height="57" viewBox="0 0 66.714808 113.32226">
+                      <g transform="translate(-10.676688,-10.529343)">
+                        <path d="M 67.33789,10.529343 10.676688,67.190483 67.33789,123.85161 77.39149,113.79744 30.784488,67.190483 77.39149,20.583503 Z" style="fill:#a1a1a1;" />
+                      </g>
+                    </svg>
+
+                    <span class="comicarrowlabel">
+                        previous
+                    </span>
+                </a>
+            </li>
+
+
+            <li>
+                <a [c:islastcomic] class="comicnavlink-inactive" [/] href="[v:nextcomic]#content-start" rel="next" title="next page">
+                    <span class="comicarrowlabel">
+                        next
+                    </span>
+
+                    <svg class="comicarrow" width="34" height="57" viewBox="0 0 66.714808 113.32226">
+                      <g transform="translate(-10.676688,-10.529343)">
+                        <path d="M 20.730288,10.529343 77.39149,67.190483 20.730288,123.85161 10.676688,113.79744 57.28369,67.190483 10.676688,20.583503 Z" style="fill:#a1a1a1;" />
+                      </g>
+                    </svg>
+                </a>
+            </li>
+
+
+            <li>
+                <a [c:islastcomic] class="comicnavlink-inactive" [/] href="/comics/#content-start" rel="index" title="latest page">
+                    <span class="comicarrowlabel">
+                        last
+                    </span>
+
+                    <svg class="comicarrow" width="56" height="57" viewBox="0 0 111.69424 113.32227">
+                      <g transform="translate(-10.676688,-10.529343)">
+                        <path style="fill:#a1a1a1;" d="M 65.70972,10.529343 122.37093,67.190483 65.70972,123.85161 55.65612,113.79744 102.26313,67.190483 55.65612,20.583503 Z" />
+                        <path style="fill:#a1a1a1;" d="M 20.730288,10.529343 77.39149,67.190483 20.730288,123.85161 10.676688,113.79744 57.28369,67.190483 10.676688,20.583503 Z" />
+                      </g>
+                    </svg>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+
+
+    <div class="rating">
+        <div id="saveplace">
+            <a href="#" onclick="savePlace(this,[v:comicid]);return false;">Save My Place</a> ▽
+            <a href="#" onclick="loadPlace();return false;">Load My Place</a>
+        </div>
+        [c:allowratings]
+            <div class="spacer"></div>
+            <a href="[v:ratelink]">(rate this)</a>
+            <!--rate this page:
+            <a href="[v:ratelink]&amp;vote=1" onclick="rateWindow(event, '[v:ratelink]&amp;vote=1', [v:rate_jsdata]);"><img src="/files/images/sparkle.png" alt="X" title="1" /></a>
+            <a href="[v:ratelink]&amp;vote=2" onclick="rateWindow(event, '[v:ratelink]&amp;vote=2', [v:rate_jsdata]);"><img src="/files/images/sparkle.png" alt="X" title="2" /></a>
+            <a href="[v:ratelink]&amp;vote=3" onclick="rateWindow(event, '[v:ratelink]&amp;vote=3', [v:rate_jsdata]);"><img src="/files/images/sparkle.png" alt="X" title="3" /></a>
+            <a href="[v:ratelink]&amp;vote=4" onclick="rateWindow(event, '[v:ratelink]&amp;vote=4', [v:rate_jsdata]);"><img src="/files/images/sparkle.png" alt="X" title="4" /></a>
+            <a href="[v:ratelink]&amp;vote=5" onclick="rateWindow(event, '[v:ratelink]&amp;vote=5', [v:rate_jsdata]);"><img src="/files/images/sparkle.png" alt="X" title="5" /></a>-->
+            <br />
+            [c:rating]
+                average rating: <em>[v:rating]</em>
+            [/]
+        [/]
+
+
+
+        [c:showpermalinks]
+            <div class="spacer"></div>
+            <div class="permalink">
+                <b>Permalink:</b>
+                <span class="permalinkurl" onclick="selectElementText(this);">[v:permalink]</span>
+            </div>
+        [/]
+
+    </div>
+
+    <a name="comments"></a>
+
+    [c:authornotes]
+        <div class="commentheadings">
+            <h5>author comments</h5>
+        </div>
+    [/]
+
+    [l:authornotes]
+        <div class="comment" id="[v:l.commentanchor]">
+            [c:l.avatar]
+                <a href="[v:l.profilelink]" title="[v:l.authorname]"><img class="avatar" src="[v:l.avatar]" alt="view [v:l.authorname]'s profile" /></a>
+            [/]
+
+            <div class="commentheader">
+                <h4>[v:l.posttime]</h4>
+                <h2><a href="[v:l.profilelink]" title="[v:l.authorname]">[v:l.authorname]</a></h2>
+            </div>
+
+            <div class="commentcontent">
+                <div class="[v:l.controlclass]">
+                    <a href="[v:l.editlink]" class="[v:l.editclass]" onclick="showCommentActionForm(event, [v:l.edit_jsdata]);"><span class="editdelete">edit</span></a>
+                    <span class="[v:l.editclass]"> ▵ </span>
+                    <a href="[v:l.deletelink]" class="[v:l.deleteclass]" onclick="showCommentActionForm(event, [v:l.delete_jsdata]);"><span class="editdelete">delete</span></a>
+                </div>
+
+                <p>
+                    [v:l.comment]
+                </p>
+
+                <div class="replyform-placeholder">
+                    [v:l.replyform]
+                </div>
+            </div>
+
+            <div class="commentheader">end of message</div>
+        </div>
+    [/]
+
+    [c:bannerads]
+        <!-- voluntary CF support ads, you can turn these off in your webcomic settings -->
+        <div class="vo_a">
+            [v:banneradcode]
+        </div>
+    [/]
+
+    [c:allowcomments]
+        <div class="post" id="commentform">
+            [v:commentform]
+        </div>
+    [/]
+
+    [c:comments]
+        <div class="commentheadings">
+            <h5>user comments</h5>
+        </div>
+
+        [l:comments]
+            <div class="comment [c:l.is_reply]reply[/]" id="[v:l.commentanchor]">
+                [c:l.avatar]
+                    <a href="[v:l.profilelink]" title="[v:l.authorname]">
+                        <img class="avatar" src="[v:l.avatar]" alt="view [v:l.authorname]'s profile" />
+                    </a>
+                [/]
+
+                <div class="commentheader">
+                    <h4>[v:l.posttime]</h4>
+                    <h2>
+                        [c:!l.isguest] <a href="[v:l.profilelink]" title="[v:l.authorname]"> [/]
+
+                            [v:l.authorname]
+
+                            [c:l.isguest] [c:l.authorname!=Guest] <span class="guestnote">(Guest)</span> [/] [/]
+
+                        [c:!l.isguest] </a> [/]
+                    </h2>
+                </div>
+
+                <div class="commentcontent">
+                    <div class="commentcontrol">
+                        <div class="[v:l.controlclass]">
+                            <span class="[v:l.editclass]"><a href="[v:l.editlink]&notitle" onclick="showCommentActionForm(event, [v:l.edit_jsdata]);" target="_blank"><span class="editdelete">edit</span></a> ▵ </span>
+                            <span class="[v:l.deleteclass]"><a href="[v:l.deletelink]" onclick="showCommentActionForm(event, [v:l.delete_jsdata]);" target="_blank"><span class="editdelete">delete</span></a> ▵</span>
+                            <a href="[v:l.replylink_nopopup]&notitle" onclick="showCommentActionForm(event, [v:l.reply_jsdata]);" target="_blank"><span class="editdelete">reply</span></a>
+                        </div>
+                    </div>
+
+                    <p>
+                        [v:l.comment]
+                    </p>
+
+                    <div class="replyform-placeholder">
+                        [v:l.replyform]
+                    </div>
+                </div>
+
+                <div class="commentheader">end of message</div>
+            </div>
+        [/]
+
+        [c:allowcomments]
+            <div class="post">
+                <a class="postcomment" href="#commentform" title="post a comment">
+                    post a comment
+                </a>
+            </div>
+        [/]
+    [/]
+
+    
+    <div class="cflink"><a href="https://comicfury.com"><img src="https://comicfury.com/images/cf-diamond.png" alt="" width="225" height="150" /></a></div>
+
+    
+</div>

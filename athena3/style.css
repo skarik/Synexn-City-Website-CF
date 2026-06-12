@@ -1,0 +1,1183 @@
+/** New fonts **/
+@font-face {
+    font-family: SpaceGrotesk;
+    src: url("/files/resources/spacegrotesk-variablefont_wght.ttf");
+}
+/* @font-face {
+    font-family: Genos;
+    src: url("/files/resources/genos-variablefont_wght.ttf");
+} */
+/* @font-face {
+    font-family: Saira;
+    src: url("/files/resources/saira-variablefont_wdthwght.ttf");
+} */
+
+
+/** Global Vars **/
+:root {
+    --c_base: rgb(16, 16, 16);
+    --c_accent1: rgb(0, 228, 255);
+    --c_accent2: rgb(255, 245, 140);
+
+    --c_accent1_dark: color-mix(in oklab, var(--c_accent1), var(--c_base) 50%);
+
+    --f_main: "SpaceGrotesk", lucida sans unicode, lucida grande, verdana, sans-serif;
+    --f_heading: "Saira", "SpaceGrotesk", lucida sans unicode, lucida grande, verdana, sans-serif;
+
+    --v_pagewidth: 940px;
+}
+
+body {
+    margin:0;
+    padding:0px;
+    /*background: #3D3D3D url("https://comicfury.com/images/layouts/bg-masterjinn.gif") top no-repeat;*/
+    background: var(--c_base);
+    /*font-size: 62.5%;*/
+    font-size: 1.0em;
+    font-family: var(--f_main);
+    color: #000000;
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    justify-content:stretch;
+    min-height:100vh;
+    box-sizing:border-box;
+
+    background-image: radial-gradient(var(--c_accent1_dark) 1px, transparent 0);
+    background-size: 3.0em 3.0em;
+    background-position: 1.0em 1.0em;
+}
+
+main {
+    flex:1 1 auto;
+}
+
+img {
+    border: 0px;
+}
+
+.no-bg,
+#comicimagelink {
+    background: none !important;
+}
+
+a {
+    color: var(--c_accent1_dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        background ease-in 200ms,
+        color ease-in 200ms,
+        text-shadow 200ms,
+        opacity ease-in 200ms;
+
+    text-shadow: none;
+
+    background-image: conic-gradient(from -90deg at left 0px bottom 2px, #0000 50%, var(--c_accent1) 0);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+}
+
+a:hover,
+a:focus {
+    color: var(--c_accent1);
+    transition:
+        background ease-in 000ms,
+        color ease-in 200ms,
+        text-shadow 200ms,
+        opacity ease-in 200ms;
+
+    text-shadow: 0 0 0.3em var(--c_accent1);
+
+    background-size: 100% 100%;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--f_main);
+    line-height: 1em;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    /*padding: 50px;
+    padding-left:5px;
+    padding-right:5px;*/
+    padding: 0;
+}
+
+header h1 {
+    /* font: 4em century gothic, lucida sans unicode, lucida grande, sans-serif; */
+    font-family: var(--f_main); 
+    font-size: 4.0em;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: auto;
+    text-align: center;
+}
+
+header h1 a,
+header h1 a:hover {
+    color: #ffffff;
+}
+
+header img {
+    max-width: min(100vw, calc(var(--v_pagewidth) * 1.1));
+    height: auto;
+}
+
+.vo_a {
+    margin:7px auto;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.vo_a img {
+    max-width:100%;
+    height:auto;
+}
+
+#slogan {
+    color: white;
+    font-size: max(1.5em, min(3.0em, 4.7vw));
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-top: -1.5em;
+    text-shadow: 0 0 0.3em var(--c_accent1);
+}
+
+#navigation {
+    margin: 0;
+    margin-bottom:30px;
+}
+
+#nav {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+#nav li {
+    display: inline;
+    margin:0;
+    padding:0;
+}
+
+#nav li a {
+    display: inline-block;
+    background: none;
+    opacity: 1.0;
+    padding: 15px;
+    margin: 1px;
+    /* font: 1.5em century gothic, lucida grande, verdana, sans-serif; */
+    font-family: var(--f_main); 
+    font-size: 1.5em;
+    color: var(--c_accent1);
+    transition:
+        color 0.2s;
+}
+
+#nav li a:hover,
+#nav li a:focus  {
+    opacity: 1;
+    color: white;
+    transition:
+        color 0.2s;
+}
+
+.lockblock,
+#nav li a {
+    --lock-width: round(up, 0.07em, 1px);
+    --lock-restsize: round(0.3em, 1px);
+    --lock-offset: round(0.4em, 1px); 
+
+    --lock-fullsize: round(calc(100% - var(--lock-offset)), 1px);
+
+    background-image:
+        conic-gradient(from 90deg at left var(--lock-width) top var(--lock-width), #0000 25%, var(--c_accent1) 0),
+        conic-gradient(from 00deg at left var(--lock-width) bottom var(--lock-width), #0000 25%, var(--c_accent1) 0),
+        conic-gradient(from 180deg at right var(--lock-width) top var(--lock-width), #0000 25%, var(--c_accent1) 0),
+        conic-gradient(from -90deg at right var(--lock-width) bottom var(--lock-width), #0000 25%, var(--c_accent1) 0);
+    background-size: var(--lock-restsize) var(--lock-restsize);
+    background-position: 0% 0%, 0% 100%, 100% 0, 100% 100%;
+    background-repeat: no-repeat;
+    transition: /* Transition Away */
+        color 0.2s,
+        text-shadow 0.2s,
+        background-position 0.2s 0.0s, 
+        background-size 0.2s 0.0s;
+}
+.lockblock:hover,
+.lockblock:focus,
+#nav li a:hover,
+#nav li a:focus
+{
+    background-size: calc(100% - var(--lock-offset) * 2) calc(100% - var(--lock-offset) * 2);
+    background-position:
+        var(--lock-offset) var(--lock-offset),
+        var(--lock-offset) var(--lock-fullsize),
+        var(--lock-fullsize) var(--lock-offset),
+        var(--lock-fullsize) var(--lock-fullsize);
+    transition: /* Transition To */
+        color 0.2s 0.2s,
+        text-shadow 0.2s 0.2s,
+        background-position 0.2s 0.0s, 
+        background-size 0.2s 0.23s;
+}
+
+.corners--repeated-lines {
+    mask-image: 
+        linear-gradient(135deg, #0000 1.0rem, red 0),
+        linear-gradient(
+            -135deg,
+            #0000 .75rem, 
+            red 0, red 1.0rem,
+            #0000 0, #0000 1.25rem, 
+            red 0, red 1.5rem,
+            #0000 0, #0000 1.75rem, 
+            red 0
+        ),
+        linear-gradient(
+            45deg,
+            #0000 .75rem, 
+            red 0, red 1.0rem,
+            #0000 0, #0000 1.25rem, 
+            red 0, red 1.5rem,
+            #0000 0, #0000 1.75rem, 
+            red 0
+        ),
+        linear-gradient(-45deg, #0000 1.0rem, red 0);
+    mask-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    mask-repeat: no-repeat;
+    mask-size: 51% 51%;
+}
+.corners--slanted0 {
+    mask-image: 
+        linear-gradient(135deg, #0000 1.0rem, red 0),
+        linear-gradient(-135deg, #0000 1.0rem, red 0),
+        linear-gradient(45deg, #0000 1.0rem, red 0),
+        linear-gradient(-45deg, #0000 1.0rem, red 0);
+    mask-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    mask-repeat: no-repeat;
+    mask-size: 51% 51%;
+}
+.corners--slanted1 {
+    mask-image: 
+        linear-gradient(red, red),
+        linear-gradient(-135deg, #0000 1.0rem, red 0),
+        linear-gradient(45deg, #0000 1.0rem, red 0),
+        linear-gradient(red, red);
+    mask-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    mask-repeat: no-repeat;
+    mask-size: 51% 51%;
+}
+.corners--slanted2 {
+    mask-image: 
+        linear-gradient(135deg, #0000 1.0rem, red 0),
+        linear-gradient(red, red),
+        linear-gradient(red, red),
+        linear-gradient(-45deg, #0000 1.0rem, red 0);
+    mask-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    mask-repeat: no-repeat;
+    mask-size: 51% 51%;
+}
+
+
+.linebreak {
+    margin: 0.1em;
+    height: 2em;
+    background-image:
+        radial-gradient(
+            circle,
+            white 0,
+            white 0.6em, #000 0.62em,
+            #000 0.88em, white 0.9em,
+            white 0.98em, #0000 1.0em),
+        linear-gradient(0deg, white 0, white 2px, #0000 0);
+    background-position: 50% 50%, 0 0%;
+    background-size: 100% 100%, 100% calc(50% + 1px);
+    background-repeat: no-repeat;
+}
+.linebreak:before,
+.linebreak:after {
+    border-radius: 2.0em;
+    border-color: white;
+    border-width: 0.1em;
+    border-style: solid;
+    width: 1.0em;
+    height: 1.0em;
+    display: inline-block;
+    content: "";
+    margin-left: 40%;
+    background-color: black;
+    top: 0.45em;
+    position: relative;
+}
+.linebreak:before {
+    margin-left: unset;
+    margin-right: 40%;
+}
+
+#content-start {
+    margin: auto;
+    min-width: 720px;
+    max-width:1300px;
+    display:inline-block;
+}
+
+.noncomicpage {
+    width:720px;
+    margin:auto;
+}
+
+
+.noncomicpage img {
+    max-width:100%;
+    /*using !important because the WYSIWYG-editor sometimes applies widths and heights as an inline style, which could cause squishy images otherwise*/
+    height:auto !important;
+}
+
+
+#contentwrap {
+    margin: auto;
+    max-width: min(100vw, calc(var(--v_pagewidth) * 0.8));
+    text-align: center;
+}
+
+
+.browsing-tags-note {
+    background: rgba(255,255,255,0.95);
+    padding:10px 5px;
+    max-width: 100%;
+    margin:auto;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.browse-all-link {
+    margin-top:10px;
+}
+
+.tags-label {
+    font-weight:bold;
+}
+
+#tags {
+    margin-top: 10px;
+}
+
+#comicimage, #latestcomicimage, .comicsegmentimage {
+    /* max-width:100%; */
+    max-width: min(100vw, calc(var(--v_pagewidth) * [v:custom.pagewidth]));
+    height:auto;
+}
+
+.comicsegments {
+    line-height:0; /*this is to prevent there from being space between the images on multi-image pages*/
+}
+.comicsegments .textcontent {
+    line-height:normal;
+}
+
+.comicnav {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.comicnav li {
+    display:inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-family: var(--f_main);
+    font-size:2em;
+}
+
+.comicnav li a {
+    color: #A1A1A1;
+    display:flex;
+    align-items:center;
+}
+
+.comicarrow {
+    height:16px;
+    width:auto;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.comicarrowlabel {
+    line-height:1;
+}
+
+.comicnav li a .comicarrow g path {
+    transition:fill ease-in 200ms;
+    fill: #A1A1A1 !important;
+}
+
+.comicnav li a:hover,
+.comicnav li a:focus {
+    color: #ffffff;
+}
+.comicnav li a:hover .comicarrow g path,
+.comicnav li a:focus .comicarrow g path {
+    fill: #ffffff !important;
+}
+
+.comicnav li .comicnavlink-inactive,
+.comicnav li .comicnavlink-inactive:hover,
+.comicnav li .comicnavlink-inactive:focus {
+    opacity:0.25;
+    pointer-events: none;
+    color: #A1A1A1;
+}
+
+.comicnav li .comicnavlink-inactive:hover .comicarrow g path,
+.comicnav li .comicnavlink-inactive:focus .comicarrow g path {
+    fill: #A1A1A1 !important;
+}
+
+.postcomment {
+    display:block;
+    padding:10px;
+}
+
+
+.replyform-placeholder iframe {
+    margin-top:10px;
+}
+
+.guestnote {
+    color:#484848;
+}
+
+.comment,
+.rating,
+.post {
+    margin-top: 10px;
+    background: #ffffff;
+    opacity: 0.95;
+    /* font: 1.2em lucida grande, lucida sans unicode, verdana, sans-serif; */
+    font-family: var(--f_main); 
+    font-size: 1.0em;
+    transition:opacity ease-in 200ms;
+}
+
+.comment:hover,
+.rating:hover,
+.post:hover,
+.comment:focus,
+.rating:focus,
+.post:focus  {
+    opacity: 1.0;
+}
+
+.comment {
+    min-height: 100px;
+}
+
+.reply-depth1 {
+    margin-left:20px;
+}
+
+.reply-depth2 {
+    margin-left:40px;
+}
+
+.reply-depth3 {
+    margin-left:60px;
+}
+
+.reply-depth4 {
+    margin-left:80px;
+}
+
+.reply-depth5 {
+    margin-left:100px;
+}
+
+.reply-depth-above5 {
+    margin-left:120px;
+}
+
+#comicnavigation, .rating, .post {
+    padding: 10px;
+}
+
+.permalinkurl {
+    display:inline-block;
+    word-break:break-word;
+    word-wrap:break-word;
+}
+
+.commentheader {
+    background: #1B1B1B;
+    padding: 5px 5px 2px 5px;
+    color: #3d3d3d;
+    text-align: right;
+}
+
+.commentheader h4,
+.commentheader h4 a:link,
+.commentheader h4 a:visited,
+.commentheader h4 a:hover {
+    color: #A3A3A3;
+}
+
+.avatar {
+    float: left;
+    margin: 10px 10px 5px 10px;
+    /* transition:opacity ease-in 200ms; */
+}
+
+.avatar:hover,
+.avatar:focus  {
+    /* opacity: 0.8; */
+}
+
+h4 {
+    font-size: 0.9em;
+    color: #A3A3A3;
+    text-align: left;
+}
+
+h2, h3 {
+    font-size: 2em;
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+h2 a {
+    color: #ffffff;
+}
+
+.commentcontent {
+    padding: 2px 20px 5px 20px;
+    text-align: left;
+    min-height: 100px;
+}
+
+.commentcontent img {
+    max-width:100%;
+    height:auto;
+}
+
+h3 {
+    color: #1B1B1B;
+}
+
+select {
+    max-width:min(70vw, 300px);
+}
+
+.editdelete {
+    font-size: 1.3em;
+    display:inline-block;
+}
+
+footer {
+    background: #2b2b2b;
+    /* font: 0.9em lucida grande, lucida sans unicode, verdana, sans-serif; */
+    font-family: var(--f_main); 
+    font-size: 0.8em;
+    color: #dfdfdf;
+    padding: 20px;
+    margin-top:10px;
+    transition:color ease-in 200ms, background ease-in 200ms;
+    box-sizing:border-box;
+}
+
+footer:hover {
+    background: #1B1B1B;
+    color: #ffffff;
+}
+
+footer div:not(:last-of-type) {
+    margin-bottom: 0.2em;
+}
+
+footer ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:inline-flex;
+    flex-wrap: wrap;
+}
+
+footer li {
+    list-style:none;
+    margin-left:7px;
+    margin-right:7px;
+}
+
+.hostedby {
+    display:inline-flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content: center;
+}
+
+.hostedby a {
+    display:inline-flex;
+    align-items:center;
+    word-wrap:normal;
+    word-break:keep-all;
+}
+
+.hostedby a img {
+    width:auto;
+    margin-left:0.5em;
+    margin-right:5px;
+}
+
+.cflink {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+#title {
+    background: #1B1B1B;
+    opacity: 0.8;
+    padding: 20px;
+    margin: 10px auto;
+    word-break:break-word;
+    word-wrap:break-word;
+}
+
+.commentheadings {
+    padding: 15px;
+    margin: 10px auto;
+}
+
+h5 {
+    color: #ffffff;
+    font-size: 2.4em;
+    text-transform: uppercase;
+}
+
+.textcontainer {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 10px;
+    font-size: 1.3em;
+    text-align: left;
+    box-sizing:border-box;
+}
+
+#archive {
+    /* font: 1.15em lucida sans unicode, verdana, sans-serif; */
+    font-family: var(--f_main); 
+    font-size: 1.15em;
+    width:100%;
+    margin-bottom:10px;
+    box-sizing:border-box;
+}
+
+#archive h3 {
+    margin-bottom:0;
+    margin-top:0;
+}
+
+#archive .chapter-title {
+    background-color:#F0F0F0;
+    text-align:center;
+    color:#888;
+    padding:8px;
+}
+
+#archive .chapter-title h3 {
+    color:#555;
+}
+
+#archive .chapter-title {
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+#archive .archivelabels + .chapter-title {
+    margin-top:0;
+}
+
+#archive .archivechapter {
+    margin:0;
+    padding:3px;
+    font-size:1.1em;
+}
+
+#archive .chapterdescription {
+    padding:4px;
+    padding-left:9px;
+    padding-top:8px;
+    font-size:0.85em;
+}
+
+#archive .archivecomic,
+#archive .archivelabels {
+    display:flex;
+    align-items:center;
+    flex-wrap:nowrap;
+    text-align:left;
+}
+#archive .archivelabels {
+    margin-bottom:10px;
+}
+
+#archive .archivecomicnumber,
+#archive .archivecomicposttime,
+#archive .archivecomictitle,
+#archive .archivecomiccomments,
+#archive .archivelabelnumber,
+#archive .archivelabelposttime,
+#archive .archivelabeltitle,
+#archive .archivelabelcomments {
+    box-sizing:border-box;
+}
+
+
+#archive .archivecomicnumber,
+#archive .archivelabelnumber {
+    padding-right:5px;
+    min-width:40px;
+    word-wrap:normal;
+    word-break:keep-all;
+}
+
+#archive .archivecomicposttime,
+#archive .archivelabelposttime {
+    text-align:right;
+    width:calc(30% - 40px);
+    margin-top:4px;
+}
+
+#archive .archivecomicposttime {
+    font-size:0.8em;
+}
+
+#archive .archivecomictitle,
+#archive .archivelabeltitle {
+    flex:1 1 45%;
+}
+
+
+#archive .archivecomiccomments,
+#archive .archivelabelcomments {
+    padding-right:10px;
+    width:25%;
+}
+
+#archive .archivelabel {
+    padding:4px;
+    text-align:left;
+    font-weight:bold;
+}
+
+#archive .archivecomicposttime,
+#archive .archivelabelposttime,
+#archive .archivecomiccomments,
+#archive .archivelabelcomments {
+    text-align:right;
+
+}
+
+#archive .archivelabelnumber {
+    min-width:40px;
+    box-sizing:border-box;
+}
+
+
+#archive .archivecomicnumber,
+#archive .archivecomicposttime,
+#archive .archivecomictitle,
+#archive .archivelabelcomments {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+#archive-chapters {
+    text-align:left;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#archive-chapters .chapter {
+    display:flex;
+    margin-bottom:35px;
+}
+
+#archive-chapters .chapter-cover {
+    margin-right:15px;
+}
+
+.chapter-cover img {
+    max-width:100%;
+    height:auto;
+}
+
+#archive-chapters .chapter-data {
+    flex:1 1 0%;
+}
+
+#archive-chapters h3 {
+    margin:0;
+    margin-bottom:6px;
+    text-align:left;
+}
+
+#archive-chapters .chapterdescription {
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+#archive-chapters .chapter-more {
+    font-size:14px;
+}
+
+
+.archive-back-link {
+    margin-top:15px;
+    font-size:0.9rem;
+    text-align:center;
+}
+
+#thumbnail-preview-box,
+.chapter-cover a {
+    border:1px solid #888888;
+    background-color:#ffffff;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.05);
+    transition:opacity 200ms linear;
+    padding:5px;
+    display:block;
+}
+
+#thumbnail-preview-box img,
+.chapter-cover a img {
+    display:block;
+}
+
+#months {
+    padding: 0px;
+    margin: 20px 0px 0px 0px;
+    list-style-type: none;
+}
+
+.textcontainer h3 {
+    text-align: center;
+}
+
+#searchbar {
+    text-align:center;
+}
+
+#searchbar input {
+    border:1px solid black;
+    color:black;
+    background-color:white;
+}
+
+#searchbar input.submit {
+    background-color:#EFEFEF;
+}
+
+.browse-tagged {
+    text-align: center;
+    margin-top:15px;
+}
+
+.search-chapter-title {
+    font-size:0.75rem;
+}
+
+.center {
+    text-align:center;
+}
+
+.pages {
+    font-size:1.2em;
+}
+
+
+.pages a {
+    display:inline-block;
+    text-align:center;
+    width:35px;
+    height:35px;
+    line-height:35px;
+    margin-left:2px;
+}
+
+.currentpage a {
+    color:#444;
+}
+
+.currentpage {
+    font-weight:bold;
+}
+
+.clear {
+    clear:both;
+}
+
+.spacer {
+    height:10px;
+}
+
+
+/* Extra Pages / user-content */
+
+.commentcontent,
+.extra-page-content {
+    word-break:break-word;
+    word-wrap:break-word;
+}
+
+.blogcontent img {
+    max-width:100%;
+    height:auto;
+}
+
+.blogcontent table,
+.extra-page-content table {
+    max-width:100%;
+}
+
+.blogcontent table img,
+.extra-page-content table img {
+    /* we cannot use the 100% rule in tables, since it causes columns with text to take up all the space and make images tiny.
+       this rule will only work with tables that have up to 3 image columns next to one another (or two images and text),
+       wider tables will end up stretching the page*/
+    max-width:27vw;
+}
+
+
+
+/*rules only for screens below 800 pixels (tablets, phones)*/
+@media (max-width:800px) {
+    #content-start {
+        min-width:0;
+        width:100%;
+    }
+
+
+    .noncomicpage {
+        width:auto;
+    }
+
+    header h1 {
+        font-size: 3em;
+    }
+
+    .editdelete {
+        font-size: 1.2em;
+    }
+
+    h2, h3 {
+        font-size:1.8em;
+    }
+
+    h4 {
+        font-size: 0.8em;
+    }
+
+
+    .avatar {
+        max-width:100px;
+        max-height:100px;
+        width:auto;
+        height:auto;
+    }
+
+    #archive {
+        padding-left:0;
+    }
+
+    #archive .chapter-title {
+        margin-top:25px;
+    }
+
+    #archive .search-chapter-title {
+        margin-top:15px;
+    }
+
+    #archive .archivecomic {
+        flex-wrap:wrap;
+        align-items:flex-start;
+    }
+
+    #archive .archivecomicnumber {
+        min-width:initial;
+        word-wrap:break-word;
+        word-break:break-word;
+    }
+
+    #archive .archivecomicposttime {
+        margin-top:4px;
+        text-align:left;
+        width:60%;
+    }
+
+    #archive .archivecomictitle {
+        width:auto;
+        flex-basis:83%;
+    }
+
+    #archive .archivecomiccomments {
+        margin-top:4px;
+        font-size:0.7em;
+        width:40%;
+    }
+
+
+    #archive .archivecomicnumber,
+    #archive .archivecomictitle {
+        padding-top:20px;
+        padding-bottom:0;
+    }
+
+    #archive .archivecomic:first-of-type .archivecomicnumber,
+    #archive .archivecomic:first-of-type .archivecomictitle {
+        padding-top:0;
+    }
+
+    #archive .archivecomicposttime,
+    #archive .archivelabelcomments {
+        padding-top:0;
+        padding-bottom:0;
+    }
+
+    #archive .archivelabelposttime,
+    #archive .archivelabelcomments {
+        display:none;
+    }
+
+    #archive .archivelabels {
+        display:none;
+    }
+
+    .chapter-cover img {
+        max-width:160px;
+        height:auto;
+    }
+
+}
+
+/*rules only for screens below 600 pixels (landscape mode phones, small tablets)*/
+
+@media (max-width:600px) {
+
+    body {
+        padding:0;
+    }
+
+    .comicarrow {
+        height:40px;
+        width:auto;
+        margin-left:12px;
+        margin-right:12px;
+    }
+
+    .comicarrowlabel {
+        display:none;
+    }
+
+    .chapter-cover img {
+        max-width:100px;
+        height:auto;
+    }
+
+    .textcontainer {
+        padding-left:10px;
+        padding-right:10px;
+    }
+}
+
+@media (max-width:500px) {
+    .reply-depth1 {
+        margin-left:15px;
+    }
+
+    .reply-depth2 {
+        margin-left:30px;
+    }
+
+    .reply-depth3 {
+        margin-left:45px;
+    }
+
+    .reply-depth4 {
+        margin-left:60px;
+    }
+
+    .reply-depth5,
+    .reply-depth-above5 {
+        margin-left:75px;
+    }
+}
+
+/*rules only for screens below 400 pixels (phones)*/
+@media (max-width:400px) {
+
+    header {
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #navigation {
+        margin-bottom: 15px;
+    }
+
+    #nav li a {
+        padding:12px;
+        font-size:14px;
+    }
+
+    h2, h3 {
+        text-align: left;
+        font-size:1.6em;
+    }
+
+    h4 {
+        font-size: 0.75em;
+    }
+
+    .avatar {
+        max-width:75px;
+        max-height:75px;
+    }
+
+    .chapter-cover img {
+        max-width:80px;
+        height:auto;
+    }
+}

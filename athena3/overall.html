@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Last Update: [v:lastupdatedmy] -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta name="robots" content="noai, noimageai">
+
+        [c:iscomicrelatedpage]
+            [c:!isfirstcomic]
+                <link rel="prev" href="[v:prevcomic]" />
+            [/]
+
+            [c:!islastcomic]
+                <link rel="next" href="[v:nextcomic]" />
+            [/]
+
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="[v:webcomicname]" />
+            <meta property="og:description" content="[v:pagetitle]" />
+            [c:iscomicpage]
+                <meta property="og:url" content="[v:permalink]" />
+            [/]
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="[v:webcomicname]" />
+            <meta name="twitter:description" content="[v:pagetitle]" />
+
+            [c:comicimageurl]
+                <meta property="og:image" content="[v:comicimageurl]" />
+                <meta property="og:image:width" content="[v:comicwidth]" />
+                <meta property="og:image:height" content="[v:comicheight]" />
+                <meta name="twitter:image" content="[v:comicimageurl]" />
+            [/]
+        [/]
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/" />
+
+        <title>[v:webcomicname] | [v:pagetitle]</title>
+
+        [v:layoutcss]
+
+        [v:cfscriptcode]
+
+        [c:iscomicrelatedpage]
+            <script type="text/javascript">
+                activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            </script>
+        [/]
+
+        <script type="text/javascript">
+            var selectElementText = function(element) {
+                if (window.getSelection && document.createRange)
+                {
+                    var selection = window.getSelection();
+                    var range = document.createRange();
+                    range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="/" title="[v:webcomicname]" class="no-bg"><img src="/files/images/logo_v1.webp" alt="[v:webcomicname]"></a></h1>
+            <span id="slogan">[v:webcomicslogan]</span>
+        </header>
+
+        <nav id="navigation">
+            <ul id="nav">
+                <li><a href="/comics/#content-start">Latest</a></li>
+                <li><a href="/comics/1/#content-start">First</a></li>
+                <li><a href="/archive/">Archive</a></li>
+                
+                <li><a href="/overview/">Overview</a></li>
+
+                <!--[c:infinitescrollenabled]
+                    <li><a href="[v:infinitescrolllink]">Scroll View</a></li>
+                [/]-->
+                
+                [c:hasblogs]
+                    <li><a href="/blog/">Blog</a></li>
+                [/]
+                [c:searchon]
+                    <li><a href="/search/">Search</a></li>
+                [/]
+                [l:extrapages]
+                    <li><a href="[v:l.link]">[v:l.title]</a></li>
+                [/]
+                <!--[c:!hidefromhost]
+                    <li><a href="[v:addsubscriptionlink]">Subscribe</a></li>
+                [/]-->
+                <li><a href="[v:addsubscriptionlink]">Subscribe</a></li>
+            </ul>
+        </nav>
+
+
+        <main id="content-start">
+            [c:isextrapage]
+                <div id="title">
+                    <h2>[v:pagetitle]</h2>
+                </div>
+
+                <div class="center">
+                    <div class="textcontainer noncomicpage extra-page-content">
+                        <p>
+            [/]
+
+            <!--layout:[content]-->
+
+            [c:isextrapage]
+                            <div class="clear"></div>
+                        </p>
+                    </div>
+                </div>
+            [/]
+
+        </main>
+
+
+        <footer>
+            <div>
+                <ul>
+                    <li>
+                        <a href="/rss/">RSS</a>
+                    </li>
+                    [c:!hidefromhost]
+                        <li>
+                            <a href="[v:comicprofile]">Comic Profile</a>
+                        </li>
+                    [/]
+                    <li>
+                        <a href="#">Top</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hostedby">
+                <span>Hosted by </span>
+                <a href="https://comicfury.com">
+                    <img src="https://comicfury.com/images/gator-icon-white.png" height="22" style="height:22px; width:auto;" />
+                    ComicFury
+                </a>
+            </div>
+
+            <div>
+                Webcomic &copy; [v:copyrights]
+                |
+                Original Layout &copy; whistleonwild
+            </div>
+        </footer>
+
+    </body>
+</html>

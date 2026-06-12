@@ -1,0 +1,2360 @@
+/* See overall.html for documentation on the full classlist.
+    The current list is:
+        synexn, shatter
+        fallofsin, slithy, slithy2
+        sinoso, empira
+    Builtin HTML effects:
+        shatter, fallofsin_console
+*/
+
+/** New fonts **/
+/* ============================= */
+@font-face {
+    font-family: LeagueGothic;
+    src: url("/files/resources/leaguegothic.ttf");
+}
+@font-face {
+    font-family: BricolageGrotesque;
+    src: url('/files/resources/bricolagegrotesqueopszwdthwght.ttf');
+}
+@font-face {
+    font-family: FunnelDisplay;
+    src: url('/files/resources/funneldisplaywght.ttf');
+}
+@font-face {
+    font-family: PermanentMarker;
+    src: url('/files/resources/Permanentmarker-Regular.ttf');
+}
+@font-face {
+    font-family: RubikGlitch;
+    src: url('/files/resources/rubikglitch-regular.ttf');
+}
+@font-face {
+    font-family: "Fira Code";
+    src: url('/files/resources/FiraCode-VF.ttf');
+}
+
+/** Global Vars **/
+/* ============================= */
+:root {
+    --c_base: #AAA;
+    --c_accent: #FFA824;
+    /* Colors used for the navbox for comics */
+    --g_comicnavBgColor: #FFFD;
+    --g_comicnavBorderColor: #FFF;
+    
+    /* Shadow box used for shadowing main elements. */
+    --g_shadowBoxDefault: 0 0 0.618rem #000B;
+
+    /* Default fonts */
+    --f_normal: "FunnelDisplay", sans-serif;
+    --fi_normal_weight: 500;
+    --f_monospace: "Fira Code", monospace;
+    --f_header: "LeagueGothic", sans-serif;
+    --f_header_fx: "LeagueGothic", sans-serif;
+    --fi_header_stretch: 100%;
+    --fi_header_weight: 500;
+    --f_author: "RubikGlitch", sans-serif;
+    --fi_author_stretch: 100%;
+    --fi_author_weight: 500;
+}
+
+.fallofsin {
+    --c_accent: #D83167;
+    --g_comicnavBgColor: #0001;
+    --g_comicnavBorderColor: #FFF9;
+
+    --f_header: "Fira Code", monospace;
+}
+
+.slithy {
+    --c_accent: #FDD64E;
+    --g_comicnavBgColor: #0001;
+    --g_comicnavBorderColor: #FDD64E;
+
+    --g_shadowBoxDefault: 0 0 0.0 transparent;
+
+    --f_normal: "Fira Code", monospace;
+    --f_header: "Fira Code", monospace;
+}
+
+.sinoso, .empira {
+    --f_normal: "BricolageGrotesque", sans-serif;
+    --fi_normal_weight: 400;
+    --f_header: "BricolageGrotesque", sans-serif;
+    --f_header_fx: "BricolageGrotesque", sans-serif;
+    --fi_header_stretch: 60%;
+    --fi_header_weight: 650;
+    --f_author: "BricolageGrotesque", sans-serif;
+    --fi_author_stretch: 110%;
+    --fi_author_weight: 1000;
+
+    --c_accent: #EB9B0E;
+    /* Icaro Alt: */
+    /* --c_accent: #D83167; */
+    --g_comicnavBgColor: #FFF9;
+
+    --c_bg_color: #2379A3;
+    --c_bg_overlay_color: #88888800;
+}
+
+.sinoso.time-sundown, .empira.time-sundown {
+    --c_bg_color: #F76558;
+    --c_bg_overlay_color: #F1820F44;
+}
+.sinoso.time-night, .empira.time-night {
+    --c_bg_color: #002336;
+    --c_bg_overlay_color: #1b00b463;
+}
+
+/** Global Effects **/
+/* ============================= */
+
+/* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
+.tape_wobble {
+    clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%,
+    41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%,
+    73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%,
+    100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%,
+    100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%,
+    100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 
+    77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 
+    40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 
+    13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%,
+    0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 
+    1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
+}
+
+.corners--slanted0 {
+    mask-image: 
+    linear-gradient(135deg, #0000 1.0rem, red 0),
+    linear-gradient(-135deg, #0000 1.0rem, red 0),
+    linear-gradient(45deg, #0000 1.0rem, red 0),
+    linear-gradient(-45deg, #0000 1.0rem, red 0);
+    mask-position:
+    0 0,
+    100% 0,
+    0 100%,
+    100% 100%;
+    mask-repeat: no-repeat;
+    mask-size: 51% 51%;
+}
+
+.corners--slanted11 {
+    clip-path: polygon(
+    0 0, 0 100%,
+    calc(100% - 1.0em) 100%, 100% calc(100% - 1.0em),
+    100% 0);
+}
+
+.corners--mindeco-cut1001 {
+    clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0, calc(100% - 15px) 15px,
+    /* Corner box */
+    calc(100% - 10px) 10px, calc(100% - 10px) 0,
+    100% 0, 100% 10px, calc(100% - 10px) 10px,
+    /* Past Corner */
+    calc(100% - 15px) 15px, 100% 15px,
+    100% 100%,
+    15px 100%, 15px calc(100% - 15px),
+    /* Corner box */
+    10px calc(100% - 10px), 10px 100%,
+    0 100%, 0 calc(100% - 10px), 10px calc(100% - 10px),
+    /* Past Corner */
+    15px calc(100% - 15px), 0 calc(100% - 15px)
+    );
+    /* mask-image:
+    linear-gradient(#FFFF),
+    conic-gradient(
+    at 25% 75%,
+    #0000 0deg 90deg,
+    #FFFF 90deg 360deg),
+    conic-gradient(
+    at 75% 25%,
+    #FFFF 0deg 180deg,
+    #0000 180deg 270deg,
+    #FFFF 270deg 360deg);
+    mask-position: 0 0, top right, bottom left;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%, 15px 15px, 15px 15px;
+    mask-composite: subtract, add;*/
+}
+
+/** Global Defaults **/
+/* ============================= */
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    font-size: 1.0em;
+    color: #AAA;
+    text-align: center;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+}
+img {
+    border: 0px;
+}
+
+/* Background */
+.synexn body, .shatter body {
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    background-attachment:fixed;
+    background-image: url("/files/images/bg2.gif");
+}
+.fallofsin body, .slithy body, .slithy2 body {
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    background-attachment:fixed;
+    background-color: black;
+}
+.slithy body {
+    background:
+        linear-gradient(#000A, #000A),
+        repeat fixed center/50% url("/files/images/bg4.webp"),
+        black;
+}
+.sinoso body, .empira body {
+    /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
+    background:
+        /* Polaris/Pharus on top */
+        no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
+        /* Front Dust */
+        repeat-x fixed center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
+        /* Color overlay */
+        repeat fixed linear-gradient(var(--c_bg_overlay_color)),
+        /* Foreground Hills */
+        repeat-x fixed var(--i_bg1_hills_x) 100% / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
+        /* Train */
+        no-repeat fixed var(--i_bg2_train_x) calc(100% - 136px) / 1050px auto url("/files/images/bg_sos/train.webp"),
+        /* Background Hills */
+        repeat-x fixed var(--i_bg3_hills_x) calc(100% - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
+         /* Background Hills */
+        repeat-x fixed var(--i_bg4_clouds_x) calc(100% - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.gif"),
+        /* At the top, have the horizontally repeating dither */
+        repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
+        /* Background comes last */
+        var(--c_bg_color);
+    /* Apply light blender on the layers below */
+    background-blend-mode: normal, normal, hard-light, normal, normal, normal, normal, normal, normal;
+    /* Animate */
+    animation:
+        213s linear anim-sinoso-bg1-hill-scroll infinite reverse,
+        352s linear anim-sinoso-bg3-hill-scroll infinite reverse,
+        112s linear anim-sinoso-bg4-cloud-scroll infinite,
+        30s linear anim-sinoso-bg2-train-travel infinite
+        ;
+}
+
+/* Sinoso Animation Styling */
+/* backgrounds have to be properties and not variables else they will not animate - so each item gets a property */
+@property --i_bg1_hills_x {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+}
+@property --i_bg2_train_x {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+}
+@property --i_bg3_hills_x {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+}
+@property --i_bg4_clouds_x {
+    syntax: '<length-percentage>';
+    inherits: false;
+    initial-value: 0px;
+}
+@keyframes anim-sinoso-bg1-hill-scroll {
+    0% {
+        --i_bg1_hills_x: 0px;
+    }
+    100% {
+        --i_bg1_hills_x: 1000px
+    }
+}
+@keyframes anim-sinoso-bg3-hill-scroll {
+    0% {
+        --i_bg3_hills_x: 0px;
+    }
+    100% {
+        --i_bg3_hills_x: 777px
+    }
+}
+@keyframes anim-sinoso-bg4-cloud-scroll {
+    0% {
+        --i_bg4_clouds_x: 0px;
+    }
+    100% {
+        --i_bg4_clouds_x: 1100px
+    }
+}
+@keyframes anim-sinoso-bg2-train-travel {
+    0% {
+        --i_bg2_train_x: -2000px;
+    }
+    100% {
+        --i_bg2_train_x: max(5000px, 100vw); 
+    }
+}
+
+
+/* Links */
+@property --color-bg-bottomline {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(255, 64, 0, 0.5);
+}
+@keyframes anim-link-light-shot {
+    0% {
+        background-position: 0% 100%;
+        background-size: 0.0em 100%;
+        --color-bg-bottomline: rgba(255, 64, 0, 0.5);
+    }
+    20% {
+        background-size: 0.2em 100%;
+        --color-bg-bottomline: rgba(255, 64, 0, 0.8);
+    }
+    50% {
+        background-size: 0.5em 100%;
+        --color-bg-bottomline: rgba(255, 255, 255, 0.5);
+    }
+    80% {
+        background-size: 0.2em 100%;
+        --color-bg-bottomline: rgba(0, 212, 255, 0.4);
+    }
+    100% {
+        background-position: 100% 100%;
+        background-size: 0.0em 100%;
+        --color-bg-bottomline: rgba(0, 212, 255, 0.25);
+    }
+}
+
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
+    a:link, a:visited, label, .linkglow {
+        color: #DDD;
+        text-decoration: none;
+        text_shadow: none;
+        transition:
+            color ease-in-out 0.3s,
+            text-shadow ease-in-out 0.3s;
+    }
+    a:hover, label:hover, .linkglow:hover {
+        color: #FFF;
+        text-decoration: none;
+        text-shadow:
+            /* Want to sort of approximate the slitscope from the later arcs */
+            /* White spots */
+            +0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+            -0.15em 0px 0.05em rgba(255, 255, 255, 0.3),
+            +0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+            -0.12em 0px 0.08em rgba(255, 255, 255, 0.1),
+            +0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+            -0.18em 0px 0.08em rgba(255, 255, 255, 0.1),
+            /* Prism fringes */
+            +0.30em 0px 0.08em rgba(0, 212, 255, 0.25),
+            -0.30em 0px 0.08em rgba(255, 64, 0, 0.50),
+            +0.33em 0px 0.12em rgba(0, 212, 255, 0.125),
+            -0.33em 0px 0.12em rgba(255, 64, 0, 0.25),
+            /* Prism fringes 2 */
+            +0.45em 0px 0.10em rgba(0, 212, 255, 0.10),
+            -0.45em 0px 0.10em rgba(255, 64, 0, 0.20),
+            +0.48em 0px 0.14em rgba(0, 212, 255, 0.05),
+            -0.48em 0px 0.14em rgba(255, 64, 0, 0.10);
+        transition:
+            color ease-in-out 0.3s,
+            text-shadow ease-in-out 0.3s;
+    }
+    .box a:link, .box a:visited, .box label, .box .linkglow {
+        color: #636363;
+        font-size: 1.618em;
+        font-family: var(--f_header);
+        font-stretch: var(--fi_header_stretch);
+        font-weight: var(--fi_header_weight);
+    }
+    .box a:hover, .box label:hover, .box .linkglow:hover {
+        color: #333;
+        text-shadow:
+        -3px 0px 0px rgba(0, 212, 255, 0.5),
+        +2px 0px 0px rgba(255, 64, 0, 0.6);
+    }
+}
+
+.sinoso, .empira {
+    --i_egpos_0: 0%;
+    --i_egpos_1: calc(calc(100% / 31) * 6); /* line */
+    --i_egpos_2: calc(calc(100% / 31) * 12); /* dot */
+    --i_egpos_2e: calc(calc(100% / 31) * 13); 
+    --i_egpos_3: calc(calc(100% / 31) * 18); /* i piece */
+    --i_egpos_3e: calc(calc(100% / 31) * 19);
+    --i_egpos_4: calc(calc(100% / 31) * 24); /* l piece */
+    --i_egpos_4e: calc(calc(100% / 31) * 25);
+    --i_egpos_5e: calc(calc(100% / 31) * 30); /* full block */
+    --i_eg_transform: translate(-0.5em, -0.5em) scale(1.0);
+}
+@keyframes anim-egensblock-05 { /* 30 step */
+    0% { background-position-x: var(--i_egpos_0); }
+    100% { background-position-x: var(--i_egpos_5e); }
+}
+@keyframes anim-egensblock-50 { /* 30 step */
+    0% { background-position-x: var(--i_egpos_5e); }
+    100% { background-position-x: var(--i_egpos_0); }
+}
+@keyframes anim-egensblock-23 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_2); }
+    100% { background-position-x: var(--i_egpos_3e); }
+}
+@keyframes anim-egensblock-34 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_3); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-43 { /* 7 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_3); }
+}
+@keyframes anim-egensblock-24 { /* 13 step */
+    0% { background-position-x: var(--i_egpos_2); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-42 { /* 13 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_2); }
+}
+@keyframes anim-egensblock-04 { /* 25 step */
+    0% { background-position-x: var(--i_egpos_0); }
+    100% { background-position-x: var(--i_egpos_4e); }
+}
+@keyframes anim-egensblock-40 { /* 25 step */
+    0% { background-position-x: var(--i_egpos_4e); }
+    100% { background-position-x: var(--i_egpos_0); }
+}
+
+@keyframes anim-egensshadow-01 {
+    0% {
+        box-shadow: 
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    25% {
+        box-shadow: 
+            0 1px 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    50% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    75% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            0 0 0px white;
+    }
+    100% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            -1px 0 0px white;
+    }
+}
+@keyframes anim-egensshadow-10 {
+    0% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            -1px 0 0px white;
+    }
+    25% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            1px 0 0px white,
+            0 0 0px white;
+    }
+    50% {
+        box-shadow: 
+            0 1px 0px white,
+            0 -1px 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    75% {
+        box-shadow: 
+            0 1px 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+    100% {
+        box-shadow: 
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white,
+            0 0 0px white;
+    }
+}
+
+.sinoso, .empira {
+    a, label, .linkglow {
+        position: relative;
+        &:link, &:visited, & {
+            color: #DDD;
+            text-decoration: none;
+            text_shadow: none;
+            font-family: var(--f_header);
+            font-stretch: var(--fi_header_stretch);
+            font-weight: var(--fi_header_weight);
+
+            background-image: url("/files/resources/egens_block_goldblock.png");
+            background-position-x: var(--i_egpos_0);
+            background-size: calc(100% * 32) 100%;
+            animation:
+                0.5s steps(30) anim-egensblock-50 both;
+
+            z-index: 3;
+        }
+
+        &::before, &::after {
+            content: " ";
+            display: inline-block;
+            position: absolute;
+            background-image: url("/files/resources/egens_block_goldblock.png");
+            background-position-x: var(--i_egpos_2);
+            background-size: auto 1.0em;
+            width: 1.0em;
+            height: 1.0em;
+            pointer-events: none;
+
+            transform: var(--i_eg_transform) rotate(-90deg);
+            left: 40%;
+            top: 0%;
+            z-index: -1;
+
+            zoom: 0.0001;
+            transition:
+                transform 0.3s ease-in-out,
+                     left 0.3s ease-in-out,
+                      top 0.3s ease-in,
+                     zoom 0.1s ease-out;
+        }
+        &::after {
+            transform: var(--i_eg_transform) rotate(90deg);
+            left: 80%;
+            top: 100%;
+        }
+
+        &:hover, &.nav-selection {
+            color: #FFF;
+
+            animation:
+                0.5s steps(30) anim-egensblock-05 both;
+
+            &::before, &::after {
+                background-position-x: var(--i_egpos_4e);
+                zoom: 1.0;
+                animation:
+                    0.5s steps(25) anim-egensblock-04 both;
+            }
+            &::before {
+                transform: var(--i_eg_transform) rotate(-90deg);
+                left: 8%;
+                top: 12%;
+            }
+            &::after {
+                transform: var(--i_eg_transform) rotate(90deg);
+                left: 89%;
+                top: 83%;
+            }
+        }
+
+        /* Navigation gets a different style */
+        #navigation & {
+            padding: 0 0.14em;
+            margin: 0 0.1em;
+            background: none;
+            
+            box-shadow: 
+                0 1px 0px #FFF0,
+                0 -1px 0px #FFF0,
+                1px 0 0px #FFF0,
+                -1px 0 0px #FFF0;
+            border-radius: 0.14em;
+            backdrop-filter: blur(0px);
+
+            transition:
+                backdrop-filter 0.5s ease-in-out,
+                box-shadow 0.5s ease-in-out,
+                background-color 0.2s ease-in-out;
+            animation: 0.25s linear anim-egensshadow-10 both;
+
+            &::before, &::after {
+                background-image: url("/files/resources/egens_block_whiteline.png");
+                /*zoom: 1.0;*/ /* Randomization doesnt work and I can't be assed to get it to work in CSS - so no floating bobbles. */
+                animation:
+                    0.5s steps(13) anim-egensblock-42 both;
+            }
+            &::before {
+                top: -25%;
+            }
+            &::after {
+                top: 125%;
+            }
+            &:hover, &.nav-selection {
+                backdrop-filter: blur(3px);
+                animation:
+                    0.25s linear anim-egensshadow-01 both;
+
+                &::before, &::after {
+                    animation:
+                        0.5s steps(13) anim-egensblock-24 both;
+                }
+                &::before {
+                    left: 0%;
+                    top: 0%;
+                }
+                &::after {
+                    left: 100%;
+                    top: 100%;
+                }
+            }
+
+            &:hover {
+                background-color: #FFF2;
+            }
+        }
+
+        /* Box get a different color */
+        .box & {
+            color: #636363;
+            font-size: 1.618em;
+
+            &:hover {
+                color: #FFF;
+                text-shadow:
+                    0  1px 0 var(--c_accent),
+                    0 -1px 0 var(--c_accent),
+                     1px 0 0 var(--c_accent),
+                    -1px 0 0 var(--c_accent);
+            }
+        }
+    }
+}
+
+/* General */
+.no-margins {
+    margin: 0;
+}
+
+/* The typewriter cursor effect */
+@keyframes anim-blink {
+  from, to { opacity: 0.0; }
+  50% { opacity: 1.0; }
+}
+.blinking {
+    animation: anim-blink 1.0s step-end infinite;
+}
+
+/* Headings */
+.heading {
+    font-family: var(--f_author);
+    font-stretch: var(--fi_author_stretch);
+    font-weight: var(--fi_author_weight);
+    font-variant: small-caps;
+    margin-bottom: 0.4em;
+}
+.heading-notop {
+    margin-top: 0;
+}
+
+h1, h2, h3, h4 {
+    margin: 2px;
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+}
+
+input {
+    border:3px solid black;
+    margin:4px;
+    background-color:#FFFFFF;
+}
+
+select {
+    width: 350px; /*IE only*/
+    max-width: 350px; /*for some reason, this doesn't work in IE7*/
+    vertical-align: middle;
+}
+*>/**/select {
+    width:auto !important; /*real browsers*/
+}
+
+form {
+    margin:0px;
+}
+.clear {
+    clear:both;
+}
+
+/** Header **/
+/* ============================= */
+
+#sitetitle {
+    color: #FFF;
+    text-align: center;
+    
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+    font-size: 5.0em;
+    font-variant: small-caps;
+    line-height: 50%;
+    
+    margin-top: 0.1em;
+    margin-bottom: 0px;
+    
+    text-shadow:
+    10px 0px 0px rgba(0, 212, 256, 0.5),
+    -8px 0px 0px rgba(255, 64, 0, 0.5);
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#sitetitle img {
+    max-width: 80vw;
+    opacity: 0.0;
+}
+.synexn #sitetitle {
+    background-image: url("/files/resources/titles/synexn_grafitti.webp");
+}
+.shatter #sitetitle {
+    background-image: url("/files/resources/titles/synexn_shatter.webp");
+}
+.fallofsin #sitetitle {
+    background-image: url("/files/resources/titles/slithy_fos.webp");
+}
+.fallofsin #sitetitle img {
+    max-height: 3em;
+}
+.slithy #sitetitle {
+    display: none;
+}
+.sinoso #sitetitle {
+    background-image: url("/files/resources/titles/sinoso_basic.webp");
+}
+.empira #sitetitle {
+    background-image: url("/files/resources/titles/sinoso_plain_w.webp");
+    img {
+        max-height: 4.0em;
+    }
+}
+
+#titleupdate {
+    padding: 0px;
+    margin: 0px;
+    font-variant: small-caps;
+    font-size: 1.31em;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    color: white;
+}
+.slithy #titleupdate {
+    display: none;
+}
+
+/** Navigation **/
+
+#navigation {
+    list-style: none;
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+    font-size: 2.0em;
+    line-height: 1.5em;
+}
+#navigation ul {
+    padding: 0px;
+    margin: 0.3em;
+}
+#navigation li {
+    list-style: none;
+    display: inline-block;
+}
+
+#navigation li span {
+    margin: 4px;
+    display: table-cell; /*ff2, ff1*/
+    display: inline-block;
+}
+#navigation a:link, #navigation a:visited, #navigation a:hover {
+    text-decoration: none;
+}
+
+
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
+    #navigation li span:before {
+        content: ">";
+        display: inline-block;
+    }
+}
+.fallofsin, .slithy, .slithy2 {
+    #navigation {
+        font-size: 1.5em;
+    }
+}
+/*.sinoso {
+    #navigation li span:before, #navigation li span:after {
+        content: " ";
+        display: inline-block;
+        position: absolute;
+        background-image: url("/files/resources/egens_block_whiteline.png");
+        background-position-x: calc(128px * 6);
+        width: 128px;
+        height: 128px;
+        left: -25px;
+        transform: scale(0.25);
+        pointer-events: none;
+    }
+    #navigation li span {
+        position: relative;
+    }
+}*/
+
+/* Nav sublist */
+#navigation li > ul {
+    /* @todo: cleanup this is a mess lol */
+    position: relative;
+    pointer-events: none;
+    overflow: clip;
+    opacity: 0;
+    /*padding: 0px;*/
+    margin: 0px;
+    height: 0px;
+    max-width: 0px;
+    display: inline-block;
+    transition:
+    max-width ease-in-out 0.5s,
+    height ease-in-out 0.5s,
+    opacity ease-in-out 0.5s;
+}
+#navigation li:hover > ul {
+    pointer-events: auto;
+    height: 1.2em;
+    opacity: 1;
+    max-width: 100%;
+    transition:
+    max-width ease-in-out 0.5s,
+    height ease-in-out 0.5s;
+}
+
+#navigation li span > input {
+    display: none;
+}
+
+#navigation li:has(+ #subitem):not(#subitem):has(:checked) span:before {
+    transform: rotate(90deg);
+}
+
+#navigation li:not(#subitem) ~ #subitem {
+    max-width: 0px;
+    white-space: nowrap;
+    overflow: clip;
+    
+    transition:
+    max-width ease-out 0.2s,
+    height ease-out 0.5s,
+    opacity ease-out 0.5s;
+}
+#navigation li:not(#subitem):has(:checked) ~ #subitem {
+    max-width: 100%;
+    
+    transition:
+    max-width ease-in 0.5s,
+    height ease-in 0.5s,
+    opacity ease-in 0.5s;
+}
+
+/* Special little effect */
+.synexn, .shatter, .fallofsin, .slithy, .slithy2 {
+    #navigation a, #navigation label {
+        --color-bg-bottomline: rgba(255, 255, 255, 0.0);
+        background-image: conic-gradient(
+            from -90deg at left 0px bottom 2px,
+            #0000 50%,
+            var(--color-bg-bottomline) 0);
+        background-position: 50% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+    }
+    #navigation a:hover, #navigation label:hover {
+        animation: anim-link-light-shot ease-in-out 0.2s forwards;
+    }
+}
+
+/* Layout Common */
+/* ============================= */
+
+#comicrating {
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    font-size: 12px;
+}
+#comicrating a {
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    font-size: 12px;
+}
+
+#transcript { /* TODO */
+    display: none;
+}
+
+#cf_ads {
+    display:table;
+    margin:auto;
+    text-align:center;
+}
+
+#latestcomictitle {
+    font-size: 150%;
+}
+
+#latestcomiclink img {
+    border:3px solid black;
+}
+.box {
+    border: 3px solid black;
+    background-color: #FFFFFF;
+    padding: 10px min(10px, 1vw);
+    /* Limit box to width of the page based on padding & border */
+    max-width: calc(max(calc(100vw - 20px), 98vw) - 6px);
+    
+    @media (max-width:800px) {
+        padding: 10px 0px;
+        border-width: 3px 0px !important;
+        max-width: 100vw;
+    }
+}
+.box.comic-reader {
+    background: none;
+    border: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+html>body .wrap {
+    display: table;
+    margin: auto;
+    width: 70%;
+    min-width: min(100vw, 650px);
+    max-width: 100vw;
+}
+.wrap:has(.comic-reader) {
+    width: auto;
+}
+
+#contentcontainer > .wrap > .box:not(.comic-reader),
+#contentcontainer > .box
+{
+    box-shadow: var(--g_shadowBoxDefault);
+}
+
+/* Content side images */
+#contentcontainercontainer
+{
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100vw;
+    justify-content: center;
+    overflow: hidden;
+}
+#contentcontainer-border {
+    flex-basis: 300px;
+    width: 300px;
+    flex-grow: 1;
+    max-width: 300px;
+    min-width: 300px;
+}
+#contentcontainer-border img {
+    max-height: 100vh;
+    position: relative;
+}
+#contentcontainer-border.left img {
+    float: right;
+    right: -2vh;
+}
+#contentcontainer-border.right img {
+    float: left;
+    left: -2vh;
+}
+#contentcontainer {
+    flex-grow: 0;
+    z-index: 2;
+    overflow: clip; /* TODO: Test this */
+}
+
+.wrapie {
+    margin: auto;
+    width: 70%;
+    min-width: min(100vw, 650px);
+    max-width: 100vw;
+}
+#footer {
+    font-size: 70%;
+    color: #A9A9A9;
+    margin-top:20px;
+}
+
+.seperator {
+    height: 1px;
+    background: linear-gradient(to right, #7770, #777, #777, #7770);
+}
+
+/** Comic Page **/
+/* ============================= */
+
+/* Top and Bottom Nav */
+.comicnav {
+    background: var(--g_comicnavBgColor);
+    border: 2px solid var(--g_comicnavBorderColor);
+    margin: 0.5em 0;
+    padding: 0.5em;
+    box-shadow: var(--g_shadowBoxDefault);
+    border-image: url("/files/resources/styles/border000a2.png") 230 / 15px;
+}
+.comicnavlink {
+    margin-left: 0.618em;
+    margin-right: 0.618em;
+}
+.comicnavlink img {
+    vertical-align:middle;
+}
+.comicnavlink-inactive {
+    pointer-events: none;
+    opacity: 0.2;
+}
+.comicnav select {
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+    font-size: 1.2em;
+    position: relative;
+    top: -0.2em;
+    appearance: none;
+    border: 1px solid var(--g_comicnavBorderColor);
+    text-align: center;
+}
+
+.fallofsin .comicnav, .slithy .comicnav, .slithy2 .comicnav {
+    font-weight: 600;
+}
+.fallofsin {
+    a.comicnavlink:link, a.comicnavlink:visited
+    {
+        color: #DDD;
+        text-transform: lowercase;
+    }
+    a.comicnavlink:hover
+    {
+        color: #FFF; /* tbd make a variable for accent color */
+    }
+    .comicnav select
+    {
+        border: 1px solid black;
+        background: #222;
+        color: white;
+    }
+}
+.slithy, .slithy2  {
+    a.comicnavlink:link, a.comicnavlink:visited
+    {
+        color: #DDD;
+        text-transform: lowercase;
+    }
+    .comicnav {
+        border: none;
+        border-image: none;
+    }
+}
+.sinoso, .empira {
+    .comicnav {
+        backdrop-filter: blur(5px);
+        z-index: 5;
+        position: relative;
+    }
+}
+
+
+/* Comic Reader */
+.comic-reader > #comicimagewrap {
+    /*box-shadow: var(--g_shadowBoxDefault);*/ /* Switch back if have render issues */
+    filter: drop-shadow(var(--g_shadowBoxDefault));
+}
+#comicimagewrap {
+    /* This gets rid of the newline that appears on the inside of the image block when any extra HTML is added. */
+    line-height: 0px;
+}
+#comicimagelink {
+    /* This gets rid of the newline that appears on the inside of the image block when the page has a link. */
+    display: block;
+    line-height: 0;
+}
+
+[c:comicimageurl]
+    /* Color leak glow */
+    .slithy .comic-reader > #comicimagewrap::before {
+        content: "";
+        position: absolute;
+        background-image: url("[v:comicimageurl]");
+        filter: blur(1.0rem) saturate(1.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        z-index: -1;
+    }
+    /* Paper backgrounds */
+    .sinoso .comic-reader > #comicimagewrap::before,
+    .empira .comic-reader > #comicimagewrap::before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-image: url("/files/images/bg_sos/paperbg.webp");
+        width: 144%;
+        height: 133%;
+        left: -22%;
+        top: -17%;
+        z-index: -1;
+        background-size: contain;
+        pointer-events: none;
+    }
+    .empira .comic-reader > #comicimagewrap::before {
+        background-image: url("/files/images/bg_sos/decobg01.gif") !important;
+    }
+    .sinoso .comic-reader > #comicimagewrap, 
+    .empira .comic-reader > #comicimagewrap {
+        filter: drop-shadow(0 0 0 #0000);
+    }
+[/]
+
+.shatter #comicimage {
+    background: #444;
+}
+.sinoso #comicimage {
+    box-shadow: 0px 0px 0.7em #000A;
+}
+.empira #comicimage {
+    box-shadow: 0px 0px 0.5em #000A;
+}
+
+/* Extra Navbar Stylings */
+#saveplace {
+    overflow-x: clip;
+    overflow-y: visible;
+}
+.saveplace_image {
+    max-height: min(4.0em, 20vw);
+}
+.saveplace_text {
+    position: relative;
+    display: inline-block;
+    pointer-events: none;
+    width: 0px;
+    overflow: visible;
+    left: calc(-100px + -2.0em);
+    top: -4.0em;
+    font-family: var(--f_author);
+    font-stretch: var(--fi_author_stretch);
+    font-weight: var(--fi_author_weight);
+}
+.saveplace_text > div {
+    width: 200px;
+}
+
+a > .saveplace_image {
+    filter: none;
+    transition:
+    filter ease-in-out 0.3s;
+}
+a:hover > .saveplace_image {
+    filter:
+    drop-shadow(+0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+    drop-shadow(-0.65em 0px 0.08em rgba(255, 255, 255, 0.30))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.20))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.40))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+    drop-shadow(+0.65em 0px 0.10em rgba(0, 212, 255, 0.10))
+    drop-shadow(-0.65em 0px 0.10em rgba(255, 64, 0, 0.20))
+    saturate(3)
+    ;
+}
+
+a > .saveplace_text {
+    opacity: 0.0;
+    transition:
+    opacity ease-in-out 0.3s;
+}
+a:hover > .saveplace_text {
+    opacity: 1.0;
+}
+
+/* comment stylings */
+
+.box:has(#authornotes), .box:has(.comments) {
+    border-image: url("/files/resources/styles/border000b2.png") 230 / 14px;
+}
+.slithy .box:has(#authornotes), .slithy .box:has(.comments) {
+    border-image: none;
+    background: #000C;
+    color: #FFF;
+
+    a:hover {
+        color: white;
+    }
+}
+
+.box:has(#authornotes) {
+    /* Make author notes smaller so they're set aside from the rest of the comments */
+    width: 70%;
+    margin: auto;
+    min-width: min(calc(98vw - 6px), 800px);
+    @media (max-width:800px) {
+        min-width: 100vw;
+    }
+}
+
+#authornotes {
+    /* TODO */
+}
+
+.commenttext {
+    color: #777;
+}
+
+.box .commenttext a {
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    font-size: 1.0em;
+}
+.box .commenttext a:link, .box .commenttext a:visited {
+    color: #222;
+}
+.box-widener {
+    min-width: min(940px, calc(95vw - 26px));
+    max-width: 95vw;
+    @media (max-width:800px) {
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+}
+
+.comment {
+    text-align:left;
+    @media (max-width:800px) {
+        padding: 0px 10px;
+    }
+}
+#permalinkbox {
+    text-align:left;
+}
+.permalinkcode {
+    font-size:12px;
+    color:#AAAAAA;
+}
+
+.postcomment {
+    font-size: 24px;
+    margin: 10px;
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+}
+
+.comment img {
+    max-width: 100%;
+}
+
+.commentdata {
+    background: linear-gradient(to right, #EEE, #EEE, #FFF0);
+}
+.slithy .commentdata {
+    background: linear-gradient(to right, #000, #000, #FFF0);
+}
+.avatar {
+    float: left;
+    font-size: 2.0em;
+    margin-right: 0.5em;
+    padding: 0;
+    line-height: 0;
+}
+.avatar img {
+    max-width: 25vw;
+}
+.synexn .avatar img, .shatter .avatar img, .fallofsin .avatar img {
+    filter: grayscale(100%) brightness(120%) contrast(130%);
+}
+.commentcontrol {
+    text-align: right;
+}
+.commentcontrol .spacer::after {
+    content: "▿";
+}
+.authordata {
+    text-align: left;
+    line-height: 2.0em;
+}
+.author {
+    font-size: 22px !important;
+    font-family: var(--f_author) !important;
+    font-stretch: var(--fi_author_stretch) !important;
+    font-weight: var(--fi_author_weight) !important;
+}
+a.author:link, a.author:visited {
+    color: #000 !important;
+}
+a.author:hover {
+    color: #444 !important;
+}
+.slithy a.author:link, .slithy a.author:visited {
+    color: #FFFA !important;
+    filter: drop-shadow(0 -1px 0 #0006) drop-shadow(0 1px 0 #0006);
+}
+.slithy a.author:hover {
+    color: #FFF !important;
+}
+.posttime {
+    color: #999999;
+    text-align: right !important;
+    font-weight: normal;
+    font-size: 0.7em;
+}
+
+/*comicpage/blog*/
+/* ============================= */
+
+.comic-reader-blog {
+    text-align: center;
+}
+#comicimage.comicimage-sidestory {
+    width: min(100%, 940px);
+}
+
+/*archive*/
+.archive-box {
+    background-color: #EEE;
+}
+#archive {
+    width: 100%;
+    text-align: justify;
+}
+#archive tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 5px;
+    row-gap: 2px;
+}
+#archive h3 {
+    font-size: 1.8em;
+    color: #000;
+    line-height: 1.0em;
+}
+.archivecomic td {
+    text-align:left;
+}
+.archivecomic {
+    background: #FFF;
+    border-bottom: 1px solid #777777;
+    flex-grow: 1;
+    max-width: 30%;
+}
+.comicposttime {
+    text-align:right !important;
+    color: #999999;
+    font-size: 0.7em;
+}
+.comicnumber {
+    width: 40px;
+}
+.comicpostlink {
+    display: block;
+    letter-spacing: 0.0616em;
+}
+.chaptertitle {
+    background-color: #EEEEEE;
+    flex-grow: 0;
+    width: 100%;
+}
+.chaptertitle td {
+    border-bottom: 2px solid black;
+    padding: 0.4em;
+    color: #444;
+    line-height: 1.616em;
+}
+.comictopper {
+    letter-spacing: 0.1em;
+    font-variant: small-caps;
+}
+.comictopper h2.heading {
+    display: inline-block;
+    margin: 0px;
+}
+
+#archive.archive-chapter-overview {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.0em;
+
+    filter: drop-shadow(0px 1px #777);
+}
+#archive.archive-chapter-overview > table > tbody {
+    display: table-row-group;
+}
+.archive-chapter-overview > table {
+    flex: 1 45%;
+
+    background: #CCC
+        repeat center url("/files/images/bg3.png");
+    background-blend-mode: screen;
+}
+.archive-chapter-overview #cell-cover {
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+}
+.archive-chapter-overview #cell-info {
+    min-width: 190px;
+    vertical-align: top;
+    padding: 10px min(10px, 1vw);
+}
+.archive-chapter-overview #cell-info h3 {
+    text-align: left; /* Do not justify chapter titles */
+}
+.archive-chapter-overview #cell-links {
+    padding: 10px min(10px, 1vw);
+    overflow: hidden;
+    text-overflow: clip;
+    height: 1.0em;
+}
+.archive-chapter-overview #cell-links > a {
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.archive-chapter-nav a {
+    display: none;
+    margin: 0px 1.0em;
+}
+.archive-chapter-nav a:has(+#current-chapter) {
+    display: inline-block;
+    &>span::before {
+        content: "◁ ";
+    }
+}
+.archive-chapter-nav a#current-chapter + * {
+    display: inline-block;
+    &>span::after {
+        content: " ▷";
+    }
+}
+
+.archive-chapter-pages .comicpostlink a {
+    font-size: 1.0em !important;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.archive-chapter-pages .comicpostlink a > span {
+    display: block;
+}
+.archive-chapter-pages .comicpostlink a > span > img {
+    height: 5.5em;
+    max-height: 30vw;
+    width: auto;
+}
+
+/*.archive-chapter-overview > tbody > tr > td {
+    display: table-cell;
+}*/
+/*.archive-chapter-overview #cell-cover {
+    flex: 0;
+}
+.archive-chapter-overview #cell-infolink {
+    flex: 2;
+}
+.archive-chapter-overview #cell-info {
+    flex: 2;
+}
+.archive-chapter-overview #cell-links {
+    flex: 0;
+}
+.archive-chapter-overview #cell-flex {
+    display: flex;
+    flex-flow: column;
+}*/
+
+/*blog*/
+#blogbox {
+    display: flex;
+}
+#blogarchive {
+    background-color: #EEEEEE;
+    padding: 10px;
+    text-align: left;
+    list-style: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1em;
+    flex: 0 auto;
+    min-width: min-content;
+    width: min(200px, 18vw);
+}
+#blogarchive li {
+    padding: 0.4em;
+    border-bottom: 1px solid #777;
+}
+#blogs {
+    margin: 0px;
+    padding: 10px;
+    flex: 1;
+}
+.reply::before {
+    float: left;
+    content: " ";
+    width: 1.0em;
+    height: 2.0em;
+    border: 1px solid gray;
+    border-top: none;
+    border-right: none;
+    margin-left: 0.5em;
+}
+.reply-depth1::before {
+    margin-left: 0.5em;
+}
+.reply-depth2::before {
+    margin-left: 1.5em;
+}
+.reply-depth3::before {
+    margin-left: 2.5em;
+}
+.reply-depth4::before {
+    margin-left: 3.5em;
+}
+.reply-depth5::before,
+.reply-depth-above5::before {
+    margin-left: 4.5em;
+}
+
+.blogcontent {
+    text-align: left;
+    color: #777;
+    padding-top: 1.0em;
+    padding-bottom: 0.6em;
+}
+.blogtitle {
+    font-size: 2.0em;
+    font-weight: bold;
+    font-family: "PermanentMarker", cursive;
+    font-variant: small-caps;
+    color: #636363;
+    
+    display: block;
+    padding: 12px;
+    margin-top: -10px;
+    
+    line-height: 1.0em;
+    
+    background-color: black;
+    transform: rotate(-2deg);
+
+    & a {
+        font-family: "PermanentMarker", cursive !important;
+        display: inline-block;
+
+        &, &:link, &:visited {
+            color: white !important;
+        }
+        &:hover {
+            .synexn &, .shatter &, .slithy &, .slithy2 &, .fallofsin & {
+                color: var(--c_accent) !important;
+            }
+            .sinoso &, .empira & {
+                color: white !important;
+            }
+        }
+    }
+}
+
+.blogarchive-time {
+    display: block;
+    white-space: wrap;
+    color: #999999;
+    font-size: 0.7em;
+}
+.blogarchive-title {
+    display: block;
+    position: relative;
+    top: 0.1em;
+}
+.blogarchive-name {
+    display: block;
+    white-space: pre;
+}
+.blogarchive-name a:link {
+    font-size: 1.0em;
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+}
+
+.blogpost-container {
+    border-bottom: 1px solid #777;
+    padding-bottom: 0.4em;
+    margin-bottom: 1.0em;
+}
+.blogpost-time {
+    display: block;
+    text-align: left;
+    line-height: 1.0em;
+}
+.blog-actionlink {
+    
+}
+.blog-actionlink a:link {
+    font-size: 1.3em;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+}
+
+.blog-imagelist {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.blog-imagelist img {
+    max-width: 31%;
+    height: auto;
+}
+
+.archive-page-nav {
+    a, span {
+        margin: 0px 0.05em;
+    }
+    div {
+        display: inline-block;
+        margin: 0px 0.25em;
+    }
+}
+
+/* overview */
+.box#overview-hack {
+    padding: 0;
+    background: none;
+    border: none !important;
+}
+.box#overview-hack-inner {
+    width: calc(100% - 20px);
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+}
+.overview-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.0em;
+    background-color: #EEE;
+}
+.overview-box .box {
+    display: inline-block;
+    flex-grow: 1;
+    background-color: #CCC;
+    border: none;
+    /*border-bottom: 1px solid #777777;*/
+    /*box-shadow: 0px 0px 0.2em 3px #d2d2d2;*/
+    filter: drop-shadow(0px 1px #777);
+    
+    background-repeat:repeat;
+    background-position:center;
+    background-size: initial;
+    /*background-attachment:fixed;*/
+    background-image: url("/files/images/bg3.png");
+    background-blend-mode: screen;
+}
+.overview-box .box h3, .overview-box .box.blogarchive .overview-blogarchive-block {
+    text-align: left;
+    color: #888;
+    
+    @media (max-width:800px) {
+        margin-left: 0.4em;
+        margin-right: 0.4em;
+    }
+}
+.overview-box > .box > h3 {
+    color: #777;
+    font-size: 1.5em;
+}
+.overview-blogarchive-block:not(:last-child) {
+    margin-bottom: 0.3em;
+    border-bottom: 1px #AAA dashed;
+    padding-bottom: 0.3em;
+}
+
+.overview-imagewrap > a > img {
+    width: 100%;
+    height: auto;
+}
+.overview-basis90 {
+    flex-basis: 88%;
+    min-width: 300px;
+}
+.overview-basis45 {
+    flex-basis: 45%;
+    min-width: 300px;
+}
+.overview-basis22 {
+    flex-basis: 22%;
+    min-width: 150px;
+}
+
+.overview-content-warning p, .overview-content-warning ul, .overview-content-warning l {
+    text-align: left;
+    color: #555;
+    font-size: 0.8em;
+    
+    @media (max-width:800px) {
+        margin-left: 0.4em;
+        margin-right: 0.4em;
+    }
+}
+.overview-content-warning a, .overview-content-warning a:link, .overview-content-warning a:visited {
+    font-size: 1.0em;
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    border-bottom: #AAA 1.5px dotted;
+}
+.overview-archive > table {
+    font-size: 0.91em;
+}
+.overview-archive > #archive h3 {
+    font-size: 1.0em;
+    font-weight: 400;
+}
+.overview-archive tr.chaptertitle {
+    background: none;
+}
+
+.overview-bsides > div {
+    text-align: left;
+    margin-bottom: 0.8em;
+    
+    @media (max-width:800px) {
+        margin-left: 0.4em;
+        margin-right: 0.4em;
+    }
+}
+.overview-bsides > div:not(:nth-child(2)) {
+    border-right: 1px solid #777777;
+    border-top: 1px solid #777777;
+    padding-top: 0.4em;
+}
+.overview-bsides > div > a {
+    display: block-inline;
+}
+.overview-bsides > div > a::before {
+    content: "> ";
+}
+.overview-bsides > div > .overview-miniinfo {
+    display: block;
+    border-left: #AAA 2px dotted;
+    padding-left: 0.7em;
+    margin-left: 1.3em;
+    position: relative;
+    font-variant: small-caps;
+}
+.overview-bsides > div > span:nth-child(3) {
+    color: #888;
+    line-height: 1.5em;
+    font-size: 0.9em;
+}
+.overview-bsides > div > a > img {
+    border: 0px;
+    max-width: calc(100% - 1.0em);
+    vertical-align: middle;
+}
+.overview-bsides > div > a > img,
+.overview-bsides > div > a:visited > img,
+.overview-bsides > div > a:link > img {
+    --c_accent_l: rgb(255, 70, 0);
+    filter:
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+.overview-bsides > div > a:hover > img {
+    filter:
+        drop-shadow(var(--c_accent_l) 0 0 0.03em)
+        drop-shadow(var(--c_accent_l) 0 0 0.14em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+
+.overview-miniinfo strong {
+    color: #000;
+}
+
+.overview-begin-block {
+    transform: rotate(3deg);
+    display: inline-block;
+}
+.overview-begin {
+    display: inline-block;
+    font-family: var(--f_header_fx) !important;
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+}
+.overview-begin-sidestyle {
+    display: inline-block;
+    width: 2.6em;
+    vertical-align: top;
+    text-align: left;
+    line-height: 0.8em;
+    font-size: 1.0em;
+    font-family: var(--f_header_fx) !important;
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+}
+
+
+.overview-authors {
+    display: flex !important;
+    justify-content: center;
+    gap: 1.0em;
+}
+.overview-authorbox {
+    display: inline-block;
+    flex-basis: 30%;
+    min-width: min(40vw, max(30vw, 350px));
+    text-align: justify;
+    font-size: 0.9em;
+    color: #444;
+}
+.overview-authorbox > h3 {
+    color: #777;
+    font-size: 1.8em;
+    font-weight: 500;
+}
+.overview-authorbox > h3 > strong {
+    color: #444;
+}
+
+.overview-authorbox-icon {
+    max-height: 1.0em;
+    width: 1.0em;
+    object-fit: contain;
+    vertical-align: baseline;
+}
+.overview-authorbox h4 {
+    margin: 0;
+    font-size: 2.0em;
+    font-weight: 500;
+}
+.overview-authorbox-linkbox {
+    display: block;
+}
+.overview-authorbox-topinfo {
+    display: block;
+    overflow: auto;
+}
+.overview-authorbox-topinfo > img {
+    float: left;
+    margin-right: 1.0em;
+    width: 10em;
+    height: auto;
+}
+
+
+.overview-support-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.0em 1.0em;
+}
+.overview-support-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.0em min(1.0em, 1.5vw);
+}
+.overview-support-item > a {
+    filter: drop-shadow(0 0 1px #0007);
+    transition: filter 0.25s ease-in-out;
+    background: none !important;
+}
+.overview-support-item > a::before, .overview-support-item > a::after {
+    display: none !important;
+}
+.overview-support-item > a:hover {
+    filter: drop-shadow(1px 3px 4px #0005);
+    transition: filter 0.25s ease-in-out;
+}
+.overview-support-item > a > img {
+    max-height: 200px;
+    max-width: 32vw;
+}
+.overview-support h4 {
+    font-size: 1.1em;
+    color: #777;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #777;
+    margin: 0 0 0.2em 0;
+}
+.overview-support-kofi {
+    background: #6C40A1;
+    padding: 0.8em;
+    border-radius: 1.0em;
+    filter: drop-shadow(0 0.05em 0.05em #0005);
+    transform: rotate(-2deg);
+    border: 0.3em solid white;
+}
+.overview-support-kofi a,
+.overview-support-kofi a:link,
+.overview-support-kofi a:visited {
+    color: white;
+    font-family: 'PermanentMarker', cursive;
+    line-height: 1.0em;
+    font-size: 1.35em;
+}
+
+/* gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.gallery h3, #gallery_heading {
+    font-size: 1.8em;
+    color: #000;
+    line-height: 1.0em;
+}
+.gallery > div {
+    max-width: min(15.0em, 22vw);
+    background: #AAA center fixed repeat url("https://synexncity.thecomicseries.com/files/images/bg3.png");
+    background-blend-mode: screen;
+    margin: 0.4em 0;
+    padding: 0 0 0.2em 0;
+    border-bottom: 1px solid #777777;
+    box-shadow: 0px 0px 0.2em 0px #d2d2d2;
+}
+.gallery > div > a > img {
+    max-width: 100%;
+}
+.gallery > div .date {
+    font-size: 0.7em;
+    text-align: right !important;
+    color: #999999;
+    padding: 0 5px;
+}
+.gallery > div .title {
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-weight: var(--fi_header_weight);
+    font-size: max(1.0em, min(1.618em, 5vw));
+    color: #555;
+    padding: 0 5px;
+}
+.gallery > div .author {
+    font-size: 0.8em;
+    float: left;
+    padding: 0 5px;
+    font-family: var(--f_normal) !important;
+    font-weight: var(--fi_normal_weight) !important;
+    color: #333;
+}
+
+/* compendium */
+
+.compendium {
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+}
+
+.compendium .filelisting {
+    font-family: var(--f_normal);
+    font-weight: var(--fi_normal_weight);
+    text-align: left;
+    color: #777;
+}
+
+.compendium .filelisting ul {
+    list-style: symbols(cyclic "▷" "▻");
+}
+.compendium .filelisting ul a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+}
+
+.monospace {
+    font-family: var(--f_monospace) !important;
+}
+
+/* comic image */
+[c:custom.comic_wideformat]
+#content-start
+{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-left: none;
+    border-right: none;
+    max-width: 100%;
+}
+#comicimagewrap
+{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+[/]
+#comicimage, .comicsegmentimage
+{
+    [c:!custom.comic_wideformat]
+    max-width: calc(100vw - 26px);
+    height: auto;
+    
+    @media (max-width:800px) {
+        max-width: 100vw;
+    }
+    [/]
+    [c:custom.comic_wideformat]
+    width: 100vw;
+    height: auto;
+    [/]
+    [c:custom.comic_scale]
+    width: [v:custom.comic_scale];
+    [/]
+}
+
+[c:custom.sp__specials]
+/** "Specials" Styling: Custom styling added with vis changes */
+/* ============================= */
+#content-start
+{
+    [c:custom.sp_content_black]
+    /*border: 8px solid #202020;
+    background: #000;*/
+    [c:!custom.comic_wideformat]
+    /*max-width: calc(100vw - 32px);*/
+    [/]
+    [c:custom.comic_wideformat]
+    border-left: none;
+    border-right: none;
+    [/]
+    [/]
+}
+
+/** Global Vars **/
+:root {
+    [c:custom.sp_content_black]
+    /* Colors used for the navbox for comics */
+    --g_comicnavBgColor: #000D;
+    --g_comicnavBorderColor: #202020;
+    [/]
+}
+
+.comicnav {
+    [c:custom.sp_content_black]
+    /*background: #000D;
+    border: 2px solid #202020;*/
+    [/]
+}
+a.comicnavlink:link, a.comicnavlink:visited
+{
+    [c:custom.sp_content_black]
+    color: #DDD;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    [/]
+}
+a.comicnavlink:hover
+{
+    [c:custom.sp_content_black]
+    color: var(--c_accent);
+    [/]
+}
+html, body
+{
+    [c:custom.sp_content_black]
+    background-color: #999;
+    background-blend-mode: multiply;
+    [/]
+}
+.comicnav select
+{
+    [c:custom.sp_content_black]
+    border: 1px solid black;
+    background: #222;
+    color: white;
+    [/]
+}
+
+/* spoilers styles */
+[c:custom.sp_warning_spoiler]
+    #comicimagewrap
+    {
+        position: relative;
+    }
+    #comicimagewrap > #comicimagelink,
+    #comicimagewrap > #comicimage:not(.comicimage-sidestory), /* No-link variation */
+    #comicimagewrap > a > #latestcomicimage /* Overview link variation */
+    {
+        filter: blur(1vh);
+        transition:
+        filter ease-in-out 0.1s;
+    }
+    #comicimagewrap > #comicimagelink:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked),
+    #comicimagewrap > #comicimage:has(~ #comicimage-spoiler-label > #spoiler-toggle-show-page:checked) /* No-link variation */
+    {
+        filter: none;
+        transition:
+        filter ease-in-out 0.1s;
+    }
+
+    #comicimage-spoiler-label
+    {
+        position: absolute;
+        top: 1.0em;
+        z-index: 4;
+        /* Center */
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        
+        /* Stylings */
+        background: white;
+        padding: 4.0em;
+        outline: 2px black solid;
+        
+        text-align: center;
+		line-height: 1.0em;
+    }
+    #comicimage-spoiler-label:has(> #spoiler-toggle-show-page:checked)
+    {
+        display: none;
+    }
+    #comicimage-spoiler-label > div {
+        text-align: left;
+        width: 100%;
+    }
+    .spoiler-hidden-checkbox
+    {
+        display: block;
+        position: absolute;
+        opacity: 0.0;
+    }
+
+    #comicimage-spoiler-content
+    {
+        /*display: none;*/
+        padding: 1.0em;
+        color: #F24;
+        font-weight: 400;
+        max-height: 0;
+        transition:
+        max-height ease-in-out 0.3s;
+    }
+
+    #comicimage-spoiler-label > div > label {
+        /*text-align: center;*/
+        cursor: pointer;
+        color: #636363;
+        transition:
+        color ease-in-out 0.1s,
+        text-shadow ease-in-out 0.1s;
+    }
+    #comicimage-spoiler-label > div > label:hover {
+        color: #333;
+        text-decoration: none;
+        text-shadow:
+        -3px 0px 0px rgba(0, 212, 255, 0.5),
+        +2px 0px 0px rgba(255, 64, 0, 0.6);
+        transition:
+        color ease-in-out 0.3s,
+        text-shadow ease-in-out 0.3s,
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+
+    #spoiler-toggle-content:checked ~ #comicimage-spoiler-content
+    {
+        display: inline-block;
+        max-height: none;
+        transition:
+        max-height ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content + div > label {
+        font-weight: 800;
+        opacity: 1.0;
+        transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content:checked + div > label {
+        font-weight: 800;
+        opacity: 0.5;
+        transition:
+        font-weight ease-in-out 0.1s,
+        opacity ease-in-out 0.1s;
+    }
+    #spoiler-toggle-content + div > label:before {
+        content: "▶ ";
+    }
+    #spoiler-toggle-content:checked + div > label:before {
+        content: "▽ ";
+    }
+
+    #spoiler-toggle-show-page + div > label:before {
+        content: "◿ "
+    }
+    #spoiler-toggle-show-page + div > label:after {
+        content: " ◺"
+    }
+    #spoiler-toggle-show-page + div {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    #spoiler-toggle-hide-forever + div > label:before {
+        content: "◉ "
+    }
+    #spoiler-toggle-hide-forever + div > label:after {
+        content: " ◉"
+    }
+    #spoiler-toggle-hide-forever + div {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .spoiler-warning-type {
+        text-transform: capitalize;
+        color: #F24;
+    }
+[/] /* Warning Spoiler */
+
+/* Shatter Effect */
+[c:custom.sp_content_builtin~shatter]
+    #comicimage-backshatter {
+        position: absolute;
+        height: 0px;
+        width: 100%;
+        overflow: visible;
+        pointer-events: none;
+        z-index: 1;
+    }
+    #comicimage-backshatter > img {
+        position: relative;
+        float: right;
+        max-width: calc(1349 * calc(calc(100vw - 26px) / 1024));
+        @media (max-width: 800px) {
+            max-width: calc(1349 * calc(100vw / 1024));
+        }
+    }
+
+    #comicimagewrap {
+        position: relative;
+    }
+    #comicimage {
+        position: relative;
+        z-index: 1;
+    }
+    html {
+        width: 100%;
+        overflow-x: hidden;
+    }
+[/]
+
+/* Console Effect */
+[c:custom.sp_content_builtin~fallofsin_console]
+    #comicimage-console {
+        z-index: 2;
+        position: absolute;
+        overflow: visible;
+        height: 0px;
+        width: 100%;
+    }
+    #comicimage-console > div {
+        position: relative;
+        line-height: 1.1em;
+        text-align: left;
+        letter-spacing: 0;
+        font-family: var(--f_monospace);
+        left: 1.413em;
+        top: 1.413em;
+        color: var(--c_accent);
+        text-shadow: none;
+        font-weight: 200;
+    }
+
+    #comicimage-console2 {
+        position: relative;
+        overflow: visible;
+        height: auto;
+        width: 100%;
+        margin-top: 2.0em;
+        margin-bottom: 2.0em;
+    }
+    #comicimage-console2 > div {
+        position: relative;
+        line-height: 1.1em;
+        text-align: left;
+        letter-spacing: 0;
+        margin-left: 1.413em;
+        font-family: var(--f_monospace);
+        color: var(--c_accent);
+        text-shadow: none;
+        font-weight: 200;
+    }
+    #comicimage-console2 > img, #comicimage-console2 > div > img {
+        max-width: 100%;
+    }
+
+    #comicimagewrap {
+        position: relative;
+    }
+    #comicimage {
+        position: relative;
+        z-index: 1;
+    }
+[/]
+
+[/]
