@@ -10,7 +10,8 @@ var sinofsorcery = {
         favicon: undefined,
         m_iconBg: new Image(),
         m_iconGear: new Image()
-    }
+    },
+    previous_side_slot: -1
 };
 
 /*** @brief Replaces all the CF URLs with the synexn.city URLs. */
@@ -30,34 +31,74 @@ window.addEventListener('load', () =>
  */
 sinofsorcery.getGutterImage = function(element, rightSide)
 {
-    const images_right = ["/files/resources/sides/polmc-sider-1.png", "/files/resources/sides/polmc-sider-3.png"];
-    const offset_right = ["-2vh", "-10vh"];
-    const images_left  = ["/files/resources/sides/polmc-sider-2.png", "/files/resources/sides/polmc-sider-4.png"];
-    const offset_left  = ["-2vh", "-16vh"];
+    const in_empira = (this.chapterstyle == "empira");
 
-    const images_array = rightSide ? images_right : images_left;
-    const offset_array = rightSide ? offset_right : offset_left;
+    if (!in_empira)
+    {
+        const images_right = ["/files/resources/sides/polmc-sider-1.png", "/files/resources/sides/polmc-sider-3.png"];
+        const offset_right = ["-2vh", "-10vh"];
+        const images_left  = ["/files/resources/sides/polmc-sider-2.png", "/files/resources/sides/polmc-sider-4.png"];
+        const offset_left  = ["-2vh", "-16vh"];
 
-    const choiceIndex = Math.floor(Math.random() * images_array.length);
+        const images_array = rightSide ? images_right : images_left;
+        const offset_array = rightSide ? offset_right : offset_left;
 
-    const imageValue = images_array[choiceIndex];
-    const offsetValue = offset_array[choiceIndex];
+        const choiceIndex = Math.floor(Math.random() * images_array.length);
 
-    element.style.minWidth = "300px";
-    if (rightSide) {
-        element.style.left = offsetValue;
+        const imageValue = images_array[choiceIndex];
+        const offsetValue = offset_array[choiceIndex];
+
+        element.style.minWidth = "300px";
+        if (rightSide) {
+            element.style.left = offsetValue;
+        }
+        else {
+            element.style.right = offsetValue;
+        }
+        element.decoding = "async";
+        element.src = imageValue;
+        element
+            .decode()
+            .then(() => {
+                element.style.minWidth = "auto";
+                element.style.width = "auto";
+            });
     }
-    else {
-        element.style.right = offsetValue;
+    else
+    {
+        const images_array = [
+            "/files/resources/sides/count-sider-1.webp", "/files/resources/sides/count-sider-2.webp", 
+            "/files/resources/sides/count-sider-3.webp", "/files/resources/sides/count-sider-4.webp"];
+        const offset_array = [
+            "-100%", "-70%",
+            "-70%", "-70%"];
+
+        var choiceIndex = -1;
+        while (choiceIndex == -1 || choiceIndex == this.previous_side_slot)
+        {
+            choiceIndex = Math.floor(Math.random() * images_array.length);
+        }
+        this.previous_side_slot = choiceIndex;
+
+        const imageValue = images_array[choiceIndex];
+        const offsetValue = offset_array[choiceIndex];
+
+        element.style.minWidth = "300px";
+        if (rightSide) {
+            element.style.left = offsetValue;
+        }
+        else {
+            element.style.right = offsetValue;
+        }
+        element.decoding = "async";
+        element.src = imageValue;
+        element
+            .decode()
+            .then(() => {
+                element.style.minWidth = "auto";
+                element.style.width = "auto";
+            });
     }
-    element.decoding = "async";
-    element.src = imageValue;
-    element
-        .decode()
-        .then(() => {
-            element.style.minWidth = "auto";
-            element.style.width = "auto";
-        });
 }
 
 /*** 
