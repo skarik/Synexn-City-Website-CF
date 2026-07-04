@@ -1040,6 +1040,16 @@ html>body .wrap {
     padding: 0.5em;
     box-shadow: var(--g_shadowBoxDefault);
     border-image: url("/files/resources/styles/border000a2.png") 230 / 15px;
+
+    @media (max-width:800px) {
+        font-size: 3.1vw;
+        & > select {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.3em;
+        }
+    }
 }
 .comicnavlink {
     margin-left: 0.618em;
