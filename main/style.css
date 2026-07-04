@@ -78,7 +78,7 @@
     --f_header: "Fira Code", monospace;
 }
 
-.sinoso, .empira {
+.sinoso, .sinoso2, .empira {
     --f_normal: "BricolageGrotesque", sans-serif;
     --fi_normal_weight: 400;
     --f_header: "BricolageGrotesque", sans-serif;
@@ -98,11 +98,11 @@
     --c_bg_overlay_color: #88888800;
 }
 
-.sinoso.time-sundown, .empira.time-sundown {
+.sinoso.time-sundown, .sinoso2.time-sundown, .empira.time-sundown {
     --c_bg_color: #F76558;
     --c_bg_overlay_color: #F1820F44;
 }
-.sinoso.time-night, .empira.time-night {
+.sinoso.time-night, .sinoso2.time-night, .empira.time-night {
     --c_bg_color: #002336;
     --c_bg_overlay_color: #1b00b463;
 }
@@ -218,7 +218,7 @@ img {
         repeat fixed center/50% url("/files/images/bg4.webp"),
         black;
 }
-.sinoso body, .empira body {
+.sinoso body, .sinoso2 body, .empira body {
     /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
     background:
         /* Polaris/Pharus on top */
@@ -387,7 +387,7 @@ img {
     }
 }
 
-.sinoso, .empira {
+.sinoso, .sinoso2, .empira {
     --i_egpos_0: 0%;
     --i_egpos_1: calc(calc(100% / 31) * 6); /* line */
     --i_egpos_2: calc(calc(100% / 31) * 12); /* dot */
@@ -511,7 +511,7 @@ img {
     }
 }
 
-.sinoso, .empira {
+.sinoso, .sinoso2, .empira {
     a, label, .linkglow {
         position: relative;
         &:link, &:visited, & {
@@ -758,6 +758,9 @@ form {
 }
 .sinoso #sitetitle {
     background-image: url("/files/resources/titles/sinoso_basic.webp");
+}
+.sinoso2 #sitetitle {
+    background-image: url("/files/resources/titles/sinoso2_basic.webp");
 }
 .empira #sitetitle {
     background-image: url("/files/resources/titles/sinoso_plain_w.webp");
@@ -1092,7 +1095,7 @@ html>body .wrap {
         border-image: none;
     }
 }
-.sinoso, .empira {
+.sinoso, .sinoso2, .empira {
     .comicnav {
         backdrop-filter: blur(5px);
         z-index: 5;
@@ -1132,6 +1135,7 @@ html>body .wrap {
     }
     /* Paper backgrounds */
     .sinoso .comic-reader > #comicimagewrap::before,
+    .sinoso2 .comic-reader > #comicimagewrap::before,
     .empira .comic-reader > #comicimagewrap::before {
         content: "";
         display: block;
@@ -1145,10 +1149,12 @@ html>body .wrap {
         background-size: contain;
         pointer-events: none;
     }
+    .sinoso2 .comic-reader > #comicimagewrap::before,
     .empira .comic-reader > #comicimagewrap::before {
         background-image: url("/files/images/bg_sos/decobg01.gif") !important;
     }
     .sinoso .comic-reader > #comicimagewrap, 
+    .sinoso2 .comic-reader > #comicimagewrap, 
     .empira .comic-reader > #comicimagewrap {
         filter: drop-shadow(0 0 0 #0000);
     }
@@ -1160,6 +1166,7 @@ html>body .wrap {
 .sinoso #comicimage {
     box-shadow: 0px 0px 0.7em #000A;
 }
+.sinoso2 #comicimage,
 .empira #comicimage {
     box-shadow: 0px 0px 0.5em #000A;
 }
@@ -1596,7 +1603,7 @@ a.author:hover {
             .synexn &, .shatter &, .slithy &, .slithy2 &, .fallofsin & {
                 color: var(--c_accent) !important;
             }
-            .sinoso &, .empira & {
+            .sinoso &, .sinoso2 &, .empira & {
                 color: white !important;
             }
         }
