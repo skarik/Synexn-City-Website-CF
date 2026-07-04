@@ -1,0 +1,143 @@
+<style>/* EXTRA */
+
+
+/*** CSS FIELD ***/
+</style>
+<script type="text/javascript">
+    window.g_stop_navigation = true;
+</script> 
+<style>
+
+
+</style><!-- EXTRA -->
+
+
+<!-- PAGE FIELD -->
+<style type="text/css">
+    /* Disable links */
+    .segmentcontainer > a {
+        pointer-events: none;
+        background: none !important;
+        animation: none !important;
+
+        &::after, &::before,
+        &::after:hover, &::before:hover {
+            background: none !important;
+            animation: none !important;
+        }
+    }
+    .comicnav:nth-child(1) > a:nth-child(3),
+    .comicnav:nth-child(1) > a:nth-child(4) {
+        display: none;
+    }
+    /* Fix lower half */
+    #saveplace, .postcomment {
+        position: relative;
+        z-index: 5;
+    }
+
+    /* Drippy segment */    
+    .segmentcontainer:nth-child(2) {
+        position: absolute;
+    }
+    .segmentcontainer:nth-child(2) img {
+        position: relative;
+        top: max(-763px, -74.5vw);
+    }
+    
+    /* Well wide */
+    .segmentcontainer:nth-child(3) {
+        z-index: 4;
+        overflow: visible;
+        position: relative;
+        width: min(1024px, 100vw);
+        height:  min(1365px, 133vw);
+    }
+    .segmentcontainer:nth-child(3) img {
+        width: 1567px;
+        max-width: 153vw;
+        position: absolute;
+        left: calc(calc(min(1024px, 100vw) - min(1567px, 153vw)) / 2);
+        top: max(-110px, -10.7vw);
+    }
+
+    /* Multi panel */
+    .segmentcontainer:nth-child(4) {
+        z-index: 1;
+        position: relative;
+        top: max(-128px, -12.5vw);
+    }
+
+    /* Separator */
+    .segmentcontainer:nth-child(5) {
+        z-index: 4;
+        overflow: visible;
+        position: relative;
+        width: min(1024px, 100vw);
+    }
+    .segmentcontainer:nth-child(5) img {
+        width: 1567px;
+        max-width: 153vw;
+        position: absolute;
+        left: calc(calc(min(1024px, 100vw) - min(1567px, 153vw)) / 2);
+        top: max(-290px, -28.3vw);
+        transform: scale(1, -1) rotate(11deg);
+    }
+
+    /* Final Piece */
+    .segmentcontainer:nth-child(6) {
+        z-index: 4;
+        overflow: visible;
+        position: relative;
+        width: min(1024px, 100vw);
+        height:  min(1365px, 133vw);
+
+        top: 200px;
+        padding-top: 200px;
+        padding-bottom: 200px; /* For when there's a containing link */
+    }
+    .segmentcontainer:nth-child(6) img {
+        width: 1620px;
+        max-width: 158vw;
+        position: absolute;
+        left: calc(calc(min(1024px, 100vw) - min(1620px, 158vw)) / 2);
+        top: max(-110px, -10.7vw);
+    }
+
+    /* Fade out white on the page */
+    #comicimagewrap {
+        background: linear-gradient(white 100px, #FFF0 1024px) !important;
+        filter: none !important;
+    }
+
+    
+    body {
+        /* Copy the sinoso bg
+        /* The sinoso style of the BG is actually quite in-depth, with several stacking parts */
+        background:
+            /* Gradient on top */
+            linear-gradient(#0000 1024px, black min(1400px, 118vh)),
+            /* Polaris/Pharus on top */
+            no-repeat scroll 85vw 2vh / 5.0em auto url("/files/images/bg_sos/pharus.webp"),
+            /* Front Dust */
+            repeat-x scroll center 67% / 1300px auto url("/files/images/bg_sos/front-dust.webp"),
+            /* Color overlay */
+            repeat scroll linear-gradient(var(--c_bg_overlay_color)),
+            /* Foreground Hills */
+            repeat-x scroll var(--i_bg1_hills_x) 100vh / 1000px auto url("/files/images/bg_sos/front-hills.gif"),
+            /* Train */
+            no-repeat scroll var(--i_bg2_train_x) calc(100vh - 136px) / 1050px auto url("/files/images/bg_sos/train.webp"),
+            /* Background Hills */
+            repeat-x scroll var(--i_bg3_hills_x) calc(100vh - 80px) / 777px auto url("/files/images/bg_sos/bg-hills.gif"),
+            /* Background Hills */
+            repeat-x scroll var(--i_bg4_clouds_x) calc(100vh - 210px) / 1100px auto url("/files/images/bg_sos/bg-clouds.gif"),
+            /* At the top, have the horizontally repeating dither */
+            repeat-x scroll top left / 2.0em auto url("/files/images/bg_sos/top-dither.webp"),
+            /* Background comes last */
+            linear-gradient(var(--c_bg_color) 120vh, black),
+            /* Override bg bg bg */
+            black
+            /* Make sure we override!*/
+            !important;
+    }
+</style>

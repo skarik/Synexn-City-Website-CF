@@ -150,7 +150,10 @@
     
     [c:iscomicpage]
         <script type="text/javascript">
-            activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            if (typeof window.g_stop_navigation === "undefined")
+            {
+                activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            }
         </script>
     [/]
     

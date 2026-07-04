@@ -1112,6 +1112,8 @@ html>body .wrap {
 #comicimagewrap {
     /* This gets rid of the newline that appears on the inside of the image block when any extra HTML is added. */
     line-height: 0px;
+    /* Ensure that we're displaying our images correctly if we do absolute positioning: */
+    position: relative;
 }
 #comicimagelink {
     /* This gets rid of the newline that appears on the inside of the image block when the page has a link. */
@@ -1144,9 +1146,10 @@ html>body .wrap {
         width: 144%;
         height: 133%;
         left: -22%;
-        top: -17%;
+        top: max(-17%, -232px); /* 232px is 17% of 1365 */
         z-index: -1;
         background-size: contain;
+        background-repeat: no-repeat;
         pointer-events: none;
     }
     .sinoso2 .comic-reader > #comicimagewrap::before,
@@ -1724,9 +1727,13 @@ a.author:hover {
     padding-bottom: 0.3em;
 }
 
-.overview-imagewrap > a > img {
+.overview-imagewrap > a > img,
+.overview-imagewrap > a > .comicsegments > .segmentcontainer > img {
     width: 100%;
     height: auto;
+}
+.overview-imagewrap > a > .comicsegments > .segmentcontainer:nth-child(n + 2) {
+    display: none;
 }
 .overview-basis90 {
     flex-basis: 88%;
