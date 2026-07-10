@@ -2047,9 +2047,11 @@ a.author:hover {
     list-style: symbols(cyclic "▷" "▻");
 }
 .compendium .filelisting ul a {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: bold;
+    &, &:link, &:visited {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
 }
 
 .monospace {
@@ -2285,7 +2287,22 @@ body:has(div > div > div > .cast) {
         background: none;
 
         left: 0px;
-        top: 0px;
+        top: auto;
+        bottom: 0px;
+
+        opacity: 100%;
+        transform: none;
+        zoom: 1.0;
+
+        background: none;
+        animation: none;
+        transition: none;
+
+        pointer-events: all;
+    }
+    label:has(input:checked)::after,
+    label:has(input:checked):hover::after {
+        display: none;
     }
 }
 
