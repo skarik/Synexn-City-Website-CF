@@ -789,12 +789,15 @@ form {
     font-family: var(--f_header);
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
-    font-size: 2.0em;
+    font-size: min(8vw, 2.0em);
     line-height: 1.5em;
 }
 #navigation ul {
     padding: 0px;
     margin: 0.3em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 #navigation li {
     list-style: none;
@@ -881,17 +884,16 @@ form {
     overflow: clip;
     
     transition:
-    max-width ease-out 0.2s,
-    height ease-out 0.5s,
-    opacity ease-out 0.5s;
+        max-width ease-out 0.2s,
+        height ease-out 0.5s,
+        opacity ease-out 0.5s;
 }
 #navigation li:not(#subitem):has(:checked) ~ #subitem {
     max-width: 100%;
-    
     transition:
-    max-width ease-in 0.5s,
-    height ease-in 0.5s,
-    opacity ease-in 0.5s;
+        max-width ease-in 0.5s,
+        height ease-in 0.5s,
+        opacity ease-in 0.5s;
 }
 
 /* Special little effect */
