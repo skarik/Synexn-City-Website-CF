@@ -2086,6 +2086,9 @@ a.author:hover {
     zoom: 0.35;
     min-width: 5.0em;
 }
+.cast label h3 {
+    font-family: PermanentMarker, cursive;
+}
 .cast label + section {
     display: none;
 }
