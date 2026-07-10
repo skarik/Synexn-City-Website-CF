@@ -2109,7 +2109,7 @@ a.author:hover {
 /* Black background */
 body:has(div > div > div > .cast) {
     background: 
-        no-repeat center 285px / min(1460px, 110%) auto url("/files/images/bg_sos/paperbg.webp"),
+        no-repeat center 210px / min(1460px, 110%) auto url("/files/images/bg_sos/paperbg.webp"),
         black;
 }
 
