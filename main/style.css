@@ -126,6 +126,16 @@
 .tape_wobble {
     clip-path: var(--p_tape_wobble);
 }
+.tape_white {
+    font-family: 'PermanentMarker', cursive;
+    background: #FFF5E6;
+    display: inline-block;
+    clear: both;
+    padding: 0.05em 1.0em;
+    color: black;
+    font-size: 2.0em;
+    margin: -1px;
+}
 
 .corners--slanted0 {
     mask-image: 
@@ -1688,7 +1698,8 @@ a.author:hover {
     }
 }
 
-/* overview */
+/* Overview Page */
+/* ============================= */
 .box#overview-hack {
     padding: 0;
     background: none;
@@ -1735,12 +1746,34 @@ a.author:hover {
     color: #777;
     font-size: 1.5em;
 }
+
+/* layout blocks */
+.overview-basis90 {
+    flex-basis: 88%;
+    min-width:  min(100vw, 720px);
+}
+.overview-basis45 {
+    flex-basis: 45%;
+    min-width: min(100vw, 360px);
+}
+.overview-basis22 {
+    flex-basis: 22%;
+    min-width: min(100vw, 180px);
+}
+
+/* blog archive styling */
+/* Main blogpost */
+.overview-box .blogarchive .blogpost-time {
+    text-align: center !important;
+}
+/* List of extras */
 .overview-blogarchive-block:not(:last-child) {
     margin-bottom: 0.3em;
     border-bottom: 1px #AAA dashed;
     padding-bottom: 0.3em;
 }
 
+/* comic image styling */
 .overview-imagewrap > a > img,
 .overview-imagewrap > a > .comicsegments > .segmentcontainer > img {
     width: 100%;
@@ -1749,19 +1782,8 @@ a.author:hover {
 .overview-imagewrap > a > .comicsegments > .segmentcontainer:nth-child(n + 2) {
     display: none;
 }
-.overview-basis90 {
-    flex-basis: 88%;
-    min-width: 300px;
-}
-.overview-basis45 {
-    flex-basis: 45%;
-    min-width: 300px;
-}
-.overview-basis22 {
-    flex-basis: 22%;
-    min-width: 150px;
-}
 
+/* content warning block */
 .overview-content-warning p, .overview-content-warning ul, .overview-content-warning l {
     text-align: left;
     color: #555;
@@ -1778,17 +1800,94 @@ a.author:hover {
     font-weight: var(--fi_normal_weight);
     border-bottom: #AAA 1.5px dotted;
 }
+
+/* chapter listing block */
 .overview-archive > table {
     font-size: 0.91em;
 }
 .overview-archive > #archive h3 {
     font-size: 1.0em;
     font-weight: 400;
+    display: inline-block;
 }
 .overview-archive tr.chaptertitle {
     background: none;
 }
+/* chapter listing block alt */
+.overview-archive tr.threadtitle {
+    background: none;
 
+    background-position: center !important;
+    background-size: 110% !important;
+}
+.overview-archive tr.threadlinks {
+    background: none;
+}
+.overview-threads tr {
+    width: 100%;
+
+    &.threadtitle {
+        & > td {
+            border: none;
+            padding-bottom: 0;
+
+            text-shadow: 
+                0.1em 0.1em 0 #FFF,
+                0.1em -0.1em 0 #FFF,
+                -0.1em -0.1em 0 #FFF,
+                -0.1em 0.1em 0 #FFF,
+                0.1em 0px 0 #FFF,
+                -0.1em 0px 0 #FFF,
+                0px 0.1em 0 #FFF,
+                0px -0.1em 0 #FFF;
+            
+            & > div:has(h3) {
+                filter: drop-shadow(0 0.05em 0.05em #0005);
+                transform: rotate(3deg);
+                text-align: center;
+
+                & > h3 {
+                    font-size: 1.6em !important;
+                    padding: 0.2em 1.0em;
+                    margin-bottom: 0.3em;
+                    text-shadow: none;
+                }
+            }
+        }
+
+        & .current {
+            text-align: center;
+            font-style: italic;
+        }
+    }
+    &.threadtitle:nth-child(3) > td > div:has(h3) {
+        transform: rotate(-1deg);
+    }
+    &.threadtitle:nth-child(5) > td > div:has(h3) {
+        transform: rotate(2deg);
+    }
+
+    &.threadlinks {
+        border-bottom: 2px solid black;
+        & > td {
+            border: none;
+        }
+        a {
+            display: inline-block;
+        }
+    }
+}
+
+.overview-threads .prev {
+    text-align: center;
+    opacity: 0.5;
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-variant: all-petite-caps oldstyle-nums;
+    font-size: 1.2em;
+}
+
+/* b-sides block */
 .overview-bsides > div {
     text-align: left;
     margin-bottom: 0.8em;
@@ -1855,6 +1954,7 @@ a.author:hover {
     color: #000;
 }
 
+/* beginning block */
 .overview-begin-block {
     transform: rotate(3deg);
     display: inline-block;
@@ -1878,6 +1978,7 @@ a.author:hover {
 }
 
 
+/* authors bio box */
 .overview-authors {
     display: flex !important;
     justify-content: center;
@@ -1925,7 +2026,7 @@ a.author:hover {
     height: auto;
 }
 
-
+/* support links box */
 .overview-support-list {
     display: flex;
     justify-content: center;

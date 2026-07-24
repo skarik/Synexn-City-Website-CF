@@ -20,7 +20,7 @@
 
     <div class="box overview-basis90">
         <div class="" style="filter: drop-shadow(0 0.05em 0.05em #0005); transform: rotate(3deg);">
-            <h3 class="tape_wobble" style="font-family: 'PermanentMarker', cursive;background: #FFF5E6; display: inline-block;clear: both;padding: 0.05em 1.0em;color: black; font-size: 2.0em; margin: -1px;">Support us!</h3>
+            <h3 class="tape_wobble tape_white" style="color: black;">Support us!</h3>
         </div>
         <div class="overview-support-list">
             <div class="overview-support-item">
@@ -69,11 +69,11 @@
             [l:latestblogs]
                 [c:l.is_first]
                     <div class="blogpost-container">
-                        <span class="posttime blogpost-time">[v:l.posttime]</span>
                         <span class="blogtitle tape_wobble"><a href="[v:l.bloglink]">[v:l.blogtitle]</a></span>
                         <span class="authordata">
                             by <a href="[v:l.profilelink]" class="author">[v:l.authorname]</a>
                         </span>
+                        <span class="posttime blogpost-time">[v:l.posttime]</span>
                         <div class="blogcontent">[v:l.blog]</div>
                         <div class="blog-actionlink"><a href="[v:l.bloglink]">◁ Comment on Post ▷</a></div>
                     </div>
@@ -89,22 +89,78 @@
         </div>
     [/]
 
+
+    <!-- Normal comic archive listing -->
+    <!-- it no longer works for SoS mainline so we're just not going to use it directly -->
+    [c:webcomicname!~sin of sorcery]
     <div class="box overview-basis22 overview-archive">
         <h3>Chapters</h3>
         <table id="archive">
             [l:chapteredarchive]
                 [c:!l.is_first]
                     [c:l.newchapter]
-                        <tr class="chaptertitle"><td colspan="3"><a href="[v:l.comicurl]"><h3>▷[v:l.chaptername]</h3></a>
-                        [c:l.chapterdescription]
-                            <div>[v:l.chapterdescription]</div>
-                        [/]
-                        </td></tr>
+                        <tr class="chaptertitle">
+                            <td colspan="3">
+                                <a href="[v:l.comicurl]"><h3>▷[v:l.chaptername]</h3></a>
+                                [c:l.chapterdescription]
+                                    <div>[v:l.chapterdescription]</div>
+                                [/]
+                            </td>
+                        </tr>
                     [/]
                 [/]
             [/]
         </table>
     </div>
+    [/]
+    <!-- SoS comic archive listing, updated by hand -->
+    [c:webcomicname~sin of sorcery]
+    <div class="box overview-basis22 overview-archive overview-threads">
+        <h3>Story Arcs</h3>
+        <table id="archive">
+            <!-- synexn -->
+            <tr class="chaptertitle threadtitle" style="background: linear-gradient(#FFF4, #FFFB), url('https://img.comicfury.com/comics/thumbs/432/33395a1772051164b0f463724339.webp');">
+                <td colspan="3">
+                    <div class="prev">Thread 1</div>
+                    <div><h3 class="tape_wobble tape_white">Synexn City</h3></div>
+                    <div>Take a day trip to an alien year 2352, keep your loved ones in your heart and make sure you take the train back home.</div>
+                </td>
+            </tr>
+            <tr class="chaptertitle threadlinks">
+                <td><a href="https://synexn.city/comics/pl/698505/"><h4>FIRST PAGE</h4></a></td>
+                <td><a href="https://synexn.city/archive/32990"><h4>ARCHIVE</h4></a></td>
+            </tr>
+
+            <!-- sinoso -->
+            <tr class="chaptertitle threadtitle" style="background: linear-gradient(#1B0B2C45, #FFFC), url('https://img.comicfury.com/comics/chaptercovers/444/33395a1779205536b30430f1684279106.jpg');">
+                <td colspan="3">
+                    <div class="prev">Thread 1.5</div>
+                    <div><h3 class="tape_wobble tape_white">Time Machine</h3></div>
+                    <div>There's a blank spot on the wall. You can't remember why it's important.</div>
+                </td>
+            </tr>
+            <tr class="chaptertitle threadlinks">
+                <td><a href="https://synexn.city/comics/pl/2722976/"><h4>FIRST PAGE</h4></a></td>
+                <td><a href="https://synexn.city/archive/105366"><h4>ARCHIVE</h4></a></td>
+            </tr>
+
+            <!-- sinoso2 -->
+            <tr class="chaptertitle threadtitle" style="background: linear-gradient(#FFF0, #FFFB), url('https://img.comicfury.com/comics/thumbs/448/33395a1781891042b0f1175892683.webp');">
+                <td colspan="3">
+                    <div class="prev">Thread 2</div>
+                    <div><h3 class="tape_wobble tape_white">What it's Worth</h3></div>
+                    <div class="current">The current comic!</div>
+                    <div>Start where you began. Can you remember what home looks like, or the faces of your friends?</div>
+                </td>
+            </tr>
+            <tr class="chaptertitle threadlinks">
+                <td><a href="https://synexn.city/comics/pl/2883925/"><h4>FIRST PAGE</h4></a></td>
+                <td><a href="https://synexn.city/archive/111479"><h4>ARCHIVE</h4></a></td>
+            </tr>
+
+        </table>
+    </div>
+    [/]
 
     <div class="box overview-basis22 overview-content-warning">
         <h3>Content Warning</h3>
