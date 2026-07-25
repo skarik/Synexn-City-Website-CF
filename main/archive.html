@@ -90,6 +90,7 @@
             <div class="archive-back-link">
                 <a href="/archive/">◁ All Chapters</a>
             </div>
+
             <table id="archive" class="archive-all-pages">
                 [l:comics_paginated]
                     [c:l.newchapter]
@@ -108,6 +109,9 @@
                                 onpointerover="comicfury.thumbnailMouseOver(event, 'thumbnail-preview-box', [v:l.thumbnail_jsdata])"
                                 onpointerout="comicfury.thumbnailMouseOut(event)">
                                 [v:l.comictitle]
+                                <!--[c:l.thumbnail_url]
+                                    <span><img src="[v:l.thumbnail_url]"></span>
+                                [/]-->
                             </a>
                             <!--[c:l.thumbnail_url]
                                 <img src="[v:l.thumbnail_url]" width="[v:l.thumbnail_width_small]" height="[v:l.thumbnail_height_small]">
@@ -117,6 +121,21 @@
                 [/]
             </table>
             <!-- End All Pages -->
+
+            [c:lastpagenumber>1]
+                <div id="pages">
+                    <div id="pageslabel">
+                        Pages:
+                    </div>
+                    [l:pages]
+                        [c:l.skipped_ahead]
+                            <span class="pageskip">...</span>
+                        [/]
+
+                        <a href="[v:l.pagelink]" class="pagelink [c:l.is_current]currentpage[/]">[v:l.page]</a>
+                    [/]
+                </div>
+            [/]
         [/]
     [/]
 
