@@ -1759,6 +1759,9 @@ a.author:hover {
     color: #777;
     font-size: 1.5em;
 }
+.overview-miniinfo strong {
+    color: #000;
+}
 
 /* layout blocks */
 .overview-basis90 {
@@ -1826,12 +1829,13 @@ a.author:hover {
 .overview-archive tr.chaptertitle {
     background: none;
 }
+
 /* chapter listing block alt */
 .overview-archive tr.threadtitle {
     background: none;
 
     background-position: center !important;
-    background-size: 110% !important;
+    background-size: cover !important;
 }
 .overview-archive tr.threadlinks {
     background: none;
@@ -1963,9 +1967,281 @@ a.author:hover {
         ;
 }
 
-.overview-miniinfo strong {
-    color: #000;
+/* b-sides block - casette edition */
+.overview-bsides-alternate > div:first-of-type {
+    margin-bottom: 0.5em;
 }
+.overview-bsides-alternate > .casette {
+    font-size: 0.5em;
+}
+.overview-bsides-alternate .casette {
+    margin-left: auto;
+    margin-right: auto;
+}
+.overview-bsides-alternate > .casette {
+    padding-top: 0.0em;
+
+    margin-bottom: 1em;
+
+    width: 24em;
+    max-width: 90%;
+    min-height: 13.5em;
+
+    background: rgb(16, 16, 16);
+
+    border-color: rgb(24, 24, 24);
+    border-top-color: rgb(32, 32, 32);
+    border-bottom-color: rgb(0, 0, 0);
+    border-width: 1em;
+    border-style: solid;
+    border-radius: 1em;
+
+    /* Use flexbox to center all the block-display items */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 0px 0px 2px rgb(255 255 255 / 60%),
+        0px 3px 5px 4px rgb(0 0 0 / 60%),
+        -3px 0px 0px 0px rgb(255 0 0),
+        3px 0px 0px 0px rgb(0 255 255);
+
+    /* Use background to add more detailing */
+    background-image: url(/files/resources/vector/casset-inside.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 14.25em;
+}
+.overview-bsides-alternate > .casette {
+    transform: rotate(0.7deg);
+}
+.overview-bsides-alternate > .casette:nth-child(2n) {
+    transform: rotate(-1.1deg);
+}
+.overview-bsides-alternate > .casette:nth-child(3n) {
+    transform: rotate(1.5deg);
+}
+.overview-bsides-alternate > .casette:nth-child(4n) {
+    transform: rotate(-0.2deg);
+}
+.overview-bsides-alternate > .casette:nth-child(5n) {
+	transform: rotate(0.7deg);
+}
+
+.overview-bsides-alternate > .bside-arcane
+{
+    background-color: rgb(180,30,60);
+    border-color: rgb(190,40,70);
+    border-top-color: rgb(230,90,90);
+    border-bottom-color: rgb(140,20,40);
+    
+    transform: rotate(0.2deg);
+}
+.overview-bsides-alternate > #blockmod_purple
+{
+    background-color: rgb(120,30,180);
+    border-color: rgb(160,40,190);
+    border-top-color: rgb(190,90,230);
+    border-bottom-color: rgb(70,20,140);
+}
+.overview-bsides-alternate > #blockmod_pink
+{ 
+    background-color: #EE5F8C;
+    border-color: #ff6b9a;
+    border-top-color: #ff90b3;
+    border-bottom-color: #c93866;
+}
+
+.overview-bsides-alternate > .casette::before
+{
+    display:			block;
+    
+    border-top:			1px solid gray;
+    width:				100%;
+    
+    padding-left:		1em;
+    padding-right:		0.618em;
+    
+    height:				0.2em;
+    font-size:			1.308em;
+    line-height:		1.5em;
+    
+    text-align:		left;
+    color:			rgb(16 16 16);
+    text-shadow:	0px 1px rgb(70 70 70),
+                    0px -1px rgb(0 0 0);
+}
+.overview-bsides-alternate > .bside-mundane::before
+{
+    content: 		"DENOKO SPACER PRO";
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    color: rgb(20,40,40);
+    font-weight:	800;
+    font-stretch:   70%;
+}
+.overview-bsides-alternate > .bside-arcane::before
+{
+    content: 		"DENOKO BUBBLEGUM3";
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    font-stretch:   70%;
+    color: 			rgb(180,30,60);
+    text-shadow:	0px 1px rgb(255 70 70),
+                    0px -1px rgb(128 0 0);
+    border-top:		1px solid rgb(255, 100, 100);
+}
+.overview-bsides-alternate > #blockmod_purple::before
+{
+    color: 			rgb(100,30,180);
+    text-shadow:	0px 1px rgb(210 70 255),
+                    0px -1px rgb(100 0 128);
+    border-top:		1px solid rgb(210, 100, 255);
+}
+.overview-bsides-alternate > #blockmod_pink::before
+{
+    color: 			#e7326b;
+    text-shadow:	0px 1px #ff558b,
+                    0px -1px #d6215a;
+    border-top:		1px solid #ff9ebd;
+}
+
+/* Bottom trapezoid of the comic blocks */
+.overview-bsides-alternate > .casette::after
+{
+    display:	block;
+    mix-blend-mode:	screen;
+    
+    content:		"○ ○";
+    font-size:		1.2em;
+    letter-spacing:	2.5em;
+    text-align:		center;
+    /* This fixes the bad alignment of letter-spacing */
+    padding-left:	2.7em;
+    
+    text-shadow:	0px 1px grey;
+    color:			rgb(32,32,32);
+
+    height:		1.8em;
+    background-color:	rgba(32,32,32,0.6);
+    border-style:		solid;
+    border-width:		0.125em;
+    border-color:		rgb(64,64,64);
+    border-radius:		0.25em;
+    border-bottom:		none;
+    
+    transform:			perspective(1em) rotateX(2deg);
+    
+    width:		60%;
+    position:	relative;
+    top:		0.45em;
+}
+
+/* labels */
+.overview-bsides-alternate > .casette > a 
+{
+    clip-path: var(--p_tape_wobble);
+    display:	inline-block;
+    font-size: 	3.5em !important;
+    
+    background:	white;
+    padding-top:	0.05em;
+    padding-bottom:	0.05em;
+    padding-left:	0.6em;
+    padding-right:	0.6em;
+    
+    margin-top:		0.0em;
+    margin-bottom:	0.0em;
+    
+    position: 	relative;
+    top: 		0.06em;
+    
+    height:			1.0em;
+    max-height:		1.0em;
+    
+    transform:		rotate(1.0deg);
+    color:			black;
+}
+.overview-bsides-alternate > .casette > a > img {
+    max-width: 100%;
+    max-height: 1.0em;
+}
+/* Randomize the label rotation */
+.overview-bsides-alternate > .casette:nth-child(2n) > a {
+    transform: rotate(-2.0deg);
+}
+.overview-bsides-alternate > .casette:nth-child(3n) > a {
+    transform: rotate(1.5deg);
+}
+.overview-bsides-alternate > .casette:nth-child(4n) > a {
+    transform: rotate(-1.0deg);
+}
+.overview-bsides-alternate > .casette > span:not(.overview-miniinfo) {
+    display: block;
+    
+    color: 			black;
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    font-stretch:   70%;
+    font-size:		1.8em;
+    text-transform: uppercase;
+    letter-spacing:	-0.02em;
+    line-height: 97%;
+    text-shadow:	none;
+    
+    background:			linear-gradient(0deg, black 4%, white 13%);
+    background-size:	1px 1em;
+    border-radius:		8px;
+    
+    /*height:			1.8em;*/
+    margin: 0 0.7em;
+    
+    padding:	0.1em 0.3em;
+    
+    position:	relative;
+    top:		1.3em;
+}
+.overview-bsides-alternate > div > .overview-miniinfo {
+    display: none;
+}
+
+
+/* link fix */
+.overview-bsides-alternate > div > a > img,
+.overview-bsides-alternate > div > a:visited > img,
+.overview-bsides-alternate > div > a:link > img {
+    --c_accent_l: rgb(255, 70, 0);
+    filter:
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+.overview-bsides-alternate > div > a:hover > img {
+    filter:
+        drop-shadow(var(--c_accent_l) 0 0 0.03em)
+        drop-shadow(var(--c_accent_l) 0 0 0.14em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+.overview-bsides-alternate > .casette > a,
+.overview-bsides-alternate > .casette > a:hover,
+.overview-bsides-alternate > .casette > a:visited,
+.overview-bsides-alternate > .casette > a:link {
+    background-image: none;
+    animation: none;
+    
+    &::before,
+    &::after {
+        display: none;
+        animation: none;
+    }
+}
+
 
 /* beginning block */
 .overview-begin-block {
