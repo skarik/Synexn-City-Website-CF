@@ -1544,6 +1544,15 @@ a.author:hover {
     flex-flow: column;
 }*/
 
+.archive-box #pages {
+    & #pageslabel {
+        display: none;
+    }
+    & .currentpage {
+        color: #FFF;
+    }
+}
+
 /*blog*/
 #blogbox {
     display: flex;
@@ -1683,8 +1692,12 @@ a.author:hover {
     align-items: center;
     justify-content: space-around;
 }
-.blog-imagelist img {
+.blog-imagelist img, .blog-imagelist a {
     max-width: 31%;
+    height: auto;
+}
+.blog-imagelist a > img {
+    max-width: 100%;
     height: auto;
 }
 
