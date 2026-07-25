@@ -98,8 +98,68 @@
             </style>
         [/]
     [/]
+    <style>
+        /* In Mon Specific Styles */
+        @font-face {
+            font-family: "Amstelvar";
+            src: url("/files/resources/amstelvar-romangradxopqxtrayopqytasytdeytfiytlcytuc.ttf");
+            font-weight: 100 900;
+            font-stretch: 50 125;
+            font-variation-settings:
+                "YOPQ" 45,
+                "YTLC" 420,
+                "YTUC" 1000,
+                "YTAS" 983,
+                "YTDE" -138,
+                "YTFI" 1000;
+            line-gap-override: 110%;
+            size-adjust: 75%;
+        }
+        @font-face {
+            font-family: "Amstelvar Fat";
+            src: url("/files/resources/amstelvar-romangradxopqxtrayopqytasytdeytfiytlcytuc.ttf");
+            font-weight: 100 900;
+            font-stretch: 50 125;
+            font-variation-settings:
+                "XOPQ" 250,
+                "YOPQ" 45,
+                "YTLC" 420,
+                "YTUC" 1000,
+                "YTAS" 983,
+                "YTDE" -138,
+                "YTFI" 1000;
+            line-gap-override: 110%;
+            size-adjust: 75%;
+        }
+        @font-face {
+            font-family: "Mixal";
+            src: url("/files/resources/mixalgx.ttf");
+            font-weight: 100 900;
+        }
+        :root {
+            --f_normal: "Amstelvar";
+            --fi_normal_weight: 500;
+            --f_header: "Amstelvar Fat";
+            --fi_header_stretch: 50%;
+            --fi_header_weight: 650;
+            --f_author: "Amstelvar";
+
+            --c_accent: #EE5F8C;
+        }
+        .sinoso, .sinoso2, .empira {
+            a, label, .linkglow {
+                position: relative;
+                &:link, &:visited, & {
+                    background-image: url("/files/resources/egens_block_pinkblock.png");
+                }
+                &::before, &::after {
+                    background-image: url("/files/resources/egens_block_pinkblock.png");
+                }
+            }
+        }
+    </style>
     [v:cfscriptcode]
-    <script type="text/javascript" src="/files/js/sinofsorcerylayout.js?version=2.12"></script>
+    <script type="text/javascript" src="/files/js/sinofsorcerylayout.js?version=2.13"></script>
     <script type="text/javascript">
         [c:iscomicpage]
             sinofsorcery.onStartComicPage([v:chapterid], "[v:custom.ch_style]");
@@ -118,6 +178,7 @@
             <img src="/files/images/title_scaled.png" alt="[v:webcomicname]" />
         </h1>
         <div id="titleupdate">Updates Mondays</div>
+        <a href="https://synexn.city/chill" style="opacity: 0;position: absolute;top: 60px;right: calc(15vw - 45px);font-size: 200%;">*</a>
     </div>
     
     
@@ -128,10 +189,11 @@
                 <li><span><a href="/blog/" [c:pagetitle~blog]class="nav-selection"[/]>blog</a></span></li>
             [/]
             <li><span><a href="/archive/" [c:pagetitle~archive]class="nav-selection"[/]>chapters</a></span></li>
-            <li><span><a href="/overview/" [c:pagetitle~overview]class="nav-selection"[/]>readme</a></span></li>
+            <li><span><a href="https://synexn.city/overview/" [c:pagetitle~overview]class="nav-selection"[/]>readme</a></span></li>
             [l:extrapages]
                 <li><span><a href="[v:l.link]">[v:l.title]</a></span></li>
             [/]
+            <li><span><a href="https://synexn.city/cast/" [c:pagetitle~cast]class="nav-selection"[/]>cast</a></span></li>
             <!-- <li><span><a href="">media</a></span></li> -->
             <li>
                 <span>
@@ -139,18 +201,21 @@
                     <label class="linkglow" for="nav-toggle-media">media</label>
                 </span>
             </li>
-            <li id="subitem"><span><a href="/gallery/" [c:pagetitle~gallery]class="nav-selection"[/]>gallery</a></span></li>
-            <li id="subitem"><span><a href="/compendium/" [c:pagetitle~compendium]class="nav-selection"[/]>compendium</a></span></li>
-            <!--<li id="subitem"><span><a href="/characters/" [c:pagetitle~characters]class="nav-selection"[/]>characters</a></span></li>-->
+            <li id="subitem"><span><a href="https://synexn.city/gallery/" [c:pagetitle~gallery]class="nav-selection"[/]>gallery</a></span></li>
+            <li id="subitem"><span><a href="https://synexn.city/compendium/" [c:pagetitle~compendium]class="nav-selection"[/]>compendium</a></span></li>
             [c:!hidefromhost]
                 <li><span><a href="[v:addsubscriptionlink]" target="window2">subscribe</a></span></li>
             [/]
+            <!--<li><span><a href="/filler/" [c:pagetitle~filler]class="nav-selection"[/]>filler</a></span></li>-->
         </ul>
     </div>
     
     [c:iscomicpage]
         <script type="text/javascript">
-            activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            if (typeof window.g_stop_navigation === "undefined")
+            {
+                activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            }
         </script>
     [/]
     

@@ -57,6 +57,18 @@
     --f_author: "RubikGlitch", sans-serif;
     --fi_author_stretch: 100%;
     --fi_author_weight: 500;
+
+    --p_tape_wobble: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%,
+    41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%,
+    73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%,
+    100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%,
+    100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%,
+    100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 
+    77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 
+    40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 
+    13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%,
+    0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 
+    1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
 }
 
 .fallofsin {
@@ -112,17 +124,17 @@
 
 /* Pulled from https://stackoverflow.com/questions/27686522/generating-ragged-edges-in-css */
 .tape_wobble {
-    clip-path: polygon(3% 0, 7% 1%, 11% 0%, 16% 2%, 20% 0, 23% 2%, 28% 2%, 32% 1%, 35% 1%, 39% 3%,
-    41% 1%, 45% 0%, 47% 2%, 50% 2%, 53% 0, 58% 2%, 60% 2%, 63% 1%, 65% 0%, 67% 2%, 69% 2%,
-    73% 1%, 76% 1%, 79% 0, 82% 1%, 85% 0, 87% 1%, 89% 0, 92% 1%, 96% 0, 98% 3%, 99% 3%, 99% 6%,
-    100% 11%, 98% 15%, 100% 21%, 99% 28%, 100% 32%, 99% 35%, 99% 40%, 100% 43%, 99% 48%,
-    100% 53%, 100% 57%, 99% 60%, 100% 64%, 100% 68%, 99% 72%, 100% 75%, 100% 79%, 99% 83%,
-    100% 86%, 100% 90%, 99% 94%, 99% 98%, 95% 99%, 92% 99%, 89% 100%, 86% 99%, 83% 100%, 
-    77% 99%, 72% 100%, 66% 98%, 62% 100%, 59% 99%, 54% 99%, 49% 100%, 46% 98%, 43% 100%, 
-    40% 98%, 38% 100%, 35% 99%, 31% 100%, 28% 99%, 25% 99%, 22% 100%, 19% 99%, 16% 100%, 
-    13% 99%, 10% 99%, 7% 100%, 4% 99%, 2% 97%, 1% 97%, 0% 94%, 1% 89%, 0% 84%, 1% 81%, 0 76%,
-    0 71%, 1% 66%, 0% 64%, 0% 61%, 0% 59%, 1% 54%, 0% 49%, 1% 45%, 0% 40%, 1% 37%, 0% 34%, 
-    1% 29%, 0% 23%, 2% 20%, 1% 17%, 1% 13%, 0 10%, 1% 6%, 1% 3%);
+    clip-path: var(--p_tape_wobble);
+}
+.tape_white {
+    font-family: 'PermanentMarker', cursive;
+    background: #FFF5E6;
+    display: inline-block;
+    clear: both;
+    padding: 0.05em 1.0em;
+    color: black;
+    font-size: 2.0em;
+    margin: -1px;
 }
 
 .corners--slanted0 {
@@ -789,12 +801,15 @@ form {
     font-family: var(--f_header);
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
-    font-size: 2.0em;
+    font-size: min(8vw, 2.0em);
     line-height: 1.5em;
 }
 #navigation ul {
     padding: 0px;
     margin: 0.3em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 #navigation li {
     list-style: none;
@@ -881,17 +896,16 @@ form {
     overflow: clip;
     
     transition:
-    max-width ease-out 0.2s,
-    height ease-out 0.5s,
-    opacity ease-out 0.5s;
+        max-width ease-out 0.2s,
+        height ease-out 0.5s,
+        opacity ease-out 0.5s;
 }
 #navigation li:not(#subitem):has(:checked) ~ #subitem {
     max-width: 100%;
-    
     transition:
-    max-width ease-in 0.5s,
-    height ease-in 0.5s,
-    opacity ease-in 0.5s;
+        max-width ease-in 0.5s,
+        height ease-in 0.5s,
+        opacity ease-in 0.5s;
 }
 
 /* Special little effect */
@@ -1040,6 +1054,16 @@ html>body .wrap {
     padding: 0.5em;
     box-shadow: var(--g_shadowBoxDefault);
     border-image: url("/files/resources/styles/border000a2.png") 230 / 15px;
+
+    @media (max-width:800px) {
+        font-size: 3.1vw;
+        & > select {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.3em;
+        }
+    }
 }
 .comicnavlink {
     margin-left: 0.618em;
@@ -1112,6 +1136,8 @@ html>body .wrap {
 #comicimagewrap {
     /* This gets rid of the newline that appears on the inside of the image block when any extra HTML is added. */
     line-height: 0px;
+    /* Ensure that we're displaying our images correctly if we do absolute positioning: */
+    position: relative;
 }
 #comicimagelink {
     /* This gets rid of the newline that appears on the inside of the image block when the page has a link. */
@@ -1144,9 +1170,10 @@ html>body .wrap {
         width: 144%;
         height: 133%;
         left: -22%;
-        top: -17%;
+        top: max(-17%, -232px); /* 232px is 17% of 1365 */
         z-index: -1;
         background-size: contain;
+        background-repeat: no-repeat;
         pointer-events: none;
     }
     .sinoso2 .comic-reader > #comicimagewrap::before,
@@ -1517,6 +1544,15 @@ a.author:hover {
     flex-flow: column;
 }*/
 
+.archive-box #pages {
+    & #pageslabel {
+        display: none;
+    }
+    & .currentpage {
+        color: #FFF;
+    }
+}
+
 /*blog*/
 #blogbox {
     display: flex;
@@ -1656,8 +1692,12 @@ a.author:hover {
     align-items: center;
     justify-content: space-around;
 }
-.blog-imagelist img {
+.blog-imagelist img, .blog-imagelist a {
     max-width: 31%;
+    height: auto;
+}
+.blog-imagelist a > img {
+    max-width: 100%;
     height: auto;
 }
 
@@ -1671,7 +1711,8 @@ a.author:hover {
     }
 }
 
-/* overview */
+/* Overview Page */
+/* ============================= */
 .box#overview-hack {
     padding: 0;
     background: none;
@@ -1718,29 +1759,47 @@ a.author:hover {
     color: #777;
     font-size: 1.5em;
 }
+.overview-miniinfo strong {
+    color: #000;
+}
+
+/* layout blocks */
+.overview-basis90 {
+    flex-basis: 88%;
+    min-width:  min(100vw, 720px);
+}
+.overview-basis45 {
+    flex-basis: 45%;
+    min-width: min(100vw, 360px);
+}
+.overview-basis22 {
+    flex-basis: 22%;
+    min-width: min(100vw, 180px);
+}
+
+/* blog archive styling */
+/* Main blogpost */
+.overview-box .blogarchive .blogpost-time {
+    text-align: center !important;
+}
+/* List of extras */
 .overview-blogarchive-block:not(:last-child) {
     margin-bottom: 0.3em;
     border-bottom: 1px #AAA dashed;
     padding-bottom: 0.3em;
 }
 
-.overview-imagewrap > a > img {
+/* comic image styling */
+.overview-imagewrap > a > img,
+.overview-imagewrap > a > .comicsegments > .segmentcontainer > img {
     width: 100%;
     height: auto;
 }
-.overview-basis90 {
-    flex-basis: 88%;
-    min-width: 300px;
-}
-.overview-basis45 {
-    flex-basis: 45%;
-    min-width: 300px;
-}
-.overview-basis22 {
-    flex-basis: 22%;
-    min-width: 150px;
+.overview-imagewrap > a > .comicsegments > .segmentcontainer:nth-child(n + 2) {
+    display: none;
 }
 
+/* content warning block */
 .overview-content-warning p, .overview-content-warning ul, .overview-content-warning l {
     text-align: left;
     color: #555;
@@ -1757,17 +1816,95 @@ a.author:hover {
     font-weight: var(--fi_normal_weight);
     border-bottom: #AAA 1.5px dotted;
 }
+
+/* chapter listing block */
 .overview-archive > table {
     font-size: 0.91em;
 }
 .overview-archive > #archive h3 {
     font-size: 1.0em;
     font-weight: 400;
+    display: inline-block;
 }
 .overview-archive tr.chaptertitle {
     background: none;
 }
 
+/* chapter listing block alt */
+.overview-archive tr.threadtitle {
+    background: none;
+
+    background-position: center !important;
+    background-size: cover !important;
+}
+.overview-archive tr.threadlinks {
+    background: none;
+}
+.overview-threads tr {
+    width: 100%;
+
+    &.threadtitle {
+        & > td {
+            border: none;
+            padding-bottom: 0;
+
+            text-shadow: 
+                0.1em 0.1em 0 #FFF,
+                0.1em -0.1em 0 #FFF,
+                -0.1em -0.1em 0 #FFF,
+                -0.1em 0.1em 0 #FFF,
+                0.1em 0px 0 #FFF,
+                -0.1em 0px 0 #FFF,
+                0px 0.1em 0 #FFF,
+                0px -0.1em 0 #FFF;
+            
+            & > div:has(h3) {
+                filter: drop-shadow(0 0.05em 0.05em #0005);
+                transform: rotate(3deg);
+                text-align: center;
+
+                & > h3 {
+                    font-size: 1.6em !important;
+                    padding: 0.2em 1.0em;
+                    margin-bottom: 0.3em;
+                    text-shadow: none;
+                }
+            }
+        }
+
+        & .current {
+            text-align: center;
+            font-style: italic;
+        }
+    }
+    &.threadtitle:nth-child(3) > td > div:has(h3) {
+        transform: rotate(-1deg);
+    }
+    &.threadtitle:nth-child(5) > td > div:has(h3) {
+        transform: rotate(2deg);
+    }
+
+    &.threadlinks {
+        border-bottom: 2px solid black;
+        & > td {
+            border: none;
+        }
+        a {
+            display: inline-block;
+        }
+    }
+}
+
+.overview-threads .prev {
+    text-align: center;
+    opacity: 0.5;
+    font-family: var(--f_header);
+    font-stretch: var(--fi_header_stretch);
+    font-variant: all-petite-caps oldstyle-nums;
+    font-size: 1.2em;
+}
+
+/* b-sides block */
 .overview-bsides > div {
     text-align: left;
     margin-bottom: 0.8em;
@@ -1830,10 +1967,283 @@ a.author:hover {
         ;
 }
 
-.overview-miniinfo strong {
-    color: #000;
+/* b-sides block - casette edition */
+.overview-bsides-alternate > div:first-of-type {
+    margin-bottom: 0.5em;
+}
+.overview-bsides-alternate > .casette {
+    font-size: 0.5em;
+}
+.overview-bsides-alternate .casette {
+    margin-left: auto;
+    margin-right: auto;
+}
+.overview-bsides-alternate > .casette {
+    padding-top: 0.0em;
+
+    margin-bottom: 1em;
+
+    width: 24em;
+    max-width: 90%;
+    min-height: 13.5em;
+
+    background: rgb(16, 16, 16);
+
+    border-color: rgb(24, 24, 24);
+    border-top-color: rgb(32, 32, 32);
+    border-bottom-color: rgb(0, 0, 0);
+    border-width: 1em;
+    border-style: solid;
+    border-radius: 1em;
+
+    /* Use flexbox to center all the block-display items */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 0px 0px 2px rgb(255 255 255 / 60%),
+        0px 3px 5px 4px rgb(0 0 0 / 60%),
+        -3px 0px 0px 0px rgb(255 0 0),
+        3px 0px 0px 0px rgb(0 255 255);
+
+    /* Use background to add more detailing */
+    background-image: url(/files/resources/vector/casset-inside.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 14.25em;
+}
+.overview-bsides-alternate > .casette {
+    transform: rotate(0.7deg);
+}
+.overview-bsides-alternate > .casette:nth-child(2n) {
+    transform: rotate(-1.1deg);
+}
+.overview-bsides-alternate > .casette:nth-child(3n) {
+    transform: rotate(1.5deg);
+}
+.overview-bsides-alternate > .casette:nth-child(4n) {
+    transform: rotate(-0.2deg);
+}
+.overview-bsides-alternate > .casette:nth-child(5n) {
+	transform: rotate(0.7deg);
 }
 
+.overview-bsides-alternate > .bside-arcane
+{
+    background-color: rgb(180,30,60);
+    border-color: rgb(190,40,70);
+    border-top-color: rgb(230,90,90);
+    border-bottom-color: rgb(140,20,40);
+    
+    transform: rotate(0.2deg);
+}
+.overview-bsides-alternate > #blockmod_purple
+{
+    background-color: rgb(120,30,180);
+    border-color: rgb(160,40,190);
+    border-top-color: rgb(190,90,230);
+    border-bottom-color: rgb(70,20,140);
+}
+.overview-bsides-alternate > #blockmod_pink
+{ 
+    background-color: #EE5F8C;
+    border-color: #ff6b9a;
+    border-top-color: #ff90b3;
+    border-bottom-color: #c93866;
+}
+
+.overview-bsides-alternate > .casette::before
+{
+    display:			block;
+    
+    border-top:			1px solid gray;
+    width:				100%;
+    
+    padding-left:		1em;
+    padding-right:		0.618em;
+    
+    height:				0.2em;
+    font-size:			1.308em;
+    line-height:		1.5em;
+    
+    text-align:		left;
+    color:			rgb(16 16 16);
+    text-shadow:	0px 1px rgb(70 70 70),
+                    0px -1px rgb(0 0 0);
+}
+.overview-bsides-alternate > .bside-mundane::before
+{
+    content: 		"DENOKO SPACER PRO";
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    color: rgb(20,40,40);
+    font-weight:	800;
+    font-stretch:   70%;
+}
+.overview-bsides-alternate > .bside-arcane::before
+{
+    content: 		"DENOKO BUBBLEGUM3";
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    font-stretch:   70%;
+    color: 			rgb(180,30,60);
+    text-shadow:	0px 1px rgb(255 70 70),
+                    0px -1px rgb(128 0 0);
+    border-top:		1px solid rgb(255, 100, 100);
+}
+.overview-bsides-alternate > #blockmod_purple::before
+{
+    color: 			rgb(100,30,180);
+    text-shadow:	0px 1px rgb(210 70 255),
+                    0px -1px rgb(100 0 128);
+    border-top:		1px solid rgb(210, 100, 255);
+}
+.overview-bsides-alternate > #blockmod_pink::before
+{
+    color: 			#e7326b;
+    text-shadow:	0px 1px #ff558b,
+                    0px -1px #d6215a;
+    border-top:		1px solid #ff9ebd;
+}
+
+/* Bottom trapezoid of the comic blocks */
+.overview-bsides-alternate > .casette::after
+{
+    display:	block;
+    mix-blend-mode:	screen;
+    
+    content:		"○ ○";
+    font-size:		1.2em;
+    letter-spacing:	2.5em;
+    text-align:		center;
+    /* This fixes the bad alignment of letter-spacing */
+    padding-left:	2.7em;
+    
+    text-shadow:	0px 1px grey;
+    color:			rgb(32,32,32);
+
+    height:		1.8em;
+    background-color:	rgba(32,32,32,0.6);
+    border-style:		solid;
+    border-width:		0.125em;
+    border-color:		rgb(64,64,64);
+    border-radius:		0.25em;
+    border-bottom:		none;
+    
+    transform:			perspective(1em) rotateX(2deg);
+    
+    width:		60%;
+    position:	relative;
+    top:		0.45em;
+}
+
+/* labels */
+.overview-bsides-alternate > .casette > a 
+{
+    clip-path: var(--p_tape_wobble);
+    display:	inline-block;
+    font-size: 	3.5em !important;
+    
+    background:	white;
+    padding-top:	0.05em;
+    padding-bottom:	0.05em;
+    padding-left:	0.6em;
+    padding-right:	0.6em;
+    
+    margin-top:		0.0em;
+    margin-bottom:	0.0em;
+    
+    position: 	relative;
+    top: 		0.06em;
+    
+    height:			1.0em;
+    max-height:		1.0em;
+    
+    transform:		rotate(1.0deg);
+    color:			black;
+}
+.overview-bsides-alternate > .casette > a > img {
+    max-width: 100%;
+    max-height: 1.0em;
+}
+/* Randomize the label rotation */
+.overview-bsides-alternate > .casette:nth-child(2n) > a {
+    transform: rotate(-2.0deg);
+}
+.overview-bsides-alternate > .casette:nth-child(3n) > a {
+    transform: rotate(1.5deg);
+}
+.overview-bsides-alternate > .casette:nth-child(4n) > a {
+    transform: rotate(-1.0deg);
+}
+.overview-bsides-alternate > .casette > span:not(.overview-miniinfo) {
+    display: block;
+    
+    color: 			black;
+    font-family:	"BricolageGrotesque", "Verdana", "Arial", "Helvetica", sans-serif;
+    font-stretch:   70%;
+    font-size:		1.8em;
+    text-transform: uppercase;
+    letter-spacing:	-0.02em;
+    line-height: 97%;
+    text-shadow:	none;
+    
+    background:			linear-gradient(0deg, black 4%, white 13%);
+    background-size:	1px 1em;
+    border-radius:		8px;
+    
+    /*height:			1.8em;*/
+    margin: 0 0.7em;
+    
+    padding:	0.1em 0.3em;
+    
+    position:	relative;
+    top:		1.3em;
+}
+.overview-bsides-alternate > div > .overview-miniinfo {
+    display: none;
+}
+
+
+/* link fix */
+.overview-bsides-alternate > div > a > img,
+.overview-bsides-alternate > div > a:visited > img,
+.overview-bsides-alternate > div > a:link > img {
+    --c_accent_l: rgb(255, 70, 0);
+    filter:
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        drop-shadow(rgba(none, none, none, 0.0) 0 0 0.0em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+.overview-bsides-alternate > div > a:hover > img {
+    filter:
+        drop-shadow(var(--c_accent_l) 0 0 0.03em)
+        drop-shadow(var(--c_accent_l) 0 0 0.14em)
+        ;
+    transition:
+        color 0.25s ease-in-out,
+        filter 0.25s ease-in-out
+        ;
+}
+.overview-bsides-alternate > .casette > a,
+.overview-bsides-alternate > .casette > a:hover,
+.overview-bsides-alternate > .casette > a:visited,
+.overview-bsides-alternate > .casette > a:link {
+    background-image: none;
+    animation: none;
+
+    &::before,
+    &::after {
+        display: none;
+        animation: none;
+    }
+}
+
+
+/* beginning block */
 .overview-begin-block {
     transform: rotate(3deg);
     display: inline-block;
@@ -1857,6 +2267,7 @@ a.author:hover {
 }
 
 
+/* authors bio box */
 .overview-authors {
     display: flex !important;
     justify-content: center;
@@ -1904,7 +2315,7 @@ a.author:hover {
     height: auto;
 }
 
-
+/* support links box */
 .overview-support-list {
     display: flex;
     justify-content: center;
@@ -1958,7 +2369,9 @@ a.author:hover {
     font-size: 1.35em;
 }
 
-/* gallery */
+/** Gallery **/
+/* ============================= */
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -2005,7 +2418,8 @@ a.author:hover {
     color: #333;
 }
 
-/* compendium */
+/** Compendium **/
+/* ============================= */
 
 .compendium {
     font-family: var(--f_normal);
@@ -2023,15 +2437,268 @@ a.author:hover {
     list-style: symbols(cyclic "▷" "▻");
 }
 .compendium .filelisting ul a {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: bold;
+    &, &:link, &:visited {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
 }
 
 .monospace {
     font-family: var(--f_monospace) !important;
 }
 
+
+/** Cast Page **/
+/* ============================= */
+.cast {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+
+    flex-wrap: wrap;
+
+    --cast-article-black: #334;
+    --cast-article-paper: #E3E2C3;
+}
+#contentcontainer:has(.wrap > .box > .cast) {
+    overflow-y: visible;
+}
+
+.cast label {
+    position: relative;
+}
+.cast label input {
+    display: none;
+}
+.cast label:hover {
+    cursor: pointer; /* Make apparent it's a link */
+}
+.cast label img {
+    zoom: 0.35;
+    min-width: 5.0em;
+}
+.cast label h3 {
+    font-family: PermanentMarker, cursive;
+}
+.cast label + section {
+    display: none;
+}
+
+/* Warning at top */
+#cast_warning {
+    text-align: justify;
+    padding: 1.0em;
+    display: none;
+}
+.synexn, .shatter,
+.fallofsin, .slithy, .slithy2 {
+    #cast_warning {
+        display: block;
+    }
+}
+
+/* Black background */
+body:has(div > div > div > .cast) {
+    background: 
+        no-repeat center 210px / min(1460px, 110%) auto url("/files/images/bg_sos/paperbg.webp"),
+        black;
+}
+
+/* Bringing up article */
+.cast {
+    label:has(input:checked) + section {
+        display: grid;
+        position: absolute;
+        z-index: 5;
+
+        background: var(--cast-article-paper);
+        padding: 1.0em min(2vw, 1.0em);
+        box-shadow: 0px 0px 15px black;
+
+        grid-template-columns: 1fr 1fr 1fr;
+
+        & > div {
+            padding-top: 1.0em;
+            padding-bottom: 0.5em;
+            text-align: left;
+            border: 2px solid var(--cast-article-black);
+
+            font-family: "PermanentMarker", cursive;
+            color: black;
+            padding: 1.0em 0.5em 0.2em;
+            font-size: 1.4em;
+
+            grid-row: auto / span 1;
+            grid-column: 1 / span 2;
+
+            &::before {
+                color: var(--cast-article-black);
+                font-variant: small-caps;
+                font-size: 0.7em;
+                font-family: var(--f_monospace);
+
+                position: absolute;
+
+                margin-top: -1.4em;
+                margin-left: -0.5em;
+                padding: 0.2em;
+            }
+
+            &:nth-child(1) {
+                &::before {
+                    content: "Name";
+                }
+            }
+            &:nth-child(2) {
+                &::before {
+                    content: "Age";
+                }
+            }
+            &:nth-child(3) {
+                &::before {
+                    content: "Gender";
+                }
+            }
+            &:nth-child(4) {
+                font-size: 2.0em;
+                padding: 0.1em;
+                text-align: center;
+                align-content: center;
+                font-family: var(--f_monospace);
+                font-variant: small-caps;
+            }
+        }
+
+        & > aside {
+            border: 2px solid var(--cast-article-black);
+
+            grid-column: 3 / span 1;
+            grid-row: 1 / span 4;
+
+            & > img {
+                max-width: min(35vw, 20em);
+            }
+        }
+
+        & > p, & > ul {
+            grid-column: 1 / span 3;
+            text-align: justify;
+            margin: 0.7rem 0.2em;
+
+            color: black;
+            text-shadow: none;
+
+            font-family: Thoroughbred;
+            font-size: 1.3em;
+            letter-spacing: 0.05em;
+        }
+
+        & .messy {
+            font-family: "PermanentMarker", cursive;
+            font-size: 1.5em;
+            line-height: 0.9em;
+            text-align: left;
+        }
+        & .secondstar {
+            font-family: "Scaremonger", cursive;
+            font-size: 1.5em;
+            text-align: left;
+            letter-spacing: 0.06em;
+        }
+        & .arty {
+            font-family: Scrawlingpad;
+            font-size: 1.6em;
+            letter-spacing: -0.03em;
+            text-align: left;
+        }
+        & .typed {
+            font-family: "XTypewriter", monospaced;
+            font-size: 1.1em;
+        }
+
+        & s {
+            background-color: black;
+            color: black;
+            text-decoration: none;
+        }
+        & s::selection {
+            background-color: red;
+            color: #F000;
+        }
+
+        & .boneate {
+            pointer-events: none;
+            user-select: none;
+            mask-repeat: repeat-x, repeat-y;
+            mask-mode: luminance;
+            mask-image: url("/files/images/bg4.webp");
+            color: #5CA776;
+            mask-size: 200px 200px;
+        }
+    }
+    /* Label w/ back button */
+    label:has(input:checked) {
+        z-index: 7;
+        position: absolute;
+
+        left: 0px;
+    }
+    label:has(input:checked) > h3,
+    label:has(input:checked) > img {
+        display: none;
+    }
+    /* Back button */
+    label:has(input:checked)::before {
+        content: "< Back";
+        display: block;
+        position: absolute;
+        width: auto;
+        height: auto;
+
+        white-space: nowrap;
+
+        left: 0px;
+        top: auto;
+        bottom: 0px;
+
+        opacity: 100%;
+        transform: none;
+        zoom: 1.0;
+
+        background: none;
+        animation: none;
+        transition: none;
+
+        pointer-events: all;
+    }
+    label:has(input:checked):hover::before {
+        transform: none;
+        background: none;
+
+        left: 0px;
+        top: auto;
+        bottom: 0px;
+
+        opacity: 100%;
+        transform: none;
+        zoom: 1.0;
+
+        background: none;
+        animation: none;
+        transition: none;
+
+        pointer-events: all;
+    }
+    label:has(input:checked)::after,
+    label:has(input:checked):hover::after {
+        display: none;
+    }
+}
+
+/* ============================= */
+/** Below are the styling extras! */ 
+/* ============================= */
 /* comic image */
 [c:custom.comic_wideformat]
 #content-start
@@ -2052,6 +2719,7 @@ a.author:hover {
     margin-right: 0px;
 }
 [/]
+
 #comicimage, .comicsegmentimage
 {
     [c:!custom.comic_wideformat]
