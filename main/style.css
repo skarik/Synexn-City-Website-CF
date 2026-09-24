@@ -2244,11 +2244,30 @@ a.author:hover {
 
 
 /* beginning block */
+.overview-begin-box {
+  overflow: hidden;
+}
+.overview-begin-box-inner {
+  height: 6.0em;
+  overflow: hidden;
+  padding: 0;
+}
+
 .overview-begin-block {
-    transform: rotate(3deg);
     display: inline-block;
+    max-height: 100%;
+    font-size: 1.0em;
+    font-size: 1.0em !important;
+    transform: skewX(-15deg);
+}
+.overview-begin-block-inner {
+  max-height: 6.0em;
 }
 .overview-begin {
+    vertical-align: center;
+    transform: skewX(15deg);
+    font-size: 1.8em;
+    
     display: inline-block;
     font-family: var(--f_header_fx) !important;
     font-stretch: var(--fi_header_stretch);
@@ -2259,11 +2278,39 @@ a.author:hover {
     width: 2.6em;
     vertical-align: top;
     text-align: left;
-    line-height: 0.8em;
-    font-size: 1.0em;
+    line-height: 0.66em;
+    font-size: 2.4em;
     font-family: var(--f_header_fx) !important;
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
+}
+
+.overview-begin-imgblock {
+    display: inline-block;
+    overflow: hidden;
+    max-height: 6.0em;
+    max-width: 6.0em;
+}
+.overview-begin-imgblock > img {
+    transform: skewX(15deg);
+    transform: skewX(15deg);
+    transform: skewX(15deg);
+    width: 140%;
+    left: -15%;
+    position: relative;
+}
+
+.overview-begin-f-style {
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+    font-size: 1.4em;
+    line-height: 1em;
+    font-weight: 200;
+}
+.overview-begin-f-style > span {
+    transform: skewX(15deg);
+    display: inline-block;
 }
 
 
