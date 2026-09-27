@@ -193,6 +193,11 @@
     mask-composite: subtract, add;*/
 }
 
+.flipX {
+    display: inline-block;
+    transform: scaleX(-1);
+}
+
 /** Global Defaults **/
 /* ============================= */
 html, body {
@@ -2261,7 +2266,8 @@ a.author:hover {
     transform: skewX(-15deg);
 }
 .overview-begin-block-inner {
-  max-height: 6.0em;
+    max-height: 6.0em;
+    margin: 0.0em -0.5em
 }
 .overview-begin {
     vertical-align: center;
@@ -2283,6 +2289,34 @@ a.author:hover {
     font-family: var(--f_header_fx) !important;
     font-stretch: var(--fi_header_stretch);
     font-weight: var(--fi_header_weight);
+
+    /* Per ID styles here */
+    & > #s3 {
+        font-size: 1.6em;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+        position: relative;
+        top: 0.13em;
+    }
+    & > #a1, & > #b1 {
+        font-weight: 100;
+        font-size: 1.5em;
+        letter-spacing: -0.05em;
+        line-height: 0.8em;
+        display: inline-block;
+        transform: scaleY(1.3);
+        position: relative;
+        top: 0.08em;
+    }
+    & > #a2, & > #b2 {
+        font-width: 120%;
+        font-size: 3.0em;
+        font-weight: 500;
+        display: inline-block;
+        transform: scaleY(0.5);
+        position: relative;
+        top: 0.11em;
+    }
 }
 
 .overview-begin-imgblock {
