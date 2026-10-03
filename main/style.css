@@ -2823,65 +2823,84 @@ body:has(div > div > div > .cast) {
 [c:custom.sp__specials]
 /** "Specials" Styling: Custom styling added with vis changes */
 /* ============================= */
-#content-start
-{
-    [c:custom.sp_content_black]
-    /*border: 8px solid #202020;
-    background: #000;*/
-    [c:!custom.comic_wideformat]
-    /*max-width: calc(100vw - 32px);*/
-    [/]
-    [c:custom.comic_wideformat]
-    border-left: none;
-    border-right: none;
-    [/]
-    [/]
-}
 
+/* Auto-black Stylings */
+[c:custom.sp_content_black]
 /** Global Vars **/
 :root {
-    [c:custom.sp_content_black]
     /* Colors used for the navbox for comics */
     --g_comicnavBgColor: #000D;
     --g_comicnavBorderColor: #202020;
-    [/]
 }
+.comicnav
+{
+    /* Restyle the navbox */
+    border-image: none;
+    & > a.comicnavlink {
+        color: #DDD;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
 
-.comicnav {
-    [c:custom.sp_content_black]
-    /*background: #000D;
-    border: 2px solid #202020;*/
-    [/]
+        &:hover {
+            color: var(--c_accent);
+        }
+    }
+    & select {
+        border: 1px solid black;
+        background: #222;
+        color: white;
+    }
 }
-a.comicnavlink:link, a.comicnavlink:visited
-{
-    [c:custom.sp_content_black]
-    color: #DDD;
-    text-transform: lowercase;
-    letter-spacing: 0.05em;
-    [/]
+/* Style the comment boxes */
+.box:has(#authornotes), .box:has(.comments) {
+    border-image: none;
+    background-color: #111A;
+
+    a.author {
+        color: #DDD !important;
+    }
+    .synexn &, .shatter &, .fallofsin &, .slithy &, .slithy2 & {
+        a:hover {
+            color: var(--c_accent);
+        }
+    }
+            
+    .commentdata {
+        background: linear-gradient(to right, #222, #222, #2220);
+    }
+    .posttime {
+        color: #666666;
+    }
+    .commenttext {
+        color: #999;
+    }
 }
-a.comicnavlink:hover
+body
 {
-    [c:custom.sp_content_black]
-    color: var(--c_accent);
-    [/]
-}
-html, body
-{
-    [c:custom.sp_content_black]
+    /* Multiply blend over everything */
     background-color: #999;
     background-blend-mode: multiply;
-    [/]
 }
-.comicnav select
+/* Darken the SoS backgrounds */
+.sinoso, .sinoso2, .empira {
+    --c_bg_color: #000000;
+    --c_bg_overlay_color: #3e0000;
+}
+/* Remove image wrap */
+#comicimagewrap::before {
+    display: none !important;
+}
+/* Fix for wide pages */
+[c:custom.comic_wideformat]
+#content-start
 {
-    [c:custom.sp_content_black]
-    border: 1px solid black;
-    background: #222;
-    color: white;
-    [/]
+    border-left: none;
+    border-right: none;
 }
+[/]
+[/]
+
+
 
 /* spoilers styles */
 [c:custom.sp_warning_spoiler]
