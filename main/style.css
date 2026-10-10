@@ -1048,6 +1048,18 @@ html>body .wrap {
     background: linear-gradient(to right, #7770, #777, #777, #7770);
 }
 
+.box nav {
+    padding: 0.5em 0.1em;
+}
+.box nav > a {
+    margin: 0.1em 0.2em;
+    text-transform: lowercase;
+    font-size: 1.2em !important;
+    border-radius: 0.1em;
+    padding: 0.2em 0.5em;
+    border: 1px solid #DDD9;
+}
+
 /** Comic Page **/
 /* ============================= */
 
@@ -2459,10 +2471,11 @@ a.author:hover {
     justify-content: space-between;
     align-items: baseline;
 }
-.gallery h3, #gallery_heading {
+h3.gallery, #gallery_heading {
     font-size: 1.8em;
     color: #000;
     line-height: 1.0em;
+    display: block;
 }
 .gallery > div {
     max-width: min(15.0em, 22vw);
@@ -2497,6 +2510,84 @@ a.author:hover {
     font-family: var(--f_normal) !important;
     font-weight: var(--fi_normal_weight) !important;
     color: #333;
+}
+#gallery_heading_taped {
+    font-size: 1.6em;
+    font-weight: bold;
+    font-family: "PermanentMarker", cursive;
+    font-variant: small-caps;
+    color: #FFF;
+    
+    display: inline-block;
+    padding: 3px 50px 6px;
+
+    line-height: 1.0em;
+    
+    background-color: black;
+    transform: rotate(-2deg);
+
+    &:nth-of-type(7n + 2) {
+        transform: rotate(1deg);
+    }
+    &:nth-of-type(3) {
+        transform: rotate(-1deg);
+    }
+    &:nth-of-type(5) {
+        transform: rotate(2deg);
+    }
+}
+
+.gallery.links {
+    justify-content: space-around;
+    color: #000;
+
+    & > div {
+        max-width: 100vw;
+        min-width: 20.0em;
+        width: min(50.0em, 33vw);
+    }
+
+    & img {
+        max-width: 100%;
+    }
+
+    & header, & section, & aside {
+        display: inline-block;
+        margin-bottom: 0.5em;
+    }
+
+    & header > h5 {
+        font-size: 1.6em;
+        margin: 0.1em;
+        font-family: var(--f_header);
+        font-width: var(--fi_header_stretch);
+        font-weight: var(--fi_header_weight);
+    }
+    & header > dd {
+        margin: 0;
+    }
+
+    & section > h5 {
+        font-size: 1.2em;
+        font-width: 130%;
+        font-weight: var(--fi_header_weight);
+        margin: 0.2em 0.1em 0.1em;
+    }
+
+    & p {
+        margin: 0;
+        text-align: justify;
+        padding: 0.0em 1.0em 0.2em;
+    }
+    & aside > p {
+        background: #DDD;
+        border-radius: 1.0em;
+        padding: 0.5em 1.0em;
+        margin: 0.0em 0.5em 0.5em;
+    }
+    & p > a {
+        font-size: 1.1em !important;
+    }
 }
 
 /** Compendium **/
