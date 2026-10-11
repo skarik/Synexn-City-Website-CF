@@ -2538,22 +2538,28 @@ h3.gallery, #gallery_heading {
 }
 
 .gallery.links {
-    justify-content: space-around;
-    color: #000;
+    justify-content: center;
+    gap: 1.0em;
+    color: #222;
 
     & > div {
         max-width: 100vw;
-        min-width: 20.0em;
-        width: min(50.0em, 33vw);
+        min-width: 15.0em;
+        width: min(19.0em, 30vw);
+        flex-grow: 1;
     }
 
     & img {
         max-width: 100%;
+        width: 100%;
     }
 
     & header, & section, & aside {
         display: inline-block;
         margin-bottom: 0.5em;
+    }
+    & section {
+        display: block !important;
     }
 
     & header > h5 {
